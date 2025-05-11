@@ -1,0 +1,23 @@
+<map id="vector::vector_t::operator" name="vector::vector_t::operator">
+<area shape="rect" id="Node000001" title="Vector&#45;vector subtraction ." alt="" coords="5,93,192,118"/>
+<area shape="rect" id="Node000002" href="$d7/d34/namespacevector.html#a7ac12ad7ce020a6b266de066bc21044b" title="Change the sign of the vector." alt="" coords="240,6,401,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,90,239,42,263,33,264,38,241,46,128,95"/>
+<area shape="rect" id="Node000004" href="$d7/d34/namespacevector.html#ac4243c091a3298a29f7dcf1f31c09755" title="Vector&#45;scalar subtraction ." alt="" coords="475,76,618,116"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="192,105,240,105,321,107,401,105,461,101,462,107,401,111,321,112,240,111,192,110"/>
+<area shape="rect" id="Node000007" href="$d7/d34/namespacevector.html#aa6bde052fe14043dc6f77bd247648469" title="Scalar&#45;vector subtraction ." alt="" coords="249,56,392,96"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="192,90,235,85,236,90,193,96"/>
+<area shape="rect" id="Node000008" href="$d7/d34/namespacevector.html#add7a955324a3f73f1c727ccc4a5aa0cd" title="Vector&#45;vector subtraction ." alt="" coords="249,171,392,211"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="134,116,256,163,254,168,132,121"/>
+<area shape="rect" id="Node000003" href="$d2/d73/namespacedevice__math.html#a6e9089e626320f54bad8af5f0a13fc99" title="Multiplication by constant c ." alt="" coords="468,5,625,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="401,18,454,20,454,25,401,24"/>
+<area shape="rect" id="Node000005" href="$dd/d47/namespacemath.html#a379adcc7bf693d6ceaec23f715dd93b8" title="Add a scalar to vector ." alt="" coords="719,55,822,81"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="618,84,705,73,706,79,618,90"/>
+<area shape="rect" id="Node000006" href="$d2/d73/namespacedevice__math.html#ad868323dda2925e1f5d954d61de4b8dd" title="Add a scalar to vector ." alt="" coords="692,105,849,145"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="618,103,678,111,678,116,618,108"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="391,58,454,43,455,49,393,63"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="392,80,462,86,462,91,392,85"/>
+<area shape="rect" id="Node000009" href="$d2/d73/namespacedevice__math.html#ab9e58c9754184290830b9fe3cdefab5f" title="Vector subtraction ." alt="" coords="449,153,644,178"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="392,180,435,175,436,180,392,185"/>
+<area shape="rect" id="Node000010" href="$dd/d47/namespacemath.html#a797f1134edbf7948a9f9c040fd5061d0" title="Vector subtraction ." alt="" coords="499,202,594,227"/>
+<area shape="poly" id="edge11_Node000008_Node000010" title=" " alt="" coords="392,196,486,206,485,211,392,201"/>
+</map>

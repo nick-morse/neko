@@ -1,0 +1,7 @@
+<map id="math::masked_copy" name="math::masked_copy">
+<area shape="rect" id="Node000001" title="Copy a masked vector ." alt="" coords="224,49,377,74"/>
+<area shape="rect" id="Node000002" href="$db/d5b/namespacefield__dirichlet.html#ad05238ff444be1bacf6d21b19e7e1f4a" title="Apply scalar by performing a masked copy." alt="" coords="5,5,176,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,49,176,43,177,37,213,44"/>
+<area shape="rect" id="Node000003" href="$d0/d1c/namespacefield__dirichlet__vector.html#aa9adaf85ab5ee332888e6279196c20a5" title="Apply the boundary condition to a vector field." alt="" coords="7,70,174,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="214,79,175,86,174,80,213,74"/>
+</map>

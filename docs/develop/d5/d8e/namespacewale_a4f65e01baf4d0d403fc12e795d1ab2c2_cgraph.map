@@ -1,0 +1,31 @@
+<map id="wale::wale_compute" name="wale::wale_compute">
+<area shape="rect" id="Node000001" title="Compute eddy viscosity." alt="" coords="5,105,161,131"/>
+<area shape="rect" id="Node000002" href="$d7/da8/namespacewale__cpu.html#ae8860c8d1c538c880c01de3ad5137a6c" title="Compute eddy viscosity on the CPU." alt="" coords="209,105,425,131"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,115,196,115,196,121,162,121"/>
+<area shape="rect" id="Node000003" href="$dd/d30/namespaceoperators.html#ae52fad680e572c55e87090cfa06c72eb" title="Compute derivative of a scalar field along a single direction." alt="" coords="684,105,823,131"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="426,115,670,115,670,121,426,121"/>
+<area shape="rect" id="Node000013" href="$dd/d30/namespaceoperators.html#ab2babd24679efca34a9310107b346969" title="Compute the strain rate tensor, i.e 0.5 * du_i/dx_j + du_j/dx_i." alt="" coords="473,131,636,156"/>
+<area shape="poly" id="edge15_Node000002_Node000013" title=" " alt="" coords="426,127,460,131,459,136,425,132"/>
+<area shape="rect" id="Node000004" href="$d3/d4d/namespaceopr__device.html#abc0d21999d04728a18514d4c422219ec" title=" " alt="" coords="871,49,1043,89"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="806,103,860,89,861,95,807,108"/>
+<area shape="rect" id="Node000009" href="$d9/d5a/namespaceopr__xsmm.html#abd01047726757dd7140713007f5a5ff6" title=" " alt="" coords="873,130,1041,170"/>
+<area shape="poly" id="edge11_Node000003_Node000009" title=" " alt="" coords="824,126,860,132,859,137,823,132"/>
+<area shape="rect" id="Node000005" href="$d3/d13/opr__dudxyz_8cu.html#a12bdb6bf9c94199b29d19641386a2ea0" title=" " alt="" coords="1310,5,1417,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1042,49,1090,41,1199,28,1296,20,1297,25,1199,33,1091,46,1043,54"/>
+<area shape="rect" id="Node000007" href="$d1/d28/opr__dudxyz_8c.html#aa154bc09bc993f78a4d5ba22abe64ab2" title=" " alt="" coords="1111,56,1229,81"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="1043,66,1097,66,1097,71,1043,71"/>
+<area shape="rect" id="Node000006" href="$db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533" title=" " alt="" coords="1477,49,1641,89"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1414,28,1469,43,1468,48,1413,33"/>
+<area shape="poly" id="edge6_Node000006_Node000006" title=" " alt="" coords="1523,49,1520,39,1526,30,1539,24,1559,22,1582,25,1595,32,1592,37,1581,30,1559,27,1541,29,1530,34,1526,40,1528,48"/>
+<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="1230,66,1464,66,1464,71,1230,71"/>
+<area shape="rect" id="Node000008" href="$d6/df3/jit_8c.html#a7f4d1566adfd93b0565147e32387abf6" title=" " alt="" coords="1297,107,1429,132"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="1220,79,1302,101,1300,106,1219,84"/>
+<area shape="poly" id="edge10_Node000008_Node000006" title=" " alt="" coords="1413,104,1468,90,1469,95,1414,109"/>
+<area shape="rect" id="Node000010" href="$dd/d47/namespacemath.html#a9ae93ef16c85e8de722f56c281f444e6" title="Returns ." alt="" coords="1113,105,1227,131"/>
+<area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="1041,135,1099,126,1100,131,1042,140"/>
+<area shape="rect" id="Node000011" href="$dd/d47/namespacemath.html#aa4aff8f68518460c91d81c9f905b2e2b" title="Vector multiplication ." alt="" coords="1125,155,1215,180"/>
+<area shape="poly" id="edge13_Node000009_Node000011" title=" " alt="" coords="1041,154,1111,160,1110,165,1041,160"/>
+<area shape="rect" id="Node000012" href="$d1/d15/namespacemxm__wrapper.html#ab3632911ec4db7f1ffe82b006aa287ed" title="Compute matrix&#45;matrix product &#160;for contiguously packed matrices A,B, and C." alt="" coords="1091,204,1249,229"/>
+<area shape="poly" id="edge14_Node000009_Node000012" title=" " alt="" coords="1021,168,1091,190,1115,197,1113,202,1090,195,1019,173"/>
+<area shape="poly" id="edge16_Node000013_Node000003" title=" " alt="" coords="636,130,670,126,670,131,637,136"/>
+</map>

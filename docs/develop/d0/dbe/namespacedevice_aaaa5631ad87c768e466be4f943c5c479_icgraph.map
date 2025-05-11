@@ -1,0 +1,41 @@
+<map id="device::device_event_create" name="device::device_event_create">
+<area shape="rect" id="Node000001" title="Create a device event queue." alt="" coords="637,330,797,370"/>
+<area shape="rect" id="Node000002" href="$d6/d60/namespacecg__device.html#aa534217fdd8b696c1c18e59ece04fd06" title="Initialise a device based PCG solver." alt="" coords="399,15,587,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="709,317,697,260,675,189,659,152,639,116,615,83,588,55,568,42,571,38,591,51,620,80,644,113,663,150,680,187,702,258,714,316"/>
+<area shape="rect" id="Node000003" href="$d4/dc5/namespacecheby__device.html#a44c5b8d7217a68d7bb151c0855920b53" title="Initialise a standard solver." alt="" coords="413,65,572,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="704,318,688,273,664,220,630,165,610,141,588,119,570,107,573,102,591,115,614,137,635,162,669,217,693,271,709,316"/>
+<area shape="rect" id="Node000004" href="$d0/dbe/namespacedevice.html#aea8ac0b8d51031f74cc45d8e69a30bdb" title=" " alt="" coords="421,129,565,155"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="700,318,682,283,657,243,625,203,588,170,564,157,566,152,591,165,629,199,661,240,686,280,704,316"/>
+<area shape="rect" id="Node000012" href="$d2/da7/namespacedevice__jacobi.html#a08dd6669e156ff25024b500bf81a5106" title=" " alt="" coords="411,179,574,219"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="689,322,644,276,588,234,564,222,566,217,591,229,648,272,692,318"/>
+<area shape="rect" id="Node000013" href="$d3/dbc/namespacefusedcg__cpld__device.html#a7686eabd075b75a40f7fa61d9be9ab13" title="Initialise a fused PCG solver." alt="" coords="396,243,589,283"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="658,327,588,298,555,286,557,281,590,293,660,322"/>
+<area shape="rect" id="Node000014" href="$d8/dcd/namespacegs__device.html#a4bb66ded555ba4ec7d3004165a21273d" title="Accelerator backend initialisation." alt="" coords="399,308,587,333"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="623,340,586,336,587,330,624,335"/>
+<area shape="rect" id="Node000015" href="$d9/dfa/namespacegs__device__mpi.html#afe2c32b8ff7fe4f3941b8653b47ec885" title="Initialise MPI based communication method." alt="" coords="397,358,589,398"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="624,364,589,369,589,363,623,359"/>
+<area shape="rect" id="Node000016" href="$de/dcf/namespacegs__device__nccl.html#a2d4e675b4dbc3a5de103b430b400981c" title="Initialise NCCL based communication method." alt="" coords="421,422,564,462"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="666,379,590,412,558,424,557,419,588,408,663,374"/>
+<area shape="rect" id="Node000017" href="$d0/d2a/namespacegs__device__shmem.html#aea869741c5716a2755f9c792af9c5c05" title="Initialise MPI based communication method." alt="" coords="409,486,576,526"/>
+<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="694,382,649,430,621,455,591,476,567,488,565,483,588,472,618,451,645,426,690,379"/>
+<area shape="rect" id="Node000018" href="$dd/dd1/namespacehsmg.html#a804e0140ac2bc7ab67e65c2de80d3dc3" title=" " alt="" coords="409,550,577,590"/>
+<area shape="poly" id="edge17_Node000001_Node000018" title=" " alt="" coords="705,384,686,420,661,462,629,504,591,540,571,552,568,548,588,536,625,500,657,459,682,417,700,381"/>
+<area shape="rect" id="Node000019" href="$da/d46/namespacepipecg__device.html#a242ee086e10b42f00316da314e7fc94d" title="Initialise a pipelined PCG solver." alt="" coords="409,614,576,654"/>
+<area shape="poly" id="edge18_Node000001_Node000019" title=" " alt="" coords="711,384,696,433,671,492,637,552,616,579,591,604,573,616,570,612,588,600,612,576,633,549,667,489,691,431,706,383"/>
+<area shape="rect" id="Node000020" href="$d2/d37/namespaceschwarz.html#a573d0b3a6c1130423e3e84cd5e4d78eb" title=" " alt="" coords="411,679,575,704"/>
+<area shape="poly" id="edge19_Node000001_Node000020" title=" " alt="" coords="715,384,704,445,682,521,666,561,646,600,621,636,591,668,571,681,568,676,588,664,617,633,641,598,661,559,677,520,699,444,710,383"/>
+<area shape="rect" id="Node000005" href="$dd/d62/namespaceneko.html#a647e539d6b0950b6569c6752b8f007ff" title="Initialise Neko." alt="" coords="228,129,348,155"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="407,145,349,145,349,139,407,139"/>
+<area shape="rect" id="Node000006" href="$d9/dd1/average__field__in__space_8f90.html#a37dc68f9f9805d99614ae0ca36d971a3" title="Program to sum up a field in space in a homogenous direction Martin Karp 17/02&#45;23." alt="" coords="5,5,180,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="266,120,228,81,179,44,153,33,155,28,181,40,231,77,269,117"/>
+<area shape="rect" id="Node000007" href="$d3/dc7/average__fields__in__time_8f90.html#ac6905300ca74b33833aa210ef56e2bb7" title="Program to sum up averaged fields computed for statistics and mean field Martin Karp 27/01&#45;23." alt="" coords="6,55,179,80"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="250,126,179,94,145,83,146,78,181,89,252,121"/>
+<area shape="rect" id="Node000008" href="$dc/da2/genmeshbox_8f90.html#ac2c2abdf1b6ab8a11de24035862245d5" title="Simple program to generate a mesh for a box Gives some insight into how one can use built in function..." alt="" coords="39,104,146,129"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="214,135,146,126,147,121,214,130"/>
+<area shape="rect" id="Node000009" href="$d1/dd9/postprocess__fluid__stats_8f90.html#a54f8c504cff2703e12c6c4fce128f532" title="Somewhat preliminary program to sum up averaged fields computed for statistics and mean field Martin ..." alt="" coords="5,153,180,179"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="215,154,180,158,180,153,214,148"/>
+<area shape="rect" id="Node000010" href="$d7/d64/rea2nbin_8f90.html#ab8d17097ee23bae0a0911d8d65590e5e" title=" " alt="" coords="53,203,132,228"/>
+<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="249,163,181,192,133,208,131,203,179,188,247,158"/>
+<area shape="rect" id="Node000011" href="$d0/dd9/driver_8f90.html#a30d609876f05bf02c9ca79b0448dc937" title="Main driver for TurboNeko." alt="" coords="49,252,136,277"/>
+<area shape="poly" id="edge10_Node000005_Node000011" title=" " alt="" coords="269,167,231,205,181,242,137,259,135,254,179,237,227,201,265,163"/>
+</map>

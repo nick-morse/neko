@@ -1,0 +1,25 @@
+<map id="case::case_init_common" name="case::case_init_common">
+<area shape="rect" id="Node000001" title="Initialize a case from its (loaded) params object." alt="" coords="5,121,188,146"/>
+<area shape="rect" id="Node000002" href="$d8/da8/namespacejson__utils.html#a4c35d409d6b54da77e2a4970f4319ef3" title="Extract object as a separate JSON dictionary." alt="" coords="236,5,408,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,118,235,62,262,49,265,54,237,66,124,123"/>
+<area shape="rect" id="Node000003" href="$da/dc3/namespacemesh__field.html#a8db8f80b2676dca5b068e135557fcf53" title=" " alt="" coords="929,95,1135,121"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="179,118,236,112,422,102,608,98,915,102,915,107,608,104,422,108,236,117,180,123"/>
+<area shape="rect" id="Node000004" href="$da/dc3/namespacemesh__field.html#aaa97d6c142cefd8fa464a140d00aeb77" title=" " alt="" coords="681,121,881,146"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="188,131,668,131,668,136,188,136"/>
+<area shape="rect" id="Node000005" href="$d1/dd7/namespaceparmetis.html#a7015f5a8d7bb32005378d0df25fc45e7" title="Compute a k&#45;way partitioning of a mesh msh." alt="" coords="249,196,395,236"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="133,144,255,189,253,194,131,149"/>
+<area shape="rect" id="Node000009" href="$db/dbb/namespaceredist.html#a0495227a7bc72edb4553026a816d7ebf" title="Redistribute a mesh msh according to new partitions." alt="" coords="249,335,395,361"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="113,144,299,323,295,327,109,148"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="881,121,915,117,916,122,882,126"/>
+<area shape="rect" id="Node000006" href="$d1/dd7/namespaceparmetis.html#a4d14c4d16427d26c17bd770369629803" title="Compute the (parallel) vertex distribution of the dual graph." alt="" coords="456,171,633,197"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="395,203,442,196,443,201,396,208"/>
+<area shape="rect" id="Node000007" href="$d1/dd7/namespaceparmetis.html#a167b3313549fa07a2cd414118bd40489" title="Fill mesh field according to new partitions." alt="" coords="471,221,618,261"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="396,222,458,229,457,234,395,227"/>
+<area shape="rect" id="Node000008" href="$d1/dd7/namespaceparmetis.html#af3f78958dd47849888ed6650aed8e129" title="Setup weights and balance constraints for the dual graph." alt="" coords="456,286,633,311"/>
+<area shape="poly" id="edge9_Node000005_Node000008" title=" " alt="" coords="367,234,457,271,483,280,482,285,455,276,365,239"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="600,219,632,206,744,150,746,155,634,210,602,224"/>
+<area shape="rect" id="Node000010" href="$db/dbb/namespaceredist.html#ae07ae81a5fb1331996356b54d531fa72" title="Fill redistribution list for zone data." alt="" coords="471,335,618,361"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="395,345,458,345,458,351,395,351"/>
+<area shape="rect" id="Node000011" href="$db/dbb/namespaceredist.html#a95ec995daa3e10e200586e964ec37700" title="Fill redistribution list for zone data." alt="" coords="473,385,616,410"/>
+<area shape="poly" id="edge12_Node000009_Node000011" title=" " alt="" coords="381,358,474,379,473,384,379,363"/>
+</map>

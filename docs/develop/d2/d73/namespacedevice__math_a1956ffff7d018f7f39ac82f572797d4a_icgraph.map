@@ -1,0 +1,7 @@
+<map id="device_math::device_masked_copy" name="device_math::device_masked_copy">
+<area shape="rect" id="Node000001" title="Copy a masked vector ." alt="" coords="256,41,413,81"/>
+<area shape="rect" id="Node000002" href="$db/d5b/namespacefield__dirichlet.html#a53263c6ea800179a0ff20e2128296663" title="Apply scalar (device)." alt="" coords="5,5,208,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="242,49,208,44,209,39,243,44"/>
+<area shape="rect" id="Node000003" href="$d0/d1c/namespacefield__dirichlet__vector.html#aa9ea52e3f4c34b699ac36d8a5ac52dc1" title="Apply the boundary condition to a vector field on the device." alt="" coords="23,70,190,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="243,79,191,87,190,82,242,73"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="user_intf::simulation_component_user_settings" name="user_intf::simulation_component_user_settings">
+<area shape="rect" id="Node000001" title="JSON extraction helper function for simulation components." alt="" coords="208,5,404,45"/>
+<area shape="rect" id="Node000002" href="$d7/da0/structuser__intf_1_1user__t.html#acce1164ad09d873988b2931b92d5013c" title="Constructor that points non&#45;associated routines to dummy ones. Calling a dummy routine causes an erro..." alt="" coords="5,13,160,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,28,160,28,160,23,194,23"/>
+</map>

@@ -1,0 +1,29 @@
+<map id="profiler::profiler_start_region" name="profiler::profiler_start_region">
+<area shape="rect" id="Node000001" title="Started a named (name) profiler region." alt="" coords="679,199,801,239"/>
+<area shape="rect" id="Node000002" href="$d3/d06/namespaceprojection.html#a56d60824af6be625d76a70c8720e6c8b" title=" " alt="" coords="407,5,631,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="725,187,711,153,690,115,663,77,629,46,606,33,608,28,632,41,667,73,694,112,715,151,730,185"/>
+<area shape="rect" id="Node000003" href="$d1/db9/namespaceprojection__vel.html#a6231bf620f62e4eb908858383cc21bfb" title=" " alt="" coords="438,55,599,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="714,190,677,148,654,127,629,110,598,95,601,90,632,105,658,123,681,144,718,187"/>
+<area shape="rect" id="Node000004" href="$d3/d06/namespaceprojection.html#ab9388020e6233dbfc903db3a50502bd6" title=" " alt="" coords="414,120,623,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="696,194,630,160,589,148,591,143,632,156,698,190"/>
+<area shape="rect" id="Node000005" href="$d0/d78/namespacegather__scatter.html#ae256fdf907de8a5e60a425f9d3510806" title="Gather&#45;scatter operation on a vector u with op op." alt="" coords="449,170,588,210"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="665,212,588,202,589,197,665,207"/>
+<area shape="rect" id="Node000010" href="$dd/dd1/namespacehsmg.html#a1c5ebdeb1e0caae9ec828b3f7e5bd7a0" title="The h1mg preconditioner from Nek5000." alt="" coords="447,235,591,260"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="665,231,591,241,591,236,665,226"/>
+<area shape="rect" id="Node000011" href="$d1/d2d/namespacesimulation.html#a2279224e80a4202a630ebfaa2d686588" title="Main driver to solve a case C." alt="" coords="433,284,605,309"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="692,248,632,275,592,287,590,281,630,270,690,243"/>
+<area shape="rect" id="Node000012" href="$d8/d57/namespaceoutput__controller.html#a08c282053e52e289594f25a59e1926a8" title="Query each of the controllers whether it is time to write, and if so, do so for the corresponding out..." alt="" coords="423,334,614,374"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="715,252,678,290,632,324,606,336,604,332,629,320,675,286,712,248"/>
+<area shape="rect" id="Node000013" href="$d8/da5/namespacepde__filter.html#aed804b27a5deacc75f58d30f5b2bd65d" title="Apply the filter." alt="" coords="443,398,595,438"/>
+<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="728,254,692,322,665,358,632,388,596,407,594,402,629,384,661,354,687,319,723,251"/>
+<area shape="rect" id="Node000006" href="$d0/d78/namespacegather__scatter.html#ab47747b3dc7d9b75b840e7c6aafdf347" title="Initialize a gather&#45;scatter kernel." alt="" coords="192,91,359,116"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="435,171,406,159,381,145,358,131,324,119,326,114,360,126,384,140,408,154,437,166"/>
+<area shape="rect" id="Node000007" href="$d0/d78/namespacegather__scatter.html#af6d7eed444d705e5a72312bf01e3c083" title="Gather&#45;scatter operation on a field u with op op." alt="" coords="206,141,345,181"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="435,183,344,172,345,166,436,177"/>
+<area shape="rect" id="Node000008" href="$dd/db8/structgather__scatter_1_1gs__t.html#a4f76ff0582ea573bf30d49a8aa5cd66a" title="Gather&#45;scatter operation on a field u with op op." alt="" coords="5,198,144,238"/>
+<area shape="poly" id="edge10_Node000005_Node000008" title=" " alt="" coords="435,198,144,216,144,211,435,193"/>
+<area shape="rect" id="Node000009" href="$d0/d78/namespacegather__scatter.html#a9add4a7c59c01d0c077e39fcdba63b23" title="Gather&#45;scatter operation on a rank 4 array." alt="" coords="206,255,345,295"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="437,216,408,226,325,258,323,253,406,221,435,211"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="194,187,145,201,144,196,192,182"/>
+<area shape="poly" id="edge9_Node000009_Node000008" title=" " alt="" coords="192,254,144,240,145,235,194,249"/>
+</map>

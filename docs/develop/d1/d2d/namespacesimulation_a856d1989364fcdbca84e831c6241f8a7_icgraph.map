@@ -1,0 +1,5 @@
+<map id="simulation::case_restart" name="simulation::case_restart">
+<area shape="rect" id="Node000001" title="Restart a case C from a given checkpoint." alt="" coords="225,5,404,31"/>
+<area shape="rect" id="Node000002" href="$d1/d2d/namespacesimulation.html#a2279224e80a4202a630ebfaa2d686588" title="Main driver to solve a case C." alt="" coords="5,5,177,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="211,21,178,21,178,15,211,15"/>
+</map>

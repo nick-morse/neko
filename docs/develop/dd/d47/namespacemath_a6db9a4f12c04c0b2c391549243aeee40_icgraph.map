@@ -1,0 +1,11 @@
+<map id="math::masked_gather_copy" name="math::masked_gather_copy">
+<area shape="rect" id="Node000001" title="Gather a masked vector to reduced contigous vector ." alt="" coords="496,77,699,102"/>
+<area shape="rect" id="Node000002" href="$d5/de6/namespacefield__math.html#add2438fda2ab7990b599085d650ff234" title="Gather a field to reduced contigous array ." alt="" coords="243,5,429,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="530,76,418,48,419,43,532,71"/>
+<area shape="rect" id="Node000003" href="$d6/daa/namespaceforce__torque.html#a04fd3661b7bbe9d298cb5c3109ac9499" title="Compute the force_torque field." alt="" coords="263,69,409,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="483,92,409,92,409,87,483,87"/>
+<area shape="rect" id="Node000004" href="$d6/daa/namespaceforce__torque.html#adee532c5defe91c383e239187d353f58" title="Actual constructor." alt="" coords="224,133,448,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="532,108,419,136,418,131,530,103"/>
+<area shape="rect" id="Node000005" href="$d6/daa/namespaceforce__torque.html#af95812899d029c8c2c15b3742965583b" title="Constructor from json." alt="" coords="5,133,176,173"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="210,156,176,156,176,151,210,151"/>
+</map>

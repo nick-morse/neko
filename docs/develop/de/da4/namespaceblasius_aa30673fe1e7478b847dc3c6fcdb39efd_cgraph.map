@@ -1,0 +1,18 @@
+<map id="blasius::blasius_init_from_components" name="blasius::blasius_init_from_components">
+<area shape="rect" id="Node000001" title="Constructor from components." alt="" coords="5,205,156,245"/>
+<area shape="rect" id="Node000002" href="$d4/d1e/namespaceflow__profile.html#aade43f589d5ac4f11ccad839a9b36c2b" title="Cubic approximate Blasius Profile ." alt="" coords="217,29,368,69"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,204,136,143,167,109,202,79,211,73,214,78,206,83,171,113,140,146,96,207"/>
+<area shape="rect" id="Node000003" href="$d4/d1e/namespaceflow__profile.html#ae1dffd3e2f0c7e77056949157af2847b" title="Linear approximate Blasius profile ." alt="" coords="217,117,368,157"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="122,203,203,167,221,160,223,165,205,172,125,208"/>
+<area shape="rect" id="Node000004" href="$d4/d1e/namespaceflow__profile.html#a0b6d9188a113843878700cf45b4c12c6" title="Quadratic approximate Blasius Profile ." alt="" coords="217,205,368,245"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="156,223,204,223,204,228,156,228"/>
+<area shape="rect" id="Node000005" href="$d4/d1e/namespaceflow__profile.html#a49a9d197106fc26b15aefe65e7f404bf" title="Quartic approximate Blasius Profile &#160;." alt="" coords="217,293,368,333"/>
+<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="131,243,232,286,230,290,129,248"/>
+<area shape="rect" id="Node000006" href="$d4/d1e/namespaceflow__profile.html#a87e7739057dc2048eb90ad39274421ef" title="Sinusoidal approximate Blasius Profile ." alt="" coords="204,382,381,407"/>
+<area shape="poly" id="edge9_Node000001_Node000006" title=" " alt="" coords="102,244,147,292,206,343,254,373,251,378,202,347,143,295,98,248"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="253,30,251,20,257,10,271,5,293,3,317,6,331,13,328,18,316,11,293,8,272,10,260,15,256,21,258,28"/>
+<area shape="poly" id="edge4_Node000003_Node000003" title=" " alt="" coords="253,118,251,108,257,98,271,93,293,91,317,94,331,101,328,106,316,99,293,96,272,98,260,103,256,109,258,116"/>
+<area shape="poly" id="edge6_Node000004_Node000004" title=" " alt="" coords="253,206,251,196,257,186,271,181,293,179,317,182,331,189,328,194,316,187,293,184,272,186,260,191,256,197,258,204"/>
+<area shape="poly" id="edge8_Node000005_Node000005" title=" " alt="" coords="253,294,251,284,257,274,271,269,293,267,317,270,331,277,328,282,316,275,293,272,272,274,260,279,256,285,258,292"/>
+<area shape="poly" id="edge10_Node000006_Node000006" title=" " alt="" coords="258,384,251,374,255,364,269,358,293,355,322,359,334,368,330,372,320,364,293,361,270,363,258,367,256,373,262,380"/>
+</map>

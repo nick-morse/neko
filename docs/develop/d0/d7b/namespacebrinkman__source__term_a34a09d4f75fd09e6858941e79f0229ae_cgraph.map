@@ -1,0 +1,7 @@
+<map id="brinkman_source_term::init_point_zone" name="brinkman_source_term::init_point_zone">
+<area shape="rect" id="Node000001" title="Initializes the source term from a point zone." alt="" coords="5,27,177,67"/>
+<area shape="rect" id="Node000002" href="$dd/d47/namespacemath.html#adcea1b6eb422b5097c9241c0798631ae" title="Fill a constant to a masked vector. ." alt="" coords="239,5,369,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,33,225,26,225,32,178,38"/>
+<area shape="rect" id="Node000003" href="$d2/d73/namespacedevice__math.html#ac25385fffb4c751da0e65093ead849e6" title="Fill a constant to a masked vector. ." alt="" coords="225,55,383,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="178,56,212,61,211,66,177,61"/>
+</map>

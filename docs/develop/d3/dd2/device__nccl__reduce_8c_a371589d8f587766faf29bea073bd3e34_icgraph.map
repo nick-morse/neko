@@ -1,0 +1,45 @@
+<map id="device_nccl_allreduce" name="device_nccl_allreduce">
+<area shape="rect" id="Node000001" title=" " alt="" coords="709,251,875,276"/>
+<area shape="rect" id="Node000002" href="$da/d37/opr__cfl_8cu.html#adeaa12656ff2c67c96231368ffc58bc7" title=" " alt="" coords="533,36,607,61"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="773,241,726,176,694,139,660,105,628,82,596,64,599,59,631,77,663,101,698,136,730,173,777,238"/>
+<area shape="rect" id="Node000004" href="$d2/dba/fusedcg__aux_8cu.html#a0d3d53e8ce39bb62fab78e6878ddbefa" title=" " alt="" coords="494,116,646,141"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="768,242,721,198,692,175,660,155,633,144,635,139,663,150,695,170,725,194,772,239"/>
+<area shape="rect" id="Node000005" href="$de/d1e/math_8cu.html#a164bc1b62bf6184ce734ab518ea5916e" title=" " alt="" coords="479,165,661,191"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="745,248,660,215,604,193,606,188,662,210,747,243"/>
+<area shape="rect" id="Node000010" href="$d6/d29/gmres__aux_8cu.html#a3952e21e8b02d7069a6d91b3708cffca" title=" " alt="" coords="499,225,641,251"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="695,255,641,249,642,243,696,250"/>
+<area shape="rect" id="Node000013" href="$d1/d38/opr__cfl_8hip.html#a71a2e6ecec4dd085491f08ce82c5bbd4" title=" " alt="" coords="538,275,602,300"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="696,276,602,287,602,281,695,271"/>
+<area shape="rect" id="Node000014" href="$db/df7/fusedcg__aux_8hip.html#a115cf98ddf6ab441ca3e3806db6d1945" title=" " alt="" coords="499,324,641,349"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="747,283,662,314,620,327,618,321,660,309,745,278"/>
+<area shape="rect" id="Node000017" href="$de/d9b/math_8hip.html#a024b6d35cc089cfe6b50b36eb4664c89" title=" " alt="" coords="485,405,655,431"/>
+<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="765,287,663,363,594,407,591,403,660,358,762,282"/>
+<area shape="rect" id="Node000022" href="$da/d1d/gmres__aux_8hip.html#ad1130bc0fe9218ff1432134acd57f48d" title=" " alt="" coords="505,455,635,480"/>
+<area shape="poly" id="edge21_Node000001_Node000022" title=" " alt="" coords="782,290,763,325,737,366,703,408,663,444,637,457,635,453,660,440,699,405,733,363,759,322,777,287"/>
+<area shape="rect" id="Node000003" href="$d3/d4d/namespaceopr__device.html#a8c94efab56085f4843490a6ab2c842c4" title=" " alt="" coords="236,5,431,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="519,45,431,33,431,28,519,40"/>
+<area shape="rect" id="Node000006" href="$de/d1e/math_8cu.html#a7fd14caee093513e59d4c7e965b7a57a" title=" " alt="" coords="286,55,381,80"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="490,162,477,155,461,139,452,123,444,108,429,94,406,82,380,75,382,70,408,77,432,89,448,105,457,121,465,136,480,151,493,158"/>
+<area shape="rect" id="Node000007" href="$de/d1e/math_8cu.html#ae5a1628374d65b302e8a5f9993fab70a" title=" " alt="" coords="286,104,381,129"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="508,164,430,143,380,131,382,125,431,138,510,159"/>
+<area shape="rect" id="Node000008" href="$de/d1e/math_8cu.html#a408f8df05939f3f8cab4fa4261aaa223" title=" " alt="" coords="264,153,403,179"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="465,175,403,172,403,167,465,170"/>
+<area shape="rect" id="Node000009" href="$de/d1e/math_8cu.html#a7cce06711ad27eb80cb6ff22647cf013" title=" " alt="" coords="283,203,383,228"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="476,196,384,210,383,205,475,190"/>
+<area shape="rect" id="Node000011" href="$de/df2/namespacegmres__device.html#a0a158df824f0f1613e4f18806ea3a81e" title=" " alt="" coords="251,253,415,293"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="485,253,416,263,415,258,484,248"/>
+<area shape="rect" id="Node000012" href="$de/df2/namespacegmres__device.html#a269f2ad33b34a082f5267c088138c5a1" title="Standard GMRES solve." alt="" coords="15,253,178,293"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="237,275,178,275,178,270,237,270"/>
+<area shape="rect" id="Node000015" href="$dd/d04/namespacefusedcg__device.html#a37d7ee87c969306b6428c008592d4646" title=" " alt="" coords="246,317,421,357"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="486,339,421,339,421,334,486,334"/>
+<area shape="rect" id="Node000016" href="$dd/d04/namespacefusedcg__device.html#abfce590eb7c6404bf4f2f3f7422cf080" title="Pipelined PCG solve." alt="" coords="5,317,188,357"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="232,339,188,339,188,334,232,334"/>
+<area shape="rect" id="Node000018" href="$de/d9b/math_8hip.html#a4b1e8ce61679d8f6d437971a85d0578d" title=" " alt="" coords="292,381,375,407"/>
+<area shape="poly" id="edge17_Node000017_Node000018" title=" " alt="" coords="470,411,375,401,375,395,471,405"/>
+<area shape="rect" id="Node000019" href="$de/d9b/math_8hip.html#a20759849decfd5e4e7c83271f7c8440c" title=" " alt="" coords="292,431,375,456"/>
+<area shape="poly" id="edge18_Node000017_Node000019" title=" " alt="" coords="471,431,375,442,375,436,470,426"/>
+<area shape="rect" id="Node000020" href="$de/d9b/math_8hip.html#ac10c972f369598497f623a8bad84e291" title=" " alt="" coords="270,480,397,505"/>
+<area shape="poly" id="edge19_Node000017_Node000020" title=" " alt="" coords="501,437,480,444,456,457,432,470,393,482,391,477,430,465,453,452,478,440,499,432"/>
+<area shape="rect" id="Node000021" href="$de/d9b/math_8hip.html#a8ab301c94569ae020c7492b41a876fdb" title=" " alt="" coords="289,529,378,555"/>
+<area shape="poly" id="edge20_Node000017_Node000021" title=" " alt="" coords="489,439,480,444,464,462,457,480,449,500,432,519,406,532,379,540,378,535,404,527,429,515,445,497,452,478,460,459,477,440,486,434"/>
+</map>

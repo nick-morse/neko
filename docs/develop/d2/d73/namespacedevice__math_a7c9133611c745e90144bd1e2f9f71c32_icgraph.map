@@ -1,0 +1,7 @@
+<map id="device_math::device_masked_gather_copy" name="device_math::device_masked_gather_copy">
+<area shape="rect" id="Node000001" title="Gather a masked vector ." alt="" coords="239,37,405,77"/>
+<area shape="rect" id="Node000002" href="$d5/de6/namespacefield__math.html#add2438fda2ab7990b599085d650ff234" title="Gather a field to reduced contigous array ." alt="" coords="5,5,191,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="225,46,190,41,191,36,225,41"/>
+<area shape="rect" id="Node000003" href="$d6/daa/namespaceforce__torque.html#a04fd3661b7bbe9d298cb5c3109ac9499" title="Compute the force_torque field." alt="" coords="25,69,171,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="225,74,171,82,171,76,224,69"/>
+</map>

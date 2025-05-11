@@ -1,0 +1,7 @@
+<map id="field_math::field_masked_scatter_copy" name="field_math::field_masked_scatter_copy">
+<area shape="rect" id="Node000001" title="Gather a contigous array into a field ." alt="" coords="5,35,191,75"/>
+<area shape="rect" id="Node000002" href="$d2/d73/namespacedevice__math.html#a7b9a8426c22b12d30385b41c3b7dcc7d" title="Scatter a masked vector ." alt="" coords="256,5,427,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,41,242,35,243,40,191,46"/>
+<area shape="rect" id="Node000003" href="$dd/d47/namespacemath.html#a330e394dc6220fdd80603e904283424d" title="Scatter a contigous vector to masked positions in a target array ." alt="" coords="239,70,444,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="191,63,225,67,225,72,191,68"/>
+</map>
