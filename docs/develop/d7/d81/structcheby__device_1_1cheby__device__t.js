@@ -29,7 +29,9 @@ var structcheby__device_1_1cheby__device__t =
     [ "r_d", "d7/d81/structcheby__device_1_1cheby__device__t.html#a96bbdcd1bb91a9e582f78a6dfc650e7b", null ],
     [ "recompute_eigs", "d7/d81/structcheby__device_1_1cheby__device__t.html#a915ac26a5f563409623b46e30a8ab0c7", null ],
     [ "rel_tol", "d7/d81/structcheby__device_1_1cheby__device__t.html#a7e02bc45055956c25f0825ca6322051f", null ],
+    [ "schwarz", "d7/d81/structcheby__device_1_1cheby__device__t.html#aece19bd233f19e8de1a77f616c5c60cc", null ],
     [ "tha", "d7/d81/structcheby__device_1_1cheby__device__t.html#a5e5b42664ab14e8c79e0099817957c0b", null ],
     [ "w", "d7/d81/structcheby__device_1_1cheby__device__t.html#a7fd16683fdeb12de352436e256b642c5", null ],
-    [ "w_d", "d7/d81/structcheby__device_1_1cheby__device__t.html#a0d5c6cf256125b94a9f35baeb17f32be", null ]
+    [ "w_d", "d7/d81/structcheby__device_1_1cheby__device__t.html#a0d5c6cf256125b94a9f35baeb17f32be", null ],
+    [ "zero_initial_guess", "d7/d81/structcheby__device_1_1cheby__device__t.html#ad9f64cfc85d5ca7e0142eedf55ab656c", null ]
 ];

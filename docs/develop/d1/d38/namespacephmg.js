@@ -9,5 +9,6 @@ var namespacephmg =
     [ "phmg_mg_cycle", "d1/d38/namespacephmg.html#ad2399ef98a12756b4a63abff6f55c23c", null ],
     [ "phmg_resid_monitor", "d1/d38/namespacephmg.html#a810bef12c508567a313351c78cac63e6", null ],
     [ "phmg_solve", "d1/d38/namespacephmg.html#a2174d59460e75e83696f622b4a7c0678", null ],
-    [ "phmg_update", "d1/d38/namespacephmg.html#a4b4699e6c222fd54365a713d9571a23d", null ]
+    [ "phmg_update", "d1/d38/namespacephmg.html#a4b4699e6c222fd54365a713d9571a23d", null ],
+    [ "print_phmg_info", "d1/d38/namespacephmg.html#ab48ada80640b1d78132c82130722f4de", null ]
 ];

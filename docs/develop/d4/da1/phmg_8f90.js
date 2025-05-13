@@ -9,5 +9,6 @@ var phmg_8f90 =
     [ "phmg_mg_cycle", "d4/da1/phmg_8f90.html#ad2399ef98a12756b4a63abff6f55c23c", null ],
     [ "phmg_resid_monitor", "d4/da1/phmg_8f90.html#a810bef12c508567a313351c78cac63e6", null ],
     [ "phmg_solve", "d4/da1/phmg_8f90.html#a2174d59460e75e83696f622b4a7c0678", null ],
-    [ "phmg_update", "d4/da1/phmg_8f90.html#a4b4699e6c222fd54365a713d9571a23d", null ]
+    [ "phmg_update", "d4/da1/phmg_8f90.html#a4b4699e6c222fd54365a713d9571a23d", null ],
+    [ "print_phmg_info", "d4/da1/phmg_8f90.html#ab48ada80640b1d78132c82130722f4de", null ]
 ];

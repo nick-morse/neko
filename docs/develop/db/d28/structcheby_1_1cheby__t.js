@@ -26,6 +26,8 @@ var structcheby_1_1cheby__t =
     [ "r", "db/d28/structcheby_1_1cheby__t.html#a305c4fec6c7db420fc6c52c3db0d758c", null ],
     [ "recompute_eigs", "db/d28/structcheby_1_1cheby__t.html#ad75fee8e8231d9944530d7e9f3973bf5", null ],
     [ "rel_tol", "db/d28/structcheby_1_1cheby__t.html#a7e02bc45055956c25f0825ca6322051f", null ],
+    [ "schwarz", "db/d28/structcheby_1_1cheby__t.html#a40de8cb1945c6e0596b658908543426b", null ],
     [ "tha", "db/d28/structcheby_1_1cheby__t.html#a34194fa0eba3e7c954bc1404c954b46c", null ],
-    [ "w", "db/d28/structcheby_1_1cheby__t.html#a7eb7b6c1ae416f4a312707413b476c7e", null ]
+    [ "w", "db/d28/structcheby_1_1cheby__t.html#a7eb7b6c1ae416f4a312707413b476c7e", null ],
+    [ "zero_initial_guess", "db/d28/structcheby_1_1cheby__t.html#a5e66160bf22528d8099b2668fd3c0e0f", null ]
 ];

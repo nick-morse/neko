@@ -662,6 +662,14 @@ var annotated_dup =
       [ "hip_masked_copy", "db/d04/interfacehip__math_1_1hip__masked__copy.html", "db/d04/interfacehip__math_1_1hip__masked__copy" ],
       [ "hip_masked_gather_copy", "d7/ded/interfacehip__math_1_1hip__masked__gather__copy.html", "d7/ded/interfacehip__math_1_1hip__masked__gather__copy" ],
       [ "hip_masked_scatter_copy", "d7/d57/interfacehip__math_1_1hip__masked__scatter__copy.html", "d7/d57/interfacehip__math_1_1hip__masked__scatter__copy" ],
+      [ "hip_pwmax_sca2", "dd/d93/interfacehip__math_1_1hip__pwmax__sca2.html", "dd/d93/interfacehip__math_1_1hip__pwmax__sca2" ],
+      [ "hip_pwmax_sca3", "df/d52/interfacehip__math_1_1hip__pwmax__sca3.html", "df/d52/interfacehip__math_1_1hip__pwmax__sca3" ],
+      [ "hip_pwmax_vec2", "db/daf/interfacehip__math_1_1hip__pwmax__vec2.html", "db/daf/interfacehip__math_1_1hip__pwmax__vec2" ],
+      [ "hip_pwmax_vec3", "d0/d0b/interfacehip__math_1_1hip__pwmax__vec3.html", "d0/d0b/interfacehip__math_1_1hip__pwmax__vec3" ],
+      [ "hip_pwmin_sca2", "dc/d88/interfacehip__math_1_1hip__pwmin__sca2.html", "dc/d88/interfacehip__math_1_1hip__pwmin__sca2" ],
+      [ "hip_pwmin_sca3", "de/d89/interfacehip__math_1_1hip__pwmin__sca3.html", "de/d89/interfacehip__math_1_1hip__pwmin__sca3" ],
+      [ "hip_pwmin_vec2", "da/d3a/interfacehip__math_1_1hip__pwmin__vec2.html", "da/d3a/interfacehip__math_1_1hip__pwmin__vec2" ],
+      [ "hip_pwmin_vec3", "dd/d3b/interfacehip__math_1_1hip__pwmin__vec3.html", "dd/d3b/interfacehip__math_1_1hip__pwmin__vec3" ],
       [ "hip_rzero", "d9/d73/interfacehip__math_1_1hip__rzero.html", "d9/d73/interfacehip__math_1_1hip__rzero" ],
       [ "hip_sub2", "d6/d08/interfacehip__math_1_1hip__sub2.html", "d6/d08/interfacehip__math_1_1hip__sub2" ],
       [ "hip_sub3", "db/d3a/interfacehip__math_1_1hip__sub3.html", "db/d3a/interfacehip__math_1_1hip__sub3" ],
@@ -972,6 +980,8 @@ var annotated_dup =
       [ "point_interpolator_t", "d6/d23/structpoint__interpolator_1_1point__interpolator__t.html", "d6/d23/structpoint__interpolator_1_1point__interpolator__t" ]
     ] ],
     [ "point_zone", "dc/d5f/namespacepoint__zone.html", [
+      [ "allocator_entry", "d0/d86/structpoint__zone_1_1allocator__entry.html", "d0/d86/structpoint__zone_1_1allocator__entry" ],
+      [ "point_zone_allocate", "db/dcd/interfacepoint__zone_1_1point__zone__allocate.html", "db/dcd/interfacepoint__zone_1_1point__zone__allocate" ],
       [ "point_zone_criterion", "d7/dc6/interfacepoint__zone_1_1point__zone__criterion.html", "d7/dc6/interfacepoint__zone_1_1point__zone__criterion" ],
       [ "point_zone_free", "dc/d4e/interfacepoint__zone_1_1point__zone__free.html", "dc/d4e/interfacepoint__zone_1_1point__zone__free" ],
       [ "point_zone_init", "d3/d1e/interfacepoint__zone_1_1point__zone__init.html", "d3/d1e/interfacepoint__zone_1_1point__zone__init" ],
@@ -1336,6 +1346,8 @@ var annotated_dup =
       [ "wale_t", "db/d6d/structwale_1_1wale__t.html", "db/d6d/structwale_1_1wale__t" ]
     ] ],
     [ "wall_model", "da/ddd/namespacewall__model.html", [
+      [ "allocator_entry", "da/d57/structwall__model_1_1allocator__entry.html", "da/d57/structwall__model_1_1allocator__entry" ],
+      [ "wall_model_allocate", "d6/dee/interfacewall__model_1_1wall__model__allocate.html", "d6/dee/interfacewall__model_1_1wall__model__allocate" ],
       [ "wall_model_compute", "dc/dae/interfacewall__model_1_1wall__model__compute.html", "dc/dae/interfacewall__model_1_1wall__model__compute" ],
       [ "wall_model_free", "dd/d3e/interfacewall__model_1_1wall__model__free.html", "dd/d3e/interfacewall__model_1_1wall__model__free" ],
       [ "wall_model_init", "d5/db1/interfacewall__model_1_1wall__model__init.html", "d5/db1/interfacewall__model_1_1wall__model__init" ],

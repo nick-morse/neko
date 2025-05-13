@@ -18,7 +18,6 @@ var hip__math_8f90 =
     [ "hip_math::hip_add4", "d1/d36/interfacehip__math_1_1hip__add4.html", "d1/d36/interfacehip__math_1_1hip__add4" ],
     [ "hip_math::hip_add2s1", "de/dd0/interfacehip__math_1_1hip__add2s1.html", "de/dd0/interfacehip__math_1_1hip__add2s1" ],
     [ "hip_math::hip_add2s2", "dd/de0/interfacehip__math_1_1hip__add2s2.html", "dd/de0/interfacehip__math_1_1hip__add2s2" ],
-    [ "hip_math::hip_add2s2_many", "de/d7d/interfacehip__math_1_1hip__add2s2__many.html", "de/d7d/interfacehip__math_1_1hip__add2s2__many" ],
     [ "hip_math::hip_addsqr2s2", "d9/dde/interfacehip__math_1_1hip__addsqr2s2.html", "d9/dde/interfacehip__math_1_1hip__addsqr2s2" ],
     [ "hip_math::hip_add3s2", "d9/ddc/interfacehip__math_1_1hip__add3s2.html", "d9/ddc/interfacehip__math_1_1hip__add3s2" ],
     [ "hip_math::hip_invcol1", "de/d2d/interfacehip__math_1_1hip__invcol1.html", "de/d2d/interfacehip__math_1_1hip__invcol1" ],
@@ -34,9 +33,18 @@ var hip__math_8f90 =
     [ "hip_math::hip_vdot3", "d0/dd4/interfacehip__math_1_1hip__vdot3.html", "d0/dd4/interfacehip__math_1_1hip__vdot3" ],
     [ "hip_math::hip_vcross", "d9/dfe/interfacehip__math_1_1hip__vcross.html", "d9/dfe/interfacehip__math_1_1hip__vcross" ],
     [ "hip_math::hip_vlsc3", "dd/d4e/interfacehip__math_1_1hip__vlsc3.html", "dd/d4e/interfacehip__math_1_1hip__vlsc3" ],
+    [ "hip_math::hip_add2s2_many", "de/d7d/interfacehip__math_1_1hip__add2s2__many.html", "de/d7d/interfacehip__math_1_1hip__add2s2__many" ],
     [ "hip_math::hip_glsc3", "d6/d9d/interfacehip__math_1_1hip__glsc3.html", "d6/d9d/interfacehip__math_1_1hip__glsc3" ],
     [ "hip_math::hip_glsc3_many", "d4/da3/interfacehip__math_1_1hip__glsc3__many.html", "d4/da3/interfacehip__math_1_1hip__glsc3__many" ],
     [ "hip_math::hip_glsc2", "d8/d3d/interfacehip__math_1_1hip__glsc2.html", "d8/d3d/interfacehip__math_1_1hip__glsc2" ],
     [ "hip_math::hip_glsum", "db/d09/interfacehip__math_1_1hip__glsum.html", "db/d09/interfacehip__math_1_1hip__glsum" ],
-    [ "hip_math::hip_absval", "d0/d22/interfacehip__math_1_1hip__absval.html", "d0/d22/interfacehip__math_1_1hip__absval" ]
+    [ "hip_math::hip_absval", "d0/d22/interfacehip__math_1_1hip__absval.html", "d0/d22/interfacehip__math_1_1hip__absval" ],
+    [ "hip_math::hip_pwmax_vec2", "db/daf/interfacehip__math_1_1hip__pwmax__vec2.html", "db/daf/interfacehip__math_1_1hip__pwmax__vec2" ],
+    [ "hip_math::hip_pwmax_vec3", "d0/d0b/interfacehip__math_1_1hip__pwmax__vec3.html", "d0/d0b/interfacehip__math_1_1hip__pwmax__vec3" ],
+    [ "hip_math::hip_pwmax_sca2", "dd/d93/interfacehip__math_1_1hip__pwmax__sca2.html", "dd/d93/interfacehip__math_1_1hip__pwmax__sca2" ],
+    [ "hip_math::hip_pwmax_sca3", "df/d52/interfacehip__math_1_1hip__pwmax__sca3.html", "df/d52/interfacehip__math_1_1hip__pwmax__sca3" ],
+    [ "hip_math::hip_pwmin_vec2", "da/d3a/interfacehip__math_1_1hip__pwmin__vec2.html", "da/d3a/interfacehip__math_1_1hip__pwmin__vec2" ],
+    [ "hip_math::hip_pwmin_vec3", "dd/d3b/interfacehip__math_1_1hip__pwmin__vec3.html", "dd/d3b/interfacehip__math_1_1hip__pwmin__vec3" ],
+    [ "hip_math::hip_pwmin_sca2", "dc/d88/interfacehip__math_1_1hip__pwmin__sca2.html", "dc/d88/interfacehip__math_1_1hip__pwmin__sca2" ],
+    [ "hip_math::hip_pwmin_sca3", "de/d89/interfacehip__math_1_1hip__pwmin__sca3.html", "de/d89/interfacehip__math_1_1hip__pwmin__sca3" ]
 ];

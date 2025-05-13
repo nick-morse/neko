@@ -11,6 +11,7 @@ var structphmg_1_1phmg__lvl__t =
     [ "jacobi", "d5/dec/structphmg_1_1phmg__lvl__t.html#a27ccee132189bca779532365ae5a7f9b", null ],
     [ "lvl", "d5/dec/structphmg_1_1phmg__lvl__t.html#afa39bf18aae771be6a298e6e427bbe0e", null ],
     [ "r", "d5/dec/structphmg_1_1phmg__lvl__t.html#a84a1ef9a0b8fd325cc6f31874b1dc90c", null ],
+    [ "schwarz", "d5/dec/structphmg_1_1phmg__lvl__t.html#a711bbdb88bbeda96b7eab72a98f9cd3a", null ],
     [ "smoother_itrs", "d5/dec/structphmg_1_1phmg__lvl__t.html#a04fc0015292fed9637ab54a5fff1a168", null ],
     [ "w", "d5/dec/structphmg_1_1phmg__lvl__t.html#adc043d34ffd17779d5cb288e1e4245af", null ],
     [ "xh", "d5/dec/structphmg_1_1phmg__lvl__t.html#ac4ee69392e67dd310bc7a41d5a2c3e8b", null ],
