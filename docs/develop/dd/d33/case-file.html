@@ -315,6 +315,10 @@ Available conditions</h4>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">normal_outflow   </td><td class="markdownTableBodyNone">An Neumann condition for the surface-normal component of velocity combined with a Dirichlet for the surface-parallel components. Must be axis-aligned.    </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">outflow+user   </td><td class="markdownTableBodyNone">Same as <code>outflow</code> but with user-specified pressure.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">normal_outflow+user   </td><td class="markdownTableBodyNone">Same as <code>normal_outflow</code> but with user-specified pressure.    </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">outflow+dong   </td><td class="markdownTableBodyNone">A pressure outlet with the Dong condition applied.    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">normal_outflow+dong   </td><td class="markdownTableBodyNone">The <code>normal_outflow</code> with the Dong condition applied. Must be axis-aligned.    </td></tr>
@@ -355,7 +359,13 @@ Available conditions</h4>
 <div class="line">  &quot;zone_indices&quot;: [1, 2]</div>
 <div class="line">}</div>
 </div><!-- fragment --></li>
-<li><code>normal_outflow</code>. The condition lets the flow escape through the boundary by setting a homogeneous Neumann condition for the surface-normal velocity component, but fixes the values of the surface-parallel components. The latter values are not prescribed in the boundary condition's JSON, but are instead taken from the initial conditions. The boundary must be axis-aligned.</li>
+<li><code>normal_outflow</code>. The condition lets the flow escape through the boundary by setting a homogeneous Neumann condition for the surface-normal velocity component, but fixes the values of the surface-parallel components. The latter values are not prescribed in the boundary condition's JSON, but are instead taken from the initial conditions. The boundary must be axis-aligned. <div class="fragment"><div class="line">{</div>
+<div class="line">  &quot;type&quot;: &quot;normal_outflow&quot;,</div>
+<div class="line">  &quot;zone_indices&quot;: [1, 2]</div>
+<div class="line">}</div>
+</div><!-- fragment --></li>
+<li><code>outflow+user</code>. Same as <code>outflow</code>, but with user-specified pressure. The pressure is specified via the same interface as <code>user_pressure</code>, see the <a class="el" href="../../d6/def/user-file.html#user-file_field-dirichlet-update">relevant section</a> for more information.</li>
+<li><code>normal_outflow+user</code>. Same as <code>normal_outflow</code>, but with user-specified pressure. The pressure profile is specified via the same interface as <code>user_pressure</code>, see the <a class="el" href="../../d6/def/user-file.html#user-file_field-dirichlet-update">relevant section</a> for more information. Note that, similarly to <code>normal_outflow</code>, surface-parallel velocity components are taken from the initial conditions.</li>
 <li><code>outflow+dong</code>. Same as <code>outflow</code>, but additionally applies the Dong boundary condition on the pressure. This is a way to prevent backflow and therefore promotes numerical stability without having to create a mesh "sponge" at the outlet.</li>
 <li><code>normal_outflow+dong</code>. Same as <code>normal_outflow</code>, but additionally applies the Dong boundary condition for the pressure to prevent backflow. Must be axis-aligned.</li>
 <li><code><a class="el" href="../../da/dea/namespaceshear__stress.html" title="Defines a shear stress boundary condition for a vector field. Maintainer: Timofey Mukha.">shear_stress</a></code>. Non-penetration condition combined with a set shear stress vector. Only works with axis-aligned boundaries. The stress value is specified by the <code>value</code> keyword, which should be an array of 3 reals. It is the responsibility of the user to set the vector in the direction parallel to the boundary. <div class="fragment"><div class="line">{</div>
@@ -813,7 +823,7 @@ Runtime statistics</h2>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../index.html">Neko Manual</a></li><li class="navelem"><a class="el" href="../../dd/d04/user-guide.html">User guide</a></li>
-    <li class="footer">Generated on Thu May 15 2025 03:46:08 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Fri May 16 2025 03:48:18 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
