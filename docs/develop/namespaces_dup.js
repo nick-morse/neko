@@ -304,7 +304,25 @@ var namespaces_dup =
     [ "neko", "dd/d62/namespaceneko.html", [
       [ "neko_finalize", "dd/d62/namespaceneko.html#a11ff0635183fc4cd90027907c86cbfe8", null ],
       [ "neko_init", "dd/d62/namespaceneko.html#a647e539d6b0950b6569c6752b8f007ff", null ],
-      [ "neko_job_info", "dd/d62/namespaceneko.html#a12ac3a3e9d30fbc66d5a77e012e90edb", null ]
+      [ "neko_job_info", "dd/d62/namespaceneko.html#a12ac3a3e9d30fbc66d5a77e012e90edb", null ],
+      [ "neko_solve", "dd/d62/namespaceneko.html#abf12d6da8fb2dd09f7ff843e0356ee04", null ]
+    ] ],
+    [ "neko_api", "d5/dd3/namespaceneko__api.html", [
+      [ "neko_api_case_end_time", "d5/dd3/namespaceneko__api.html#abcb96e53604213cb6fdfca7437599e72", null ],
+      [ "neko_api_case_free", "d5/dd3/namespaceneko__api.html#a59176b435bbe373d8e3115b61d9d6259", null ],
+      [ "neko_api_case_init", "d5/dd3/namespaceneko__api.html#a6436e0b732490378a471ac81629a554f", null ],
+      [ "neko_api_case_time", "d5/dd3/namespaceneko__api.html#a9766de1316533dfe0019ebedfe77c322", null ],
+      [ "neko_api_case_tstep", "d5/dd3/namespaceneko__api.html#ae0edb0107949d327be26245f72779970", null ],
+      [ "neko_api_field", "d5/dd3/namespaceneko__api.html#a978343e58858cc243db6ef09e2e08b33", null ],
+      [ "neko_api_field_nelements", "d5/dd3/namespaceneko__api.html#a3f810967152223b5d893f2501d228223", null ],
+      [ "neko_api_field_order", "d5/dd3/namespaceneko__api.html#acef2eaec450e89f557a7999e9d750ac5", null ],
+      [ "neko_api_field_size", "d5/dd3/namespaceneko__api.html#a9a46081743838451e724b197d6acadcd", null ],
+      [ "neko_api_finalize", "d5/dd3/namespaceneko__api.html#a1976f22c2e58a334c9115138734aa63f", null ],
+      [ "neko_api_init", "d5/dd3/namespaceneko__api.html#afa3748b2eb116fe51b3eb603236c36e1", null ],
+      [ "neko_api_job_info", "d5/dd3/namespaceneko__api.html#a4400b3d8102e65c6cb49de4b8de929f3", null ],
+      [ "neko_api_output_ctrl_execute", "d5/dd3/namespaceneko__api.html#a5c1d3f1515b68fe4143251e11195ed7a", null ],
+      [ "neko_api_solve", "d5/dd3/namespaceneko__api.html#aa2e5d30535577ecbd6961683b9b644a7", null ],
+      [ "neko_api_step", "d5/dd3/namespaceneko__api.html#a3ab40aa9d20ed1039a44d6f37c94adbf", null ]
     ] ],
     [ "neko_config", "d9/d77/namespaceneko__config.html", [
       [ "neko_bcknd_cuda", "d9/d77/namespaceneko__config.html#ad9bfad217bb0181e4bcc9692bc114006", null ],
@@ -540,9 +558,11 @@ var namespaces_dup =
     [ "simcomp_executor", "d2/d78/namespacesimcomp__executor.html", "d2/d78/namespacesimcomp__executor" ],
     [ "simulation", "d1/d2d/namespacesimulation.html", [
       [ "case_restart", "d1/d2d/namespacesimulation.html#a856d1989364fcdbca84e831c6241f8a7", null ],
-      [ "neko_solve", "d1/d2d/namespacesimulation.html#a2279224e80a4202a630ebfaa2d686588", null ],
+      [ "simulation_finalize", "d1/d2d/namespacesimulation.html#a898649586b608770d5ea349927136ba0", null ],
+      [ "simulation_init", "d1/d2d/namespacesimulation.html#ace16571473f6d4b638c29de2d77aaf7d", null ],
       [ "simulation_joblimit_chkp", "d1/d2d/namespacesimulation.html#ad5774a0a06b35c326984f6ba2ccce3e6", null ],
-      [ "simulation_settime", "d1/d2d/namespacesimulation.html#a7db8b311cbafdaca7602b3c7812394bc", null ]
+      [ "simulation_settime", "d1/d2d/namespacesimulation.html#a7db8b311cbafdaca7602b3c7812394bc", null ],
+      [ "simulation_step", "d1/d2d/namespacesimulation.html#a8b2c3953323ec2e105c0c5c6f44c51e8", null ]
     ] ],
     [ "simulation_component", "d2/def/namespacesimulation__component.html", "d2/def/namespacesimulation__component" ],
     [ "smagorinsky", "d9/d9a/namespacesmagorinsky.html", "d9/d9a/namespacesmagorinsky" ],

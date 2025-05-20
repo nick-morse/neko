@@ -1,5 +1,7 @@
 <map id="simulation::case_restart" name="simulation::case_restart">
-<area shape="rect" id="Node000001" title="Restart a case C from a given checkpoint." alt="" coords="225,5,404,31"/>
-<area shape="rect" id="Node000002" href="$d1/d2d/namespacesimulation.html#a2279224e80a4202a630ebfaa2d686588" title="Main driver to solve a case C." alt="" coords="5,5,177,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="211,21,178,21,178,15,211,15"/>
+<area shape="rect" id="Node000001" title="Restart a case C from a given checkpoint." alt="" coords="432,5,611,31"/>
+<area shape="rect" id="Node000002" href="$d1/d2d/namespacesimulation.html#ace16571473f6d4b638c29de2d77aaf7d" title="Initialise a simulation of a case." alt="" coords="188,5,384,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="418,21,384,21,384,15,418,15"/>
+<area shape="rect" id="Node000003" href="$dd/d62/namespaceneko.html#abf12d6da8fb2dd09f7ff843e0356ee04" title="Main driver to solve a case C." alt="" coords="5,5,140,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="175,21,140,21,140,15,175,15"/>
 </map>

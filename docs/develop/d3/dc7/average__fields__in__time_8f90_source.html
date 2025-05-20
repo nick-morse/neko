@@ -131,7 +131,7 @@ $(document).ready(function(){initNavTree('d3/dc7/average__fields__in__time_8f90_
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>     stop</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keywordflow">  end if</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <span class="keyword">call </span><a class="code hl_function" href="../../dd/d62/namespaceneko.html#a647e539d6b0950b6569c6752b8f007ff">neko_init</a> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <span class="keyword">call </span><a class="code hl_function" href="../../da/d03/neko_8h.html#a6723abe8de86a489274925547af9e556">neko_init</a> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  <span class="keyword">call </span>get_command_argument(1, inputchar) </div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  <span class="keyword">read</span>(inputchar, *) fld_fname</div>
@@ -168,21 +168,21 @@ $(document).ready(function(){initNavTree('d3/dc7/average__fields__in__time_8f90_
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="keyword">call </span>output_file%write(fld_data_avg, fld_data_avg%time)</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  <span class="keywordflow">if</span> (pe_rank .eq. 0) <span class="keyword">write</span>(*,*) <span class="stringliteral">&#39;Done&#39;</span></div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  <span class="keyword">call </span><a class="code hl_function" href="../../dd/d62/namespaceneko.html#a11ff0635183fc4cd90027907c86cbfe8">neko_finalize</a></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  <span class="keyword">call </span><a class="code hl_function" href="../../da/d03/neko_8h.html#a36ec20ef46a38cb2dfcec581e25735a2">neko_finalize</a></div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">end program </span><a class="code hl_function" href="../../d3/dc7/average__fields__in__time_8f90.html#ac6905300ca74b33833aa210ef56e2bb7">average_fields_in_time</a></div>
 <div class="ttc" id="aaverage__fields__in__time_8f90_html_ac6905300ca74b33833aa210ef56e2bb7"><div class="ttname"><a href="../../d3/dc7/average__fields__in__time_8f90.html#ac6905300ca74b33833aa210ef56e2bb7">average_fields_in_time</a></div><div class="ttdeci">program average_fields_in_time</div><div class="ttdoc">Program to sum up averaged fields computed for statistics and mean field Martin Karp 27/01-23.</div><div class="ttdef"><b>Definition</b> <a href="../../d3/dc7/average__fields__in__time_8f90_source.html#l00003">average_fields_in_time.f90:3</a></div></div>
 <div class="ttc" id="anamespacefld__file_html"><div class="ttname"><a href="../../d9/d41/namespacefld__file.html">fld_file</a></div><div class="ttdoc">NEKTON fld file format.</div><div class="ttdef"><b>Definition</b> <a href="../../d5/dcf/fld__file_8f90_source.html#l00035">fld_file.f90:35</a></div></div>
 <div class="ttc" id="anamespaceneko_html"><div class="ttname"><a href="../../dd/d62/namespaceneko.html">neko</a></div><div class="ttdoc">Master module.</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d1f/neko_8f90_source.html#l00034">neko.f90:34</a></div></div>
-<div class="ttc" id="anamespaceneko_html_a11ff0635183fc4cd90027907c86cbfe8"><div class="ttname"><a href="../../dd/d62/namespaceneko.html#a11ff0635183fc4cd90027907c86cbfe8">neko::neko_finalize</a></div><div class="ttdeci">subroutine neko_finalize(c)</div><div class="ttdoc">Finalize Neko.</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d1f/neko_8f90_source.html#l00221">neko.f90:222</a></div></div>
-<div class="ttc" id="anamespaceneko_html_a647e539d6b0950b6569c6752b8f007ff"><div class="ttname"><a href="../../dd/d62/namespaceneko.html#a647e539d6b0950b6569c6752b8f007ff">neko::neko_init</a></div><div class="ttdeci">subroutine neko_init(c)</div><div class="ttdoc">Initialise Neko.</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d1f/neko_8f90_source.html#l00145">neko.f90:146</a></div></div>
+<div class="ttc" id="aneko_8h_html_a36ec20ef46a38cb2dfcec581e25735a2"><div class="ttname"><a href="../../da/d03/neko_8h.html#a36ec20ef46a38cb2dfcec581e25735a2">neko_finalize</a></div><div class="ttdeci">void neko_finalize()</div></div>
+<div class="ttc" id="aneko_8h_html_a6723abe8de86a489274925547af9e556"><div class="ttname"><a href="../../da/d03/neko_8h.html#a6723abe8de86a489274925547af9e556">neko_init</a></div><div class="ttdeci">void neko_init()</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_3847941dc22744d30c1d316a1f1a60e2.html">contrib</a></li><li class="navelem"><a class="el" href="../../dir_df93673e71657faea2c1b6cff0de4039.html">average_fields_in_time</a></li><li class="navelem"><a class="el" href="../../d3/dc7/average__fields__in__time_8f90.html">average_fields_in_time.f90</a></li>
-    <li class="footer">Generated on Mon May 19 2025 03:48:00 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Tue May 20 2025 03:47:14 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

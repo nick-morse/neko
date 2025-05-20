@@ -1,35 +1,23 @@
 <map id="utils::filename_suffix" name="utils::filename_suffix">
-<area shape="rect" id="Node000001" title="Extract a filename&#39;s suffix." alt="" coords="644,177,803,202"/>
-<area shape="rect" id="Node000002" href="$d6/d84/namespaceutils.html#a0962746ef1c8f4a3a6e83aae5ef2d7a0" title="Extracts the index of a field file. For example, &quot;myfield.f00045&quot; will return 45. If the suffix of th..." alt="" coords="451,37,577,77"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="697,169,651,131,595,92,571,80,573,75,597,87,654,126,700,165"/>
-<area shape="rect" id="Node000007" href="$d6/dae/structfile_1_1file__t.html#a9d46c0efc0dd223cd1db186b4fee5b23" title="File reader/writer constructor." alt="" coords="445,102,583,127"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="679,174,595,141,560,130,562,125,597,136,681,169"/>
-<area shape="rect" id="Node000008" href="$da/d16/namespacefile.html#a0167c68d0b7fa85eed2bb23f5a1cd6d2" title="Set a file&#39;s header." alt="" coords="439,151,589,177"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="630,181,588,176,589,170,631,175"/>
-<area shape="rect" id="Node000009" href="$da/d16/namespacefile.html#a43c32373b7c245beb1260418ecfbb597" title="Set a file&#39;s output precision." alt="" coords="433,201,595,226"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="631,203,596,207,595,201,630,197"/>
-<area shape="rect" id="Node000010" href="$dd/dc6/namespacefluid__stats__simcomp.html#a33393df992beab0f7b3d777c40c13ed6" title=" " alt="" coords="432,250,596,305"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="681,210,581,252,579,248,678,205"/>
-<area shape="rect" id="Node000011" href="$dd/d62/namespaceneko.html#a647e539d6b0950b6569c6752b8f007ff" title="Initialise Neko." alt="" coords="454,329,574,354"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="707,215,661,267,631,296,597,320,573,331,570,326,595,315,628,291,657,264,703,211"/>
-<area shape="rect" id="Node000003" href="$d2/d13/namespaceflow__ic.html#a425835656c9daae13895696a4943dd5f" title="Set the initial condition of the flow based on a field. @detail The fields are read from an fld file...." alt="" coords="211,14,382,39"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="437,49,382,41,383,36,438,44"/>
-<area shape="rect" id="Node000005" href="$d8/ddf/namespacescalar__ic.html#a96013931003c6c7fe4993a91f14b1738" title="Set the initial condition of the scalar based on a field. @detail The field is read from an fld file...." alt="" coords="220,67,373,107"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="438,70,374,79,373,74,437,65"/>
+<area shape="rect" id="Node000001" title="Extract a filename&#39;s suffix." alt="" coords="640,177,799,202"/>
+<area shape="rect" id="Node000002" href="$d6/d84/namespaceutils.html#a0962746ef1c8f4a3a6e83aae5ef2d7a0" title="Extracts the index of a field file. For example, &quot;myfield.f00045&quot; will return 45. If the suffix of th..." alt="" coords="447,37,573,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="692,169,647,131,591,93,564,80,567,75,593,88,650,127,696,165"/>
+<area shape="rect" id="Node000007" href="$d6/dae/structfile_1_1file__t.html#a9d46c0efc0dd223cd1db186b4fee5b23" title="File reader/writer constructor." alt="" coords="441,102,579,127"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="674,174,591,143,553,130,555,125,593,137,675,169"/>
+<area shape="rect" id="Node000008" href="$da/d16/namespacefile.html#a0167c68d0b7fa85eed2bb23f5a1cd6d2" title="Set a file&#39;s header." alt="" coords="435,151,585,177"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="626,181,584,176,585,170,627,175"/>
+<area shape="rect" id="Node000009" href="$da/d16/namespacefile.html#a43c32373b7c245beb1260418ecfbb597" title="Set a file&#39;s output precision." alt="" coords="429,201,591,226"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="627,203,592,207,591,201,626,197"/>
+<area shape="rect" id="Node000010" href="$dd/dc6/namespacefluid__stats__simcomp.html#a33393df992beab0f7b3d777c40c13ed6" title=" " alt="" coords="428,250,592,305"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="677,210,577,252,575,248,674,205"/>
+<area shape="rect" id="Node000011" href="$dd/d62/namespaceneko.html#a647e539d6b0950b6569c6752b8f007ff" title="Initialise Neko." alt="" coords="450,329,570,354"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="703,215,657,267,627,296,593,320,569,331,566,326,591,315,624,291,653,264,699,211"/>
+<area shape="rect" id="Node000003" href="$d2/d13/namespaceflow__ic.html#a425835656c9daae13895696a4943dd5f" title="Set the initial condition of the flow based on a field. @detail The fields are read from an fld file...." alt="" coords="209,15,380,41"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="433,50,380,42,381,37,434,44"/>
+<area shape="rect" id="Node000005" href="$d8/ddf/namespacescalar__ic.html#a96013931003c6c7fe4993a91f14b1738" title="Set the initial condition of the scalar based on a field. @detail The field is read from an fld file...." alt="" coords="218,67,371,107"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="433,70,372,79,371,74,433,65"/>
 <area shape="rect" id="Node000004" href="$d5/d04/interfaceflow__ic_1_1set__flow__ic.html#aa5c900e30a45a6ed61c876b4ce368b50" title="Set initial flow condition (builtin)" alt="" coords="10,5,157,45"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="197,29,157,28,157,23,197,23"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="196,29,157,29,157,24,196,24"/>
 <area shape="rect" id="Node000006" href="$df/d8e/interfacescalar__ic_1_1set__scalar__ic.html#acec97723c5e2c32e459b067fd352bf65" title="Set scalar initial condition (builtin)" alt="" coords="5,69,161,109"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="206,90,161,91,161,86,206,85"/>
-<area shape="rect" id="Node000012" href="$d9/dd1/average__field__in__space_8f90.html#a37dc68f9f9805d99614ae0ca36d971a3" title="Program to sum up a field in space in a homogenous direction Martin Karp 17/02&#45;23." alt="" coords="209,205,384,230"/>
-<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="440,326,430,319,413,300,406,281,398,262,382,245,360,233,362,228,386,241,403,260,410,279,418,298,434,315,443,321"/>
-<area shape="rect" id="Node000013" href="$d3/dc7/average__fields__in__time_8f90.html#ac6905300ca74b33833aa210ef56e2bb7" title="Program to sum up averaged fields computed for statistics and mean field Martin Karp 27/01&#45;23." alt="" coords="210,254,383,279"/>
-<area shape="poly" id="edge12_Node000011_Node000013" title=" " alt="" coords="451,327,431,320,383,294,346,282,348,277,385,290,433,315,452,322"/>
-<area shape="rect" id="Node000014" href="$dc/da2/genmeshbox_8f90.html#ac2c2abdf1b6ab8a11de24035862245d5" title="Simple program to generate a mesh for a box Gives some insight into how one can use built in function..." alt="" coords="243,303,350,329"/>
-<area shape="poly" id="edge13_Node000011_Node000014" title=" " alt="" coords="440,335,350,325,350,319,440,330"/>
-<area shape="rect" id="Node000015" href="$d1/dd9/postprocess__fluid__stats_8f90.html#a54f8c504cff2703e12c6c4fce128f532" title="Somewhat preliminary program to sum up averaged fields computed for statistics and mean field Martin ..." alt="" coords="209,353,384,378"/>
-<area shape="poly" id="edge14_Node000011_Node000015" title=" " alt="" coords="440,352,385,358,384,353,440,347"/>
-<area shape="rect" id="Node000016" href="$d7/d64/rea2nbin_8f90.html#ab8d17097ee23bae0a0911d8d65590e5e" title=" " alt="" coords="257,402,336,427"/>
-<area shape="poly" id="edge15_Node000011_Node000016" title=" " alt="" coords="470,362,385,393,337,407,336,402,383,388,468,357"/>
-<area shape="rect" id="Node000017" href="$d0/dd9/driver_8f90.html#a30d609876f05bf02c9ca79b0448dc937" title="Main driver for TurboNeko." alt="" coords="253,451,340,477"/>
-<area shape="poly" id="edge16_Node000011_Node000017" title=" " alt="" coords="491,366,444,405,385,442,341,458,339,453,383,438,441,400,488,361"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="205,90,162,91,162,86,204,85"/>
 </map>

@@ -1,0 +1,5 @@
+<map id="simulation::simulation_init" name="simulation::simulation_init">
+<area shape="rect" id="Node000001" title="Initialise a simulation of a case." alt="" coords="5,5,201,31"/>
+<area shape="rect" id="Node000002" href="$d1/d2d/namespacesimulation.html#a856d1989364fcdbca84e831c6241f8a7" title="Restart a case C from a given checkpoint." alt="" coords="249,5,428,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,15,235,15,235,21,202,21"/>
+</map>
