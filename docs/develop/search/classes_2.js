@@ -128,6 +128,7 @@ var searchData=
   ['cudastreamdestroy_125',['cudastreamdestroy',['../d3/d7c/interfacecuda__intf_1_1cudastreamdestroy.html',1,'cuda_intf']]],
   ['cudastreamsynchronize_126',['cudastreamsynchronize',['../d2/d9f/interfacecuda__intf_1_1cudastreamsynchronize.html',1,'cuda_intf']]],
   ['cudastreamwaitevent_127',['cudastreamwaitevent',['../d7/d0b/interfacecuda__intf_1_1cudastreamwaitevent.html',1,'cuda_intf']]],
-  ['curve_5ft_128',['curve_t',['../dd/d69/structcurve_1_1curve__t.html',1,'curve']]],
-  ['cylinder_5fpoint_5fzone_5ft_129',['cylinder_point_zone_t',['../d2/d18/structcylinder__point__zone_1_1cylinder__point__zone__t.html',1,'cylinder_point_zone']]]
+  ['curl_5ft_128',['curl_t',['../d7/d9c/structcurl__simcomp_1_1curl__t.html',1,'curl_simcomp']]],
+  ['curve_5ft_129',['curve_t',['../dd/d69/structcurve_1_1curve__t.html',1,'curve']]],
+  ['cylinder_5fpoint_5fzone_5ft_130',['cylinder_point_zone_t',['../d2/d18/structcylinder__point__zone_1_1cylinder__point__zone__t.html',1,'cylinder_point_zone']]]
 ];

@@ -65,11 +65,12 @@ var namespaces_dup =
     [ "cuda_filters", "d6/d80/namespacecuda__filters.html", "d6/d80/namespacecuda__filters" ],
     [ "cuda_intf", "db/d9a/namespacecuda__intf.html", "db/d9a/namespacecuda__intf" ],
     [ "cuda_math", "d5/d2a/namespacecuda__math.html", "d5/d2a/namespacecuda__math" ],
+    [ "curl_simcomp", "de/d95/namespacecurl__simcomp.html", "de/d95/namespacecurl__simcomp" ],
     [ "curve", "d0/d69/namespacecurve.html", "d0/d69/namespacecurve" ],
     [ "cylinder_point_zone", "d4/ddd/namespacecylinder__point__zone.html", "d4/ddd/namespacecylinder__point__zone" ],
     [ "data_streamer", "da/d5b/namespacedata__streamer.html", "da/d5b/namespacedata__streamer" ],
     [ "datadist", "d7/d40/namespacedatadist.html", "d7/d40/namespacedatadist" ],
-    [ "derivative", "d6/dbc/namespacederivative.html", "d6/dbc/namespacederivative" ],
+    [ "derivative_simcomp", "dc/d1d/namespacederivative__simcomp.html", "dc/d1d/namespacederivative__simcomp" ],
     [ "device", "d0/dbe/namespacedevice.html", "d0/dbe/namespacedevice" ],
     [ "device_coef", "df/d80/namespacedevice__coef.html", "df/d80/namespacedevice__coef" ],
     [ "device_dirichlet", "d0/d0d/namespacedevice__dirichlet.html", "d0/d0d/namespacedevice__dirichlet" ],
@@ -93,6 +94,7 @@ var namespaces_dup =
     [ "device_zero_dirichlet", "d2/d25/namespacedevice__zero__dirichlet.html", "d2/d25/namespacedevice__zero__dirichlet" ],
     [ "dirichlet", "da/ddb/namespacedirichlet.html", "da/ddb/namespacedirichlet" ],
     [ "distdata", "dc/d48/namespacedistdata.html", "dc/d48/namespacedistdata" ],
+    [ "divergence_simcomp", "d8/dec/namespacedivergence__simcomp.html", "d8/dec/namespacedivergence__simcomp" ],
     [ "dofmap", "dd/dd2/namespacedofmap.html", "dd/dd2/namespacedofmap" ],
     [ "dong_outflow", "d5/d79/namespacedong__outflow.html", "d5/d79/namespacedong__outflow" ],
     [ "drag_torque", "d0/d6f/namespacedrag__torque.html", [
@@ -245,6 +247,7 @@ var namespaces_dup =
     [ "gmres_device", "de/df2/namespacegmres__device.html", "de/df2/namespacegmres__device" ],
     [ "gmres_sx", "d5/d6a/namespacegmres__sx.html", "d5/d6a/namespacegmres__sx" ],
     [ "gradient_jump_penalty", "d6/def/namespacegradient__jump__penalty.html", "d6/def/namespacegradient__jump__penalty" ],
+    [ "gradient_simcomp", "d6/dbf/namespacegradient__simcomp.html", "d6/dbf/namespacegradient__simcomp" ],
     [ "gs_bcknd", "de/d93/namespacegs__bcknd.html", "de/d93/namespacegs__bcknd" ],
     [ "gs_comm", "d6/d7c/namespacegs__comm.html", "d6/d7c/namespacegs__comm" ],
     [ "gs_cpu", "d5/d22/namespacegs__cpu.html", "d5/d22/namespacegs__cpu" ],
@@ -700,7 +703,6 @@ var namespaces_dup =
     [ "usr_scalar", "dd/d87/namespaceusr__scalar.html", "dd/d87/namespaceusr__scalar" ],
     [ "utils", "d6/d84/namespaceutils.html", "d6/d84/namespaceutils" ],
     [ "vector", "d7/d34/namespacevector.html", "d7/d34/namespacevector" ],
-    [ "vorticity", "dd/de3/namespacevorticity.html", "dd/de3/namespacevorticity" ],
     [ "vreman", "d4/d6e/namespacevreman.html", "d4/d6e/namespacevreman" ],
     [ "vreman_cpu", "d9/da0/namespacevreman__cpu.html", [
       [ "vreman_compute_cpu", "d9/da0/namespacevreman__cpu.html#a3c358b1cea7229013aa149a0bc69880f", null ]
@@ -716,6 +718,6 @@ var namespaces_dup =
     [ "wall_model", "da/ddd/namespacewall__model.html", "da/ddd/namespacewall__model" ],
     [ "wall_model_bc", "de/d2c/namespacewall__model__bc.html", "de/d2c/namespacewall__model__bc" ],
     [ "wall_model_device", "db/d0e/namespacewall__model__device.html", "db/d0e/namespacewall__model__device" ],
-    [ "weak_grad", "de/d32/namespaceweak__grad.html", "de/d32/namespaceweak__grad" ],
+    [ "weak_gradient_simcomp", "d4/dd6/namespaceweak__gradient__simcomp.html", "d4/dd6/namespaceweak__gradient__simcomp" ],
     [ "zero_dirichlet", "da/ddc/namespacezero__dirichlet.html", "da/ddc/namespacezero__dirichlet" ]
 ];

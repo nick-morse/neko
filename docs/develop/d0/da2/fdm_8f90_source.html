@@ -285,7 +285,7 @@ $(document).ready(function(){initNavTree('d0/da2/fdm_8f90_source.html','../../')
 <div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>      n2 = lx1 - 1</div>
 <div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>      nz0 = 1</div>
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>      nzn = 1</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>      nx  = lx1 - 2</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>      nx = lx1 - 2</div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>      <span class="keywordflow">if</span> (gdim .eq. 3) <span class="keywordflow">then</span></div>
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>         nz0 = 0</div>
 <div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>         nzn = n2</div>
@@ -308,10 +308,10 @@ $(document).ready(function(){initNavTree('d0/da2/fdm_8f90_source.html','../../')
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="keywordflow">         end do</span></div>
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>         <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d9/d77/namespaceneko__config.html#ac196ccb4b3efd94171f0cfbfedaa7b9d">neko_bcknd_device</a> .eq. 1) <span class="keywordflow">then</span></div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>            <span class="keyword">call </span><a class="code hl_interface" href="../../d6/dac/interfacedevice_1_1device__memcpy.html">device_memcpy</a>(l, this%swplen_d, this%dof%size(), &amp;</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>                               <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a3f51b2c9ef4bd878a310bd1e1d0d3c80">host_to_device</a>, sync=.false.)</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>                 <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a3f51b2c9ef4bd878a310bd1e1d0d3c80">host_to_device</a>, sync=.false.)</div>
 <div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>            <span class="keyword">call </span>this%gs_h%op(l, this%dof%size(), gs_op_add)</div>
 <div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>            <span class="keyword">call </span><a class="code hl_interface" href="../../d6/dac/interfacedevice_1_1device__memcpy.html">device_memcpy</a>(l, this%swplen_d, this%dof%size(), &amp;</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                               <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a7c3556984ffad14469de7accab5bc84b">device_to_host</a>, sync=.false.)</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                 <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a7c3556984ffad14469de7accab5bc84b">device_to_host</a>, sync=.true.)</div>
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>         <span class="keywordflow">else</span></div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>            <span class="keyword">call </span>this%gs_h%op(l, this%dof%size(), gs_op_add)</div>
 <div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="keywordflow">         end if</span></div>
@@ -336,10 +336,10 @@ $(document).ready(function(){initNavTree('d0/da2/fdm_8f90_source.html','../../')
 <div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
 <div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>         <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d9/d77/namespaceneko__config.html#ac196ccb4b3efd94171f0cfbfedaa7b9d">neko_bcknd_device</a> .eq. 1) <span class="keywordflow">then</span></div>
 <div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>            <span class="keyword">call </span><a class="code hl_interface" href="../../d6/dac/interfacedevice_1_1device__memcpy.html">device_memcpy</a>(l, this%swplen_d, this%dof%size(), &amp;</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>                               <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a3f51b2c9ef4bd878a310bd1e1d0d3c80">host_to_device</a>, sync=.false.)</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>                 <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a3f51b2c9ef4bd878a310bd1e1d0d3c80">host_to_device</a>, sync=.false.)</div>
 <div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>            <span class="keyword">call </span>this%gs_h%op(l, this%dof%size(), gs_op_add)</div>
 <div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>            <span class="keyword">call </span><a class="code hl_interface" href="../../d6/dac/interfacedevice_1_1device__memcpy.html">device_memcpy</a>(l, this%swplen_d, this%dof%size(), &amp;</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>                               <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a7c3556984ffad14469de7accab5bc84b">device_to_host</a>, sync=.true.)</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>                 <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a7c3556984ffad14469de7accab5bc84b">device_to_host</a>, sync=.true.)</div>
 <div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>         <span class="keywordflow">else</span></div>
 <div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>            <span class="keyword">call </span>this%gs_h%op(l, this%dof%size(), gs_op_add)</div>
 <div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="keywordflow">         end if</span></div>
@@ -357,14 +357,14 @@ $(document).ready(function(){initNavTree('d0/da2/fdm_8f90_source.html','../../')
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
 <div class="foldopen" id="foldopen00246" data-start="" data-end="">
 <div class="line"><a id="l00246" name="l00246"></a><span class="lineno"><a class="line" href="../../d3/d4c/namespacefdm.html#aabcee63af217208d1a05220944b92edc">  246</a></span>  <span class="keyword">subroutine </span><a class="code hl_function" href="../../d3/d4c/namespacefdm.html#aabcee63af217208d1a05220944b92edc">plane_space</a>(lr, ls, lt, i1, i2, w, x, y, z, &amp;</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>                         nx, nxn, nz0, nzn, nelv, gdim)</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>       nx, nxn, nz0, nzn, nelv, gdim)</div>
 <div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    <span class="keywordtype">integer</span>, <span class="keywordtype">intent(in)</span> :: nxn, nzn, i1, i2, nelv, gdim, nx, nz0</div>
 <div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="keywordtype">    real</span>(kind=rp), <span class="keywordtype">intent(inout)</span> :: lr(nelv), ls(nelv), lt(nelv)</div>
 <div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="keywordtype">    real</span>(kind=rp), <span class="keywordtype">intent(inout)</span> :: w(nx)</div>
 <div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="keywordtype">    real</span>(kind=rp), <span class="keywordtype">intent(in)</span> :: x(0:nxn,0:nxn,nz0:nzn,nelv)</div>
 <div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="keywordtype">    real</span>(kind=rp), <span class="keywordtype">intent(in)</span> :: y(0:nxn,0:nxn,nz0:nzn,nelv)</div>
 <div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span><span class="keywordtype">    real</span>(kind=rp), <span class="keywordtype">intent(in)</span> :: z(0:nxn,0:nxn,nz0:nzn,nelv)</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="keywordtype">    real</span>(kind=rp) ::  lr2, ls2, lt2, weight, wsum</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="keywordtype">    real</span>(kind=rp) :: lr2, ls2, lt2, weight, wsum</div>
 <div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    <span class="keywordtype">integer</span> :: ny, nz, j1, k1, j2, k2, i, j, k, ie</div>
 <div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    ny = nx</div>
 <div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    nz = nx</div>
@@ -375,71 +375,71 @@ $(document).ready(function(){initNavTree('d0/da2/fdm_8f90_source.html','../../')
 <div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    <span class="comment">!   Now, for each element, compute lr,ls,lt between specified planes</span></div>
 <div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    <span class="keywordflow">do</span> ie = 1,nelv</div>
 <div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>       <span class="keywordflow">if</span> (gdim .eq. 3) <span class="keywordflow">then</span></div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>          lr2  = 0d0</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>          lr2 = 0d0</div>
 <div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>          wsum = 0d0</div>
 <div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>          <span class="keywordflow">do</span> k = 1,nz</div>
 <div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>             <span class="keywordflow">do</span> j = 1,ny</div>
 <div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>                weight = w(j)*w(k)</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>                lr2  = lr2  +   weight /&amp;</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>                lr2 = lr2 + weight /&amp;</div>
 <div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>                     ( (x(i2,j,k,ie)-x(i1,j,k,ie))**2&amp;</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>                     +   (y(i2,j,k,ie)-y(i1,j,k,ie))**2&amp;</div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>                     +   (z(i2,j,k,ie)-z(i1,j,k,ie))**2 )</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>                     + (y(i2,j,k,ie)-y(i1,j,k,ie))**2&amp;</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>                     + (z(i2,j,k,ie)-z(i1,j,k,ie))**2 )</div>
 <div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>                wsum = wsum + weight</div>
 <div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span><span class="keywordflow">             end do</span></div>
 <div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span><span class="keywordflow">          end do</span></div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>          lr2     = lr2/wsum</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>          lr(ie)  = 1d0/sqrt(lr2)</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>          lr2 = lr2/wsum</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>          lr(ie) = 1d0/sqrt(lr2)</div>
 <div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>          ls2 = 0d0</div>
 <div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>          wsum = 0d0</div>
 <div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>          <span class="keywordflow">do</span> k = 1,nz</div>
 <div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>             <span class="keywordflow">do</span> i = 1,nx</div>
 <div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>                weight = w(i)*w(k)</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>                ls2  = ls2  +   weight / &amp;</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>                ls2 = ls2 + weight / &amp;</div>
 <div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>                     ( (x(i,j2,k,ie)-x(i,j1,k,ie))**2 &amp;</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>                     +   (y(i,j2,k,ie)-y(i,j1,k,ie))**2 &amp;</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>                     +   (z(i,j2,k,ie)-z(i,j1,k,ie))**2 )</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>                     + (y(i,j2,k,ie)-y(i,j1,k,ie))**2 &amp;</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>                     + (z(i,j2,k,ie)-z(i,j1,k,ie))**2 )</div>
 <div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>                wsum = wsum + weight</div>
 <div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span><span class="keywordflow">             end do</span></div>
 <div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span><span class="keywordflow">          end do</span></div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>          ls2     = ls2/wsum</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>          ls(ie)  = 1d0/sqrt(ls2)</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>          ls2 = ls2/wsum</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>          ls(ie) = 1d0/sqrt(ls2)</div>
 <div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>          lt2 = 0d0</div>
 <div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>          wsum = 0d0</div>
 <div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>          <span class="keywordflow">do</span> j=1,ny</div>
 <div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>             <span class="keywordflow">do</span> i=1,nx</div>
 <div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>                weight = w(i)*w(j)</div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>                lt2  = lt2  +   weight / &amp;</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>                lt2 = lt2 + weight / &amp;</div>
 <div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>                     ( (x(i,j,k2,ie)-x(i,j,k1,ie))**2 &amp;</div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>                     +   (y(i,j,k2,ie)-y(i,j,k1,ie))**2 &amp;</div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>                     +   (z(i,j,k2,ie)-z(i,j,k1,ie))**2 )</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>                     + (y(i,j,k2,ie)-y(i,j,k1,ie))**2 &amp;</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>                     + (z(i,j,k2,ie)-z(i,j,k1,ie))**2 )</div>
 <div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>                wsum = wsum + weight</div>
 <div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><span class="keywordflow">             end do</span></div>
 <div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span><span class="keywordflow">          end do</span></div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>          lt2     = lt2/wsum</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>          lt(ie)  = 1d0/sqrt(lt2)</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>       <span class="keywordflow">else</span>              <span class="comment">! 2D</span></div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>          lt2 = lt2/wsum</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>          lt(ie) = 1d0/sqrt(lt2)</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>       <span class="keywordflow">else</span> <span class="comment">! 2D</span></div>
 <div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>          lr2 = 0d0</div>
 <div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>          wsum = 0d0</div>
 <div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>          <span class="keywordflow">do</span> j=1,ny</div>
 <div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>             weight = w(j)</div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>             lr2  = lr2  + weight / &amp;</div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>                          ( (x(i2,j,1,ie)-x(i1,j,1,ie))**2 &amp;</div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>                          + (y(i2,j,1,ie)-y(i1,j,1,ie))**2 )</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>             lr2 = lr2 + weight / &amp;</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>                  ( (x(i2,j,1,ie)-x(i1,j,1,ie))**2 &amp;</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>                  + (y(i2,j,1,ie)-y(i1,j,1,ie))**2 )</div>
 <div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>             wsum = wsum + weight</div>
 <div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span><span class="keywordflow">          enddo</span></div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>          lr2     = lr2/wsum</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>          lr(ie)  = 1d0/sqrt(lr2)</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>          lr2 = lr2/wsum</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>          lr(ie) = 1d0/sqrt(lr2)</div>
 <div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>          ls2 = 0d0</div>
 <div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>          wsum = 0d0</div>
 <div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>          <span class="keywordflow">do</span> i=1,nx</div>
 <div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>             weight = w(i)</div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>             ls2  = ls2  + weight / &amp;</div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>                          ( (x(i,j2,1,ie)-x(i,j1,1,ie))**2 &amp;</div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>                        +   (y(i,j2,1,ie)-y(i,j1,1,ie))**2 )</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>             ls2 = ls2 + weight / &amp;</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>                  ( (x(i,j2,1,ie)-x(i,j1,1,ie))**2 &amp;</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>                  + (y(i,j2,1,ie)-y(i,j1,1,ie))**2 )</div>
 <div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>             wsum = wsum + weight</div>
 <div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span><span class="keywordflow">          enddo</span></div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>          ls2     = ls2/wsum</div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>          ls(ie)  = 1d0/sqrt(ls2)</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>          ls2 = ls2/wsum</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>          ls(ie) = 1d0/sqrt(ls2)</div>
 <div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span><span class="keywordflow">       endif</span></div>
 <div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span><span class="keywordflow">    enddo</span></div>
 <div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>    ie = 1014</div>
@@ -450,7 +450,7 @@ $(document).ready(function(){initNavTree('d0/da2/fdm_8f90_source.html','../../')
 <div class="line"><a id="l00336" name="l00336"></a><span class="lineno"><a class="line" href="../../d3/d4c/namespacefdm.html#a44dfc3864c487c0445e167df75091904">  336</a></span>  <span class="keyword">subroutine </span><a class="code hl_function" href="../../d3/d4c/namespacefdm.html#a44dfc3864c487c0445e167df75091904">fdm_setup_fast</a>(this, ah, bh, nl, n)</div>
 <div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    <span class="keywordtype">integer</span>, <span class="keywordtype">intent(in)</span> :: nl, n</div>
 <div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>    <span class="keywordtype">type</span>(<a class="code hl_struct" href="../../de/d85/structfdm_1_1fdm__t.html">fdm_t</a>), <span class="keywordtype">intent(inout)</span> :: this</div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span><span class="keywordtype">    real</span>(kind=rp), <span class="keywordtype">intent(inout)</span> ::  ah(n+1,n+1), bh(n+1)</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span><span class="keywordtype">    real</span>(kind=rp), <span class="keywordtype">intent(inout)</span> :: ah(n+1,n+1), bh(n+1)</div>
 <div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span><span class="keywordtype">    real</span>(kind=rp), <span class="keywordtype">dimension(2*this%Xh%lx + 4)</span> :: lr, ls, lt</div>
 <div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>    <span class="keywordtype">integer</span> :: i, j, k</div>
 <div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>    <span class="keywordtype">integer</span> :: ie, il, nr, ns, nt</div>
@@ -458,9 +458,9 @@ $(document).ready(function(){initNavTree('d0/da2/fdm_8f90_source.html','../../')
 <div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span><span class="keywordtype">    real</span>(kind=rp) :: eps, diag</div>
 <div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span> </div>
 <div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>    associate(s =&gt; this%s, d =&gt; this%d, &amp;</div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>              llr =&gt; this%len_lr, lls =&gt; this%len_ls, llt =&gt; this%len_lt, &amp;</div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>              lmr =&gt; this%len_mr, lms =&gt; this%len_ms, lmt =&gt; this%len_mt, &amp;</div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>              lrr =&gt; this%len_rr, lrs =&gt; this%len_rs, lrt =&gt; this%len_rt)</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>         llr =&gt; this%len_lr, lls =&gt; this%len_ls, llt =&gt; this%len_lt, &amp;</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>         lmr =&gt; this%len_mr, lms =&gt; this%len_ms, lmt =&gt; this%len_mt, &amp;</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>         lrr =&gt; this%len_rr, lrs =&gt; this%len_rs, lrt =&gt; this%len_rt)</div>
 <div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>      <span class="keywordflow">do</span> ie=1,this%dof%msh%nelv</div>
 <div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>         lbr = this%dof%msh%facet_type(1, ie)</div>
 <div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>         rbr = this%dof%msh%facet_type(2, ie)</div>
@@ -520,10 +520,10 @@ $(document).ready(function(){initNavTree('d0/da2/fdm_8f90_source.html','../../')
 <div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span> </div>
 <div class="foldopen" id="foldopen00406" data-start="" data-end="">
 <div class="line"><a id="l00406" name="l00406"></a><span class="lineno"><a class="line" href="../../d3/d4c/namespacefdm.html#a8a1d2f27ff81cb45f1085337e07c429a">  406</a></span>  <span class="keyword">subroutine </span><a class="code hl_function" href="../../d3/d4c/namespacefdm.html#a8a1d2f27ff81cb45f1085337e07c429a">fdm_setup_fast1d</a>(s, lam, nl, lbc, rbc, ll, lm, lr, ah, bh, n)</div>
-<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>    <span class="keywordtype">integer</span>, <span class="keywordtype">intent(in)</span>  :: nl, lbc, rbc, n</div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>    <span class="keywordtype">integer</span>, <span class="keywordtype">intent(in)</span> :: nl, lbc, rbc, n</div>
 <div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span><span class="keywordtype">    real</span>(kind=rp), <span class="keywordtype">intent(inout)</span> :: s(nl, nl, 2), lam(nl), ll, lm, lr</div>
-<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span><span class="keywordtype">    real</span>(kind=rp), <span class="keywordtype">intent(inout)</span> ::  ah(0:n, 0:n), bh(0:n)</div>
-<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>    <span class="keywordtype">integer</span> ::  lx1, lxm</div>
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span><span class="keywordtype">    real</span>(kind=rp), <span class="keywordtype">intent(inout)</span> :: ah(0:n, 0:n), bh(0:n)</div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>    <span class="keywordtype">integer</span> :: lx1, lxm</div>
 <div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span><span class="keywordtype">    real</span>(kind=rp) :: b(2*(n+3)**2)</div>
 <div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span> </div>
 <div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>    lx1 = n + 1</div>
@@ -627,8 +627,8 @@ $(document).ready(function(){initNavTree('d0/da2/fdm_8f90_source.html','../../')
 <div class="line"><a id="l00504" name="l00504"></a><span class="lineno">  504</span>    <span class="keywordflow">if</span>(lbc .eq. 0) <span class="keywordflow">then</span></div>
 <div class="line"><a id="l00505" name="l00505"></a><span class="lineno">  505</span>       fac = 2.0_rp / ll</div>
 <div class="line"><a id="l00506" name="l00506"></a><span class="lineno">  506</span>       a(0,0) = fac * ah(n-1,n-1)</div>
-<div class="line"><a id="l00507" name="l00507"></a><span class="lineno">  507</span>       a(1,0) = fac * ah(n  ,n-1)</div>
-<div class="line"><a id="l00508" name="l00508"></a><span class="lineno">  508</span>       a(0,1) = fac * ah(n-1,n  )</div>
+<div class="line"><a id="l00507" name="l00507"></a><span class="lineno">  507</span>       a(1,0) = fac * ah(n ,n-1)</div>
+<div class="line"><a id="l00508" name="l00508"></a><span class="lineno">  508</span>       a(0,1) = fac * ah(n-1,n )</div>
 <div class="line"><a id="l00509" name="l00509"></a><span class="lineno">  509</span>       a(1,1) = a(1,1) + fac * ah(n,n)</div>
 <div class="line"><a id="l00510" name="l00510"></a><span class="lineno">  510</span>    <span class="keywordflow">else</span></div>
 <div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span>       a(0,0) = 1.0_rp</div>
@@ -834,7 +834,7 @@ $(document).ready(function(){initNavTree('d0/da2/fdm_8f90_source.html','../../')
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_ae9a93452e2a84339148a16bcf2eb561.html">math</a></li><li class="navelem"><a class="el" href="../../d0/da2/fdm_8f90.html">fdm.f90</a></li>
-    <li class="footer">Generated on Tue May 20 2025 03:47:15 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Wed May 21 2025 03:47:15 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

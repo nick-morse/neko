@@ -9,5 +9,5 @@ var searchData=
   ['wall_5fmodel_5fdevice_2ef90_6',['wall_model_device.F90',['../d8/d18/wall__model__device_8F90.html',1,'']]],
   ['wall_5fmodel_5ffctry_2ef90_7',['wall_model_fctry.f90',['../da/d1e/wall__model__fctry_8f90.html',1,'']]],
   ['wall_5fmodel_5fkernel_2eh_8',['wall_model_kernel.h',['../d1/d0f/cuda_2wall__model__kernel_8h.html',1,'(Global Namespace)'],['../de/d25/hip_2wall__model__kernel_8h.html',1,'(Global Namespace)']]],
-  ['weak_5fgrad_2ef90_9',['weak_grad.f90',['../de/d5d/weak__grad_8f90.html',1,'']]]
+  ['weak_5fgradient_5fsimcomp_2ef90_9',['weak_gradient_simcomp.f90',['../d9/de6/weak__gradient__simcomp_8f90.html',1,'']]]
 ];

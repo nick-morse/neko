@@ -232,6 +232,9 @@ var annotated_dup =
       [ "cuda_vdot3", "d2/dc3/interfacecuda__math_1_1cuda__vdot3.html", "d2/dc3/interfacecuda__math_1_1cuda__vdot3" ],
       [ "cuda_vlsc3", "dd/d3e/interfacecuda__math_1_1cuda__vlsc3.html", "dd/d3e/interfacecuda__math_1_1cuda__vlsc3" ]
     ] ],
+    [ "curl_simcomp", "de/d95/namespacecurl__simcomp.html", [
+      [ "curl_t", "d7/d9c/structcurl__simcomp_1_1curl__t.html", "d7/d9c/structcurl__simcomp_1_1curl__t" ]
+    ] ],
     [ "curve", "d0/d69/namespacecurve.html", [
       [ "curve_t", "dd/d69/structcurve_1_1curve__t.html", "dd/d69/structcurve_1_1curve__t" ]
     ] ],
@@ -245,8 +248,8 @@ var annotated_dup =
       [ "dist_t", "d6/d4a/structdatadist_1_1dist__t.html", "d6/d4a/structdatadist_1_1dist__t" ],
       [ "linear_dist_t", "d7/d4f/structdatadist_1_1linear__dist__t.html", "d7/d4f/structdatadist_1_1linear__dist__t" ]
     ] ],
-    [ "derivative", "d6/dbc/namespacederivative.html", [
-      [ "derivative_t", "db/d12/structderivative_1_1derivative__t.html", "db/d12/structderivative_1_1derivative__t" ]
+    [ "derivative_simcomp", "dc/d1d/namespacederivative__simcomp.html", [
+      [ "derivative_t", "d4/d59/structderivative__simcomp_1_1derivative__t.html", "d4/d59/structderivative__simcomp_1_1derivative__t" ]
     ] ],
     [ "device", "d0/dbe/namespacedevice.html", [
       [ "device_associate", "d6/d17/interfacedevice_1_1device__associate.html", "d6/d17/interfacedevice_1_1device__associate" ],
@@ -342,6 +345,9 @@ var annotated_dup =
     ] ],
     [ "distdata", "dc/d48/namespacedistdata.html", [
       [ "distdata_t", "d4/ddd/structdistdata_1_1distdata__t.html", "d4/ddd/structdistdata_1_1distdata__t" ]
+    ] ],
+    [ "divergence_simcomp", "d8/dec/namespacedivergence__simcomp.html", [
+      [ "divergence_t", "db/dc5/structdivergence__simcomp_1_1divergence__t.html", "db/dc5/structdivergence__simcomp_1_1divergence__t" ]
     ] ],
     [ "dofmap", "dd/dd2/namespacedofmap.html", [
       [ "dofmap_t", "d0/df0/structdofmap_1_1dofmap__t.html", "d0/df0/structdofmap_1_1dofmap__t" ]
@@ -542,6 +548,9 @@ var annotated_dup =
     ] ],
     [ "gradient_jump_penalty", "d6/def/namespacegradient__jump__penalty.html", [
       [ "gradient_jump_penalty_t", "d2/db5/structgradient__jump__penalty_1_1gradient__jump__penalty__t.html", "d2/db5/structgradient__jump__penalty_1_1gradient__jump__penalty__t" ]
+    ] ],
+    [ "gradient_simcomp", "d6/dbf/namespacegradient__simcomp.html", [
+      [ "gradient_t", "de/d99/structgradient__simcomp_1_1gradient__t.html", "de/d99/structgradient__simcomp_1_1gradient__t" ]
     ] ],
     [ "gs_bcknd", "de/d93/namespacegs__bcknd.html", [
       [ "gs_backend_free", "d6/d28/interfacegs__bcknd_1_1gs__backend__free.html", "d6/d28/interfacegs__bcknd_1_1gs__backend__free" ],
@@ -1333,9 +1342,6 @@ var annotated_dup =
       [ "vector_ptr_t", "d5/d0b/structvector_1_1vector__ptr__t.html", "d5/d0b/structvector_1_1vector__ptr__t" ],
       [ "vector_t", "d3/d5b/structvector_1_1vector__t.html", "d3/d5b/structvector_1_1vector__t" ]
     ] ],
-    [ "vorticity", "dd/de3/namespacevorticity.html", [
-      [ "vorticity_t", "da/d79/structvorticity_1_1vorticity__t.html", "da/d79/structvorticity_1_1vorticity__t" ]
-    ] ],
     [ "vreman", "d4/d6e/namespacevreman.html", [
       [ "vreman_t", "de/d91/structvreman_1_1vreman__t.html", "de/d91/structvreman_1_1vreman__t" ]
     ] ],
@@ -1359,8 +1365,8 @@ var annotated_dup =
     [ "wall_model_device", "db/d0e/namespacewall__model__device.html", [
       [ "hip_wall_model_compute_mag_field", "d5/dc5/interfacewall__model__device_1_1hip__wall__model__compute__mag__field.html", "d5/dc5/interfacewall__model__device_1_1hip__wall__model__compute__mag__field" ]
     ] ],
-    [ "weak_grad", "de/d32/namespaceweak__grad.html", [
-      [ "weak_grad_t", "d5/d1b/structweak__grad_1_1weak__grad__t.html", "d5/d1b/structweak__grad_1_1weak__grad__t" ]
+    [ "weak_gradient_simcomp", "d4/dd6/namespaceweak__gradient__simcomp.html", [
+      [ "weak_gradient_t", "df/d1c/structweak__gradient__simcomp_1_1weak__gradient__t.html", "df/d1c/structweak__gradient__simcomp_1_1weak__gradient__t" ]
     ] ],
     [ "zero_dirichlet", "da/ddc/namespacezero__dirichlet.html", [
       [ "zero_dirichlet_t", "d1/d50/structzero__dirichlet_1_1zero__dirichlet__t.html", "d1/d50/structzero__dirichlet_1_1zero__dirichlet__t" ]

@@ -68,9 +68,9 @@ var index =
         ] ]
       ] ],
       [ "User File", "d6/def/user-file.html", [
-        [ "Compiling and running", "d6/def/user-file.html#autotoc_md102", null ],
-        [ "High-level structure", "d6/def/user-file.html#autotoc_md103", null ],
-        [ "Default user functions", "d6/def/user-file.html#autotoc_md104", [
+        [ "Compiling and running", "d6/def/user-file.html#autotoc_md103", null ],
+        [ "High-level structure", "d6/def/user-file.html#autotoc_md104", null ],
+        [ "Default user functions", "d6/def/user-file.html#autotoc_md105", [
           [ "Initializing and finalizing", "d6/def/user-file.html#user-file_init-and-final", null ],
           [ "Computing at every time step", "d6/def/user-file.html#user-file_user-check", null ],
           [ "Setting material properties", "d6/def/user-file.html#user-file_mat-prop", null ],
@@ -78,13 +78,13 @@ var index =
           [ "Scalar boundary conditions", "d6/def/user-file.html#user-file_scalar-bc", null ],
           [ "User defined simulation components", "d6/def/user-file.html#user-file_simcomps", null ]
         ] ],
-        [ "Case-specific user functions", "d6/def/user-file.html#autotoc_md105", [
+        [ "Case-specific user functions", "d6/def/user-file.html#autotoc_md106", [
           [ "Fluid and Scalar initial conditions", "d6/def/user-file.html#user-file_user-ic", null ],
           [ "Fluid pointwise velocity boundary values", "d6/def/user-file.html#user-file_fluid-user-if", null ],
           [ "Fluid and scalar source terms", "d6/def/user-file.html#user-file_user-f", null ],
           [ "Complex fluid and/or scalar boundary conditions", "d6/def/user-file.html#user-file_field-dirichlet-update", null ]
         ] ],
-        [ "Additional remarks and tips", "d6/def/user-file.html#autotoc_md106", [
+        [ "Additional remarks and tips", "d6/def/user-file.html#autotoc_md107", [
           [ "Running on GPUs", "d6/def/user-file.html#user-file_tips_running-on-gpus", null ],
           [ "Registries", "d6/def/user-file.html#user-file_tips_registries", null ]
         ] ]
@@ -94,16 +94,20 @@ var index =
         [ "Adding simulation components to the case", "d3/d84/simcomps.html#autotoc_md94", null ],
         [ "List of simulation components", "d3/d84/simcomps.html#autotoc_md95", null ],
         [ "Controling execution and file output", "d3/d84/simcomps.html#autotoc_md96", [
-          [ "vorticity", "d3/d84/simcomps.html#simcomp_vorticity", null ],
+          [ "Differential operators", "d3/d84/simcomps.html#autotoc_md97", [
+            [ "derivative", "d3/d84/simcomps.html#simcomp_derivative", null ],
+            [ "curl", "d3/d84/simcomps.html#simcomp_curl", null ],
+            [ "divergence", "d3/d84/simcomps.html#simcomp_divergence", null ]
+          ] ],
+          [ "gradient", "d3/d84/simcomps.html#simcomp_gradient", null ],
+          [ "weak_gradient", "d3/d84/simcomps.html#simcomp_weak_gradient", null ],
           [ "lambda2", "d3/d84/simcomps.html#simcomp_lambda2", null ],
           [ "probes", "d3/d84/simcomps.html#simcomp_probes", [
-            [ "Supported types", "d3/d84/simcomps.html#autotoc_md97", null ],
-            [ "Example usage", "d3/d84/simcomps.html#autotoc_md98", null ]
+            [ "Supported types", "d3/d84/simcomps.html#autotoc_md98", null ],
+            [ "Example usage", "d3/d84/simcomps.html#autotoc_md99", null ]
           ] ],
           [ "field_writer", "d3/d84/simcomps.html#simcomp_field_writer", null ],
-          [ "derivative", "d3/d84/simcomps.html#simcomp_derivative", null ],
           [ "force_torque", "d3/d84/simcomps.html#simcomp_force_torque", null ],
-          [ "weak_grad", "d3/d84/simcomps.html#simcomp_weak_grad", null ],
           [ "les_model", "d3/d84/simcomps.html#simcomp_les_model", null ],
           [ "Spectral error indicator", "d3/d84/simcomps.html#simcomp_speri", null ]
         ] ]
@@ -123,9 +127,9 @@ var index =
         [ "Using point zones", "da/dd0/point-zones.html#point-zones_using-point-zones", null ]
       ] ],
       [ "Statistics guide", "df/d8f/statistics-guide.html", [
-        [ "Using statistics", "df/d8f/statistics-guide.html#autotoc_md99", null ],
-        [ "List of fields in output files", "df/d8f/statistics-guide.html#autotoc_md100", null ],
-        [ "Postprocessing", "df/d8f/statistics-guide.html#autotoc_md101", null ]
+        [ "Using statistics", "df/d8f/statistics-guide.html#autotoc_md100", null ],
+        [ "List of fields in output files", "df/d8f/statistics-guide.html#autotoc_md101", null ],
+        [ "Postprocessing", "df/d8f/statistics-guide.html#autotoc_md102", null ]
       ] ],
       [ "Input-output", "d7/d7f/io.html", [
         [ "Mesh", "d7/d7f/io.html#autotoc_md81", null ],

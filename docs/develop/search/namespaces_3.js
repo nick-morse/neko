@@ -2,7 +2,7 @@ var searchData=
 [
   ['data_5fstreamer_0',['data_streamer',['../da/d5b/namespacedata__streamer.html',1,'']]],
   ['datadist_1',['datadist',['../d7/d40/namespacedatadist.html',1,'']]],
-  ['derivative_2',['derivative',['../d6/dbc/namespacederivative.html',1,'']]],
+  ['derivative_5fsimcomp_2',['derivative_simcomp',['../dc/d1d/namespacederivative__simcomp.html',1,'']]],
   ['device_3',['device',['../d0/dbe/namespacedevice.html',1,'']]],
   ['device_5fcoef_4',['device_coef',['../df/d80/namespacedevice__coef.html',1,'']]],
   ['device_5fdirichlet_5',['device_dirichlet',['../d0/d0d/namespacedevice__dirichlet.html',1,'']]],
@@ -26,10 +26,11 @@ var searchData=
   ['device_5fzero_5fdirichlet_23',['device_zero_dirichlet',['../d2/d25/namespacedevice__zero__dirichlet.html',1,'']]],
   ['dirichlet_24',['dirichlet',['../da/ddb/namespacedirichlet.html',1,'']]],
   ['distdata_25',['distdata',['../dc/d48/namespacedistdata.html',1,'']]],
-  ['dofmap_26',['dofmap',['../dd/dd2/namespacedofmap.html',1,'']]],
-  ['dong_5foutflow_27',['dong_outflow',['../d5/d79/namespacedong__outflow.html',1,'']]],
-  ['drag_5ftorque_28',['drag_torque',['../d0/d6f/namespacedrag__torque.html',1,'']]],
-  ['dynamic_5fsmagorinsky_29',['dynamic_smagorinsky',['../d4/d9c/namespacedynamic__smagorinsky.html',1,'']]],
-  ['dynamic_5fsmagorinsky_5fcpu_30',['dynamic_smagorinsky_cpu',['../da/def/namespacedynamic__smagorinsky__cpu.html',1,'']]],
-  ['dynamic_5fsmagorinsky_5fdevice_31',['dynamic_smagorinsky_device',['../dd/daf/namespacedynamic__smagorinsky__device.html',1,'']]]
+  ['divergence_5fsimcomp_26',['divergence_simcomp',['../d8/dec/namespacedivergence__simcomp.html',1,'']]],
+  ['dofmap_27',['dofmap',['../dd/dd2/namespacedofmap.html',1,'']]],
+  ['dong_5foutflow_28',['dong_outflow',['../d5/d79/namespacedong__outflow.html',1,'']]],
+  ['drag_5ftorque_29',['drag_torque',['../d0/d6f/namespacedrag__torque.html',1,'']]],
+  ['dynamic_5fsmagorinsky_30',['dynamic_smagorinsky',['../d4/d9c/namespacedynamic__smagorinsky.html',1,'']]],
+  ['dynamic_5fsmagorinsky_5fcpu_31',['dynamic_smagorinsky_cpu',['../da/def/namespacedynamic__smagorinsky__cpu.html',1,'']]],
+  ['dynamic_5fsmagorinsky_5fdevice_32',['dynamic_smagorinsky_device',['../dd/daf/namespacedynamic__smagorinsky__device.html',1,'']]]
 ];

@@ -105,16 +105,20 @@ $(document).ready(function(){initNavTree('d3/d84/simcomps.html','../../'); initR
 <ul><li class="level1"><a href="#autotoc_md93">What are simulation components?</a></li>
 <li class="level1"><a href="#autotoc_md94">Adding simulation components to the case</a></li>
 <li class="level1"><a href="#autotoc_md95">List of simulation components</a></li>
-<li class="level1"><a href="#autotoc_md96">Controling execution and file output</a><ul><li class="level2"><a href="#simcomp_vorticity">vorticity</a></li>
+<li class="level1"><a href="#autotoc_md96">Controling execution and file output</a><ul><li class="level2"><a href="#autotoc_md97">Differential operators</a><ul><li class="level3"><a href="#simcomp_derivative">derivative</a></li>
+<li class="level3"><a href="#simcomp_curl">curl</a></li>
+<li class="level3"><a href="#simcomp_divergence">divergence</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#simcomp_gradient">gradient</a></li>
+<li class="level2"><a href="#simcomp_weak_gradient">weak_gradient</a></li>
 <li class="level2"><a href="#simcomp_lambda2">lambda2</a></li>
-<li class="level2"><a href="#simcomp_probes">probes</a><ul><li class="level3"><a href="#autotoc_md97">Supported types</a></li>
-<li class="level3"><a href="#autotoc_md98">Example usage</a></li>
+<li class="level2"><a href="#simcomp_probes">probes</a><ul><li class="level3"><a href="#autotoc_md98">Supported types</a></li>
+<li class="level3"><a href="#autotoc_md99">Example usage</a></li>
 </ul>
 </li>
 <li class="level2"><a href="#simcomp_field_writer">field_writer</a></li>
-<li class="level2"><a href="#simcomp_derivative">derivative</a></li>
 <li class="level2"><a href="#simcomp_force_torque">force_torque</a></li>
-<li class="level2"><a href="#simcomp_weak_grad">weak_grad</a></li>
 <li class="level2"><a href="#simcomp_les_model">les_model</a></li>
 <li class="level2"><a href="#simcomp_speri">Spectral error indicator</a></li>
 </ul>
@@ -132,214 +136,372 @@ Adding simulation components to the case</h1>
 List of simulation components</h1>
 <p>The following is a list of simulation components that are currently available in Neko. The list will be updated as new simcomps are added.</p>
 <ul>
-<li>Computation of vorticity field <a class="el" href="../../d3/d84/simcomps.html#simcomp_vorticity">vorticity</a></li>
+<li>Differential operators<ul>
+<li>Computation of the curl of a vector field <a class="el" href="../../d3/d84/simcomps.html#simcomp_curl">curl</a></li>
+<li>Computation of the gradient of a scalar field <a class="el" href="../../d3/d84/simcomps.html#simcomp_gradient">gradient</a></li>
+<li>Computation of the weak gradient of a field <a class="el" href="../../d3/d84/simcomps.html#simcomp_weak_gradient">weak_gradient</a></li>
+<li>Computation of the derivative of a scalar field <a class="el" href="../../d3/d84/simcomps.html#simcomp_derivative">derivative</a></li>
+<li>Computation of the divergence of a vector field <a class="el" href="../../d3/d84/simcomps.html#simcomp_divergence">divergence</a></li>
+</ul>
+</li>
 <li>Computation of \( \lambda_2 \) <a class="el" href="../../d3/d84/simcomps.html#simcomp_lambda2">lambda2</a></li>
 <li>Probing of fields at selected points <a class="el" href="../../d3/d84/simcomps.html#simcomp_probes">probes</a></li>
 <li>Output of registered fields to an <code>.fld</code> file <a class="el" href="../../d3/d84/simcomps.html#simcomp_field_writer">field_writer</a></li>
-<li>Computation of the derivative of a field <a class="el" href="../../d3/d84/simcomps.html#simcomp_derivative">derivative</a></li>
 <li>Computation of forces and torque on a surface <a class="el" href="../../d3/d84/simcomps.html#simcomp_force_torque">force_torque</a></li>
-<li>Computation of the weak gradient of a field <a class="el" href="../../d3/d84/simcomps.html#simcomp_weak_grad">weak_grad</a></li>
 <li>Computation of subgrid-scale (SGS) eddy viscosity via a SGS model <a class="el" href="../../d3/d84/simcomps.html#simcomp_les_model">les_model</a></li>
 <li>User defined components <a class="el" href="../../d6/def/user-file.html#user-file_simcomps">User defined simulation components</a></li>
-<li>Fluid statistics simcomp, "fluid_stats", for more details see the <a class="el" href="../../df/d8f/statistics-guide.html">statistics guide</a></li>
-<li>Computation of the spectral error indicator <a class="el" href="../../d3/d84/simcomps.html#simcomp_speri">Spectral error indicator</a></li>
+<li>Fluid statistics simcomp, "fluid_stats", for more details see the <a class="el" href="../../df/d8f/statistics-guide.html">statistics</a> guide"
+- Computation of the spectral error indicator \ref simcomp_speri
+
+@section autotoc_md96 Controling execution and file output
+Each simulation component is, by default, executed once per time step to perform
+associated computations and output. However, this can be modified by using the
+&lt;tt&gt;compute_control&lt;/tt&gt; and &lt;tt&gt;compute_value&lt;/tt&gt; parameters for the computation and the
+&lt;tt&gt;output_control&lt;/tt&gt; and &lt;tt&gt;output_value&lt;/tt&gt; for the output to disk. The parameters
+for the &lt;tt&gt;_control&lt;/tt&gt; values are the same as for the fluid and checkpointing.
+Additionally, one can set &lt;tt&gt;output_control&lt;/tt&gt; to &lt;tt&gt;global&lt;/tt&gt; and &lt;tt&gt;never&lt;/tt&gt;. The former
+will sync the &lt;tt&gt;output_&lt;/tt&gt; parameter to that of the fluid. Choosing &lt;tt&gt;never&lt;/tt&gt; will
+suppress output all together. If no parameters for the &lt;tt&gt;output_&lt;/tt&gt; parameters are
+provided, they are set to be the same as for &lt;tt&gt;compute_&lt;/tt&gt;. In order to simplify
+the configuration, the &lt;tt&gt;compute_control&lt;/tt&gt; can be set to &lt;tt&gt;fluid_output&lt;/tt&gt; to sync
+the computation to the fluid output.
+
+For simcomps that compute 3D fields, the output can be either added to the main
+&lt;tt&gt;.fld&lt;/tt&gt; file, containing velocity and pressure, or saved to a separate file. For
+the latter, the &lt;tt&gt;output_filename&lt;/tt&gt; keyword should be provided. One can
+additionally provide the &lt;tt&gt;precision&lt;/tt&gt; keyword, which can be set to either
+&lt;tt&gt;single&lt;/tt&gt; or &lt;tt&gt;double&lt;/tt&gt; to control the precision of the written data.
+
+For example, in the &lt;tt&gt;tgv&lt;/tt&gt; example case the &lt;tt&gt;curl&lt;/tt&gt; component is executed
+once per 50 time steps. The &lt;tt&gt;output_&lt;/tt&gt; parameters are synced to that, and the
+vorticity fields will be added to the main &lt;tt&gt;.fld&lt;/tt&gt; file.
+@icode{json} 
+{
+  "type": "curl",
+  "field_names": ["u", "v", "w"],
+  "computed_field": "vorticity"
+  "compute_control": "tsteps",
+  "compute_value": 50
+}
+@endicode 
+
+@subsection autotoc_md97 Differential operators
+
+There is a set of simcomps that allow one to apply various differential
+operators on registered fields. They share common configuration traits. The
+field or fields that the operators is applied to us controlled, respectively, by
+the &lt;tt&gt;field&lt;/tt&gt; or &lt;tt&gt;feilds&lt;/tt&gt; keyword. The produced fields are also added to the
+registry, and each operator provides a default name. However, it can be
+overriden using the &lt;tt&gt;computed_field&lt;/tt&gt; keyword. Operators that output a vector
+field will register three fields, adding &lt;tt&gt;_x&lt;/tt&gt;, &lt;tt&gt;_y&lt;/tt&gt;, and &lt;tt&gt;_z&lt;/tt&gt; to the base of the
+name.
+
+All of these simcomps also support saving the result to &lt;tt&gt;.fld&lt;/tt&gt; files. The \ref
+simcomp_field_writer simcomp is used for that under the hood, so the associated
+JSON keywords can be found in its documentation (&lt;tt&gt;output_filename&lt;/tt&gt;, 
+&lt;tt&gt;precision&lt;/tt&gt;).
+
+@subsubsection simcomp_derivative derivative
+Computes the derivative of field along a chosen direction (x, y, or z). The
+field to derivate is controlled by the &lt;tt&gt;field&lt;/tt&gt; keyword and the direction by the
+&lt;tt&gt;direction&lt;/tt&gt; keyword. The simcomp will, by default, register the computed
+derivative in the registry as &lt;tt&gt;d[field]_d[direction]&lt;/tt&gt;, where the values in the
+brackets correspond to the choice of the user keywords. 
+
+ @icode{json} 
+ {
+   "type": "derivative",
+   "field": "u",
+   "direction": "y"
+   "computed_field": "dudy"
+ }
+ @endicode 
+
+@subsubsection simcomp_curl curl
+Takes a list of three field names from the &lt;tt&gt;fields&lt;/tt&gt; keyword, and computes
+the curl.  By default, registers the result in &lt;tt&gt;curl_x&lt;/tt&gt;, &lt;tt&gt;curl_y&lt;/tt&gt; and &lt;tt&gt;curl_z&lt;/tt&gt;.
+
+ @icode{json} 
+ {
+   "type": "curl"
+   "fields": ["u", "v", "w"],
+   "computed_field": "vorticity"
+ }
+ @endicode 
+
+@subsubsection simcomp_divergence divergence
+Takes a list of three field names from the &lt;tt&gt;fields&lt;/tt&gt; keyword, and computes
+the divergence.  By default, registers the result in &lt;tt&gt;div&lt;/tt&gt;.
+
+ @icode{json} 
+ {
+   "type": "divergence"
+   "fields": ["u", "v", "w"],
+   "computed_field": "continuity"
+ }
+ @endicode 
+
+@subsection simcomp_gradient gradient
+Computes the gradient of a field.
+The field to derivate is controlled by the &lt;tt&gt;field&lt;/tt&gt; keyword. The simcomp will, by
+default, register the computed components of the gradients in the registry as
+&lt;tt&gt;grad_[field]_x&lt;/tt&gt;, &lt;tt&gt;grad_[field]_y&lt;/tt&gt;, &lt;tt&gt;grad_[field]_z&lt;/tt&gt; where the
+value in the brackets corresponds to the choice of the user keyword. 
+
+ @icode{json} 
+ {
+   "type": "gradient"
+   "field": "u",
+ }
+ @endicode 
+
+@subsection simcomp_weak_gradient weak_gradient
+Computes the weak gradient of a field. The weak gradient is value of the
+gradient multiplied by the local value of the mass matrix. This is how a
+gradient term appears in the weak formulation of the governing equations. The
+field to derivate is controlled by the &lt;tt&gt;field&lt;/tt&gt; keyword. The simcomp will, by
+default, register the computed components of the gradients in the registry as
+&lt;tt&gt;weak_grad_[field]_x&lt;/tt&gt;, &lt;tt&gt;weak_grad_[field]_y&lt;/tt&gt;, &lt;tt&gt;weak_grad_[field]_z&lt;/tt&gt; where the
+value in the brackets corresponds to the choice of the user keyword. 
+
+ @icode{json} 
+ {
+   "type": "weak_gradient"
+   "field": "u",
+ }
+ @endicode 
+
+@subsection simcomp_lambda2 lambda2
+Computes \_form#63 for the velocity field and stores it in the normal output files as the first unused field.
+This means that \_form#63 can be found in the temperature field in then fld files if running without a scalar
+and s1 if neko is run with one scalar. To output in a different &lt;tt&gt;fld&lt;/tt&gt; series, use the &lt;tt&gt;"output_filename"&lt;/tt&gt; parameter.
+
+ @icode{json} 
+ {
+   "type": "<a class="el" href="../../d0/d66/namespacelambda2.html" title="A simulation component that computes lambda2 The values are stored in the field registry under the na...">lambda2</a>"
+ }
+ @endicode 
+
+@subsection simcomp_probes probes
+Probes selected solution fields at a list of points. This list of points can be
+generated in a variety of ways, but the most common is to use the &lt;tt&gt;csv&lt;/tt&gt; type. 
+
+Mandatory fields for this simcomp are:
+- &lt;tt&gt;fields&lt;/tt&gt;: a list of fields to probe. Should be a list of field names that exist in the registry. Example: &lt;tt&gt;"fields": ["u", "v", "p", "s"]&lt;/tt&gt;.
+- &lt;tt&gt;output_file&lt;/tt&gt;: Name of the file in which to output the probed fields. Must be &lt;tt&gt;.csv&lt;/tt&gt;.
+
+It is also possible to set a &lt;tt&gt;start_time&lt;/tt&gt; before which the probes will not be 
+executed (same behavior as the statistics).
+
+@subsubsection autotoc_md98 Supported types
+
+- &lt;tt&gt;file&lt;/tt&gt;: Reads a list of points from a CSV file. The name of the file is
+   provided with the &lt;tt&gt;file_name&lt;/tt&gt; keyword. The CSV file should have the
+   following format:
+   @icode{csv} 
+   x_0, y_0, z_0
+   x_1, y_1, z_1
+   ...
+   x_N, y_N, z_N
+   @endicode 
+   The points are assumed to be in the same units as the simulation.
+- &lt;tt&gt;points&lt;/tt&gt;: Reads a list of points from a JSON file. The points are specified
+  based in the &lt;tt&gt;coordinates&lt;/tt&gt; keyword and should be a list of x,y,z values.
+  The file should have the following format:
+  @icode{json} 
+  {
+    "type": "points",
+    "coordinates": [
+      0.0, 0.0, 0.0,
+      1.0, 0.0, 0.0,
+      0.0, 1.0, 0.0,
+      0.0, 0.0, 1.0,
+      ...
+    ]
+  }
+  @endicode 
+  The points are assumed to be in the same units as the simulation.
+- &lt;tt&gt;line&lt;/tt&gt;: Generates a list of points along a line. The line is defined by two
+  points, &lt;tt&gt;start&lt;/tt&gt; and &lt;tt&gt;end&lt;/tt&gt;, and the number of points to generate, &lt;tt&gt;amount&lt;/tt&gt;.
+  The points are generated by linearly interpolating between &lt;tt&gt;start&lt;/tt&gt; and &lt;tt&gt;end&lt;/tt&gt;.
+  The line is defined as:
+  @icode{json} 
+  {
+    "type": "line",
+    "start": [0.0, 0.0, 0.0],
+    "end": [1.0, 1.0, 1.0],
+    "amount": 10
+  }
+  @endicode 
+- &lt;tt&gt;circle&lt;/tt&gt;: Generates a list of points along a circle. The circle is defined by
+  a center, &lt;tt&gt;center&lt;/tt&gt;, a radius, &lt;tt&gt;radius&lt;/tt&gt; and the normal, &lt;tt&gt;normal&lt;/tt&gt;, the number of
+  points to generate is controlled by &lt;tt&gt;amount&lt;/tt&gt;. The points are generated by
+  rotating a point around the center starting from the specified axis projected
+  onto the circle. The circle is defined:
+  @icode{json} 
+  {
+    "type": "circle",
+    "center": [0.0, 0.0, 0.0],
+    "radius": 1.0,
+    "normal": [0.0, 0.0, 1.0],
+    "axis": "x",
+    "amount": 4
+  }
+  @endicode 
+  Leads to the following points:
+  @icode{csv} 
+  1.0, 0.0, 0.0
+  0.0, 1.0, 0.0
+  -1.0, 0.0, 0.0
+  0.0, -1.0, 0.0
+  @endicode 
+
+@subsubsection autotoc_md99 Example usage
+
+ @icode{json} 
+ {
+   "type": "probes",
+   "compute_control": "simulationtime",
+   "compute_value"    : 1,
+   "fields": ["w","s"],
+   "output_file":  "output.csv",
+   "points": [
+      {
+        "type": "file",
+        "file_name": "points.csv"
+      }
+    ],
+ }
+ @endicode 
+This probes the fields 'w', and 's' in the points described by points.csv and
+outputs into output.csv every 1 time units.
+
+The probed information will be saved in the output file in the following format:
+
+@icode{csv} 
+N_p, N_f, fields[0], fields[1], ..., fields[N_f-1]
+p_0_x, p_0_y, p_0_z
+p_1_x, p_1_y, p_1_z
+...
+p_N_p_x, p_N_p_y, p_N_p_z
+time_0, p_0_field_0, p_0_field_1, ..., p_0_field_N_f-1
+time_0, p_1_field_0, p_1_field_1, ..., p_1_field_N_f-1
+...
+time_0, p_N_p_field_0, p_N_p_field_1, ..., p_N_p_field_N_f-1
+time_1, p_0_field_0, p_0_field_1, ..., p_0_field_N_f-1
+time_1, p_1_field_0, p_1_field_1, ..., p_1_field_N_f-1
+...
+time_N_p, p_N_p_field_0, p_N_p_field_1, ..., p_N_p_field_N_f-1
+@endicode 
+
+@subsection simcomp_field_writer field_writer
+Outputs registered 3D fields to an &lt;tt&gt;.fld&lt;/tt&gt; file. Requires a list of field names
+in the &lt;tt&gt;fields&lt;/tt&gt; keyword. Primarily to be used for outputting new fields defined
+in the user file. The fields are added to then &lt;tt&gt;neko_field_registry&lt;/tt&gt; object and
+are expected to be updated in the user file, or, perhaps, by other simcomps.
+Since this simcomp does not compute anything &lt;tt&gt;compute_&lt;/tt&gt; configuration is
+irrelevant.
+ @icode{json} 
+ {
+   "type": "<a class="el" href="../../d9/dde/namespacefield__writer.html" title="Implements the field_writer_t type.">field_writer</a>",
+   "fields": ["my_field1", "my_field2"],
+   "output_filename": "myfields",
+   "precision": "double",
+   "output_control" : "simulation_time",
+   "output_value" : 1.0
+ }
+ @endicode 
+
+
+@subsection simcomp_force_torque force_torque
+Computes the force on a specified zone and the corresponding torque
+around a center point. The compute control specifies how often they are
+computed and printed into the log. Scale specifies a scale for the computed
+force/torque. Conventient if one wants to scale with the area or similar. long_print is default false and can be set to true to print all digits in the calculation.
+Subroutines used in the simcomp can be found in src/qoi/drag_torque.f90
+
+ @icode{json} 
+ {
+   "type": "<a class="el" href="../../d6/daa/namespaceforce__torque.html" title="Implements the force_torque_t type.">force_torque</a>",
+   "zone_id": 1,
+   "center": [0.0, 0.0, 0.0],
+   "zone_name": "some chosen name, optional",
+   "scale": 1.0
+   "long_print" : false
+   "compute_control" : "tsteps",
+   "compute_value" : 10
+ }
+ @endicode 
+
+
+@subsection simcomp_les_model les_model
+Computes a subgrid eddy viscosity field using an SGS model. **Note*:* The simcomp
+&lt;em&gt;only&lt;/em&gt; computes the eddy viscosity field. You have to select the corresponding
+&lt;tt&gt;nut_field&lt;/tt&gt; in the fluid and/or scalar JSON object to actually enable LES, see
+corresponding documentation. The simcomp is controlled by the following
+keywords:
+
+- &lt;tt&gt;model&lt;/tt&gt;: Selects the SGS model. Currently available models are:
+  - &lt;tt&gt;smagorinsky&lt;/tt&gt;: The standard Smagorinsky model. Configured by the
+    following additional keyword:
+    - &lt;tt&gt;c_s&lt;/tt&gt;: The Smagorinsky constant, defaults to 0.17.
+  - &lt;tt&gt;dynamic_smagorinsky&lt;/tt&gt;: The dynamic Smagorinsky model.
+  - &lt;tt&gt;vreman&lt;/tt&gt;: The Vreman model. Configured by the following additional keyword:
+    - &lt;tt&gt;c&lt;/tt&gt;: The model constant, defaults to 0.07.
+  - &lt;tt&gt;sigma&lt;/tt&gt;: The Sigma model. Configured by the following additional keyword:
+    - &lt;tt&gt;c&lt;/tt&gt;: The model constant, defaults to 1.35.
+  - &lt;tt&gt;wale&lt;/tt&gt;: The WALE model. Configured by the following additional keyword:
+    - &lt;tt&gt;c_w&lt;/tt&gt;: The WALE constant, defaults to 0.55.
+- &lt;tt&gt;les_delta&lt;/tt&gt;: Selects the way to compute the LES filter length scale. Currently three
+  alternatives are provided and the default one is &lt;tt&gt;pointwise&lt;/tt&gt; if
+  nothing is specified:
+  - &lt;tt&gt;pointwise&lt;/tt&gt;: Computes a local value based on the spacing of the GLL nodes.
+  - &lt;tt&gt;elementwise_average&lt;/tt&gt;: Computes a single value for the whole element based on the
+    average spacing of the GLL nodes within the element.
+  - &lt;tt&gt;elementwise_max&lt;/tt&gt;: Computes a single value for the whole element based on the
+    maximum spacing of the GLL nodes within the element.
+  The &lt;tt&gt;les_delta&lt;/tt&gt; field is added to the registry and written to the .fld files.
+- &lt;tt&gt;nut_field&lt;/tt&gt;: The name of the SGS eddy viscosity field added to the registry.
+  Defaults to &lt;tt&gt;nut&lt;/tt&gt;. This allows to have two different SGS models active, saved
+  to different fields. For example, one for the scalar and one to the fluid.
+- &lt;tt&gt;extrapolation&lt;/tt&gt;: Whether or not extrapolate the velocity to
+  compute the eddy viscosity.
+  - &lt;tt&gt;true&lt;/tt&gt;: extrapolate the velocity as the same order as
+  the time scheme.
+  - &lt;tt&gt;false&lt;/tt&gt;: the default option, disable the extrapolation. 
+  In this case, the estimation of the eddy viscosity is of first order, while 
+  circumvent the risk of unstable extrapolation.
+
+ @icode{json} 
+ {
+   "type": "<a class="el" href="../../dd/dfc/namespaceles__model.html" title="Implements les_model_t.">les_model</a>"
+   "model": "smagorinsky",
+   "delta_type": "pointwise",
+   "output_control" : "never"
+ }
+ @endicode 
+
+@subsection simcomp_speri Spectral error indicator
+
+Computes the spectral error indicator as developed by Mavriplis (1989) (https://doi.org/10.1007/978-3-663-13975-1_34).
+This is an a posteriori error measure, based on the local properties of
+the spectral solution. This method formally only gives an indication of the error.
+
+The spectral error indicator is computed for the 3 velocity fields, resulting
+in 3 additional fields appended to the field files.
+
+@icode{json} 
+ {
+   "type": "<a class="el" href="../../d0/d29/namespacespectral__error.html" title="Implements type spectral_error_t.">spectral_error</a>" }  </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md96"></a>
-Controling execution and file output</h1>
-<p>Each simulation component is, by default, executed once per time step to perform associated computations and output. However, this can be modified by using the <code>compute_control</code> and <code>compute_value</code> parameters for the computation and the <code>output_control</code> and <code>output_value</code> for the output to disk. The parameters for the <code>_control</code> values are the same as for the fluid and checkpointing. Additionally, one can set <code>output_control</code> to <code>global</code> and <code>never</code>. The former will sync the <code>output_</code> parameter to that of the fluid. Choosing <code>never</code> will suppress output all together. If no parameters for the <code>output_</code> parameters are provided, they are set to be the same as for <code>compute_</code>. In order to simplify the configuration, the <code>compute_control</code> can be set to <code><a class="el" href="../../d6/d60/namespacefluid__output.html" title="Defines an output for a fluid.">fluid_output</a></code> to sync the computation to the fluid output.</p>
-<p>For simcomps that compute 3D fields, the output can be either added to the main <code>.fld</code> file, containing velocity and pressure, or saved to a separate file. For the latter, the <code>output_filename</code> keyword should be provided. One can additionally provide the <code>precision</code> keyword, which can be set to either <code>single</code> or <code>double</code> to control the precision of the written data.</p>
-<p>For example, in the <code>tgv</code> example case the <code>vorticity</code> component is executed once per 50 time steps. The <code>output_</code> parameters are synced to that, and the vorticity fields will be added to the main <code>.fld</code> file. </p><div class="fragment"><div class="line">{</div>
-<div class="line">    &quot;type&quot;: &quot;vorticity&quot;,</div>
-<div class="line">    &quot;compute_control&quot;: &quot;tsteps&quot;,</div>
-<div class="line">    &quot;compute_value&quot;: 50</div>
-<div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="simcomp_vorticity"></a>
-vorticity</h2>
-<p>Computes the vorticity field an stores in the field registry as <code>omega_x</code>, <code>omega_y</code> and <code>omega_z</code>. By default, appends the 3 vorticity fields to the field files as scalars. To output in a different <code>fld</code> series, use the <code>"output_filename"</code> parameter.</p>
-<div class="fragment"><div class="line">{</div>
-<div class="line">  &quot;type&quot;: &quot;vorticity&quot;</div>
-<div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="simcomp_lambda2"></a>
-lambda2</h2>
-<p>Computes \( \lambda_2 \) for the velocity field and stores it in the normal output files as the first unused field. This means that \( \lambda_2 \) can be found in the temperature field in then fld files if running without a scalar and s1 if neko is run with one scalar. To output in a different <code>fld</code> series, use the <code>"output_filename"</code> parameter.</p>
-<div class="fragment"><div class="line">{</div>
-<div class="line">  &quot;type&quot;: &quot;lambda2&quot;</div>
-<div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="simcomp_probes"></a>
-probes</h2>
-<p>Probes selected solution fields at a list of points. This list of points can be generated in a variety of ways, but the most common is to use the <code>csv</code> type.</p>
-<p>Mandatory fields for this simcomp are:</p><ul>
-<li><code>fields</code>: a list of fields to probe. Should be a list of field names that exist in the registry. Example: <code>"fields": ["u", "v", "p", "s"]</code>.</li>
-<li><code>output_file</code>: Name of the file in which to output the probed fields. Must be <code>.csv</code>.</li>
-</ul>
-<p>It is also possible to set a <code>start_time</code> before which the probes will not be executed (same behavior as the statistics).</p>
-<h3><a class="anchor" id="autotoc_md97"></a>
-Supported types</h3>
-<ul>
-<li><code>file</code>: Reads a list of points from a CSV file. The name of the file is provided with the <code>file_name</code> keyword. The CSV file should have the following format: <div class="fragment"><div class="line">x_0, y_0, z_0</div>
-<div class="line">x_1, y_1, z_1</div>
-<div class="line">...</div>
-<div class="line">x_N, y_N, z_N</div>
-</div><!-- fragment --> The points are assumed to be in the same units as the simulation.</li>
-<li><code>points</code>: Reads a list of points from a JSON file. The points are specified based in the <code>coordinates</code> keyword and should be a list of x,y,z values. The file should have the following format: <div class="fragment"><div class="line">{</div>
-<div class="line">  &quot;type&quot;: &quot;points&quot;,</div>
-<div class="line">  &quot;coordinates&quot;: [</div>
-<div class="line">    0.0, 0.0, 0.0,</div>
-<div class="line">    1.0, 0.0, 0.0,</div>
-<div class="line">    0.0, 1.0, 0.0,</div>
-<div class="line">    0.0, 0.0, 1.0,</div>
-<div class="line">    ...</div>
-<div class="line">  ]</div>
-<div class="line">}</div>
-</div><!-- fragment --> The points are assumed to be in the same units as the simulation.</li>
-<li><code>line</code>: Generates a list of points along a line. The line is defined by two points, <code>start</code> and <code>end</code>, and the number of points to generate, <code>amount</code>. The points are generated by linearly interpolating between <code>start</code> and <code>end</code>. The line is defined as: <div class="fragment"><div class="line">{</div>
-<div class="line">  &quot;type&quot;: &quot;line&quot;,</div>
-<div class="line">  &quot;start&quot;: [0.0, 0.0, 0.0],</div>
-<div class="line">  &quot;end&quot;: [1.0, 1.0, 1.0],</div>
-<div class="line">  &quot;amount&quot;: 10</div>
-<div class="line">}</div>
-</div><!-- fragment --></li>
-<li><code>circle</code>: Generates a list of points along a circle. The circle is defined by a center, <code>center</code>, a radius, <code>radius</code> and the normal, <code>normal</code>, the number of points to generate is controlled by <code>amount</code>. The points are generated by rotating a point around the center starting from the specified axis projected onto the circle. The circle is defined: <div class="fragment"><div class="line">{</div>
-<div class="line">  &quot;type&quot;: &quot;circle&quot;,</div>
-<div class="line">  &quot;center&quot;: [0.0, 0.0, 0.0],</div>
-<div class="line">  &quot;radius&quot;: 1.0,</div>
-<div class="line">  &quot;normal&quot;: [0.0, 0.0, 1.0],</div>
-<div class="line">  &quot;axis&quot;: &quot;x&quot;,</div>
-<div class="line">  &quot;amount&quot;: 4</div>
-<div class="line">}</div>
-</div><!-- fragment --> Leads to the following points: <div class="fragment"><div class="line">1.0, 0.0, 0.0</div>
-<div class="line">0.0, 1.0, 0.0</div>
-<div class="line">-1.0, 0.0, 0.0</div>
-<div class="line">0.0, -1.0, 0.0</div>
-</div><!-- fragment --></li>
-</ul>
-<h3><a class="anchor" id="autotoc_md98"></a>
-Example usage</h3>
-<div class="fragment"><div class="line">{</div>
-<div class="line">  &quot;type&quot;: &quot;probes&quot;,</div>
-<div class="line">  &quot;compute_control&quot;: &quot;simulationtime&quot;,</div>
-<div class="line">  &quot;compute_value&quot;    : 1,</div>
-<div class="line">  &quot;fields&quot;: [&quot;w&quot;,&quot;s&quot;],</div>
-<div class="line">  &quot;output_file&quot;:  &quot;output.csv&quot;,</div>
-<div class="line">  &quot;points&quot;: [</div>
-<div class="line">     {</div>
-<div class="line">       &quot;type&quot;: &quot;file&quot;,</div>
-<div class="line">       &quot;file_name&quot;: &quot;points.csv&quot;</div>
-<div class="line">     }</div>
-<div class="line">   ],</div>
-<div class="line">}</div>
-</div><!-- fragment --><p> This probes the fields 'w', and 's' in the points described by points.csv and outputs into output.csv every 1 time units.</p>
-<p>The probed information will be saved in the output file in the following format:</p>
-<div class="fragment"><div class="line">N_p, N_f, fields[0], fields[1], ..., fields[N_f-1]</div>
-<div class="line">p_0_x, p_0_y, p_0_z</div>
-<div class="line">p_1_x, p_1_y, p_1_z</div>
-<div class="line">...</div>
-<div class="line">p_N_p_x, p_N_p_y, p_N_p_z</div>
-<div class="line">time_0, p_0_field_0, p_0_field_1, ..., p_0_field_N_f-1</div>
-<div class="line">time_0, p_1_field_0, p_1_field_1, ..., p_1_field_N_f-1</div>
-<div class="line">...</div>
-<div class="line">time_0, p_N_p_field_0, p_N_p_field_1, ..., p_N_p_field_N_f-1</div>
-<div class="line">time_1, p_0_field_0, p_0_field_1, ..., p_0_field_N_f-1</div>
-<div class="line">time_1, p_1_field_0, p_1_field_1, ..., p_1_field_N_f-1</div>
-<div class="line">...</div>
-<div class="line">time_N_p, p_N_p_field_0, p_N_p_field_1, ..., p_N_p_field_N_f-1</div>
-</div><!-- fragment --><h2><a class="anchor" id="simcomp_field_writer"></a>
-field_writer</h2>
-<p>Outputs registered 3D fields to an <code>.fld</code> file. Requires a list of field names in the <code>fields</code> keyword. Primarily to be used for outputting new fields defined in the user file. The fields are added to then <code>neko_field_registry</code> object and are expected to be updated in the user file, or, perhaps, by other simcomps. Since this simcomp does not compute anything <code>compute_</code> configuration is irrelevant. </p><div class="fragment"><div class="line">{</div>
-<div class="line">  &quot;type&quot;: &quot;field_writer&quot;,</div>
-<div class="line">  &quot;fields&quot;: [&quot;my_field1&quot;, &quot;my_field2&quot;],</div>
-<div class="line">  &quot;output_filename&quot;: &quot;myfields&quot;,</div>
-<div class="line">  &quot;precision&quot;: &quot;double&quot;,</div>
-<div class="line">  &quot;output_control&quot; : &quot;simulation_time&quot;,</div>
-<div class="line">  &quot;output_value&quot; : 1.0</div>
-<div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="simcomp_derivative"></a>
-derivative</h2>
-<p>Computes the derivative of field along a chosen direction (x, y, or z). The field to derivate is controlled by the <code>field</code> keyword and the direction by the <code>direction</code> keyword. The simcomp will register the computed derivatives in the registry as <code>d[field]_d[direction]</code>, where the values in the brackets correspond to the choice of the user keywords. Supports writing the computed fields to disk via the usual common keywords. The resulting field will be appended as a scalar to the field files. To output in a different <code>fld</code> series, use the <code>"output_filename"</code> parameter.</p>
-<div class="fragment"><div class="line">{</div>
-<div class="line">  &quot;type&quot;: &quot;derivative&quot;,</div>
-<div class="line">  &quot;field&quot;: &quot;u&quot;,</div>
-<div class="line">  &quot;direction&quot;: &quot;y&quot;</div>
-<div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="simcomp_force_torque"></a>
-force_torque</h2>
-<p>Computes the force on a specified zone and the corresponding torque around a center point. The compute control specifies how often they are computed and printed into the log. Scale specifies a scale for the computed force/torque. Conventient if one wants to scale with the area or similar. long_print is default false and can be set to true to print all digits in the calculation. Subroutines used in the simcomp can be found in <a class="el" href="../../d9/df1/drag__torque_8f90.html">src/qoi/drag_torque.f90</a></p>
-<div class="fragment"><div class="line">{</div>
-<div class="line">  &quot;type&quot;: &quot;force_torque&quot;,</div>
-<div class="line">  &quot;zone_id&quot;: 1,</div>
-<div class="line">  &quot;center&quot;: [0.0, 0.0, 0.0],</div>
-<div class="line">  &quot;zone_name&quot;: &quot;some chosen name, optional&quot;,</div>
-<div class="line">  &quot;scale&quot;: 1.0</div>
-<div class="line">  &quot;long_print&quot; : false</div>
-<div class="line">  &quot;compute_control&quot; : &quot;tsteps&quot;,</div>
-<div class="line">  &quot;compute_value&quot; : 10</div>
-<div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="simcomp_weak_grad"></a>
-weak_grad</h2>
-<p>Computes the weak gradient of a field. The weak gradient is value of the gradient multiplied by the local value of the mass matrix. This is how a gradient term appears in the weak formulation of the governing equations. The field to derivate is controlled by the <code>field</code> keyword. The simcomp will register the computed components of the gradients in the registry as <code>weak_grad_[field]_x</code>, <code>weak_grad_[field]_y</code>, <code>weak_grad_[field]_z</code> where the value in the brackets corresponds to the choice of the user keyword. Supports writing the computed fields to disk via the usual common keywords.</p>
-<div class="fragment"><div class="line">{</div>
-<div class="line">  &quot;type&quot;: &quot;weak_grad&quot;</div>
-<div class="line">  &quot;field&quot;: &quot;u&quot;,</div>
-<div class="line">  &quot;output_control&quot; : &quot;never&quot;</div>
-<div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="simcomp_les_model"></a>
-les_model</h2>
-<p>Computes a subgrid eddy viscosity field using an SGS model. **Note*:* The simcomp <em>only</em> computes the eddy viscosity field. You have to select the corresponding <code>nut_field</code> in the fluid and/or scalar JSON object to actually enable LES, see corresponding documentation. The simcomp is controlled by the following keywords:</p>
-<ul>
-<li><code>model</code>: Selects the SGS model. Currently available models are:<ul>
-<li><code>smagorinsky</code>: The standard Smagorinsky model. Configured by the following additional keyword:<ul>
-<li><code>c_s</code>: The Smagorinsky constant, defaults to 0.17.</li>
-</ul>
-</li>
-<li><code><a class="el" href="../../d4/d9c/namespacedynamic__smagorinsky.html" title="Implements dynamic_smagorinsky_t.">dynamic_smagorinsky</a></code>: The dynamic Smagorinsky model.</li>
-<li><code>vreman</code>: The Vreman model. Configured by the following additional keyword:<ul>
-<li><code>c</code>: The model constant, defaults to 0.07.</li>
-</ul>
-</li>
-<li><code>sigma</code>: The Sigma model. Configured by the following additional keyword:<ul>
-<li><code>c</code>: The model constant, defaults to 1.35.</li>
-</ul>
-</li>
-<li><code>wale</code>: The WALE model. Configured by the following additional keyword:<ul>
-<li><code>c_w</code>: The WALE constant, defaults to 0.55.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>les_delta</code>: Selects the way to compute the LES filter length scale. Currently three alternatives are provided and the default one is <code>pointwise</code> if nothing is specified:<ul>
-<li><code>pointwise</code>: Computes a local value based on the spacing of the GLL nodes.</li>
-<li><code>elementwise_average</code>: Computes a single value for the whole element based on the average spacing of the GLL nodes within the element.</li>
-<li><code>elementwise_max</code>: Computes a single value for the whole element based on the maximum spacing of the GLL nodes within the element. The <code>les_delta</code> field is added to the registry and written to the .fld files.</li>
-</ul>
-</li>
-<li><code>nut_field</code>: The name of the SGS eddy viscosity field added to the registry. Defaults to <code>nut</code>. This allows to have two different SGS models active, saved to different fields. For example, one for the scalar and one to the fluid.</li>
-<li><p class="startli"><code>extrapolation</code>: Whether or not extrapolate the velocity to compute the eddy viscosity.</p><ul>
-<li><code>true</code>: extrapolate the velocity as the same order as the time scheme.</li>
-<li><code>false</code>: the default option, disable the extrapolation. In this case, the estimation of the eddy viscosity is of first order, while circumvent the risk of unstable extrapolation.</li>
-</ul>
-<div class="fragment"><div class="line">{</div>
-<div class="line">  &quot;type&quot;: &quot;les_model&quot;</div>
-<div class="line">  &quot;model&quot;: &quot;smagorinsky&quot;,</div>
-<div class="line">  &quot;delta_type&quot;: &quot;pointwise&quot;,</div>
-<div class="line">  &quot;output_control&quot; : &quot;never&quot;</div>
-<div class="line">}</div>
-</div><!-- fragment --></li>
-</ul>
-<h2><a class="anchor" id="simcomp_speri"></a>
-Spectral error indicator</h2>
-<p>Computes the spectral error indicator as developed by Mavriplis (1989) (<a href="https://doi.org/10.1007/978-3-663-13975-1_34">https://doi.org/10.1007/978-3-663-13975-1_34</a>). This is an a posteriori error measure, based on the local properties of the spectral solution. This method formally only gives an indication of the error.</p>
-<p>The spectral error indicator is computed for the 3 velocity fields, resulting in 3 additional fields appended to the field files.</p>
-<div class="fragment"><div class="line">{</div>
-<div class="line">  &quot;type&quot;: &quot;spectral_error&quot;</div>
-<div class="line">}</div>
-</div><!-- fragment --> </div></div><!-- contents -->
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../index.html">Neko Manual</a></li><li class="navelem"><a class="el" href="../../dd/d04/user-guide.html">User guide</a></li>
-    <li class="footer">Generated on Tue May 20 2025 03:47:15 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Wed May 21 2025 03:47:16 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
