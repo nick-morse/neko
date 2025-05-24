@@ -141,7 +141,7 @@ var searchData=
   ['ext_5ftime_5fscheme_5fcompute_5fcoeffs_138',['ext_time_scheme_compute_coeffs',['../d2/d75/namespaceext__time__scheme.html#adf75631dc4c73c73b558f4eeb29fe65b',1,'ext_time_scheme']]],
   ['ext_5ftime_5fscheme_5fcompute_5fmodified_5fcoeffs_139',['ext_time_scheme_compute_modified_coeffs',['../d2/d75/namespaceext__time__scheme.html#a1654d689ca92903729de891e38caf174',1,'ext_time_scheme']]],
   ['ext_5ftime_5fscheme_5ft_140',['ext_time_scheme_t',['../d2/d90/structext__time__scheme_1_1ext__time__scheme__t.html',1,'ext_time_scheme']]],
-  ['extending_20neko_141',['Extending neko',['../d4/d1b/extending.html',1,'']]],
+  ['extending_20neko_141',['Extending neko',['../d4/d1b/extending.html',1,'user-guide']]],
   ['extension_2emd_142',['extension.md',['../da/d98/extension_8md.html',1,'']]],
   ['extract_5ffld_5ffile_5findex_143',['extract_fld_file_index',['../d6/d84/namespaceutils.html#a0962746ef1c8f4a3a6e83aae5ef2d7a0',1,'utils']]]
 ];

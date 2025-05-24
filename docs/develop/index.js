@@ -135,7 +135,8 @@ var index =
         [ "Mesh", "d7/d7f/io.html#autotoc_md81", null ],
         [ "Three-dimensional field output", "d7/d7f/io.html#autotoc_md82", null ],
         [ "Checkpoint files", "d7/d7f/io.html#autotoc_md83", null ]
-      ] ]
+      ] ],
+      [ "Extending neko", "d4/d1b/extending.html", null ]
     ] ],
     [ "Developer guide", "dc/d70/developer-guide.html", [
       [ "Contributing to Neko", "d1/d5a/contributing.html", [
