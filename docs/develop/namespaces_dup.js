@@ -697,6 +697,7 @@ var namespaces_dup =
     [ "tri", "df/d69/namespacetri.html", "df/d69/namespacetri" ],
     [ "tri_mesh", "df/d32/namespacetri__mesh.html", "df/d32/namespacetri__mesh" ],
     [ "tuple", "df/dec/namespacetuple.html", "df/dec/namespacetuple" ],
+    [ "user_access_singleton", "d7/d7f/namespaceuser__access__singleton.html", "d7/d7f/namespaceuser__access__singleton" ],
     [ "user_intf", "d9/dbc/namespaceuser__intf.html", "d9/dbc/namespaceuser__intf" ],
     [ "uset", "df/da5/namespaceuset.html", "df/da5/namespaceuset" ],
     [ "usr_inflow", "dc/d45/namespaceusr__inflow.html", "dc/d45/namespaceusr__inflow" ],

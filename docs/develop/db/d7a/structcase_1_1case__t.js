@@ -10,5 +10,5 @@ var structcase_1_1case__t =
     [ "params", "db/d7a/structcase_1_1case__t.html#a0cec46707c2d83ee1f9e1cedfc8ea63e", null ],
     [ "scalar", "db/d7a/structcase_1_1case__t.html#a82f9cabebab34fc9c60d63c90444705a", null ],
     [ "time", "db/d7a/structcase_1_1case__t.html#aa38b005e583c7d751275a98c746f6656", null ],
-    [ "usr", "db/d7a/structcase_1_1case__t.html#a43f72731b78ac5b8a724df44f4c53cf4", null ]
+    [ "user", "db/d7a/structcase_1_1case__t.html#a88959d0f0376a8e76875973137b64d01", null ]
 ];

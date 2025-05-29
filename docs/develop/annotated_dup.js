@@ -1301,6 +1301,9 @@ var annotated_dup =
       [ "tuple_r8_t", "d7/d14/structtuple_1_1tuple__r8__t.html", "d7/d14/structtuple_1_1tuple__r8__t" ],
       [ "tuple_t", "d1/d3b/structtuple_1_1tuple__t.html", "d1/d3b/structtuple_1_1tuple__t" ]
     ] ],
+    [ "user_access_singleton", "d7/d7f/namespaceuser__access__singleton.html", [
+      [ "user_access_t", "db/d04/structuser__access__singleton_1_1user__access__t.html", "db/d04/structuser__access__singleton_1_1user__access__t" ]
+    ] ],
     [ "user_intf", "d9/dbc/namespaceuser__intf.html", [
       [ "user_final_modules", "d9/dfa/interfaceuser__intf_1_1user__final__modules.html", "d9/dfa/interfaceuser__intf_1_1user__final__modules" ],
       [ "user_initialize_modules", "de/d4e/interfaceuser__intf_1_1user__initialize__modules.html", "de/d4e/interfaceuser__intf_1_1user__initialize__modules" ],

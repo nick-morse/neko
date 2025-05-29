@@ -822,6 +822,7 @@ var hierarchy =
       [ "tuple::tuple_r8_t", "d7/d14/structtuple_1_1tuple__r8__t.html", null ]
     ] ],
     [ "fluid_scheme_base::update_material_properties", "db/dfd/interfacefluid__scheme__base_1_1update__material__properties.html", null ],
+    [ "user_access_singleton::user_access_t", "db/d04/structuser__access__singleton_1_1user__access__t.html", null ],
     [ "user_intf::user_final_modules", "d9/dfa/interfaceuser__intf_1_1user__final__modules.html", null ],
     [ "user_intf::user_initialize_modules", "de/d4e/interfaceuser__intf_1_1user__initialize__modules.html", null ],
     [ "user_intf::user_material_properties", "dd/db6/interfaceuser__intf_1_1user__material__properties.html", null ],
