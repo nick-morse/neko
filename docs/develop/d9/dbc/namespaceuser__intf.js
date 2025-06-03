@@ -3,7 +3,6 @@ var namespaceuser__intf =
     [ "user_final_modules", "d9/dfa/interfaceuser__intf_1_1user__final__modules.html", "d9/dfa/interfaceuser__intf_1_1user__final__modules" ],
     [ "user_initialize_modules", "de/d4e/interfaceuser__intf_1_1user__initialize__modules.html", "de/d4e/interfaceuser__intf_1_1user__initialize__modules" ],
     [ "user_material_properties", "dd/db6/interfaceuser__intf_1_1user__material__properties.html", "dd/db6/interfaceuser__intf_1_1user__material__properties" ],
-    [ "user_simcomp_init", "de/d93/interfaceuser__intf_1_1user__simcomp__init.html", "de/d93/interfaceuser__intf_1_1user__simcomp__init" ],
     [ "user_startup_intrf", "d5/dcd/interfaceuser__intf_1_1user__startup__intrf.html", "d5/dcd/interfaceuser__intf_1_1user__startup__intrf" ],
     [ "user_t", "d7/da0/structuser__intf_1_1user__t.html", "d7/da0/structuser__intf_1_1user__t" ],
     [ "usercheck", "d3/d11/interfaceuser__intf_1_1usercheck.html", "d3/d11/interfaceuser__intf_1_1usercheck" ],
@@ -27,6 +26,5 @@ var namespaceuser__intf =
     [ "dummy_user_mesh_setup", "d9/dbc/namespaceuser__intf.html#a65f7550c76dc49541fadb22fdb8b6fb9", null ],
     [ "dummy_user_scalar_f_vector", "d9/dbc/namespaceuser__intf.html#adad964acbf0b8c1571e1acea77fd07f3", null ],
     [ "dummy_user_startup", "d9/dbc/namespaceuser__intf.html#a6d810983eaf93df6b1a8ed80c9115316", null ],
-    [ "simulation_component_user_settings", "d9/dbc/namespaceuser__intf.html#a2c5bf9291ff09efe1642fc8bd0991cfd", null ],
     [ "user_intf_init", "d9/dbc/namespaceuser__intf.html#a4911daad15c30f88e758295cdd047be9", null ]
 ];

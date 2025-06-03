@@ -826,7 +826,6 @@ var hierarchy =
     [ "user_intf::user_final_modules", "d9/dfa/interfaceuser__intf_1_1user__final__modules.html", null ],
     [ "user_intf::user_initialize_modules", "de/d4e/interfaceuser__intf_1_1user__initialize__modules.html", null ],
     [ "user_intf::user_material_properties", "dd/db6/interfaceuser__intf_1_1user__material__properties.html", null ],
-    [ "user_intf::user_simcomp_init", "de/d93/interfaceuser__intf_1_1user__simcomp__init.html", null ],
     [ "user_intf::user_startup_intrf", "d5/dcd/interfaceuser__intf_1_1user__startup__intrf.html", null ],
     [ "user_intf::user_t", "d7/da0/structuser__intf_1_1user__t.html", null ],
     [ "user_intf::usercheck", "d3/d11/interfaceuser__intf_1_1usercheck.html", null ],

@@ -5,7 +5,6 @@ var user__intf_8f90 =
     [ "user_intf::useric_compressible", "d8/d52/interfaceuser__intf_1_1useric__compressible.html", "d8/d52/interfaceuser__intf_1_1useric__compressible" ],
     [ "user_intf::useric_scalar", "d7/d69/interfaceuser__intf_1_1useric__scalar.html", "d7/d69/interfaceuser__intf_1_1useric__scalar" ],
     [ "user_intf::user_initialize_modules", "de/d4e/interfaceuser__intf_1_1user__initialize__modules.html", "de/d4e/interfaceuser__intf_1_1user__initialize__modules" ],
-    [ "user_intf::user_simcomp_init", "de/d93/interfaceuser__intf_1_1user__simcomp__init.html", "de/d93/interfaceuser__intf_1_1user__simcomp__init" ],
     [ "user_intf::usermsh", "da/dd1/interfaceuser__intf_1_1usermsh.html", "da/dd1/interfaceuser__intf_1_1usermsh" ],
     [ "user_intf::usercheck", "d3/d11/interfaceuser__intf_1_1usercheck.html", "d3/d11/interfaceuser__intf_1_1usercheck" ],
     [ "user_intf::user_final_modules", "d9/dfa/interfaceuser__intf_1_1user__final__modules.html", "d9/dfa/interfaceuser__intf_1_1user__final__modules" ],
@@ -27,6 +26,5 @@ var user__intf_8f90 =
     [ "dummy_user_mesh_setup", "d7/d30/user__intf_8f90.html#a65f7550c76dc49541fadb22fdb8b6fb9", null ],
     [ "dummy_user_scalar_f_vector", "d7/d30/user__intf_8f90.html#adad964acbf0b8c1571e1acea77fd07f3", null ],
     [ "dummy_user_startup", "d7/d30/user__intf_8f90.html#a6d810983eaf93df6b1a8ed80c9115316", null ],
-    [ "simulation_component_user_settings", "d7/d30/user__intf_8f90.html#a2c5bf9291ff09efe1642fc8bd0991cfd", null ],
     [ "user_intf_init", "d7/d30/user__intf_8f90.html#a4911daad15c30f88e758295cdd047be9", null ]
 ];

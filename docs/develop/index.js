@@ -75,8 +75,7 @@ var index =
           [ "Computing at every time step", "d6/def/user-file.html#user-file_user-check", null ],
           [ "Setting material properties", "d6/def/user-file.html#user-file_mat-prop", null ],
           [ "Runtime mesh deformation", "d6/def/user-file.html#user-file_user-mesh-setup", null ],
-          [ "Scalar boundary conditions", "d6/def/user-file.html#user-file_scalar-bc", null ],
-          [ "User defined simulation components", "d6/def/user-file.html#user-file_simcomps", null ]
+          [ "Scalar boundary conditions", "d6/def/user-file.html#user-file_scalar-bc", null ]
         ] ],
         [ "Case-specific user functions", "d6/def/user-file.html#autotoc_md106", [
           [ "Fluid and Scalar initial conditions", "d6/def/user-file.html#user-file_user-ic", null ],

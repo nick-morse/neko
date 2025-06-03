@@ -109,7 +109,6 @@ $(document).ready(function(){initNavTree('d6/def/user-file.html','../../'); init
 <li class="level2"><a href="#user-file_mat-prop">Setting material properties</a></li>
 <li class="level2"><a href="#user-file_user-mesh-setup">Runtime mesh deformation</a></li>
 <li class="level2"><a href="#user-file_scalar-bc">Scalar boundary conditions</a></li>
-<li class="level2"><a href="#user-file_simcomps">User defined simulation components</a></li>
 </ul>
 </li>
 <li class="level1"><a href="#autotoc_md106">Case-specific user functions</a><ul><li class="level2"><a href="#user-file_user-ic">Fluid and Scalar initial conditions</a></li>
@@ -299,29 +298,7 @@ Scalar boundary conditions</h2>
 <div class="line"><span class="keyword">end subroutine </span>set_scalar_boundary_conditions</div>
 </div><!-- fragment --><p>This function will be called on all the points on the relevant boundaries. The registering of the above function in <code>user_setup</code> should be done as follows:</p>
 <div class="fragment"><div class="line">u%scalar_user_bc =&gt; set_scalar_boundary_conditions</div>
-</div><!-- fragment --><h2><a class="anchor" id="user-file_simcomps"></a>
-User defined simulation components</h2>
-<p>In addition to the case-specific user functions, the user can also define their own simulation components. This can be done by writing a new type which extends the simulation_component_t type, and implementing the necessary functions for the new type. The user can then specify the component in the list of simulation components in the case file. The setting <code>is_user</code> should be set to <code>true</code> in the JSON object for the new simulation component. The typename is used to extract the settings for the simulation component from the JSON file.</p>
-<div class="fragment"><div class="line">{</div>
-<div class="line">    &quot;type&quot;: &quot;my_comp&quot;,</div>
-<div class="line">    &quot;is_user&quot;: true,</div>
-<div class="line">    // other settings</div>
-<div class="line">}</div>
-</div><!-- fragment --> <div class="fragment"><div class="line"><span class="keyword">subroutine </span>user_simcomp(params)</div>
-<div class="line">  <span class="keywordtype">type</span>(json_file), <span class="keywordtype">intent(inout)</span> :: params</div>
-<div class="line">  <span class="keywordtype">type</span>(user_simcomp_t), <span class="keywordtype">allocatable</span> :: my_simcomp</div>
-<div class="line">  <span class="keywordtype">type</span>(json_file) :: simcomp_settings</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">! Allocate a simulation component</span></div>
-<div class="line">  <span class="keyword">allocate</span>(my_simcomp)</div>
-<div class="line">  simcomp_settings = simulation_component_user_settings(<span class="stringliteral">&quot;my_comp&quot;</span>, params)</div>
-<div class="line">  <span class="keyword">call </span>neko_simcomps%add_user_simcomp(my_simcomp, simcomp_settings)</div>
-<div class="line"> </div>
-<div class="line"><span class="keyword">end subroutine </span>user_simcomp</div>
-</div><!-- fragment --><p>In the example above, the subroutine <code>user_simcomp</code> contains the actual implementation, and needs to be registered by adding:</p>
-<div class="fragment"><div class="line">u%init_user_simcomp =&gt; user_simcomp</div>
-</div><!-- fragment --><p>A full example of a user-defined simulation component can be found in the examples.</p>
-<h1><a class="anchor" id="autotoc_md106"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md106"></a>
 Case-specific user functions</h1>
 <p>As explained in the <a class="el" href="../../d1/d79/case-file_8md.html">case file</a> page, certain components of the simulation can be set to be user defined. These components and their associated user functions are:</p>
 <table class="markdownTable">
@@ -706,7 +683,7 @@ Registries</h2>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../index.html">Neko Manual</a></li><li class="navelem"><a class="el" href="../../dd/d04/user-guide.html">User guide</a></li>
-    <li class="footer">Generated on Mon Jun 2 2025 03:49:20 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Tue Jun 3 2025 03:48:19 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
