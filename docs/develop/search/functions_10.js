@@ -118,7 +118,7 @@ var searchData=
   ['print_5fdebug_115',['print_debug',['../db/d56/namespacescalar__pnpn.html#ad0f0e5d3f3bacefca090315ad14e8716',1,'scalar_pnpn']]],
   ['print_5fphmg_5finfo_116',['print_phmg_info',['../d1/d38/namespacephmg.html#ab48ada80640b1d78132c82130722f4de',1,'phmg']]],
   ['print_5fpreagg_5finfo_117',['print_preagg_info',['../d5/d1b/namespacetree__amg__multigrid.html#a5e3b65006b42cee8f75ed80d942ab838',1,'tree_amg_multigrid']]],
-  ['print_5fproj_5finfo_118',['print_proj_info',['../d3/d06/namespaceprojection.html#afbb49138c663064e14453681e00610f1',1,'projection']]],
+  ['print_5fproj_5finfo_118',['print_proj_info',['../d3/d06/namespaceprojection.html#aee107eb808ce0b0008497ab7985f098e',1,'projection']]],
   ['print_5fresid_5finfo_119',['print_resid_info',['../d5/d1b/namespacetree__amg__multigrid.html#ab10a85cca3eb05a6c53e52e29292da5c',1,'tree_amg_multigrid']]],
   ['probes_5fdebug_120',['probes_debug',['../d2/d4d/namespaceprobes.html#a9a5fe480805cf73f0ed8ec0c532de369',1,'probes']]],
   ['probes_5fevaluate_5fand_5fwrite_121',['probes_evaluate_and_write',['../d2/d4d/namespaceprobes.html#a3077f1882b3d9593f98de630107bd461',1,'probes']]],

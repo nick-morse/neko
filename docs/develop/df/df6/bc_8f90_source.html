@@ -566,86 +566,89 @@ $(document).ready(function(){initNavTree('df/df6/bc_8f90_source.html','../../');
 <div class="line"><a id="l00516" name="l00516"></a><span class="lineno">  516</span><span class="keywordflow">          end do</span></div>
 <div class="line"><a id="l00517" name="l00517"></a><span class="lineno">  517</span><span class="keywordflow">       end select</span></div>
 <div class="line"><a id="l00518" name="l00518"></a><span class="lineno">  518</span><span class="keywordflow">    end do</span></div>
-<div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span>    <span class="keywordflow">if</span> ( .not. only_facet) <span class="keywordflow">then</span></div>
-<div class="line"><a id="l00520" name="l00520"></a><span class="lineno">  520</span>       <span class="comment">!Makes check for points not on facet that should have bc applied</span></div>
-<div class="line"><a id="l00521" name="l00521"></a><span class="lineno">  521</span>       <span class="keyword">call </span>test_field%init(this%dof)</div>
-<div class="line"><a id="l00522" name="l00522"></a><span class="lineno">  522</span> </div>
-<div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span>       n = test_field%size()</div>
-<div class="line"><a id="l00524" name="l00524"></a><span class="lineno">  524</span>       test_field%x = 0.0_rp</div>
-<div class="line"><a id="l00525" name="l00525"></a><span class="lineno">  525</span>       <span class="comment">!Apply this bc once</span></div>
-<div class="line"><a id="l00526" name="l00526"></a><span class="lineno">  526</span>       <span class="keywordflow">do</span> i = 1, msk_c</div>
-<div class="line"><a id="l00527" name="l00527"></a><span class="lineno">  527</span>          test_field%x(this%msk(i),1,1,1) = 1.0</div>
-<div class="line"><a id="l00528" name="l00528"></a><span class="lineno">  528</span><span class="keywordflow">       end do</span></div>
-<div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span>       <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d9/d77/namespaceneko__config.html#ac196ccb4b3efd94171f0cfbfedaa7b9d">neko_bcknd_device</a> .eq. 1) <span class="keywordflow">then</span></div>
-<div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span>          <span class="keyword">call </span><a class="code hl_interface" href="../../d6/dac/interfacedevice_1_1device__memcpy.html">device_memcpy</a>(test_field%x, test_field%x_d, n, &amp;</div>
-<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span>               <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a3f51b2c9ef4bd878a310bd1e1d0d3c80">host_to_device</a>, sync=.true.)</div>
-<div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span><span class="keywordflow">       end if</span></div>
-<div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span>       <span class="comment">!Check if some point that was not zeroed was zeroed on another element</span></div>
-<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span>       <span class="keyword">call </span>this%coef%gs_h%op(test_field,gs_op_add)</div>
-<div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span>       <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d9/d77/namespaceneko__config.html#ac196ccb4b3efd94171f0cfbfedaa7b9d">neko_bcknd_device</a> .eq. 1) <span class="keywordflow">then</span></div>
-<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span>          <span class="keyword">call </span><a class="code hl_interface" href="../../d6/dac/interfacedevice_1_1device__memcpy.html">device_memcpy</a>(test_field%x, test_field%x_d, n, &amp;</div>
-<div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span>               <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a7c3556984ffad14469de7accab5bc84b">device_to_host</a>, sync=.true.)</div>
-<div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span><span class="keywordflow">       end if</span></div>
-<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span>       msk_c = 0</div>
-<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span>       <span class="keywordflow">do</span> i = 1, this%dof%size()</div>
-<div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span>          <span class="keywordflow">if</span> (test_field%x(i,1,1,1) .gt. 0.5) <span class="keywordflow">then</span></div>
-<div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span>             msk_c = msk_c + 1</div>
-<div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span><span class="keywordflow">          end if</span></div>
-<div class="line"><a id="l00544" name="l00544"></a><span class="lineno">  544</span><span class="keywordflow">       end do</span></div>
-<div class="line"><a id="l00545" name="l00545"></a><span class="lineno">  545</span>       <span class="comment">!Allocate new mask</span></div>
-<div class="line"><a id="l00546" name="l00546"></a><span class="lineno">  546</span>       <span class="keyword">deallocate</span>(this%msk)</div>
-<div class="line"><a id="l00547" name="l00547"></a><span class="lineno">  547</span>       <span class="keyword">allocate</span>(this%msk(0:msk_c))</div>
-<div class="line"><a id="l00548" name="l00548"></a><span class="lineno">  548</span>       j = 1</div>
-<div class="line"><a id="l00549" name="l00549"></a><span class="lineno">  549</span>       <span class="keywordflow">do</span> i = 1, this%dof%size()</div>
-<div class="line"><a id="l00550" name="l00550"></a><span class="lineno">  550</span>          <span class="keywordflow">if</span> (test_field%x(i,1,1,1) .gt. 0.5) <span class="keywordflow">then</span></div>
-<div class="line"><a id="l00551" name="l00551"></a><span class="lineno">  551</span>             this%msk(j) = i</div>
-<div class="line"><a id="l00552" name="l00552"></a><span class="lineno">  552</span>             j = j + 1</div>
-<div class="line"><a id="l00553" name="l00553"></a><span class="lineno">  553</span><span class="keywordflow">          end if</span></div>
-<div class="line"><a id="l00554" name="l00554"></a><span class="lineno">  554</span><span class="keywordflow">       end do</span></div>
-<div class="line"><a id="l00555" name="l00555"></a><span class="lineno">  555</span> </div>
-<div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span>       <span class="keyword">call </span>test_field%free()</div>
-<div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span><span class="keywordflow">    end if</span></div>
-<div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span> </div>
-<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>    this%msk(0) = msk_c</div>
-<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span>    this%facet(0) = msk_c</div>
-<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span> </div>
-<div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d9/d77/namespaceneko__config.html#ac196ccb4b3efd94171f0cfbfedaa7b9d">neko_bcknd_device</a> .eq. 1) <span class="keywordflow">then</span></div>
-<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span>       n = msk_c + 1</div>
-<div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span>       <span class="keyword">call </span><a class="code hl_interface" href="../../da/db0/interfacedevice_1_1device__map.html">device_map</a>(this%msk, this%msk_d, n)</div>
-<div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span>       <span class="keyword">call </span><a class="code hl_interface" href="../../da/db0/interfacedevice_1_1device__map.html">device_map</a>(this%facet, this%facet_d, n)</div>
+<div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span>    this%facet(0) = msk_c</div>
+<div class="line"><a id="l00520" name="l00520"></a><span class="lineno">  520</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d9/d77/namespaceneko__config.html#ac196ccb4b3efd94171f0cfbfedaa7b9d">neko_bcknd_device</a> .eq. 1) <span class="keywordflow">then</span></div>
+<div class="line"><a id="l00521" name="l00521"></a><span class="lineno">  521</span>       <span class="comment">!Observe the facet_mask is junk if only_facet is false</span></div>
+<div class="line"><a id="l00522" name="l00522"></a><span class="lineno">  522</span>       n = msk_c + 1</div>
+<div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span>       <span class="keyword">call </span><a class="code hl_interface" href="../../da/db0/interfacedevice_1_1device__map.html">device_map</a>(this%facet, this%facet_d, n)</div>
+<div class="line"><a id="l00524" name="l00524"></a><span class="lineno">  524</span>       <span class="keyword">call </span><a class="code hl_interface" href="../../d6/dac/interfacedevice_1_1device__memcpy.html">device_memcpy</a>(this%facet, this%facet_d, n, &amp;</div>
+<div class="line"><a id="l00525" name="l00525"></a><span class="lineno">  525</span>            <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a3f51b2c9ef4bd878a310bd1e1d0d3c80">host_to_device</a>, sync = .true.)</div>
+<div class="line"><a id="l00526" name="l00526"></a><span class="lineno">  526</span><span class="keywordflow">    end if</span></div>
+<div class="line"><a id="l00527" name="l00527"></a><span class="lineno">  527</span>    <span class="keywordflow">if</span> ( .not. only_facet) <span class="keywordflow">then</span></div>
+<div class="line"><a id="l00528" name="l00528"></a><span class="lineno">  528</span>       <span class="comment">!Makes check for points not on facet that should have bc applied</span></div>
+<div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span>       <span class="keyword">call </span>test_field%init(this%dof)</div>
+<div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span> </div>
+<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span>       n = test_field%size()</div>
+<div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span>       test_field%x = 0.0_rp</div>
+<div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span>       <span class="comment">!Apply this bc once</span></div>
+<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span>       <span class="keywordflow">do</span> i = 1, msk_c</div>
+<div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span>          test_field%x(this%msk(i),1,1,1) = 1.0</div>
+<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span><span class="keywordflow">       end do</span></div>
+<div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span>       <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d9/d77/namespaceneko__config.html#ac196ccb4b3efd94171f0cfbfedaa7b9d">neko_bcknd_device</a> .eq. 1) <span class="keywordflow">then</span></div>
+<div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span>          <span class="keyword">call </span><a class="code hl_interface" href="../../d6/dac/interfacedevice_1_1device__memcpy.html">device_memcpy</a>(test_field%x, test_field%x_d, n, &amp;</div>
+<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span>               <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a3f51b2c9ef4bd878a310bd1e1d0d3c80">host_to_device</a>, sync=.true.)</div>
+<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span><span class="keywordflow">       end if</span></div>
+<div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span>       <span class="comment">!Check if some point that was not zeroed was zeroed on another element</span></div>
+<div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span>       <span class="keyword">call </span>this%coef%gs_h%op(test_field,gs_op_add)</div>
+<div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span>       <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d9/d77/namespaceneko__config.html#ac196ccb4b3efd94171f0cfbfedaa7b9d">neko_bcknd_device</a> .eq. 1) <span class="keywordflow">then</span></div>
+<div class="line"><a id="l00544" name="l00544"></a><span class="lineno">  544</span>          <span class="keyword">call </span><a class="code hl_interface" href="../../d6/dac/interfacedevice_1_1device__memcpy.html">device_memcpy</a>(test_field%x, test_field%x_d, n, &amp;</div>
+<div class="line"><a id="l00545" name="l00545"></a><span class="lineno">  545</span>               <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a7c3556984ffad14469de7accab5bc84b">device_to_host</a>, sync=.true.)</div>
+<div class="line"><a id="l00546" name="l00546"></a><span class="lineno">  546</span><span class="keywordflow">       end if</span></div>
+<div class="line"><a id="l00547" name="l00547"></a><span class="lineno">  547</span>       msk_c = 0</div>
+<div class="line"><a id="l00548" name="l00548"></a><span class="lineno">  548</span>       <span class="keywordflow">do</span> i = 1, this%dof%size()</div>
+<div class="line"><a id="l00549" name="l00549"></a><span class="lineno">  549</span>          <span class="keywordflow">if</span> (test_field%x(i,1,1,1) .gt. 0.5) <span class="keywordflow">then</span></div>
+<div class="line"><a id="l00550" name="l00550"></a><span class="lineno">  550</span>             msk_c = msk_c + 1</div>
+<div class="line"><a id="l00551" name="l00551"></a><span class="lineno">  551</span><span class="keywordflow">          end if</span></div>
+<div class="line"><a id="l00552" name="l00552"></a><span class="lineno">  552</span><span class="keywordflow">       end do</span></div>
+<div class="line"><a id="l00553" name="l00553"></a><span class="lineno">  553</span>       <span class="comment">!Allocate new mask</span></div>
+<div class="line"><a id="l00554" name="l00554"></a><span class="lineno">  554</span>       <span class="keyword">deallocate</span>(this%msk)</div>
+<div class="line"><a id="l00555" name="l00555"></a><span class="lineno">  555</span>       <span class="keyword">allocate</span>(this%msk(0:msk_c))</div>
+<div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span>       j = 1</div>
+<div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span>       <span class="keywordflow">do</span> i = 1, this%dof%size()</div>
+<div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span>          <span class="keywordflow">if</span> (test_field%x(i,1,1,1) .gt. 0.5) <span class="keywordflow">then</span></div>
+<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>             this%msk(j) = i</div>
+<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span>             j = j + 1</div>
+<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span><span class="keywordflow">          end if</span></div>
+<div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span><span class="keywordflow">       end do</span></div>
+<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span> </div>
+<div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span>       <span class="keyword">call </span>test_field%free()</div>
+<div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span><span class="keywordflow">    end if</span></div>
 <div class="line"><a id="l00566" name="l00566"></a><span class="lineno">  566</span> </div>
-<div class="line"><a id="l00567" name="l00567"></a><span class="lineno">  567</span>       <span class="keyword">call </span><a class="code hl_interface" href="../../d6/dac/interfacedevice_1_1device__memcpy.html">device_memcpy</a>(this%msk, this%msk_d, n, &amp;</div>
-<div class="line"><a id="l00568" name="l00568"></a><span class="lineno">  568</span>            <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a3f51b2c9ef4bd878a310bd1e1d0d3c80">host_to_device</a>, sync = .false.)</div>
-<div class="line"><a id="l00569" name="l00569"></a><span class="lineno">  569</span>       <span class="keyword">call </span><a class="code hl_interface" href="../../d6/dac/interfacedevice_1_1device__memcpy.html">device_memcpy</a>(this%facet, this%facet_d, n, &amp;</div>
-<div class="line"><a id="l00570" name="l00570"></a><span class="lineno">  570</span>            <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a3f51b2c9ef4bd878a310bd1e1d0d3c80">host_to_device</a>, sync = .true.)</div>
-<div class="line"><a id="l00571" name="l00571"></a><span class="lineno">  571</span><span class="keywordflow">    end if</span></div>
-<div class="line"><a id="l00572" name="l00572"></a><span class="lineno">  572</span> </div>
+<div class="line"><a id="l00567" name="l00567"></a><span class="lineno">  567</span>    this%msk(0) = msk_c</div>
+<div class="line"><a id="l00568" name="l00568"></a><span class="lineno">  568</span> </div>
+<div class="line"><a id="l00569" name="l00569"></a><span class="lineno">  569</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d9/d77/namespaceneko__config.html#ac196ccb4b3efd94171f0cfbfedaa7b9d">neko_bcknd_device</a> .eq. 1) <span class="keywordflow">then</span></div>
+<div class="line"><a id="l00570" name="l00570"></a><span class="lineno">  570</span>       n = msk_c + 1</div>
+<div class="line"><a id="l00571" name="l00571"></a><span class="lineno">  571</span>       <span class="keyword">call </span><a class="code hl_interface" href="../../da/db0/interfacedevice_1_1device__map.html">device_map</a>(this%msk, this%msk_d, n)</div>
+<div class="line"><a id="l00572" name="l00572"></a><span class="lineno">  572</span>       <span class="keyword">call </span><a class="code hl_interface" href="../../d6/dac/interfacedevice_1_1device__memcpy.html">device_memcpy</a>(this%msk, this%msk_d, n, &amp;</div>
+<div class="line"><a id="l00573" name="l00573"></a><span class="lineno">  573</span>            <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a3f51b2c9ef4bd878a310bd1e1d0d3c80">host_to_device</a>, sync = .true.)</div>
+<div class="line"><a id="l00574" name="l00574"></a><span class="lineno">  574</span><span class="keywordflow">    end if</span></div>
+<div class="line"><a id="l00575" name="l00575"></a><span class="lineno">  575</span> </div>
 </div>
-<div class="line"><a id="l00573" name="l00573"></a><span class="lineno">  573</span>  <span class="keyword">end subroutine </span><a class="code hl_function" href="../../d0/dc0/namespacebc.html#aaeeaa7c90eedcd2f206514d689a31a0d">bc_finalize_base</a></div>
-<div class="line"><a id="l00574" name="l00574"></a><span class="lineno">  574</span> </div>
-<div class="foldopen" id="foldopen00578" data-start="" data-end="">
-<div class="line"><a id="l00578" name="l00578"></a><span class="lineno"><a class="line" href="../../d0/dc0/namespacebc.html#ac725cd64024298da9e4e2122b006c546">  578</a></span>  <span class="keyword">subroutine </span><a class="code hl_function" href="../../d0/dc0/namespacebc.html#ac725cd64024298da9e4e2122b006c546">bc_debug_mask</a>(this, file_name)</div>
-<div class="line"><a id="l00579" name="l00579"></a><span class="lineno">  579</span>    <span class="keywordtype">use </span><a class="code hl_namespace" href="../../dc/da9/namespacefield.html">field</a>, <span class="keywordtype">only</span> : <a class="code hl_struct" href="../../d3/d5f/structfield_1_1field__t.html">field_t</a></div>
-<div class="line"><a id="l00580" name="l00580"></a><span class="lineno">  580</span>    <span class="keywordtype">use </span><a class="code hl_namespace" href="../../da/d16/namespacefile.html">file</a>, <span class="keywordtype">only</span> : <a class="code hl_interface" href="../../d6/dae/structfile_1_1file__t.html">file_t</a></div>
-<div class="line"><a id="l00581" name="l00581"></a><span class="lineno">  581</span> </div>
-<div class="line"><a id="l00582" name="l00582"></a><span class="lineno">  582</span>    <span class="keywordtype">class</span>(<a class="code hl_struct" href="../../d6/db3/structbc_1_1bc__t.html">bc_t</a>), <span class="keywordtype">intent(inout)</span> :: this</div>
-<div class="line"><a id="l00583" name="l00583"></a><span class="lineno">  583</span>    <span class="keywordtype">character(len=*)</span>, <span class="keywordtype">intent(in)</span> :: file_name</div>
-<div class="line"><a id="l00584" name="l00584"></a><span class="lineno">  584</span>    <span class="keywordtype">type</span>(<a class="code hl_struct" href="../../d3/d5f/structfield_1_1field__t.html">field_t</a>) :: bdry_field</div>
-<div class="line"><a id="l00585" name="l00585"></a><span class="lineno">  585</span>    <span class="keywordtype">integer</span>:: i, m, k</div>
-<div class="line"><a id="l00586" name="l00586"></a><span class="lineno">  586</span>    <span class="keywordtype">type</span>(<a class="code hl_interface" href="../../d6/dae/structfile_1_1file__t.html">file_t</a>) :: dump_file</div>
-<div class="line"><a id="l00587" name="l00587"></a><span class="lineno">  587</span> </div>
-<div class="line"><a id="l00588" name="l00588"></a><span class="lineno">  588</span>    <span class="keyword">call </span>bdry_field%init(this%coef%dof, <span class="stringliteral">&#39;bdry&#39;</span>)</div>
-<div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span>    m = this%msk(0)</div>
-<div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span>    <span class="keywordflow">do</span> i = 1, m</div>
-<div class="line"><a id="l00591" name="l00591"></a><span class="lineno">  591</span>       k = this%msk(i)</div>
-<div class="line"><a id="l00592" name="l00592"></a><span class="lineno">  592</span>       bdry_field%x(k,1,1,1) = 1.0_rp</div>
-<div class="line"><a id="l00593" name="l00593"></a><span class="lineno">  593</span><span class="keywordflow">    end do</span></div>
-<div class="line"><a id="l00594" name="l00594"></a><span class="lineno">  594</span>    dump_file = <a class="code hl_interface" href="../../d6/dae/structfile_1_1file__t.html">file_t</a>(file_name)</div>
-<div class="line"><a id="l00595" name="l00595"></a><span class="lineno">  595</span>    <span class="keyword">call </span>dump_file%write(bdry_field)</div>
-<div class="line"><a id="l00596" name="l00596"></a><span class="lineno">  596</span> </div>
+<div class="line"><a id="l00576" name="l00576"></a><span class="lineno">  576</span>  <span class="keyword">end subroutine </span><a class="code hl_function" href="../../d0/dc0/namespacebc.html#aaeeaa7c90eedcd2f206514d689a31a0d">bc_finalize_base</a></div>
+<div class="line"><a id="l00577" name="l00577"></a><span class="lineno">  577</span> </div>
+<div class="foldopen" id="foldopen00581" data-start="" data-end="">
+<div class="line"><a id="l00581" name="l00581"></a><span class="lineno"><a class="line" href="../../d0/dc0/namespacebc.html#ac725cd64024298da9e4e2122b006c546">  581</a></span>  <span class="keyword">subroutine </span><a class="code hl_function" href="../../d0/dc0/namespacebc.html#ac725cd64024298da9e4e2122b006c546">bc_debug_mask</a>(this, file_name)</div>
+<div class="line"><a id="l00582" name="l00582"></a><span class="lineno">  582</span>    <span class="keywordtype">use </span><a class="code hl_namespace" href="../../dc/da9/namespacefield.html">field</a>, <span class="keywordtype">only</span> : <a class="code hl_struct" href="../../d3/d5f/structfield_1_1field__t.html">field_t</a></div>
+<div class="line"><a id="l00583" name="l00583"></a><span class="lineno">  583</span>    <span class="keywordtype">use </span><a class="code hl_namespace" href="../../da/d16/namespacefile.html">file</a>, <span class="keywordtype">only</span> : <a class="code hl_interface" href="../../d6/dae/structfile_1_1file__t.html">file_t</a></div>
+<div class="line"><a id="l00584" name="l00584"></a><span class="lineno">  584</span> </div>
+<div class="line"><a id="l00585" name="l00585"></a><span class="lineno">  585</span>    <span class="keywordtype">class</span>(<a class="code hl_struct" href="../../d6/db3/structbc_1_1bc__t.html">bc_t</a>), <span class="keywordtype">intent(inout)</span> :: this</div>
+<div class="line"><a id="l00586" name="l00586"></a><span class="lineno">  586</span>    <span class="keywordtype">character(len=*)</span>, <span class="keywordtype">intent(in)</span> :: file_name</div>
+<div class="line"><a id="l00587" name="l00587"></a><span class="lineno">  587</span>    <span class="keywordtype">type</span>(<a class="code hl_struct" href="../../d3/d5f/structfield_1_1field__t.html">field_t</a>) :: bdry_field</div>
+<div class="line"><a id="l00588" name="l00588"></a><span class="lineno">  588</span>    <span class="keywordtype">integer</span>:: i, m, k</div>
+<div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span>    <span class="keywordtype">type</span>(<a class="code hl_interface" href="../../d6/dae/structfile_1_1file__t.html">file_t</a>) :: dump_file</div>
+<div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span> </div>
+<div class="line"><a id="l00591" name="l00591"></a><span class="lineno">  591</span>    <span class="keyword">call </span>bdry_field%init(this%coef%dof, <span class="stringliteral">&#39;bdry&#39;</span>)</div>
+<div class="line"><a id="l00592" name="l00592"></a><span class="lineno">  592</span>    m = this%msk(0)</div>
+<div class="line"><a id="l00593" name="l00593"></a><span class="lineno">  593</span>    <span class="keywordflow">do</span> i = 1, m</div>
+<div class="line"><a id="l00594" name="l00594"></a><span class="lineno">  594</span>       k = this%msk(i)</div>
+<div class="line"><a id="l00595" name="l00595"></a><span class="lineno">  595</span>       bdry_field%x(k,1,1,1) = 1.0_rp</div>
+<div class="line"><a id="l00596" name="l00596"></a><span class="lineno">  596</span><span class="keywordflow">    end do</span></div>
+<div class="line"><a id="l00597" name="l00597"></a><span class="lineno">  597</span>    dump_file = <a class="code hl_interface" href="../../d6/dae/structfile_1_1file__t.html">file_t</a>(file_name)</div>
+<div class="line"><a id="l00598" name="l00598"></a><span class="lineno">  598</span>    <span class="keyword">call </span>dump_file%write(bdry_field)</div>
+<div class="line"><a id="l00599" name="l00599"></a><span class="lineno">  599</span> </div>
 </div>
-<div class="line"><a id="l00597" name="l00597"></a><span class="lineno">  597</span>  <span class="keyword">end subroutine </span><a class="code hl_function" href="../../d0/dc0/namespacebc.html#ac725cd64024298da9e4e2122b006c546">bc_debug_mask</a></div>
-<div class="line"><a id="l00598" name="l00598"></a><span class="lineno">  598</span><span class="keyword">end module </span><a class="code hl_namespace" href="../../d0/dc0/namespacebc.html">bc</a></div>
+<div class="line"><a id="l00600" name="l00600"></a><span class="lineno">  600</span>  <span class="keyword">end subroutine </span><a class="code hl_function" href="../../d0/dc0/namespacebc.html#ac725cd64024298da9e4e2122b006c546">bc_debug_mask</a></div>
+<div class="line"><a id="l00601" name="l00601"></a><span class="lineno">  601</span><span class="keyword">end module </span><a class="code hl_namespace" href="../../d0/dc0/namespacebc.html">bc</a></div>
 <div class="ttc" id="ainterfacebc_1_1bc__apply__scalar__dev_html"><div class="ttname"><a href="../../dc/d9b/interfacebc_1_1bc__apply__scalar__dev.html">bc::bc_apply_scalar_dev</a></div><div class="ttdoc">Apply the boundary condition to a scalar field on the device.</div><div class="ttdef"><b>Definition</b> <a href="../../df/df6/bc_8f90_source.html#l00209">bc.f90:209</a></div></div>
 <div class="ttc" id="ainterfacebc_1_1bc__apply__scalar_html"><div class="ttname"><a href="../../d9/df2/interfacebc_1_1bc__apply__scalar.html">bc::bc_apply_scalar</a></div><div class="ttdoc">Apply the boundary condition to a scalar field.</div><div class="ttdef"><b>Definition</b> <a href="../../df/df6/bc_8f90_source.html#l00168">bc.f90:168</a></div></div>
 <div class="ttc" id="ainterfacebc_1_1bc__apply__vector__dev_html"><div class="ttname"><a href="../../de/dde/interfacebc_1_1bc__apply__vector__dev.html">bc::bc_apply_vector_dev</a></div><div class="ttdoc">Apply the boundary condition to a vector field on the device.</div><div class="ttdef"><b>Definition</b> <a href="../../df/df6/bc_8f90_source.html#l00229">bc.f90:229</a></div></div>
@@ -664,7 +667,7 @@ $(document).ready(function(){initNavTree('df/df6/bc_8f90_source.html','../../');
 <div class="ttc" id="anamespacebc_html_a3a7d15bd705ef1b62072efeb1e399e97"><div class="ttname"><a href="../../d0/dc0/namespacebc.html#a3a7d15bd705ef1b62072efeb1e399e97">bc::bc_apply_scalar_generic</a></div><div class="ttdeci">subroutine bc_apply_scalar_generic(this, x, n, t, tstep)</div><div class="ttdoc">Apply the boundary condition to a scalar field. Dispatches to the CPU or the device version.</div><div class="ttdef"><b>Definition</b> <a href="../../df/df6/bc_8f90_source.html#l00350">bc.f90:351</a></div></div>
 <div class="ttc" id="anamespacebc_html_a9070c3a5c7f39f7c99eb882077054bc2"><div class="ttname"><a href="../../d0/dc0/namespacebc.html#a9070c3a5c7f39f7c99eb882077054bc2">bc::bc_init_base</a></div><div class="ttdeci">subroutine bc_init_base(this, coef)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition</b> <a href="../../df/df6/bc_8f90_source.html#l00247">bc.f90:248</a></div></div>
 <div class="ttc" id="anamespacebc_html_aaeeaa7c90eedcd2f206514d689a31a0d"><div class="ttname"><a href="../../d0/dc0/namespacebc.html#aaeeaa7c90eedcd2f206514d689a31a0d">bc::bc_finalize_base</a></div><div class="ttdeci">subroutine bc_finalize_base(this, only_facets)</div><div class="ttdoc">Finalize the construction of the bc by populting the msk and facet arrays.</div><div class="ttdef"><b>Definition</b> <a href="../../df/df6/bc_8f90_source.html#l00432">bc.f90:433</a></div></div>
-<div class="ttc" id="anamespacebc_html_ac725cd64024298da9e4e2122b006c546"><div class="ttname"><a href="../../d0/dc0/namespacebc.html#ac725cd64024298da9e4e2122b006c546">bc::bc_debug_mask</a></div><div class="ttdeci">subroutine bc_debug_mask(this, file_name)</div><div class="ttdoc">Write a field showing the mask of the bc.</div><div class="ttdef"><b>Definition</b> <a href="../../df/df6/bc_8f90_source.html#l00578">bc.f90:579</a></div></div>
+<div class="ttc" id="anamespacebc_html_ac725cd64024298da9e4e2122b006c546"><div class="ttname"><a href="../../d0/dc0/namespacebc.html#ac725cd64024298da9e4e2122b006c546">bc::bc_debug_mask</a></div><div class="ttdeci">subroutine bc_debug_mask(this, file_name)</div><div class="ttdoc">Write a field showing the mask of the bc.</div><div class="ttdef"><b>Definition</b> <a href="../../df/df6/bc_8f90_source.html#l00581">bc.f90:582</a></div></div>
 <div class="ttc" id="anamespacebc_html_acbbeaf2224629c4761155d34f86c8352"><div class="ttname"><a href="../../d0/dc0/namespacebc.html#acbbeaf2224629c4761155d34f86c8352">bc::bc_mark_facet</a></div><div class="ttdeci">subroutine bc_mark_facet(this, facet, el)</div><div class="ttdoc">Mark facet on element el as part of the boundary condition.</div><div class="ttdef"><b>Definition</b> <a href="../../df/df6/bc_8f90_source.html#l00388">bc.f90:389</a></div></div>
 <div class="ttc" id="anamespacebc_html_ad276b14294570cad93e3ca9348cb2a18"><div class="ttname"><a href="../../d0/dc0/namespacebc.html#ad276b14294570cad93e3ca9348cb2a18">bc::bc_mark_facets</a></div><div class="ttdeci">subroutine bc_mark_facets(this, facet_list)</div><div class="ttdoc">Mark all facets from a (facet, el) tuple list.</div><div class="ttdef"><b>Definition</b> <a href="../../df/df6/bc_8f90_source.html#l00401">bc.f90:402</a></div></div>
 <div class="ttc" id="anamespacebc_html_ad8ccecd2ae83e5f7789107d3a9dcc3e8"><div class="ttname"><a href="../../d0/dc0/namespacebc.html#ad8ccecd2ae83e5f7789107d3a9dcc3e8">bc::bc_apply_vector_generic</a></div><div class="ttdeci">subroutine bc_apply_vector_generic(this, x, y, z, n, t, tstep)</div><div class="ttdoc">Apply the boundary condition to a vector field. Dispatches to the CPU or the device version.</div><div class="ttdef"><b>Definition</b> <a href="../../df/df6/bc_8f90_source.html#l00301">bc.f90:302</a></div></div>
@@ -710,7 +713,7 @@ $(document).ready(function(){initNavTree('df/df6/bc_8f90_source.html','../../');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_96f7c11e9d5d0b09f433cbf8fd37f2d0.html">bc</a></li><li class="navelem"><a class="el" href="../../df/df6/bc_8f90.html">bc.f90</a></li>
-    <li class="footer">Generated on Wed Jun 4 2025 03:47:29 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Thu Jun 5 2025 03:49:01 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

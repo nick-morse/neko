@@ -1,5 +1,7 @@
 <map id="device_math::device_masked_scatter_copy" name="device_math::device_masked_scatter_copy">
-<area shape="rect" id="Node000001" title="Scatter a masked vector ." alt="" coords="239,5,409,45"/>
-<area shape="rect" id="Node000002" href="$d5/de6/namespacefield__math.html#a9b460f868ac1f25eb05f508a1abc0199" title="Gather a contigous array into a field ." alt="" coords="5,5,191,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="225,28,191,28,191,23,225,23"/>
+<area shape="rect" id="Node000001" title="Scatter a masked vector ." alt="" coords="257,37,428,77"/>
+<area shape="rect" id="Node000002" href="$d4/d86/namespacefacet__normal.html#a6f2b4d382c546c7d4e007577af7184ef" title="Apply in facet normal direction (vector valued, device version)" alt="" coords="5,5,209,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="243,46,209,42,210,37,244,41"/>
+<area shape="rect" id="Node000003" href="$d5/de6/namespacefield__math.html#a9b460f868ac1f25eb05f508a1abc0199" title="Gather a contigous array into a field ." alt="" coords="15,69,200,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="244,73,201,79,200,74,243,68"/>
 </map>

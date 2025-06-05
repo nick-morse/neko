@@ -1,7 +1,9 @@
 <map id="device_math::device_masked_gather_copy" name="device_math::device_masked_gather_copy">
-<area shape="rect" id="Node000001" title="Gather a masked vector ." alt="" coords="239,37,405,77"/>
-<area shape="rect" id="Node000002" href="$d5/de6/namespacefield__math.html#add2438fda2ab7990b599085d650ff234" title="Gather a field to reduced contigous array ." alt="" coords="5,5,191,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="225,46,190,41,191,36,225,41"/>
-<area shape="rect" id="Node000003" href="$d6/daa/namespaceforce__torque.html#a04fd3661b7bbe9d298cb5c3109ac9499" title="Compute the force_torque field." alt="" coords="25,69,171,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="225,74,171,82,171,76,224,69"/>
+<area shape="rect" id="Node000001" title="Gather a masked vector ." alt="" coords="257,69,424,109"/>
+<area shape="rect" id="Node000002" href="$d4/d86/namespacefacet__normal.html#a6f2b4d382c546c7d4e007577af7184ef" title="Apply in facet normal direction (vector valued, device version)" alt="" coords="5,5,209,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="253,68,180,48,181,43,255,63"/>
+<area shape="rect" id="Node000003" href="$d5/de6/namespacefield__math.html#add2438fda2ab7990b599085d650ff234" title="Gather a field to reduced contigous array ." alt="" coords="15,69,200,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="243,92,200,92,200,87,243,87"/>
+<area shape="rect" id="Node000004" href="$d6/daa/namespaceforce__torque.html#a04fd3661b7bbe9d298cb5c3109ac9499" title="Compute the force_torque field." alt="" coords="35,133,180,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="255,116,181,136,180,131,253,110"/>
 </map>

@@ -409,146 +409,147 @@ $(document).ready(function(){initNavTree('db/df0/wall__model_8f90_source.html','
 <div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span><span class="keywordtype">    real</span>(kind=<a class="code hl_variable" href="../../df/d48/namespacenum__types.html#ae2be59b6de7b874ce5c12fd87f9e8b5e">rp</a>) :: hmin, hmax</div>
 <div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>    <span class="keywordtype">type</span>(<a class="code hl_struct" href="../../d3/d5f/structfield_1_1field__t.html">field_t</a>), <span class="keywordtype">pointer</span> :: h_field</div>
 <div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>    <span class="keywordtype">type</span>(<a class="code hl_interface" href="../../d6/dae/structfile_1_1file__t.html">file_t</a>) :: h_file</div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span> </div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>    n_nodes = this%msk(0)</div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>    this%n_nodes = n_nodes</div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span> </div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>    <span class="keyword">call </span><a class="code hl_variable" href="../../d1/dc4/namespacefield__registry.html#a6722b2b3dba13aaff3bf5222aecbb643">neko_field_registry</a>%add_field(this%coef%dof, <span class="stringliteral">&quot;sampling_height&quot;</span>, &amp;</div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>         ignore_existing=.true.)</div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span> </div>
-<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>    h_field =&gt; <a class="code hl_variable" href="../../d1/dc4/namespacefield__registry.html#a6722b2b3dba13aaff3bf5222aecbb643">neko_field_registry</a>%get_field_by_name(<span class="stringliteral">&quot;sampling_height&quot;</span>)</div>
-<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span> </div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>    <span class="keywordflow">do</span> i = 1, n_nodes</div>
-<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>       linear = this%msk(i)</div>
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>       fid = this%facet(i)</div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>       idx = <a class="code hl_function" href="../../d1/d74/cuda_2bc__utils_8h.html#a97af2a5f58e9e047d747424d0f89132d">nonlinear_index</a>(linear, this%coef%Xh%lx, this%coef%Xh%ly,&amp;</div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>            this%coef%Xh%lz)</div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>       normal = this%coef%get_normal(idx(1), idx(2), idx(3), idx(4), fid)</div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span> </div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>       this%n_x%x(i) = normal(1)</div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>       this%n_y%x(i) = normal(2)</div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>       this%n_z%x(i) = normal(3)</div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span> </div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>       <span class="comment">! inward normal</span></div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>       normal = -normal</div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span> </div>
-<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>       <span class="keywordflow">select case</span> (fid)</div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>       <span class="keywordflow">case</span> (1)</div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>          this%ind_r(i) = idx(1) + this%h_index</div>
-<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>          this%ind_s(i) = idx(2)</div>
-<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>          this%ind_t(i) = idx(3)</div>
-<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>       <span class="keywordflow">case</span> (2)</div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>          this%ind_r(i) = idx(1) - this%h_index</div>
-<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>          this%ind_s(i) = idx(2)</div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>          this%ind_t(i) = idx(3)</div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>       <span class="keywordflow">case</span> (3)</div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>          this%ind_r(i) = idx(1)</div>
-<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>          this%ind_s(i) = idx(2) + this%h_index</div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>          this%ind_t(i) = idx(3)</div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>       <span class="keywordflow">case</span> (4)</div>
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>          this%ind_r(i) = idx(1)</div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>          this%ind_s(i) = idx(2) - this%h_index</div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>          this%ind_t(i) = idx(3)</div>
-<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>       <span class="keywordflow">case</span> (5)</div>
-<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>          this%ind_r(i) = idx(1)</div>
-<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>          this%ind_s(i) = idx(2)</div>
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>          this%ind_t(i) = idx(3) + this%h_index</div>
-<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>       <span class="keywordflow">case</span> (6)</div>
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>          this%ind_r(i) = idx(1)</div>
-<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>          this%ind_s(i) = idx(2)</div>
-<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>          this%ind_t(i) = idx(3) - this%h_index</div>
-<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span><span class="keywordflow">       case default</span></div>
-<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>          <span class="keyword">call </span><a class="code hl_interface" href="../../d7/d83/interfaceutils_1_1neko__error.html">neko_error</a>(<span class="stringliteral">&quot;The face index is not correct &quot;</span>)</div>
-<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span><span class="keywordflow">       end select</span></div>
-<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>       this%ind_e(i) = idx(4)</div>
-<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span> </div>
-<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>       <span class="comment">! Location of the wall node</span></div>
-<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>       xw = this%dof%x(idx(1), idx(2), idx(3), idx(4))</div>
-<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>       yw = this%dof%y(idx(1), idx(2), idx(3), idx(4))</div>
-<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>       zw = this%dof%z(idx(1), idx(2), idx(3), idx(4))</div>
-<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span> </div>
-<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>       <span class="comment">! Location of the sampling point</span></div>
-<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>       x = this%dof%x(this%ind_r(i), this%ind_s(i), this%ind_t(i), &amp;</div>
-<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>            this%ind_e(i))</div>
-<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>       y = this%dof%y(this%ind_r(i), this%ind_s(i), this%ind_t(i), &amp;</div>
-<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>            this%ind_e(i))</div>
-<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>       z = this%dof%z(this%ind_r(i), this%ind_s(i), this%ind_t(i), &amp;</div>
-<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>            this%ind_e(i))</div>
-<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span> </div>
-<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>       <span class="comment">! Vector from the sampling point to the wall</span></div>
-<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>       p(1) = x - xw</div>
-<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>       p(2) = y - yw</div>
-<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>       p(3) = z - zw</div>
-<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span> </div>
-<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>       <span class="comment">! Total distance to the sampling point</span></div>
-<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>       magp = sqrt(p(1)**2 + p(2)**2 + p(3)**2)</div>
-<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span> </div>
-<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>       <span class="comment">! Project on the normal direction to get h</span></div>
-<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>       this%h%x(i) = p(1)*normal(1) + p(2)*normal(2) + p(3)*normal(3)</div>
-<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span> </div>
-<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span>       h_field%x(linear,1,1,1) = this%h%x(i)</div>
-<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span> </div>
-<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>       <span class="comment">! Look at how much the total distance distance from the normal and warn</span></div>
-<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>       <span class="comment">! if significant</span></div>
-<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>       <span class="keywordflow">if</span> ((this%h%x(i) - magp) / magp &gt; 0.1 &amp;</div>
-<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>            .and. (<a class="code hl_variable" href="../../d8/da0/namespacelogger.html#ad728b3400b2e5dfa9ee65757c599c9ce">neko_log</a>%level_ .eq. <a class="code hl_variable" href="../../d8/da0/namespacelogger.html#acda43c0334eca9fb3a0b3d5e23615f7c">neko_log_debug</a>)) <span class="keywordflow">then</span></div>
-<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>          <span class="keyword">write</span>(*,*) <span class="stringliteral">&quot;Significant missalignment between wall normal and &amp;</span></div>
-<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span><span class="stringliteral"></span><span class="stringliteral">          &amp; sampling point direction at wall node&quot;</span>, xw, yw, zw</div>
-<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span><span class="keywordflow">       end if</span></div>
-<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span><span class="keywordflow">    end do</span></div>
-<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span> </div>
-<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span><span class="comment">!    hmin = glmin(this%h%x, n_nodes)</span></div>
-<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span><span class="comment">!    hmax = glmax(this%h%x, n_nodes)</span></div>
-<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span><span class="comment">!    if (pe_rank .eq. 0) then</span></div>
-<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span><span class="comment">!       write(*, &quot;(A, F10.4, F10.4)&quot;) &quot;   h min / max:&quot;, hmin, hmax</span></div>
-<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span><span class="comment">!    end if</span></div>
-<div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span> </div>
-<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d9/d77/namespaceneko__config.html#ac196ccb4b3efd94171f0cfbfedaa7b9d">neko_bcknd_device</a> .eq. 1) <span class="keywordflow">then</span></div>
-<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span>       <span class="keyword">call </span><a class="code hl_interface" href="../../d6/dac/interfacedevice_1_1device__memcpy.html">device_memcpy</a>(this%h%x, this%h%x_d, n_nodes, <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a3f51b2c9ef4bd878a310bd1e1d0d3c80">host_to_device</a>,&amp;</div>
-<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span>            sync = .false.)</div>
-<div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span>       <span class="keyword">call </span><a class="code hl_interface" href="../../d6/dac/interfacedevice_1_1device__memcpy.html">device_memcpy</a>(this%n_x%x, this%n_x%x_d, n_nodes, <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a3f51b2c9ef4bd878a310bd1e1d0d3c80">host_to_device</a>, &amp;</div>
-<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span>            sync = .false.)</div>
-<div class="line"><a id="l00444" name="l00444"></a><span class="lineno">  444</span>       <span class="keyword">call </span><a class="code hl_interface" href="../../d6/dac/interfacedevice_1_1device__memcpy.html">device_memcpy</a>(this%n_y%x, this%n_y%x_d, n_nodes, <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a3f51b2c9ef4bd878a310bd1e1d0d3c80">host_to_device</a>, &amp;</div>
-<div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span>            sync = .false.)</div>
-<div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span>       <span class="keyword">call </span><a class="code hl_interface" href="../../d6/dac/interfacedevice_1_1device__memcpy.html">device_memcpy</a>(this%n_z%x, this%n_z%x_d, n_nodes, <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a3f51b2c9ef4bd878a310bd1e1d0d3c80">host_to_device</a>, &amp;</div>
-<div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span>            sync = .true.)</div>
-<div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span><span class="keywordflow">    end if</span></div>
-<div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span> </div>
-<div class="line"><a id="l00450" name="l00450"></a><span class="lineno">  450</span>    <span class="comment">! Each wall_model bc will do a write unfortunately... But very helpful</span></div>
-<div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span>    <span class="comment">! for setup debugging.</span></div>
-<div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span>    h_file = <a class="code hl_interface" href="../../d6/dae/structfile_1_1file__t.html">file_t</a>(<span class="stringliteral">&quot;sampling_height.fld&quot;</span>)</div>
-<div class="line"><a id="l00453" name="l00453"></a><span class="lineno">  453</span>    <span class="keyword">call </span>h_file%write(h_field)</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>    <span class="keywordtype">character(len=:)</span>, <span class="keywordtype">allocatable</span> :: log_msg</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span> </div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>    n_nodes = this%msk(0)</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>    this%n_nodes = n_nodes</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span> </div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>    <span class="keyword">call </span><a class="code hl_variable" href="../../d1/dc4/namespacefield__registry.html#a6722b2b3dba13aaff3bf5222aecbb643">neko_field_registry</a>%add_field(this%coef%dof, <span class="stringliteral">&quot;sampling_height&quot;</span>, &amp;</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>         ignore_existing=.true.)</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span> </div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>    h_field =&gt; <a class="code hl_variable" href="../../d1/dc4/namespacefield__registry.html#a6722b2b3dba13aaff3bf5222aecbb643">neko_field_registry</a>%get_field_by_name(<span class="stringliteral">&quot;sampling_height&quot;</span>)</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span> </div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>    <span class="keywordflow">do</span> i = 1, n_nodes</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>       linear = this%msk(i)</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>       fid = this%facet(i)</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>       idx = <a class="code hl_function" href="../../d1/d74/cuda_2bc__utils_8h.html#a97af2a5f58e9e047d747424d0f89132d">nonlinear_index</a>(linear, this%coef%Xh%lx, this%coef%Xh%ly,&amp;</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>            this%coef%Xh%lz)</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>       normal = this%coef%get_normal(idx(1), idx(2), idx(3), idx(4), fid)</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span> </div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>       this%n_x%x(i) = normal(1)</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>       this%n_y%x(i) = normal(2)</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>       this%n_z%x(i) = normal(3)</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span> </div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>       <span class="comment">! inward normal</span></div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>       normal = -normal</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span> </div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>       <span class="keywordflow">select case</span> (fid)</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>       <span class="keywordflow">case</span> (1)</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>          this%ind_r(i) = idx(1) + this%h_index</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>          this%ind_s(i) = idx(2)</div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>          this%ind_t(i) = idx(3)</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>       <span class="keywordflow">case</span> (2)</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>          this%ind_r(i) = idx(1) - this%h_index</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>          this%ind_s(i) = idx(2)</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>          this%ind_t(i) = idx(3)</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>       <span class="keywordflow">case</span> (3)</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>          this%ind_r(i) = idx(1)</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>          this%ind_s(i) = idx(2) + this%h_index</div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>          this%ind_t(i) = idx(3)</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>       <span class="keywordflow">case</span> (4)</div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>          this%ind_r(i) = idx(1)</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>          this%ind_s(i) = idx(2) - this%h_index</div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>          this%ind_t(i) = idx(3)</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>       <span class="keywordflow">case</span> (5)</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>          this%ind_r(i) = idx(1)</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>          this%ind_s(i) = idx(2)</div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>          this%ind_t(i) = idx(3) + this%h_index</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>       <span class="keywordflow">case</span> (6)</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>          this%ind_r(i) = idx(1)</div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>          this%ind_s(i) = idx(2)</div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>          this%ind_t(i) = idx(3) - this%h_index</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span><span class="keywordflow">       case default</span></div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>          <span class="keyword">call </span><a class="code hl_interface" href="../../d7/d83/interfaceutils_1_1neko__error.html">neko_error</a>(<span class="stringliteral">&quot;The face index is not correct &quot;</span>)</div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span><span class="keywordflow">       end select</span></div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>       this%ind_e(i) = idx(4)</div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span> </div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>       <span class="comment">! Location of the wall node</span></div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>       xw = this%dof%x(idx(1), idx(2), idx(3), idx(4))</div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>       yw = this%dof%y(idx(1), idx(2), idx(3), idx(4))</div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>       zw = this%dof%z(idx(1), idx(2), idx(3), idx(4))</div>
+<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span> </div>
+<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>       <span class="comment">! Location of the sampling point</span></div>
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>       x = this%dof%x(this%ind_r(i), this%ind_s(i), this%ind_t(i), &amp;</div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>            this%ind_e(i))</div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>       y = this%dof%y(this%ind_r(i), this%ind_s(i), this%ind_t(i), &amp;</div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>            this%ind_e(i))</div>
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>       z = this%dof%z(this%ind_r(i), this%ind_s(i), this%ind_t(i), &amp;</div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>            this%ind_e(i))</div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span> </div>
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>       <span class="comment">! Vector from the sampling point to the wall</span></div>
+<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>       p(1) = x - xw</div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>       p(2) = y - yw</div>
+<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>       p(3) = z - zw</div>
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span> </div>
+<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>       <span class="comment">! Total distance to the sampling point</span></div>
+<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>       magp = sqrt(p(1)**2 + p(2)**2 + p(3)**2)</div>
+<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span> </div>
+<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>       <span class="comment">! Project on the normal direction to get h</span></div>
+<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span>       this%h%x(i) = p(1)*normal(1) + p(2)*normal(2) + p(3)*normal(3)</div>
+<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span> </div>
+<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>       h_field%x(linear,1,1,1) = this%h%x(i)</div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span> </div>
+<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>       <span class="comment">! Look at how much the total distance distance from the normal and warn</span></div>
+<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>       <span class="comment">! if significant</span></div>
+<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>       <span class="keywordflow">if</span> ((this%h%x(i) - magp) / magp &gt; 0.1) <span class="keywordflow">then</span></div>
+<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>          <span class="keyword">write</span>(log_msg,*) <span class="stringliteral">&quot;Significant misalignment between wall normal and &amp;</span></div>
+<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span><span class="stringliteral"></span><span class="stringliteral">          &amp;sampling point direction at wall node&quot;</span>, xw, yw, zw</div>
+<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>          <span class="keyword">call </span><a class="code hl_variable" href="../../d8/da0/namespacelogger.html#ad728b3400b2e5dfa9ee65757c599c9ce">neko_log</a>%message(log_msg, <a class="code hl_variable" href="../../d8/da0/namespacelogger.html#acda43c0334eca9fb3a0b3d5e23615f7c">neko_log_debug</a>)</div>
+<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span><span class="keywordflow">       end if</span></div>
+<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span><span class="keywordflow">    end do</span></div>
+<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span> </div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span><span class="comment">!    hmin = glmin(this%h%x, n_nodes)</span></div>
+<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span><span class="comment">!    hmax = glmax(this%h%x, n_nodes)</span></div>
+<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span><span class="comment">!    if (pe_rank .eq. 0) then</span></div>
+<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span><span class="comment">!       write(*, &quot;(A, F10.4, F10.4)&quot;) &quot;   h min / max:&quot;, hmin, hmax</span></div>
+<div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span><span class="comment">!    end if</span></div>
+<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span> </div>
+<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d9/d77/namespaceneko__config.html#ac196ccb4b3efd94171f0cfbfedaa7b9d">neko_bcknd_device</a> .eq. 1) <span class="keywordflow">then</span></div>
+<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span>       <span class="keyword">call </span><a class="code hl_interface" href="../../d6/dac/interfacedevice_1_1device__memcpy.html">device_memcpy</a>(this%h%x, this%h%x_d, n_nodes, <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a3f51b2c9ef4bd878a310bd1e1d0d3c80">host_to_device</a>,&amp;</div>
+<div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span>            sync = .false.)</div>
+<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span>       <span class="keyword">call </span><a class="code hl_interface" href="../../d6/dac/interfacedevice_1_1device__memcpy.html">device_memcpy</a>(this%n_x%x, this%n_x%x_d, n_nodes, <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a3f51b2c9ef4bd878a310bd1e1d0d3c80">host_to_device</a>, &amp;</div>
+<div class="line"><a id="l00444" name="l00444"></a><span class="lineno">  444</span>            sync = .false.)</div>
+<div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span>       <span class="keyword">call </span><a class="code hl_interface" href="../../d6/dac/interfacedevice_1_1device__memcpy.html">device_memcpy</a>(this%n_y%x, this%n_y%x_d, n_nodes, <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a3f51b2c9ef4bd878a310bd1e1d0d3c80">host_to_device</a>, &amp;</div>
+<div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span>            sync = .false.)</div>
+<div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span>       <span class="keyword">call </span><a class="code hl_interface" href="../../d6/dac/interfacedevice_1_1device__memcpy.html">device_memcpy</a>(this%n_z%x, this%n_z%x_d, n_nodes, <a class="code hl_variable" href="../../d0/dbe/namespacedevice.html#a3f51b2c9ef4bd878a310bd1e1d0d3c80">host_to_device</a>, &amp;</div>
+<div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span>            sync = .true.)</div>
+<div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span><span class="keywordflow">    end if</span></div>
+<div class="line"><a id="l00450" name="l00450"></a><span class="lineno">  450</span> </div>
+<div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span>    <span class="comment">! Each wall_model bc will do a write unfortunately... But very helpful</span></div>
+<div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span>    <span class="comment">! for setup debugging.</span></div>
+<div class="line"><a id="l00453" name="l00453"></a><span class="lineno">  453</span>    h_file = <a class="code hl_interface" href="../../d6/dae/structfile_1_1file__t.html">file_t</a>(<span class="stringliteral">&quot;sampling_height.fld&quot;</span>)</div>
+<div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span>    <span class="keyword">call </span>h_file%write(h_field)</div>
 </div>
-<div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span>  <span class="keyword">end subroutine </span>wall_model_find_points</div>
-<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span> </div>
-<div class="foldopen" id="foldopen00456" data-start="" data-end="">
-<div class="line"><a id="l00456" name="l00456"></a><span class="lineno"><a class="line" href="../../da/ddd/namespacewall__model.html#ad6397879860434184e35416478a6fd17">  456</a></span>  <span class="keyword">subroutine </span><a class="code hl_function" href="../../d1/d0f/cuda_2wall__model__kernel_8h.html#a4d6b0bafa02feed9c09ed959675ab3f9">wall_model_compute_mag_field</a>(this)</div>
-<div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span>    <span class="keywordtype">class</span>(wall_model_t), <span class="keywordtype">intent(inout)</span> :: this</div>
-<div class="line"><a id="l00458" name="l00458"></a><span class="lineno">  458</span>    <span class="keywordtype">integer</span> :: i, m</div>
-<div class="line"><a id="l00459" name="l00459"></a><span class="lineno">  459</span><span class="keywordtype">    real</span>(kind=<a class="code hl_variable" href="../../df/d48/namespacenum__types.html#ae2be59b6de7b874ce5c12fd87f9e8b5e">rp</a>) :: magtau</div>
-<div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span> </div>
-<div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span>    m = this%msk(0)</div>
-<div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span>    <span class="keywordflow">if</span> (m &gt; 0) <span class="keywordflow">then</span></div>
-<div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span>       <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d9/d77/namespaceneko__config.html#ac196ccb4b3efd94171f0cfbfedaa7b9d">neko_bcknd_device</a> .eq. 1) <span class="keywordflow">then</span></div>
-<div class="line"><a id="l00464" name="l00464"></a><span class="lineno">  464</span>          <span class="keyword">call </span><a class="code hl_function" href="../../db/d0e/namespacewall__model__device.html#afa43959f0a01c6ded4a8ff52afac29f2">wall_model_compute_mag_field_device</a>(this%tau_x%x_d, &amp;</div>
-<div class="line"><a id="l00465" name="l00465"></a><span class="lineno">  465</span>               this%tau_y%x_d, &amp;</div>
-<div class="line"><a id="l00466" name="l00466"></a><span class="lineno">  466</span>               this%tau_z%x_d, &amp;</div>
-<div class="line"><a id="l00467" name="l00467"></a><span class="lineno">  467</span>               this%tau_field%x_d, &amp;</div>
-<div class="line"><a id="l00468" name="l00468"></a><span class="lineno">  468</span>               this%msk_d, m)</div>
-<div class="line"><a id="l00469" name="l00469"></a><span class="lineno">  469</span>       <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00470" name="l00470"></a><span class="lineno">  470</span>          <span class="keywordflow">do</span> i = 1, m</div>
-<div class="line"><a id="l00471" name="l00471"></a><span class="lineno">  471</span>             magtau = sqrt(this%tau_x%x(i)**2 + &amp;</div>
-<div class="line"><a id="l00472" name="l00472"></a><span class="lineno">  472</span>                  this%tau_y%x(i)**2 + &amp;</div>
-<div class="line"><a id="l00473" name="l00473"></a><span class="lineno">  473</span>                  this%tau_z%x(i)**2)</div>
-<div class="line"><a id="l00474" name="l00474"></a><span class="lineno">  474</span>             this%tau_field%x(this%msk(i),1,1,1) = magtau</div>
-<div class="line"><a id="l00475" name="l00475"></a><span class="lineno">  475</span><span class="keywordflow">          end do</span></div>
-<div class="line"><a id="l00476" name="l00476"></a><span class="lineno">  476</span><span class="keywordflow">       end if</span></div>
-<div class="line"><a id="l00477" name="l00477"></a><span class="lineno">  477</span><span class="keywordflow">    end if</span></div>
-<div class="line"><a id="l00478" name="l00478"></a><span class="lineno">  478</span> </div>
+<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span>  <span class="keyword">end subroutine </span>wall_model_find_points</div>
+<div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span> </div>
+<div class="foldopen" id="foldopen00457" data-start="" data-end="">
+<div class="line"><a id="l00457" name="l00457"></a><span class="lineno"><a class="line" href="../../da/ddd/namespacewall__model.html#ad6397879860434184e35416478a6fd17">  457</a></span>  <span class="keyword">subroutine </span><a class="code hl_function" href="../../d1/d0f/cuda_2wall__model__kernel_8h.html#a4d6b0bafa02feed9c09ed959675ab3f9">wall_model_compute_mag_field</a>(this)</div>
+<div class="line"><a id="l00458" name="l00458"></a><span class="lineno">  458</span>    <span class="keywordtype">class</span>(wall_model_t), <span class="keywordtype">intent(inout)</span> :: this</div>
+<div class="line"><a id="l00459" name="l00459"></a><span class="lineno">  459</span>    <span class="keywordtype">integer</span> :: i, m</div>
+<div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span><span class="keywordtype">    real</span>(kind=<a class="code hl_variable" href="../../df/d48/namespacenum__types.html#ae2be59b6de7b874ce5c12fd87f9e8b5e">rp</a>) :: magtau</div>
+<div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span> </div>
+<div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span>    m = this%msk(0)</div>
+<div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span>    <span class="keywordflow">if</span> (m &gt; 0) <span class="keywordflow">then</span></div>
+<div class="line"><a id="l00464" name="l00464"></a><span class="lineno">  464</span>       <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d9/d77/namespaceneko__config.html#ac196ccb4b3efd94171f0cfbfedaa7b9d">neko_bcknd_device</a> .eq. 1) <span class="keywordflow">then</span></div>
+<div class="line"><a id="l00465" name="l00465"></a><span class="lineno">  465</span>          <span class="keyword">call </span><a class="code hl_function" href="../../db/d0e/namespacewall__model__device.html#afa43959f0a01c6ded4a8ff52afac29f2">wall_model_compute_mag_field_device</a>(this%tau_x%x_d, &amp;</div>
+<div class="line"><a id="l00466" name="l00466"></a><span class="lineno">  466</span>               this%tau_y%x_d, &amp;</div>
+<div class="line"><a id="l00467" name="l00467"></a><span class="lineno">  467</span>               this%tau_z%x_d, &amp;</div>
+<div class="line"><a id="l00468" name="l00468"></a><span class="lineno">  468</span>               this%tau_field%x_d, &amp;</div>
+<div class="line"><a id="l00469" name="l00469"></a><span class="lineno">  469</span>               this%msk_d, m)</div>
+<div class="line"><a id="l00470" name="l00470"></a><span class="lineno">  470</span>       <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00471" name="l00471"></a><span class="lineno">  471</span>          <span class="keywordflow">do</span> i = 1, m</div>
+<div class="line"><a id="l00472" name="l00472"></a><span class="lineno">  472</span>             magtau = sqrt(this%tau_x%x(i)**2 + &amp;</div>
+<div class="line"><a id="l00473" name="l00473"></a><span class="lineno">  473</span>                  this%tau_y%x(i)**2 + &amp;</div>
+<div class="line"><a id="l00474" name="l00474"></a><span class="lineno">  474</span>                  this%tau_z%x(i)**2)</div>
+<div class="line"><a id="l00475" name="l00475"></a><span class="lineno">  475</span>             this%tau_field%x(this%msk(i),1,1,1) = magtau</div>
+<div class="line"><a id="l00476" name="l00476"></a><span class="lineno">  476</span><span class="keywordflow">          end do</span></div>
+<div class="line"><a id="l00477" name="l00477"></a><span class="lineno">  477</span><span class="keywordflow">       end if</span></div>
+<div class="line"><a id="l00478" name="l00478"></a><span class="lineno">  478</span><span class="keywordflow">    end if</span></div>
+<div class="line"><a id="l00479" name="l00479"></a><span class="lineno">  479</span> </div>
 </div>
-<div class="line"><a id="l00479" name="l00479"></a><span class="lineno">  479</span>  <span class="keyword">end subroutine </span><a class="code hl_function" href="../../d1/d0f/cuda_2wall__model__kernel_8h.html#a4d6b0bafa02feed9c09ed959675ab3f9">wall_model_compute_mag_field</a></div>
-<div class="line"><a id="l00480" name="l00480"></a><span class="lineno">  480</span> </div>
-<div class="line"><a id="l00481" name="l00481"></a><span class="lineno">  481</span><span class="keyword">end module </span><a class="code hl_namespace" href="../../da/ddd/namespacewall__model.html">wall_model</a></div>
+<div class="line"><a id="l00480" name="l00480"></a><span class="lineno">  480</span>  <span class="keyword">end subroutine </span><a class="code hl_function" href="../../d1/d0f/cuda_2wall__model__kernel_8h.html#a4d6b0bafa02feed9c09ed959675ab3f9">wall_model_compute_mag_field</a></div>
+<div class="line"><a id="l00481" name="l00481"></a><span class="lineno">  481</span> </div>
+<div class="line"><a id="l00482" name="l00482"></a><span class="lineno">  482</span><span class="keyword">end module </span><a class="code hl_namespace" href="../../da/ddd/namespacewall__model.html">wall_model</a></div>
 <div class="ttc" id="acuda_2bc__utils_8h_html_a97af2a5f58e9e047d747424d0f89132d"><div class="ttname"><a href="../../d1/d74/cuda_2bc__utils_8h.html#a97af2a5f58e9e047d747424d0f89132d">nonlinear_index</a></div><div class="ttdeci">__inline__ __device__ void nonlinear_index(const int idx, const int lx, int *index)</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d74/cuda_2bc__utils_8h_source.html#l00044">bc_utils.h:44</a></div></div>
 <div class="ttc" id="acuda_2wall__model__kernel_8h_html_a4d6b0bafa02feed9c09ed959675ab3f9"><div class="ttname"><a href="../../d1/d0f/cuda_2wall__model__kernel_8h.html#a4d6b0bafa02feed9c09ed959675ab3f9">wall_model_compute_mag_field</a></div><div class="ttdeci">__global__ void wall_model_compute_mag_field(const T *__restrict__ tau_x_d, const T *__restrict__ tau_y_d, const T *__restrict__ tau_z_d, T *__restrict__ tau_field_d, const int *__restrict__ msk_d, const int m)</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d0f/cuda_2wall__model__kernel_8h_source.html#l00043">wall_model_kernel.h:43</a></div></div>
 <div class="ttc" id="ainterfacedevice_1_1device__get__ptr_html"><div class="ttname"><a href="../../dd/d49/interfacedevice_1_1device__get__ptr.html">device::device_get_ptr</a></div><div class="ttdoc">Return the device pointer for an associated Fortran array.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d2a/device_8F90_source.html#l00096">device.F90:96</a></div></div>
@@ -566,12 +567,12 @@ $(document).ready(function(){initNavTree('db/df0/wall__model_8f90_source.html','
 <div class="ttc" id="anamespacedevice_html_a79e3ce634472f542b8d135571f7a36e0"><div class="ttname"><a href="../../d0/dbe/namespacedevice.html#a79e3ce634472f542b8d135571f7a36e0">device::device_free</a></div><div class="ttdeci">subroutine, public device_free(x_d)</div><div class="ttdoc">Deallocate memory on the device.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d2a/device_8F90_source.html#l00213">device.F90:214</a></div></div>
 <div class="ttc" id="anamespacedofmap_html"><div class="ttname"><a href="../../dd/dd2/namespacedofmap.html">dofmap</a></div><div class="ttdoc">Defines a mapping of the degrees of freedom.</div><div class="ttdef"><b>Definition</b> <a href="../../d3/d71/dofmap_8f90_source.html#l00035">dofmap.f90:35</a></div></div>
 <div class="ttc" id="anamespacefield__registry_html"><div class="ttname"><a href="../../d1/dc4/namespacefield__registry.html">field_registry</a></div><div class="ttdoc">Defines a registry for storing solution fields.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d6f/field__registry_8f90_source.html#l00035">field_registry.f90:35</a></div></div>
-<div class="ttc" id="anamespacefield__registry_html_a6722b2b3dba13aaff3bf5222aecbb643"><div class="ttname"><a href="../../d1/dc4/namespacefield__registry.html#a6722b2b3dba13aaff3bf5222aecbb643">field_registry::neko_field_registry</a></div><div class="ttdeci">type(field_registry_t), target, public neko_field_registry</div><div class="ttdoc">Global field registry.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d6f/field__registry_8f90_source.html#l00077">field_registry.f90:77</a></div></div>
+<div class="ttc" id="anamespacefield__registry_html_a6722b2b3dba13aaff3bf5222aecbb643"><div class="ttname"><a href="../../d1/dc4/namespacefield__registry.html#a6722b2b3dba13aaff3bf5222aecbb643">field_registry::neko_field_registry</a></div><div class="ttdeci">type(field_registry_t), target, public neko_field_registry</div><div class="ttdoc">Global field registry.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d6f/field__registry_8f90_source.html#l00094">field_registry.f90:94</a></div></div>
 <div class="ttc" id="anamespacefield_html"><div class="ttname"><a href="../../dc/da9/namespacefield.html">field</a></div><div class="ttdoc">Defines a field.</div><div class="ttdef"><b>Definition</b> <a href="../../d3/dc1/field_8f90_source.html#l00034">field.f90:34</a></div></div>
 <div class="ttc" id="anamespacefile_html"><div class="ttname"><a href="../../da/d16/namespacefile.html">file</a></div><div class="ttdoc">Module for file I/O operations.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d96/file_8f90_source.html#l00034">file.f90:34</a></div></div>
 <div class="ttc" id="anamespacelogger_html"><div class="ttname"><a href="../../d8/da0/namespacelogger.html">logger</a></div><div class="ttdoc">Logging routines.</div><div class="ttdef"><b>Definition</b> <a href="../../da/d53/log_8f90_source.html#l00034">log.f90:34</a></div></div>
-<div class="ttc" id="anamespacelogger_html_acda43c0334eca9fb3a0b3d5e23615f7c"><div class="ttname"><a href="../../d8/da0/namespacelogger.html#acda43c0334eca9fb3a0b3d5e23615f7c">logger::neko_log_debug</a></div><div class="ttdeci">integer, parameter, public neko_log_debug</div><div class="ttdoc">Debug log level.</div><div class="ttdef"><b>Definition</b> <a href="../../da/d53/log_8f90_source.html#l00075">log.f90:75</a></div></div>
-<div class="ttc" id="anamespacelogger_html_ad728b3400b2e5dfa9ee65757c599c9ce"><div class="ttname"><a href="../../d8/da0/namespacelogger.html#ad728b3400b2e5dfa9ee65757c599c9ce">logger::neko_log</a></div><div class="ttdeci">type(log_t), public neko_log</div><div class="ttdoc">Global log stream.</div><div class="ttdef"><b>Definition</b> <a href="../../da/d53/log_8f90_source.html#l00067">log.f90:67</a></div></div>
+<div class="ttc" id="anamespacelogger_html_acda43c0334eca9fb3a0b3d5e23615f7c"><div class="ttname"><a href="../../d8/da0/namespacelogger.html#acda43c0334eca9fb3a0b3d5e23615f7c">logger::neko_log_debug</a></div><div class="ttdeci">integer, parameter, public neko_log_debug</div><div class="ttdoc">Debug log level.</div><div class="ttdef"><b>Definition</b> <a href="../../da/d53/log_8f90_source.html#l00078">log.f90:78</a></div></div>
+<div class="ttc" id="anamespacelogger_html_ad728b3400b2e5dfa9ee65757c599c9ce"><div class="ttname"><a href="../../d8/da0/namespacelogger.html#ad728b3400b2e5dfa9ee65757c599c9ce">logger::neko_log</a></div><div class="ttdeci">type(log_t), public neko_log</div><div class="ttdoc">Global log stream.</div><div class="ttdef"><b>Definition</b> <a href="../../da/d53/log_8f90_source.html#l00070">log.f90:70</a></div></div>
 <div class="ttc" id="anamespacemath_html"><div class="ttname"><a href="../../dd/d47/namespacemath.html">math</a></div><div class="ttdef"><b>Definition</b> <a href="../../d6/ddb/math_8f90_source.html#l00060">math.f90:60</a></div></div>
 <div class="ttc" id="anamespacemath_html_aa96bddc7b993fc15b1fa1263b875044d"><div class="ttname"><a href="../../dd/d47/namespacemath.html#aa96bddc7b993fc15b1fa1263b875044d">math::glmax</a></div><div class="ttdeci">real(kind=rp) function, public glmax(a, n)</div><div class="ttdoc">Max of a vector of length n.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/ddb/math_8f90_source.html#l00439">math.f90:440</a></div></div>
 <div class="ttc" id="anamespacemath_html_aee45fd2307691bcc94e2986af286775e"><div class="ttname"><a href="../../dd/d47/namespacemath.html#aee45fd2307691bcc94e2986af286775e">math::glmin</a></div><div class="ttdeci">real(kind=rp) function, public glmin(a, n)</div><div class="ttdoc">Min of a vector of length n.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/ddb/math_8f90_source.html#l00469">math.f90:470</a></div></div>
@@ -599,7 +600,7 @@ $(document).ready(function(){initNavTree('db/df0/wall__model_8f90_source.html','
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_d19e42ec822a5375dfd47528cb2d7af7.html">wall_models</a></li><li class="navelem"><a class="el" href="../../db/df0/wall__model_8f90.html">wall_model.f90</a></li>
-    <li class="footer">Generated on Wed Jun 4 2025 03:47:30 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Thu Jun 5 2025 03:49:02 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

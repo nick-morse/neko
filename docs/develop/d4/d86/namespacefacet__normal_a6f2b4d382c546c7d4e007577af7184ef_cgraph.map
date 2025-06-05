@@ -1,0 +1,9 @@
+<map id="facet_normal::facet_normal_apply_surfvec_dev" name="facet_normal::facet_normal_apply_surfvec_dev">
+<area shape="rect" id="Node000001" title="Apply in facet normal direction (vector valued, device version)" alt="" coords="5,55,209,95"/>
+<area shape="rect" id="Node000002" href="$d2/d73/namespacedevice__math.html#a14206e58118cce6865c6ce1bb6454061" title="Vector multiplication ." alt="" coords="257,5,448,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="193,53,284,31,285,36,194,58"/>
+<area shape="rect" id="Node000003" href="$d2/d73/namespacedevice__math.html#a7c9133611c745e90144bd1e2f9f71c32" title="Gather a masked vector ." alt="" coords="269,55,436,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="209,73,256,73,256,78,209,78"/>
+<area shape="rect" id="Node000004" href="$d2/d73/namespacedevice__math.html#a7b9a8426c22b12d30385b41c3b7dcc7d" title="Scatter a masked vector ." alt="" coords="267,119,438,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="185,93,263,113,262,118,184,98"/>
+</map>
