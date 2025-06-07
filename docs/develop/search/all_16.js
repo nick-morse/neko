@@ -56,7 +56,7 @@ var searchData=
   ['vel_5fres_5fupdate_5fkernel_2eh_53',['vel_res_update_kernel.h',['../de/d43/cuda_2vel__res__update__kernel_8h.html',1,'(Global Namespace)'],['../d7/d82/hip_2vel__res__update__kernel_8h.html',1,'(Global Namespace)']]],
   ['velocity_20boundary_20values_54',['Fluid pointwise velocity boundary values',['../d6/def/user-file.html#user-file_fluid-user-if',1,'']]],
   ['vertex_55',['vertex',['../da/d40/structmap_1_1map__t.html#ab336509284dc456e9239e5088b47e6bc',1,'map::map_t']]],
-  ['via_20spack_56',['Installing via Spack',['../d5/dfc/installation.html#autotoc_md78',1,'']]],
+  ['via_20spack_56',['Installing via Spack',['../d5/dfc/installation.html#autotoc_md80',1,'']]],
   ['vinv_57',['vinv',['../db/d84/structcpr_1_1cpr__t.html#acaf779f2818c0899c851f6c21bd6d45c',1,'cpr::cpr_t::vinv'],['../da/d99/structspace_1_1space__t.html#aca6cfa16677147cf73b4db4d24d4b622',1,'space::space_t::vinv']]],
   ['vinv_5fd_58',['vinv_d',['../da/d99/structspace_1_1space__t.html#a138fa77716cef21072985fe92f0e40a6',1,'space::space_t']]],
   ['vinvt_59',['vinvt',['../db/d84/structcpr_1_1cpr__t.html#ad55c594cd2fa94544912ff423b67d262',1,'cpr::cpr_t::vinvt'],['../da/d99/structspace_1_1space__t.html#ab7df470b46a64d2403215185e21d72ad',1,'space::space_t::vinvt']]],

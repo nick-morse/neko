@@ -19,5 +19,5 @@ var searchData=
   ['quantp_16',['quantp',['../d3/de2/structstats_1_1quantp__t.html#a1ddcfd5b89f8110aeb274644ae3775f1',1,'stats::quantp_t']]],
   ['quantp_5ft_17',['quantp_t',['../d3/de2/structstats_1_1quantp__t.html',1,'stats']]],
   ['query_5foverlaps_18',['query_overlaps',['../d9/d87/structaabb__tree_1_1aabb__tree__t.html#a2296d5c9a38b4268641930c8d172a6d7',1,'aabb_tree::aabb_tree_t']]],
-  ['quick_20start_20guide_20with_20spack_19',['Quick start guide with Spack',['../d5/dfc/installation.html#autotoc_md79',1,'']]]
+  ['quick_20start_20guide_20with_20spack_19',['Quick start guide with Spack',['../d5/dfc/installation.html#autotoc_md81',1,'']]]
 ];
