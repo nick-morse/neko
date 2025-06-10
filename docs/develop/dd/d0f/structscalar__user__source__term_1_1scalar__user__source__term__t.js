@@ -9,7 +9,7 @@ var structscalar__user__source__term_1_1scalar__user__source__term__t =
     [ "init", "dd/d0f/structscalar__user__source__term_1_1scalar__user__source__term__t.html#aafeece854152817b4e0b3823d7a06c92", null ],
     [ "init", "dd/d0f/structscalar__user__source__term_1_1scalar__user__source__term__t.html#af45324a80c68894d1478a54d73f0b72d", null ],
     [ "init_base", "dd/d0f/structscalar__user__source__term_1_1scalar__user__source__term__t.html#a9b4c7cf3f46508617a7ab0b6b6126de9", null ],
-    [ "init_from_components", "dd/d0f/structscalar__user__source__term_1_1scalar__user__source__term__t.html#a45710d678b65c5cc17f2f97e04cf0f05", null ],
+    [ "init_from_components", "dd/d0f/structscalar__user__source__term_1_1scalar__user__source__term__t.html#abf582ab0cdd2842ce60cc2d8a0bb6088", null ],
     [ "coef", "dd/d0f/structscalar__user__source__term_1_1scalar__user__source__term__t.html#a762808ffdb2bd97f7067516a7db72c88", null ],
     [ "compute_pw_", "dd/d0f/structscalar__user__source__term_1_1scalar__user__source__term__t.html#ac2e5b4c15440942a72ac6f18b411bf53", null ],
     [ "compute_vector_", "dd/d0f/structscalar__user__source__term_1_1scalar__user__source__term__t.html#a7eac25a01ad92ef24751fa82cabd38d9", null ],
@@ -18,5 +18,6 @@ var structscalar__user__source__term_1_1scalar__user__source__term__t =
     [ "fields", "dd/d0f/structscalar__user__source__term_1_1scalar__user__source__term__t.html#aef4203c049e709cbc855edca89fa298e", null ],
     [ "s", "dd/d0f/structscalar__user__source__term_1_1scalar__user__source__term__t.html#a5b9acd718efb1539030dec83cc15ff42", null ],
     [ "s_d", "dd/d0f/structscalar__user__source__term_1_1scalar__user__source__term__t.html#a44f840a2cf29826af4b9e0cf05e73135", null ],
+    [ "scalar_name", "dd/d0f/structscalar__user__source__term_1_1scalar__user__source__term__t.html#a80ef1b78f53b847ac832eb99874a6756", null ],
     [ "start_time", "dd/d0f/structscalar__user__source__term_1_1scalar__user__source__term__t.html#a27443e3344440dfb4d645750f885ccce", null ]
 ];

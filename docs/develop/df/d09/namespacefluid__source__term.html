@@ -119,13 +119,13 @@ Functions/Subroutines</h2></td></tr>
 <tr class="memitem:acc4db6bd0b78d8a875d795d21c83a58a" id="r_acc4db6bd0b78d8a875d795d21c83a58a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">subroutine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d09/namespacefluid__source__term.html#acc4db6bd0b78d8a875d795d21c83a58a">fluid_source_term_init</a> (<a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">this</a>, f_x, f_y, f_z, coef, user)</td></tr>
 <tr class="memdesc:acc4db6bd0b78d8a875d795d21c83a58a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <br /></td></tr>
 <tr class="separator:acc4db6bd0b78d8a875d795d21c83a58a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ce5d675fd149360ad0a8f38a6a944f1" id="r_a6ce5d675fd149360ad0a8f38a6a944f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">subroutine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d09/namespacefluid__source__term.html#a6ce5d675fd149360ad0a8f38a6a944f1">fluid_init_user_source</a> (source_term, rhs_fields, coef, type, user)</td></tr>
-<tr class="memdesc:a6ce5d675fd149360ad0a8f38a6a944f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the user source term.  <br /></td></tr>
-<tr class="separator:a6ce5d675fd149360ad0a8f38a6a944f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed171f5aa3e3cbbedab3753719afd555" id="r_aed171f5aa3e3cbbedab3753719afd555"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">subroutine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d09/namespacefluid__source__term.html#aed171f5aa3e3cbbedab3753719afd555">fluid_init_user_source</a> (source_term, rhs_fields, coef, type, user, variable_name)</td></tr>
+<tr class="memdesc:aed171f5aa3e3cbbedab3753719afd555"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the user source term.  <br /></td></tr>
+<tr class="separator:aed171f5aa3e3cbbedab3753719afd555"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function/Subroutine Documentation</h2>
-<a id="a6ce5d675fd149360ad0a8f38a6a944f1" name="a6ce5d675fd149360ad0a8f38a6a944f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ce5d675fd149360ad0a8f38a6a944f1">&#9670;&#160;</a></span>fluid_init_user_source()</h2>
+<a id="aed171f5aa3e3cbbedab3753719afd555" name="aed171f5aa3e3cbbedab3753719afd555"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed171f5aa3e3cbbedab3753719afd555">&#9670;&#160;</a></span>fluid_init_user_source()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -161,7 +161,13 @@ Functions/Subroutines</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">type(<a class="el" href="../../d7/da0/structuser__intf_1_1user__t.html">user_t</a>), <a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">intent</a>(<a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">in</a>)&#160;</td>
-          <td class="paramname"><em>user</em>&#160;</td>
+          <td class="paramname"><em>user</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">character</a>(len=*), <a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">intent</a>(<a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">in</a>)&#160;</td>
+          <td class="paramname"><em>variable_name</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -182,11 +188,12 @@ Functions/Subroutines</h2></td></tr>
     <tr><td class="paramname">coef</td><td>The SEM coefs. </td></tr>
     <tr><td class="paramname">type</td><td>The type of the user source term, "user_vector" or "user_poinwise". </td></tr>
     <tr><td class="paramname">user</td><td>The user type containing the user source term routines. </td></tr>
+    <tr><td class="paramname">field_name</td><td>The field name (not used for fluid, but required by interface). </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d5/d2d/fluid__source__term_8f90_source.html#l00087">87</a> of file <a class="el" href="../../d5/d2d/fluid__source__term_8f90_source.html">fluid_source_term.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d5/d2d/fluid__source__term_8f90_source.html#l00088">88</a> of file <a class="el" href="../../d5/d2d/fluid__source__term_8f90_source.html">fluid_source_term.f90</a>.</p>
 
 </div>
 </div>
@@ -250,7 +257,7 @@ Functions/Subroutines</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../df/d09/namespacefluid__source__term.html">fluid_source_term</a></li>
-    <li class="footer">Generated on Mon Jun 9 2025 03:49:10 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Tue Jun 10 2025 03:49:16 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

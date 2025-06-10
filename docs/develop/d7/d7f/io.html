@@ -103,8 +103,10 @@ $(document).ready(function(){initNavTree('d7/d7f/io.html','../../'); initResizab
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
 <ul><li class="level1"><a href="#autotoc_md83">Mesh</a></li>
-<li class="level1"><a href="#autotoc_md84">Three-dimensional field output</a></li>
-<li class="level1"><a href="#autotoc_md85">Checkpoint files</a></li>
+<li class="level1"><a href="#autotoc_md84">Three-dimensional field output</a><ul><li class="level2"><a href="#autotoc_md85">Compression of field output</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#autotoc_md86">Checkpoint files</a></li>
 </ul>
 </div>
 <div class="textblock"><h1><a class="anchor" id="autotoc_md83"></a>
@@ -116,7 +118,15 @@ Mesh</h1>
 <h1><a class="anchor" id="autotoc_md84"></a>
 Three-dimensional field output</h1>
 <p>Neko stores the 3D fields with results in the <code>.fld</code> format, which is the same as in Nek5000. The advantage of adopting this format, is that there is a reader in Paraview and VisIt, which can be used to visualize them. Note that the latest version of Paraview actually has two reader for <code>.fld</code>. For now, Neko has only been tested with the older reader, which uses VisIt under the hood. A file with the <code>.nek5000</code> extension is used as the entry point for the readers and stores some metadata. Users may also find the Python package <code>pysemtools</code> useful for working with <code>.fld</code>s. Note that only the first output <code>.fld</code> file stores the mesh.</p>
-<h1><a class="anchor" id="autotoc_md85"></a>
+<h2><a class="anchor" id="autotoc_md85"></a>
+Compression of field output</h2>
+<p>Neko supports compression of the 3D field data when writing through the ADIOS2. If the ADIOS2 dependency was compiled with compression library support like BigWhoop, SZ, or ZFP the field output can be compressed using one of these lossy compressors (and other lossless compression techniques.) Using algorithms based on image compression, such as BigWhoop and ZFP, the local structure from higher order elements needs to be regarded. Setting <code>output\_layout=2</code> uses the implicit neighbourhood relations of DoFs in x,y,z in a 4D layout. The first three dimensions represent the DoFs and the fourth dimension refers to the number of elements in numeric order. This layout can be used for BigWhoop and ZFP. Additionally, benefits in compression efficiency can be observed for BigWhoop when packing and compressing field parameters together, effectively adding a fifth dimension for the number of field parameters. This layout is enabled when <code>output\_format=3</code>. (The default <code>output_layout=1</code> creates a contiguous 1D array access pattern equivalent to the data layout in the nek5000 files.)</p>
+<p>The compression algorithms are controlled by an additional file <code>adios2.xml</code>. Please refer to the documentation of ADIOS2 (and the specific compression library) to configure the data "operators" of the parallel I/O library.</p>
+<p>The tool <code>adios2_to_nek5000</code> can be used to decompress the field data for postprocessing and visualization with the conventional nek5000 format. Additionally, the data can be compressed using this tool as a postprocessing step using the <code>adios2.xml</code> configuration and a given uncompressed data set as input. </p><div class="fragment"><div class="line">adios2_to_nek5000 input.bp/fld output.fld/bp .false. 1</div>
+</div><!-- fragment --><p> The bool parameter specifies whether output is written using double precision. The parsed integer specifies the data layout in the case of an ADIOS2 <code>.bp</code> output file.</p>
+<p>The tool <code>psnr</code> can be used to analyze the Peak-Signal-to-Noise Ratio (PSNR), quantifying the compression efficiency, namely, the relation between compression ratio and the lost accuracy due to lossy data compression. </p><div class="fragment"><div class="line">psnr compressed_fields.bp uncompressed_fields.fld/bp .false.</div>
+</div><!-- fragment --><p> (The bool parameter specifies whether output should be double precision.) Test data sets can be generated during preprocessing and in an initial case setup workflow to compare and find an optimal compression rate with an acceptable accuracy loss. The value of the PSNR decreases with increasing accuracy loss. Tune the compression by increasing the compression ratio until a desired lower limiting value for the PSNR is reached. As a rule of thumb, target values of 60 or 40 can be used as lower limit for accurate postprocessing or visualization, respectively. Separately, it is recommended to check for compression errors from lossy compressors in the specific quantities of interest in postprocessing and visualization.</p>
+<h1><a class="anchor" id="autotoc_md86"></a>
 Checkpoint files</h1>
 <p>Simulations cannot be restarted from <code>.fld</code> files (although you can use an <code>fld</code> to provide initial conditions). Instead, separate checkpoint files can be output for the purpose of restarts. These contain additional information allowing a clean restart, with, e.g., the correct time integration order. A separate file format, <code>.chkp</code> is adopted for the checkpoint files. </p>
 </div></div><!-- contents -->
@@ -126,7 +136,7 @@ Checkpoint files</h1>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../index.html">Neko Manual</a></li><li class="navelem"><a class="el" href="../../dd/d04/user-guide.html">User guide</a></li>
-    <li class="footer">Generated on Mon Jun 9 2025 03:49:09 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Tue Jun 10 2025 03:49:15 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -155,7 +155,8 @@ High-level structure</h1>
 <div class="line">        &quot;point_zones&quot; : []</div>
 <div class="line">    }</div>
 <div class="line">}</div>
-</div><!-- fragment --><p> The <code>version</code> keyword is reserved to track changes in the format of the file. The subsections below we list all the configuration options for each of the high-level objects. Some parameters will have default values, and are therefore optional.</p>
+</div><!-- fragment --><p> Neko also supports multiple scalar fields, using the keyword <code>scalars</code> in the case object. Users can define multiple scalar fields, and each field can have its own boundary conditions, source terms, and solver settings. When using multiple scalar fields, the <code>name</code> property of each scalar field is used to identify the scalar field in the user file, defaulted to <code>s_1, s_2, ...</code>.</p>
+<p>The <code>version</code> keyword is reserved to track changes in the format of the file. The subsections below we list all the configuration options for each of the high-level objects. Some parameters will have default values, and are therefore optional.</p>
 <h1><a class="anchor" id="autotoc_md42"></a>
 Output frequency control</h1>
 <p>A common scheme for controlling the output frequency is applied for various outputs. It is described already now in order to clarify the meaning of several parameters found in the tables below.</p>
@@ -179,7 +180,11 @@ The case object</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>output_directory</code>   </td><td class="markdownTableBodyNone">Folder for redirecting solver output. Note that the folder has to exist!   </td><td class="markdownTableBodyNone">Path to an existing directory   </td><td class="markdownTableBodyNone"><code>.</code>    </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>output_format</code>   </td><td class="markdownTableBodyNone">The file format of field data.   </td><td class="markdownTableBodyNone"><code>nek5000</code> or <code>adios2</code>   </td><td class="markdownTableBodyNone"><code>nek5000</code>    </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>output_precision</code>   </td><td class="markdownTableBodyNone">Whether to output snapshots in single or double precision   </td><td class="markdownTableBodyNone"><code>single</code> or <code>double</code>   </td><td class="markdownTableBodyNone"><code>single</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>output_layout</code>   </td><td class="markdownTableBodyNone">Data layout for &lsquo;adios2&rsquo; files. (Choose &lsquo;2&rsquo; or &lsquo;3&rsquo; for ADIOS2 supported compressors BigWhoop or ZFP.)   </td><td class="markdownTableBodyNone">Positive integer <code>1</code>, &lsquo;2&rsquo;, &lsquo;3&rsquo;   </td><td class="markdownTableBodyNone"><code>1</code>    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>load_balancing</code>   </td><td class="markdownTableBodyNone">Whether to apply load balancing.   </td><td class="markdownTableBodyNone"><code>true</code> or <code>false</code>   </td><td class="markdownTableBodyNone"><code>false</code>    </td></tr>
 <tr class="markdownTableRowEven">
@@ -823,7 +828,7 @@ Runtime statistics</h2>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../index.html">Neko Manual</a></li><li class="navelem"><a class="el" href="../../dd/d04/user-guide.html">User guide</a></li>
-    <li class="footer">Generated on Mon Jun 9 2025 03:49:09 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Tue Jun 10 2025 03:49:15 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

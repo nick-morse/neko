@@ -116,16 +116,16 @@ Data Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions/Subroutines</h2></td></tr>
-<tr class="memitem:a75b69c3ded8211f18f6b1308cfb8be28" id="r_a75b69c3ded8211f18f6b1308cfb8be28"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">subroutine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d13/namespacescalar__source__term.html#a75b69c3ded8211f18f6b1308cfb8be28">scalar_source_term_init</a> (<a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">this</a>, f, coef, user)</td></tr>
-<tr class="memdesc:a75b69c3ded8211f18f6b1308cfb8be28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <br /></td></tr>
-<tr class="separator:a75b69c3ded8211f18f6b1308cfb8be28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1cc802ec37336c0f50e6dfcdeb0cc7d3" id="r_a1cc802ec37336c0f50e6dfcdeb0cc7d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">subroutine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d13/namespacescalar__source__term.html#a1cc802ec37336c0f50e6dfcdeb0cc7d3">scalar_init_user_source</a> (source_term, rhs_fields, coef, type, user)</td></tr>
-<tr class="memdesc:a1cc802ec37336c0f50e6dfcdeb0cc7d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the user source term.  <br /></td></tr>
-<tr class="separator:a1cc802ec37336c0f50e6dfcdeb0cc7d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cee14aef588b31e4f90c9faa51f237d" id="r_a0cee14aef588b31e4f90c9faa51f237d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">subroutine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d13/namespacescalar__source__term.html#a0cee14aef588b31e4f90c9faa51f237d">scalar_source_term_init</a> (<a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">this</a>, f, coef, user, scalar_name)</td></tr>
+<tr class="memdesc:a0cee14aef588b31e4f90c9faa51f237d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <br /></td></tr>
+<tr class="separator:a0cee14aef588b31e4f90c9faa51f237d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add4a92eb6739a6d332ea4c70f5975409" id="r_add4a92eb6739a6d332ea4c70f5975409"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">subroutine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d13/namespacescalar__source__term.html#add4a92eb6739a6d332ea4c70f5975409">scalar_init_user_source</a> (source_term, rhs_fields, coef, type, user, variable_name)</td></tr>
+<tr class="memdesc:add4a92eb6739a6d332ea4c70f5975409"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the user source term.  <br /></td></tr>
+<tr class="separator:add4a92eb6739a6d332ea4c70f5975409"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function/Subroutine Documentation</h2>
-<a id="a1cc802ec37336c0f50e6dfcdeb0cc7d3" name="a1cc802ec37336c0f50e6dfcdeb0cc7d3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1cc802ec37336c0f50e6dfcdeb0cc7d3">&#9670;&#160;</a></span>scalar_init_user_source()</h2>
+<a id="add4a92eb6739a6d332ea4c70f5975409" name="add4a92eb6739a6d332ea4c70f5975409"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add4a92eb6739a6d332ea4c70f5975409">&#9670;&#160;</a></span>scalar_init_user_source()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -161,7 +161,13 @@ Functions/Subroutines</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">type(<a class="el" href="../../d7/da0/structuser__intf_1_1user__t.html">user_t</a>), <a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">intent</a>(<a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">in</a>)&#160;</td>
-          <td class="paramname"><em>user</em>&#160;</td>
+          <td class="paramname"><em>user</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">character</a>(len=*), <a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">intent</a>(<a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">in</a>)&#160;</td>
+          <td class="paramname"><em>variable_name</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -190,8 +196,8 @@ Functions/Subroutines</h2></td></tr>
 
 </div>
 </div>
-<a id="a75b69c3ded8211f18f6b1308cfb8be28" name="a75b69c3ded8211f18f6b1308cfb8be28"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a75b69c3ded8211f18f6b1308cfb8be28">&#9670;&#160;</a></span>scalar_source_term_init()</h2>
+<a id="a0cee14aef588b31e4f90c9faa51f237d" name="a0cee14aef588b31e4f90c9faa51f237d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cee14aef588b31e4f90c9faa51f237d">&#9670;&#160;</a></span>scalar_source_term_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -218,7 +224,13 @@ Functions/Subroutines</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">type(<a class="el" href="../../d7/da0/structuser__intf_1_1user__t.html">user_t</a>), <a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">intent</a>(<a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">in</a>), <a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">target</a>&#160;</td>
-          <td class="paramname"><em>user</em>&#160;</td>
+          <td class="paramname"><em>user</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">character</a>(len=*), <a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">intent</a>(<a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">in</a>)&#160;</td>
+          <td class="paramname"><em>scalar_name</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -238,7 +250,7 @@ Functions/Subroutines</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../d9/d13/namespacescalar__source__term.html">scalar_source_term</a></li>
-    <li class="footer">Generated on Mon Jun 9 2025 03:49:11 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Tue Jun 10 2025 03:49:16 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

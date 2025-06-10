@@ -10,5 +10,6 @@ var dir_0691d6202b68dc26b40b4865e3c53c6d =
     [ "scalar_scheme.f90", "da/dc7/scalar__scheme_8f90.html", "da/dc7/scalar__scheme_8f90" ],
     [ "scalar_source_term.f90", "d9/db8/scalar__source__term_8f90.html", "d9/db8/scalar__source__term_8f90" ],
     [ "scalar_user_source_term.f90", "dc/d9d/scalar__user__source__term_8f90.html", "dc/d9d/scalar__user__source__term_8f90" ],
+    [ "scalars.f90", "dc/da2/scalars_8f90.html", "dc/da2/scalars_8f90" ],
     [ "source_scalar.f90", "d9/d9f/source__scalar_8f90.html", "d9/d9f/source__scalar_8f90" ]
 ];

@@ -9,6 +9,8 @@ var structscalar__scheme_1_1scalar__scheme__t =
     [ "step", "dd/ded/structscalar__scheme_1_1scalar__scheme__t.html#a18092a68ef0f4d40844e8f2a78abd465", null ],
     [ "update_material_properties", "dd/ded/structscalar__scheme_1_1scalar__scheme__t.html#a316f21f0a09cd8e82c1578fc31c1f60b", null ],
     [ "validate", "dd/ded/structscalar__scheme_1_1scalar__scheme__t.html#a8a83986e0d5b15db5d390dd3c0d68b55", null ],
+    [ "abx1", "dd/ded/structscalar__scheme_1_1scalar__scheme__t.html#a10e5246384d9ab72f0c8f7a3071f0b46", null ],
+    [ "abx2", "dd/ded/structscalar__scheme_1_1scalar__scheme__t.html#aae9297d1693c86761a96510c3970f482", null ],
     [ "bcs", "dd/ded/structscalar__scheme_1_1scalar__scheme__t.html#a8f23b6ae37bbd287958ebce957fb50c0", null ],
     [ "c_xh", "dd/ded/structscalar__scheme_1_1scalar__scheme__t.html#afd3e9a7e85f2e1a1bff37fc955d82add", null ],
     [ "chkp", "dd/ded/structscalar__scheme_1_1scalar__scheme__t.html#a7590a759ab71d4cdbbe7be5db8b1793e", null ],

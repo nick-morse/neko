@@ -458,8 +458,8 @@ $(document).ready(function(){initNavTree('d6/d44/json__utils_8f90_source.html','
 <div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>    <span class="keywordtype">character(len=:)</span>, <span class="keywordtype">allocatable</span> :: buffer</div>
 <div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span> </div>
 <div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>    <span class="keyword">call </span>core%get_child(array, i, ptr, found)</div>
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>    <span class="keyword">call </span>core%print_to_string(ptr, buffer)</div>
-<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>    <span class="keyword">call </span>item%load_from_string(buffer)</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>    <span class="keyword">call </span>core%print_to_string(ptr, <a class="code hl_namespace" href="../../df/dbf/namespacebuffer.html">buffer</a>)</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>    <span class="keyword">call </span>item%load_from_string(<a class="code hl_namespace" href="../../df/dbf/namespacebuffer.html">buffer</a>)</div>
 <div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span> </div>
 </div>
 <div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>  <span class="keyword">end subroutine </span><a class="code hl_function" href="../../d8/da8/namespacejson__utils.html#a676fe75290b2ea73d99971cb8dbdb729">json_extract_item_from_array</a></div>
@@ -485,8 +485,8 @@ $(document).ready(function(){initNavTree('d6/d44/json__utils_8f90_source.html','
 <div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span><span class="keywordflow">    end if</span></div>
 <div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span> </div>
 <div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>    <span class="keyword">call </span>core%get_child(array, i, ptr, found)</div>
-<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>    <span class="keyword">call </span>core%print_to_string(ptr, buffer)</div>
-<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span>    <span class="keyword">call </span>item%load_from_string(buffer)</div>
+<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>    <span class="keyword">call </span>core%print_to_string(ptr, <a class="code hl_namespace" href="../../df/dbf/namespacebuffer.html">buffer</a>)</div>
+<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span>    <span class="keyword">call </span>item%load_from_string(<a class="code hl_namespace" href="../../df/dbf/namespacebuffer.html">buffer</a>)</div>
 <div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span> </div>
 </div>
 <div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>  <span class="keyword">end subroutine </span><a class="code hl_function" href="../../d8/da8/namespacejson__utils.html#a1fc9296024e5aece2174f714c31c2f50">json_extract_item_from_name</a></div>
@@ -500,7 +500,7 @@ $(document).ready(function(){initNavTree('d6/d44/json__utils_8f90_source.html','
 <div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>    <span class="keywordtype">type</span>(json_value), <span class="keywordtype">pointer</span> :: ptr</div>
 <div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>    <span class="keywordtype">type</span>(json_core)  :: core</div>
 <div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>    <span class="keywordtype">logical</span> :: found</div>
-<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>    <span class="keywordtype">character(len=:)</span>, <span class="keywordtype">allocatable</span> :: buffer</div>
+<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>    <span class="keywordtype">character(len=:)</span>, <span class="keywordtype">allocatable</span> :: <a class="code hl_namespace" href="../../df/dbf/namespacebuffer.html">buffer</a></div>
 <div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span> </div>
 <div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span>    <span class="keyword">call </span>json%get_core(core)</div>
 <div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span>    <span class="keyword">call </span>json%get(name, ptr, found)</div>
@@ -509,8 +509,8 @@ $(document).ready(function(){initNavTree('d6/d44/json__utils_8f90_source.html','
 <div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span>       <span class="keyword">call </span><a class="code hl_interface" href="../../d7/d83/interfaceutils_1_1neko__error.html">neko_error</a>(<span class="stringliteral">&quot;Object &quot;</span> // name // <span class="stringliteral">&quot; missing from the case file&quot;</span>)</div>
 <div class="line"><a id="l00444" name="l00444"></a><span class="lineno">  444</span><span class="keywordflow">    end if</span></div>
 <div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span> </div>
-<div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span>    <span class="keyword">call </span>core%print_to_string(ptr, buffer)</div>
-<div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span>    <span class="keyword">call </span>object%load_from_string(buffer)</div>
+<div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span>    <span class="keyword">call </span>core%print_to_string(ptr, <a class="code hl_namespace" href="../../df/dbf/namespacebuffer.html">buffer</a>)</div>
+<div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span>    <span class="keyword">call </span>object%load_from_string(<a class="code hl_namespace" href="../../df/dbf/namespacebuffer.html">buffer</a>)</div>
 <div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span> </div>
 </div>
 <div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span>  <span class="keyword">end subroutine </span><a class="code hl_function" href="../../d8/da8/namespacejson__utils.html#a4c35d409d6b54da77e2a4970f4319ef3">json_extract_object</a></div>
@@ -520,6 +520,7 @@ $(document).ready(function(){initNavTree('d6/d44/json__utils_8f90_source.html','
 <div class="ttc" id="ainterfacejson__utils_1_1json__get__or__default_html"><div class="ttname"><a href="../../d0/d70/interfacejson__utils_1_1json__get__or__default.html">json_utils::json_get_or_default</a></div><div class="ttdoc">Retrieves a parameter by name or assigns a provided default value. In the latter case also adds the m...</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d44/json__utils_8f90_source.html#l00054">json_utils.f90:54</a></div></div>
 <div class="ttc" id="ainterfacejson__utils_1_1json__get_html"><div class="ttname"><a href="../../d7/d48/interfacejson__utils_1_1json__get.html">json_utils::json_get</a></div><div class="ttdoc">Retrieves a parameter by name or throws an error.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d44/json__utils_8f90_source.html#l00045">json_utils.f90:45</a></div></div>
 <div class="ttc" id="ainterfaceutils_1_1neko__error_html"><div class="ttname"><a href="../../d7/d83/interfaceutils_1_1neko__error.html">utils::neko_error</a></div><div class="ttdef"><b>Definition</b> <a href="../../df/d80/utils_8f90_source.html#l00042">utils.f90:42</a></div></div>
+<div class="ttc" id="anamespacebuffer_html"><div class="ttname"><a href="../../df/dbf/namespacebuffer.html">buffer</a></div><div class="ttdoc">Generic buffer that is extended with buffers of varying rank.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d45/buffer_8F90_source.html#l00034">buffer.F90:34</a></div></div>
 <div class="ttc" id="anamespacejson__utils_html"><div class="ttname"><a href="../../d8/da8/namespacejson__utils.html">json_utils</a></div><div class="ttdoc">Utilities for retrieving parameters from the case files.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d44/json__utils_8f90_source.html#l00034">json_utils.f90:34</a></div></div>
 <div class="ttc" id="anamespacejson__utils_html_a1fc9296024e5aece2174f714c31c2f50"><div class="ttname"><a href="../../d8/da8/namespacejson__utils.html#a1fc9296024e5aece2174f714c31c2f50">json_utils::json_extract_item_from_name</a></div><div class="ttdeci">subroutine json_extract_item_from_name(json, name, i, item)</div><div class="ttdoc">Extract ith item from a JSON array as a separate JSON object.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d44/json__utils_8f90_source.html#l00400">json_utils.f90:401</a></div></div>
 <div class="ttc" id="anamespacejson__utils_html_a221062190b7eb6d3c1ef705992237297"><div class="ttname"><a href="../../d8/da8/namespacejson__utils.html#a221062190b7eb6d3c1ef705992237297">json_utils::json_get_logical</a></div><div class="ttdeci">subroutine json_get_logical(json, name, value)</div><div class="ttdoc">Retrieves a logical parameter by name or throws an error.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d44/json__utils_8f90_source.html#l00117">json_utils.f90:118</a></div></div>
@@ -552,7 +553,7 @@ $(document).ready(function(){initNavTree('d6/d44/json__utils_8f90_source.html','
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="../../d6/d44/json__utils_8f90.html">json_utils.f90</a></li>
-    <li class="footer">Generated on Mon Jun 9 2025 03:49:08 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Tue Jun 10 2025 03:49:14 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

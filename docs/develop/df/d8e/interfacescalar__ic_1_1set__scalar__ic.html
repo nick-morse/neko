@@ -110,9 +110,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:acec97723c5e2c32e459b067fd352bf65" id="r_acec97723c5e2c32e459b067fd352bf65"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">subroutine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d8e/interfacescalar__ic_1_1set__scalar__ic.html#acec97723c5e2c32e459b067fd352bf65">set_scalar_ic_int</a> (s, coef, <a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">gs</a>, type, params)</td></tr>
 <tr class="memdesc:acec97723c5e2c32e459b067fd352bf65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set scalar initial condition (builtin)  <br /></td></tr>
 <tr class="separator:acec97723c5e2c32e459b067fd352bf65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa53b59c1c405887a1b3408e21bbb4801" id="r_aa53b59c1c405887a1b3408e21bbb4801"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">subroutine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d8e/interfacescalar__ic_1_1set__scalar__ic.html#aa53b59c1c405887a1b3408e21bbb4801">set_scalar_ic_usr</a> (s, coef, <a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">gs</a>, <a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">usr_ic</a>, params)</td></tr>
-<tr class="memdesc:aa53b59c1c405887a1b3408e21bbb4801"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set scalar intial condition (user defined)  <br /></td></tr>
-<tr class="separator:aa53b59c1c405887a1b3408e21bbb4801"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a872100541717236ce93b31b3962996aa" id="r_a872100541717236ce93b31b3962996aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">subroutine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d8e/interfacescalar__ic_1_1set__scalar__ic.html#a872100541717236ce93b31b3962996aa">set_scalar_ic_usr</a> (field_name, s, coef, <a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">gs</a>, <a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">usr_ic</a>, params)</td></tr>
+<tr class="memdesc:a872100541717236ce93b31b3962996aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set scalar intial condition (user defined)  <br /></td></tr>
+<tr class="separator:a872100541717236ce93b31b3962996aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -217,8 +217,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="aa53b59c1c405887a1b3408e21bbb4801" name="aa53b59c1c405887a1b3408e21bbb4801"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa53b59c1c405887a1b3408e21bbb4801">&#9670;&#160;</a></span>set_scalar_ic_usr()</h2>
+<a id="a872100541717236ce93b31b3962996aa" name="a872100541717236ce93b31b3962996aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a872100541717236ce93b31b3962996aa">&#9670;&#160;</a></span>set_scalar_ic_usr()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -226,6 +226,12 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname"><a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">subroutine</a> scalar_ic::set_scalar_ic::set_scalar_ic_usr </td>
           <td>(</td>
+          <td class="paramtype"><a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">character</a>(len=*), <a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">intent</a>(<a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">in</a>)&#160;</td>
+          <td class="paramname"><em>field_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">type(<a class="el" href="../../d3/d5f/structfield_1_1field__t.html">field_t</a>), <a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">intent</a>(<a class="el" href="../../db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533">inout</a>)&#160;</td>
           <td class="paramname"><em>s</em>, </td>
         </tr>
@@ -275,8 +281,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../df/d8e/interfacescalar__ic_1_1set__scalar__ic_aa53b59c1c405887a1b3408e21bbb4801_cgraph.png" border="0" usemap="#adf/d8e/interfacescalar__ic_1_1set__scalar__ic_aa53b59c1c405887a1b3408e21bbb4801_cgraph" alt=""/></div>
-<map name="adf/d8e/interfacescalar__ic_1_1set__scalar__ic_aa53b59c1c405887a1b3408e21bbb4801_cgraph" id="adf/d8e/interfacescalar__ic_1_1set__scalar__ic_aa53b59c1c405887a1b3408e21bbb4801_cgraph">
+<div class="center"><img src="../../df/d8e/interfacescalar__ic_1_1set__scalar__ic_a872100541717236ce93b31b3962996aa_cgraph.png" border="0" usemap="#adf/d8e/interfacescalar__ic_1_1set__scalar__ic_a872100541717236ce93b31b3962996aa_cgraph" alt=""/></div>
+<map name="adf/d8e/interfacescalar__ic_1_1set__scalar__ic_a872100541717236ce93b31b3962996aa_cgraph" id="adf/d8e/interfacescalar__ic_1_1set__scalar__ic_a872100541717236ce93b31b3962996aa_cgraph">
 <area shape="rect" title="Set scalar intial condition (user defined)" alt="" coords="5,23,164,63"/>
 <area shape="rect" href="../../d8/ddf/namespacescalar__ic.html#a284c2151baaf62794c62dfa896b63a6b" title="Set scalar initial condition (common)" alt="" coords="212,23,365,63"/>
 <area shape="poly" title=" " alt="" coords="164,41,198,41,198,46,164,46"/>
@@ -298,7 +304,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../d8/ddf/namespacescalar__ic.html">scalar_ic</a></li><li class="navelem"><a class="el" href="../../df/d8e/interfacescalar__ic_1_1set__scalar__ic.html">set_scalar_ic</a></li>
-    <li class="footer">Generated on Mon Jun 9 2025 03:49:11 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Tue Jun 10 2025 03:49:16 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

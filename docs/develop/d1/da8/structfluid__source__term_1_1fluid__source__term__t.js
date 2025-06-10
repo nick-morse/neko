@@ -7,10 +7,11 @@ var structfluid__source__term_1_1fluid__source__term__t =
     [ "compute", "d1/da8/structfluid__source__term_1_1fluid__source__term__t.html#a5ce5303200ef1449fece7c15a62497c4", null ],
     [ "free", "d1/da8/structfluid__source__term_1_1fluid__source__term__t.html#aea8778c6306313b5facce512e8820e3a", null ],
     [ "init", "d1/da8/structfluid__source__term_1_1fluid__source__term__t.html#aa07ec7a01d9a793b385a7771f25a7f62", null ],
-    [ "init_base", "d1/da8/structfluid__source__term_1_1fluid__source__term__t.html#ad0d406357b9df5bd0d98fe9c0f024b54", null ],
-    [ "init_user_source", "d1/da8/structfluid__source__term_1_1fluid__source__term__t.html#a8863e503742ce988499f41a39297315e", null ],
+    [ "init_base", "d1/da8/structfluid__source__term_1_1fluid__source__term__t.html#a16cf40858b82cf04d8d7ba2eecfe13b9", null ],
+    [ "init_user_source", "d1/da8/structfluid__source__term_1_1fluid__source__term__t.html#a0942860ab4d16de6d54420fd07722e64", null ],
     [ "coef", "d1/da8/structfluid__source__term_1_1fluid__source__term__t.html#a95caa0dbde3e9dee256231591cbca0c5", null ],
     [ "rhs_fields", "d1/da8/structfluid__source__term_1_1fluid__source__term__t.html#a9c8962b833874a39a1a7907bbc5f8a50", null ],
     [ "source_terms", "d1/da8/structfluid__source__term_1_1fluid__source__term__t.html#afc22d3b02134f462068ee1ad49a1d2a3", null ],
-    [ "user", "d1/da8/structfluid__source__term_1_1fluid__source__term__t.html#a541e8df82381e167d446e90e3400461f", null ]
+    [ "user", "d1/da8/structfluid__source__term_1_1fluid__source__term__t.html#a541e8df82381e167d446e90e3400461f", null ],
+    [ "variable_name", "d1/da8/structfluid__source__term_1_1fluid__source__term__t.html#ab838b9c9c64856f4aef815027480a170", null ]
 ];

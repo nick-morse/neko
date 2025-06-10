@@ -94,8 +94,23 @@ var annotated_dup =
     [ "box_point_zone", "d0/d03/namespacebox__point__zone.html", [
       [ "box_point_zone_t", "d4/d0c/structbox__point__zone_1_1box__point__zone__t.html", "d4/d0c/structbox__point__zone_1_1box__point__zone__t" ]
     ] ],
+    [ "bp_file", "d4/d0d/namespacebp__file.html", [
+      [ "bp_file_t", "db/d38/structbp__file_1_1bp__file__t.html", "db/d38/structbp__file_1_1bp__file__t" ]
+    ] ],
     [ "brinkman_source_term", "d0/d7b/namespacebrinkman__source__term.html", [
       [ "brinkman_source_term_t", "dc/dcc/structbrinkman__source__term_1_1brinkman__source__term__t.html", "dc/dcc/structbrinkman__source__term_1_1brinkman__source__term__t" ]
+    ] ],
+    [ "buffer", "df/dbf/namespacebuffer.html", [
+      [ "buffer_t", "d2/d35/structbuffer_1_1buffer__t.html", "d2/d35/structbuffer_1_1buffer__t" ]
+    ] ],
+    [ "buffer_1d", "d4/d90/namespacebuffer__1d.html", [
+      [ "buffer_1d_t", "d8/db0/structbuffer__1d_1_1buffer__1d__t.html", "d8/db0/structbuffer__1d_1_1buffer__1d__t" ]
+    ] ],
+    [ "buffer_4d", "dd/d9e/namespacebuffer__4d.html", [
+      [ "buffer_4d_t", "d8/dce/structbuffer__4d_1_1buffer__4d__t.html", "d8/dce/structbuffer__4d_1_1buffer__4d__t" ]
+    ] ],
+    [ "buffer_4d_npar", "de/dac/namespacebuffer__4d__npar.html", [
+      [ "buffer_4d_npar_t", "db/db7/structbuffer__4d__npar_1_1buffer__4d__npar__t.html", "db/db7/structbuffer__4d__npar_1_1buffer__4d__npar__t" ]
     ] ],
     [ "cacg", "d2/d10/namespacecacg.html", [
       [ "cacg_t", "de/d56/structcacg_1_1cacg__t.html", "de/d56/structcacg_1_1cacg__t" ]
@@ -1120,6 +1135,9 @@ var annotated_dup =
       [ "scalar_source_compute_pointwise", "d2/dfe/interfacescalar__user__source__term_1_1scalar__source__compute__pointwise.html", "d2/dfe/interfacescalar__user__source__term_1_1scalar__source__compute__pointwise" ],
       [ "scalar_source_compute_vector", "d2/d72/interfacescalar__user__source__term_1_1scalar__source__compute__vector.html", "d2/d72/interfacescalar__user__source__term_1_1scalar__source__compute__vector" ],
       [ "scalar_user_source_term_t", "dd/d0f/structscalar__user__source__term_1_1scalar__user__source__term__t.html", "dd/d0f/structscalar__user__source__term_1_1scalar__user__source__term__t" ]
+    ] ],
+    [ "scalars", "d1/de4/namespacescalars.html", [
+      [ "scalars_t", "d2/df2/structscalars_1_1scalars__t.html", "d2/df2/structscalars_1_1scalars__t" ]
     ] ],
     [ "schwarz", "d2/d37/namespaceschwarz.html", [
       [ "schwarz_t", "d0/d9f/structschwarz_1_1schwarz__t.html", "d0/d9f/structschwarz_1_1schwarz__t" ]
