@@ -8,6 +8,6 @@ var tree__amg__multigrid_8f90 =
     [ "print_resid_info", "d4/ded/tree__amg__multigrid_8f90.html#ab10a85cca3eb05a6c53e52e29292da5c", null ],
     [ "tamg_mg_cycle", "d4/ded/tree__amg__multigrid_8f90.html#a19f4185844de9442672aea49afac7d4d", null ],
     [ "tamg_mg_cycle_d", "d4/ded/tree__amg__multigrid_8f90.html#af98f6903d3a7aa8183e98c1c109cb212", null ],
-    [ "tamg_mg_init", "d4/ded/tree__amg__multigrid_8f90.html#a397281205d4faf9bcbabdcf46be49125", null ],
+    [ "tamg_mg_init", "d4/ded/tree__amg__multigrid_8f90.html#afdfe654db71422a5240a588dd522768d", null ],
     [ "tamg_mg_solve", "d4/ded/tree__amg__multigrid_8f90.html#aceff3d75610ff13856f0687a6c1c8343", null ]
 ];

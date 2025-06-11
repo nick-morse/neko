@@ -1,6 +1,6 @@
 var structtree__amg__multigrid_1_1tamg__solver__t =
 [
-    [ "init", "de/d30/structtree__amg__multigrid_1_1tamg__solver__t.html#aaaedf4c7182dd26c8fec5d3c645fd8e1", null ],
+    [ "init", "de/d30/structtree__amg__multigrid_1_1tamg__solver__t.html#a3a6a9180d01388a61971e7955aa4d8be", null ],
     [ "solve", "de/d30/structtree__amg__multigrid_1_1tamg__solver__t.html#aa7a0b5f5b869c63fe07730bd543b0eb5", null ],
     [ "amg", "de/d30/structtree__amg__multigrid_1_1tamg__solver__t.html#a3132e8e62d28912ea3914519cc985670", null ],
     [ "max_iter", "de/d30/structtree__amg__multigrid_1_1tamg__solver__t.html#a85574f0489be9692da7e764753026381", null ],

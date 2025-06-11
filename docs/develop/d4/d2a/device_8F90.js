@@ -42,6 +42,7 @@ var device_8F90 =
     [ "device_memcpy_r2", "d4/d2a/device_8F90.html#a716a6f74552f90f6ae529fc7509c56e7", null ],
     [ "device_memcpy_r3", "d4/d2a/device_8F90.html#af60cadf791fec7de12c05c0ef9c3feaf", null ],
     [ "device_memcpy_r4", "d4/d2a/device_8F90.html#a98abc85fb536fb1abf5f8c3e67fd5ec1", null ],
+    [ "device_memset", "d4/d2a/device_8F90.html#af4efdfe9477e7cf1f9d07c5741c519a3", null ],
     [ "device_name", "d4/d2a/device_8F90.html#aacdc0ad29b09298498fc06f3106fe4f4", null ],
     [ "device_profiler_start", "d4/d2a/device_8F90.html#a6e8f2cb5ecf9fa00e06346d10dc8d478", null ],
     [ "device_profiler_stop", "d4/d2a/device_8F90.html#a61bac73fa0ec55d800487ab4c645ad86", null ],

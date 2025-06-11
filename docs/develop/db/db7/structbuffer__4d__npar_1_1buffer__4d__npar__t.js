@@ -7,10 +7,10 @@ var structbuffer__4d__npar_1_1buffer__4d__npar__t =
     [ "init", "db/db7/structbuffer__4d__npar_1_1buffer__4d__npar__t.html#a649564d8f098f1a9a726b38889ab0dfe", null ],
     [ "init", "db/db7/structbuffer__4d__npar_1_1buffer__4d__npar__t.html#a3dc3a40eb3413a869695528f35c0721a", null ],
     [ "set_precision", "db/db7/structbuffer__4d__npar_1_1buffer__4d__npar__t.html#ac53d9e49832bd8f878d9c4ac65dd3691", null ],
-    [ "count_dims", "db/db7/structbuffer__4d__npar_1_1buffer__4d__npar__t.html#a3ee0dd66b161d28bec3597efdc15fa0c", null ],
+    [ "count_dims", "db/db7/structbuffer__4d__npar_1_1buffer__4d__npar__t.html#a26944701c26288c8dfb108751bb7c779", null ],
     [ "data_dp", "db/db7/structbuffer__4d__npar_1_1buffer__4d__npar__t.html#ac9b1aff6234f926a884179d26d015089", null ],
     [ "data_sp", "db/db7/structbuffer__4d__npar_1_1buffer__4d__npar__t.html#a63a48e75c1f24db9a694bcb287a51266", null ],
     [ "dp_precision", "db/db7/structbuffer__4d__npar_1_1buffer__4d__npar__t.html#ae51d32ce5149ab27f9d3d73fea387bf7", null ],
-    [ "shape_dims", "db/db7/structbuffer__4d__npar_1_1buffer__4d__npar__t.html#ae4810920dfde6abbe03eb2718fb3aecc", null ],
-    [ "start_dims", "db/db7/structbuffer__4d__npar_1_1buffer__4d__npar__t.html#af69c6be1954689a1b515fe06f715b91b", null ]
+    [ "shape_dims", "db/db7/structbuffer__4d__npar_1_1buffer__4d__npar__t.html#a66bbb09eea04140ff6a70ff8c8259b61", null ],
+    [ "start_dims", "db/db7/structbuffer__4d__npar_1_1buffer__4d__npar__t.html#a38af405ddfffdf0b4daa3efd91e36170", null ]
 ];

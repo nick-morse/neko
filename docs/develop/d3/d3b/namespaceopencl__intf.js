@@ -6,6 +6,7 @@ var namespaceopencl__intf =
     [ "clcreateuserevent", "df/d00/interfaceopencl__intf_1_1clcreateuserevent.html", "df/d00/interfaceopencl__intf_1_1clcreateuserevent" ],
     [ "clenqueuebarrier", "d2/d32/interfaceopencl__intf_1_1clenqueuebarrier.html", "d2/d32/interfaceopencl__intf_1_1clenqueuebarrier" ],
     [ "clenqueuecopybuffer", "df/d15/interfaceopencl__intf_1_1clenqueuecopybuffer.html", "df/d15/interfaceopencl__intf_1_1clenqueuecopybuffer" ],
+    [ "clenqueuefillbuffer", "d2/d0b/interfaceopencl__intf_1_1clenqueuefillbuffer.html", "d2/d0b/interfaceopencl__intf_1_1clenqueuefillbuffer" ],
     [ "clenqueuemarker", "d5/deb/interfaceopencl__intf_1_1clenqueuemarker.html", "d5/deb/interfaceopencl__intf_1_1clenqueuemarker" ],
     [ "clenqueuemarkerwithwaitlist", "d2/d0d/interfaceopencl__intf_1_1clenqueuemarkerwithwaitlist.html", "d2/d0d/interfaceopencl__intf_1_1clenqueuemarkerwithwaitlist" ],
     [ "clenqueuereadbuffer", "d3/de1/interfaceopencl__intf_1_1clenqueuereadbuffer.html", "d3/de1/interfaceopencl__intf_1_1clenqueuereadbuffer" ],

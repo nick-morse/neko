@@ -13,5 +13,8 @@
 <area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="563,80,555,70,559,60,574,54,597,52,627,56,638,65,635,69,625,61,597,57,575,59,563,64,561,70,567,77"/>
 <area shape="rect" id="Node000007" href="$d1/d74/cuda_2bc__utils_8h.html#a97af2a5f58e9e047d747424d0f89132d" title=" " alt="" coords="747,185,873,211"/>
 <area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="670,195,733,195,733,201,670,201"/>
-<area shape="poly" id="edge8_Node000007_Node000007" title=" " alt="" coords="775,187,768,177,772,167,786,161,810,159,839,162,851,171,848,176,837,167,810,164,788,166,776,171,773,176,780,184"/>
+<area shape="poly" id="edge10_Node000007_Node000007" title=" " alt="" coords="778,187,772,177,775,167,788,161,810,159,836,162,847,171,844,175,834,167,810,164,790,166,779,171,777,176,783,184"/>
+<area shape="rect" id="Node000008" href="$db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533" title=" " alt="" coords="921,178,1085,218"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="874,195,908,195,908,201,874,201"/>
+<area shape="poly" id="edge9_Node000008_Node000008" title=" " alt="" coords="967,178,965,168,971,159,984,153,1003,151,1026,154,1038,162,1036,166,1024,159,1003,157,985,159,974,163,970,169,972,177"/>
 </map>

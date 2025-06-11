@@ -7,10 +7,10 @@ var structbuffer__4d_1_1buffer__4d__t =
     [ "init", "d8/dce/structbuffer__4d_1_1buffer__4d__t.html#a649564d8f098f1a9a726b38889ab0dfe", null ],
     [ "init", "d8/dce/structbuffer__4d_1_1buffer__4d__t.html#adef00aae00b76d5b1c70ec5f2683543c", null ],
     [ "set_precision", "d8/dce/structbuffer__4d_1_1buffer__4d__t.html#ac53d9e49832bd8f878d9c4ac65dd3691", null ],
-    [ "count_dims", "d8/dce/structbuffer__4d_1_1buffer__4d__t.html#aad7265262391186e1515521626ed69ed", null ],
+    [ "count_dims", "d8/dce/structbuffer__4d_1_1buffer__4d__t.html#aa7ad0e3f0bf4c363dacd1665b4a86902", null ],
     [ "data_dp", "d8/dce/structbuffer__4d_1_1buffer__4d__t.html#ab2ce73093bcf0a980f6fd97ded34c82b", null ],
     [ "data_sp", "d8/dce/structbuffer__4d_1_1buffer__4d__t.html#afa6b970f99008bceac3b5e0c9d0a3058", null ],
     [ "dp_precision", "d8/dce/structbuffer__4d_1_1buffer__4d__t.html#ae51d32ce5149ab27f9d3d73fea387bf7", null ],
-    [ "shape_dims", "d8/dce/structbuffer__4d_1_1buffer__4d__t.html#a449d1a8a22a8ebd607d95e75b65fda8a", null ],
-    [ "start_dims", "d8/dce/structbuffer__4d_1_1buffer__4d__t.html#a6923689f030f448517b71c8ddc558f88", null ]
+    [ "shape_dims", "d8/dce/structbuffer__4d_1_1buffer__4d__t.html#a1edb8d9c19662cce18c95645afc13181", null ],
+    [ "start_dims", "d8/dce/structbuffer__4d_1_1buffer__4d__t.html#a6df7567500cb6765293beb748c04d808", null ]
 ];

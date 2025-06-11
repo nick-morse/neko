@@ -10,7 +10,7 @@ var searchData=
   ['tamg_5fmatvec_5fimpl_7',['tamg_matvec_impl',['../dc/d1a/namespacetree__amg.html#a3c9a91208564df3f43b555b0c1ed6b62',1,'tree_amg']]],
   ['tamg_5fmg_5fcycle_8',['tamg_mg_cycle',['../d5/d1b/namespacetree__amg__multigrid.html#a19f4185844de9442672aea49afac7d4d',1,'tree_amg_multigrid']]],
   ['tamg_5fmg_5fcycle_5fd_9',['tamg_mg_cycle_d',['../d5/d1b/namespacetree__amg__multigrid.html#af98f6903d3a7aa8183e98c1c109cb212',1,'tree_amg_multigrid']]],
-  ['tamg_5fmg_5finit_10',['tamg_mg_init',['../d5/d1b/namespacetree__amg__multigrid.html#a397281205d4faf9bcbabdcf46be49125',1,'tree_amg_multigrid']]],
+  ['tamg_5fmg_5finit_10',['tamg_mg_init',['../d5/d1b/namespacetree__amg__multigrid.html#afdfe654db71422a5240a588dd522768d',1,'tree_amg_multigrid']]],
   ['tamg_5fmg_5fsolve_11',['tamg_mg_solve',['../d5/d1b/namespacetree__amg__multigrid.html#aceff3d75610ff13856f0687a6c1c8343',1,'tree_amg_multigrid']]],
   ['tamg_5fnode_5finit_12',['tamg_node_init',['../dc/d1a/namespacetree__amg.html#a5ec06e62779cefe9b883e4fbcaea5d7a',1,'tree_amg']]],
   ['tamg_5fprint_5fmatrix_13',['tamg_print_matrix',['../d9/d00/namespacetree__amg__utils.html#a532ee09f9ac8de72e6912f3fa107fcb8',1,'tree_amg_utils']]],

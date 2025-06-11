@@ -9,6 +9,7 @@ var opencl__intf_8F90 =
     [ "opencl_intf::clenqueuereadbuffer", "d3/de1/interfaceopencl__intf_1_1clenqueuereadbuffer.html", "d3/de1/interfaceopencl__intf_1_1clenqueuereadbuffer" ],
     [ "opencl_intf::clenqueuewritebuffer", "d8/d16/interfaceopencl__intf_1_1clenqueuewritebuffer.html", "d8/d16/interfaceopencl__intf_1_1clenqueuewritebuffer" ],
     [ "opencl_intf::clenqueuecopybuffer", "df/d15/interfaceopencl__intf_1_1clenqueuecopybuffer.html", "df/d15/interfaceopencl__intf_1_1clenqueuecopybuffer" ],
+    [ "opencl_intf::clenqueuefillbuffer", "d2/d0b/interfaceopencl__intf_1_1clenqueuefillbuffer.html", "d2/d0b/interfaceopencl__intf_1_1clenqueuefillbuffer" ],
     [ "opencl_intf::clenqueuemarkerwithwaitlist", "d2/d0d/interfaceopencl__intf_1_1clenqueuemarkerwithwaitlist.html", "d2/d0d/interfaceopencl__intf_1_1clenqueuemarkerwithwaitlist" ],
     [ "opencl_intf::clenqueuemarker", "d5/deb/interfaceopencl__intf_1_1clenqueuemarker.html", "d5/deb/interfaceopencl__intf_1_1clenqueuemarker" ],
     [ "opencl_intf::clenqueuebarrier", "d2/d32/interfaceopencl__intf_1_1clenqueuebarrier.html", "d2/d32/interfaceopencl__intf_1_1clenqueuebarrier" ],

@@ -1,6 +1,9 @@
 <map id="usr_inflow::usr_inflow_apply_vector" name="usr_inflow::usr_inflow_apply_vector">
-<area shape="rect" id="Node000001" title="Apply user defined inflow conditions (vector valued)" alt="" coords="5,22,167,62"/>
-<area shape="rect" id="Node000002" href="$d1/d74/cuda_2bc__utils_8h.html#a97af2a5f58e9e047d747424d0f89132d" title=" " alt="" coords="215,29,341,55"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="167,39,201,39,201,45,167,45"/>
-<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="246,31,240,21,243,11,256,5,278,3,304,6,315,15,312,19,302,11,278,8,258,10,247,15,245,20,251,28"/>
+<area shape="rect" id="Node000001" title="Apply user defined inflow conditions (vector valued)" alt="" coords="5,29,167,69"/>
+<area shape="rect" id="Node000002" href="$d1/d74/cuda_2bc__utils_8h.html#a97af2a5f58e9e047d747424d0f89132d" title=" " alt="" coords="215,37,341,62"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="167,47,201,47,201,52,167,52"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="246,38,240,28,243,18,256,12,278,10,304,14,315,22,312,26,302,18,278,15,258,17,247,22,245,28,251,35"/>
+<area shape="rect" id="Node000003" href="$db/d11/cuda_2dirichlet__kernel_8h.html#ac2cb217184f95ca86456f610f72bd533" title=" " alt="" coords="389,29,553,69"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="342,47,376,47,376,52,342,52"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="435,30,433,20,439,11,452,5,471,3,494,6,506,13,504,17,492,11,471,8,453,10,442,15,438,21,440,28"/>
 </map>

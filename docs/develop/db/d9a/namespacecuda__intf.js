@@ -14,6 +14,7 @@ var namespacecuda__intf =
     [ "cudamalloc", "d4/dfd/interfacecuda__intf_1_1cudamalloc.html", "d4/dfd/interfacecuda__intf_1_1cudamalloc" ],
     [ "cudamemcpy", "d0/d77/interfacecuda__intf_1_1cudamemcpy.html", "d0/d77/interfacecuda__intf_1_1cudamemcpy" ],
     [ "cudamemcpyasync", "dc/d7c/interfacecuda__intf_1_1cudamemcpyasync.html", "dc/d7c/interfacecuda__intf_1_1cudamemcpyasync" ],
+    [ "cudamemsetasync", "d2/da0/interfacecuda__intf_1_1cudamemsetasync.html", "d2/da0/interfacecuda__intf_1_1cudamemsetasync" ],
     [ "cudaprofilerstart", "d1/d9d/interfacecuda__intf_1_1cudaprofilerstart.html", "d1/d9d/interfacecuda__intf_1_1cudaprofilerstart" ],
     [ "cudaprofilerstop", "de/da0/interfacecuda__intf_1_1cudaprofilerstop.html", "de/da0/interfacecuda__intf_1_1cudaprofilerstop" ],
     [ "cudasetdevice", "d2/db0/interfacecuda__intf_1_1cudasetdevice.html", "d2/db0/interfacecuda__intf_1_1cudasetdevice" ],

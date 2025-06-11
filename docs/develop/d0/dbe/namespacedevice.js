@@ -42,6 +42,7 @@ var namespacedevice =
     [ "device_memcpy_r2", "d0/dbe/namespacedevice.html#a716a6f74552f90f6ae529fc7509c56e7", null ],
     [ "device_memcpy_r3", "d0/dbe/namespacedevice.html#af60cadf791fec7de12c05c0ef9c3feaf", null ],
     [ "device_memcpy_r4", "d0/dbe/namespacedevice.html#a98abc85fb536fb1abf5f8c3e67fd5ec1", null ],
+    [ "device_memset", "d0/dbe/namespacedevice.html#af4efdfe9477e7cf1f9d07c5741c519a3", null ],
     [ "device_name", "d0/dbe/namespacedevice.html#aacdc0ad29b09298498fc06f3106fe4f4", null ],
     [ "device_profiler_start", "d0/dbe/namespacedevice.html#a6e8f2cb5ecf9fa00e06346d10dc8d478", null ],
     [ "device_profiler_stop", "d0/dbe/namespacedevice.html#a61bac73fa0ec55d800487ab4c645ad86", null ],
