@@ -34,41 +34,41 @@ var index =
         [ "High-level structure", "dd/d33/case-file.html#autotoc_md41", null ],
         [ "Output frequency control", "dd/d33/case-file.html#autotoc_md42", null ],
         [ "The case object", "dd/d33/case-file.html#autotoc_md43", [
-          [ "Restarts and joblimit", "dd/d33/case-file.html#autotoc_md44", null ],
-          [ "Boundary type numbering in the <tt>output_boundary</tt> field", "dd/d33/case-file.html#autotoc_md45", null ]
+          [ "Time control", "dd/d33/case-file.html#autotoc_md44", null ],
+          [ "Restarts and joblimit", "dd/d33/case-file.html#autotoc_md45", null ],
+          [ "Boundary type numbering in the <tt>output_boundary</tt> field", "dd/d33/case-file.html#autotoc_md46", null ]
         ] ],
-        [ "Numerics", "dd/d33/case-file.html#autotoc_md46", null ],
-        [ "Fluid", "dd/d33/case-file.html#autotoc_md47", [
-          [ "Material properties", "dd/d33/case-file.html#autotoc_md48", null ],
-          [ "Turbulence modelling", "dd/d33/case-file.html#autotoc_md49", [
-            [ "Boundary conditions", "dd/d33/case-file.html#case-file_fluid-boundary-conditions", [
-              [ "Specifying the boundaries", "dd/d33/case-file.html#autotoc_md51", null ],
-              [ "Available conditions", "dd/d33/case-file.html#autotoc_md52", null ]
-            ] ],
-            [ "Initial conditions", "dd/d33/case-file.html#case-file_fluid-ic", null ],
-            [ "Source terms", "dd/d33/case-file.html#case-file_fluid-source-term", [
-              [ "Brinkman", "dd/d33/case-file.html#autotoc_md53", null ],
-              [ "Gradient Jump Penalty", "dd/d33/case-file.html#autotoc_md54", null ]
-            ] ]
+        [ "Numerics", "dd/d33/case-file.html#autotoc_md47", null ],
+        [ "Fluid", "dd/d33/case-file.html#autotoc_md48", [
+          [ "Material properties", "dd/d33/case-file.html#autotoc_md49", null ],
+          [ "Turbulence modelling", "dd/d33/case-file.html#autotoc_md50", null ],
+          [ "Boundary conditions", "dd/d33/case-file.html#case-file_fluid-boundary-conditions", [
+            [ "Specifying the boundaries", "dd/d33/case-file.html#autotoc_md51", null ],
+            [ "Available conditions", "dd/d33/case-file.html#autotoc_md52", null ]
           ] ],
-          [ "Linear solver configuration", "dd/d33/case-file.html#autotoc_md55", [
-            [ "Multilevel preconditioners", "dd/d33/case-file.html#autotoc_md56", null ],
-            [ "Flow rate forcing", "dd/d33/case-file.html#autotoc_md57", null ],
-            [ "Full parameter table", "dd/d33/case-file.html#autotoc_md58", null ]
-          ] ],
-          [ "Scalar", "dd/d33/case-file.html#case-file_scalar", [
-            [ "Material properties", "dd/d33/case-file.html#autotoc_md59", null ],
-            [ "Turbulence modelling", "dd/d33/case-file.html#autotoc_md60", null ],
-            [ "Boundary conditions", "dd/d33/case-file.html#autotoc_md61", null ],
-            [ "Initial conditions", "dd/d33/case-file.html#autotoc_md62", null ],
-            [ "Source terms", "dd/d33/case-file.html#autotoc_md63", null ],
-            [ "Linear solver configuration", "dd/d33/case-file.html#autotoc_md64", null ],
-            [ "Full parameter table", "dd/d33/case-file.html#autotoc_md65", null ]
-          ] ],
-          [ "Simulation components", "dd/d33/case-file.html#autotoc_md66", null ],
-          [ "Point zones", "dd/d33/case-file.html#autotoc_md67", null ],
-          [ "Runtime statistics", "dd/d33/case-file.html#autotoc_md68", null ]
-        ] ]
+          [ "Initial conditions", "dd/d33/case-file.html#case-file_fluid-ic", null ],
+          [ "Source terms", "dd/d33/case-file.html#case-file_fluid-source-term", [
+            [ "Brinkman", "dd/d33/case-file.html#autotoc_md53", null ],
+            [ "Gradient Jump Penalty", "dd/d33/case-file.html#autotoc_md54", null ]
+          ] ]
+        ] ],
+        [ "Linear solver configuration", "dd/d33/case-file.html#autotoc_md55", [
+          [ "Multilevel preconditioners", "dd/d33/case-file.html#autotoc_md56", null ],
+          [ "Flow rate forcing", "dd/d33/case-file.html#autotoc_md57", null ],
+          [ "Full parameter table", "dd/d33/case-file.html#autotoc_md58", null ]
+        ] ],
+        [ "Scalar", "dd/d33/case-file.html#case-file_scalar", [
+          [ "Material properties", "dd/d33/case-file.html#autotoc_md59", null ],
+          [ "Turbulence modelling", "dd/d33/case-file.html#autotoc_md60", null ],
+          [ "Boundary conditions", "dd/d33/case-file.html#autotoc_md61", null ],
+          [ "Initial conditions", "dd/d33/case-file.html#autotoc_md62", null ],
+          [ "Source terms", "dd/d33/case-file.html#autotoc_md63", null ],
+          [ "Linear solver configuration", "dd/d33/case-file.html#autotoc_md64", null ],
+          [ "Full parameter table", "dd/d33/case-file.html#autotoc_md65", null ]
+        ] ],
+        [ "Simulation components", "dd/d33/case-file.html#autotoc_md66", null ],
+        [ "Point zones", "dd/d33/case-file.html#autotoc_md67", null ],
+        [ "Runtime statistics", "dd/d33/case-file.html#autotoc_md68", null ]
       ] ],
       [ "User File", "d6/def/user-file.html", [
         [ "Compiling and running", "d6/def/user-file.html#autotoc_md108", null ],
@@ -140,6 +140,7 @@ var index =
         ] ],
         [ "Checkpoint files", "d7/d7f/io.html#autotoc_md88", null ]
       ] ],
+      [ "Examples: Programming the user file", "d5/db5/programming-examples.html", null ],
       [ "Extending neko", "d4/d1b/extending.html", null ]
     ] ],
     [ "Developer guide", "dc/d70/developer-guide.html", [

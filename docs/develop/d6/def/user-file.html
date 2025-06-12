@@ -124,6 +124,7 @@ $(document).ready(function(){initNavTree('d6/def/user-file.html','../../'); init
 </ul>
 </div>
 <div class="textblock"><p>The user file is a fortran file where the user can implement their own functions to extend the capabilities of the default Neko executable. The user file can be used for setting advanced initial/boundary conditions, source terms, I/O operations, and interactions with the Neko framework.</p>
+<p>This section will provide a written explanation of the user file, its structure, and how to compile and run it. For a more hands-on approach, see the <a class="el" href="../../d5/db5/programming-examples.html">examples</a> section, which contains several user file examples that demonstrate various aspects of programming with Neko.</p>
 <h1><a class="anchor" id="autotoc_md108"></a>
 Compiling and running</h1>
 <p>The user file is a regular Fortran <code>.f90</code> file that needs to be compiled with <code>makeneko</code>, located in the <code>bin</code> folder of your neko installation. To compile a user file <code>user.f90</code>, run:</p>
@@ -140,21 +141,23 @@ Compiling and running</h1>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md109"></a>
 High-level structure</h1>
 <p>The current high-level structure of the user file is shown below.</p>
-<div class="fragment"><div class="line"><span class="keyword">module</span> user</div>
+<div class="fragment"><div class="line"><span class="keyword">module</span> <a class="code hl_namespace" href="../../dc/d44/namespaceuser.html">user</a></div>
 <div class="line">  <span class="keywordtype">use </span><a class="code hl_namespace" href="../../dd/d62/namespaceneko.html">neko</a></div>
 <div class="line">  <span class="keywordtype">implicit none</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">contains</span></div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">! Register user defined functions here (see user_intf.f90)</span></div>
-<div class="line">  <span class="keyword">subroutine </span>user_setup(u)</div>
+<div class="line">  <span class="keyword">subroutine </span><a class="code hl_function" href="../../dc/d44/namespaceuser.html#a34728c151f0dbb7521a84b18b09cbd9d">user_setup</a>(u)</div>
 <div class="line">    <span class="keywordtype">type</span>(user_t), <span class="keywordtype">intent(inout)</span> :: u</div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">end subroutine </span>user_setup</div>
+<div class="line">  <span class="keyword">end subroutine </span><a class="code hl_function" href="../../dc/d44/namespaceuser.html#a34728c151f0dbb7521a84b18b09cbd9d">user_setup</a></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">end module </span>user</div>
 <div class="ttc" id="anamespaceneko_html"><div class="ttname"><a href="../../dd/d62/namespaceneko.html">neko</a></div><div class="ttdoc">Master module.</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d1f/neko_8f90_source.html#l00034">neko.f90:34</a></div></div>
+<div class="ttc" id="anamespaceuser_html"><div class="ttname"><a href="../../dc/d44/namespaceuser.html">user</a></div><div class="ttdef"><b>Definition</b> <a href="../../d3/d6f/fields__vectors__math_8f90_source.html#l00018">fields_vectors_math.f90:18</a></div></div>
+<div class="ttc" id="anamespaceuser_html_a34728c151f0dbb7521a84b18b09cbd9d"><div class="ttname"><a href="../../dc/d44/namespaceuser.html#a34728c151f0dbb7521a84b18b09cbd9d">user::user_setup</a></div><div class="ttdeci">subroutine user_setup(user)</div><div class="ttdef"><b>Definition</b> <a href="../../d3/d6f/fields__vectors__math_8f90_source.html#l00034">fields_vectors_math.f90:35</a></div></div>
 </div><!-- fragment --><p>The user file implements the <code>user</code> module. The <code>user</code> modules contains a subroutine named <code>user_setup</code>, which we use to interface the internal procedures defined in <code><a class="el" href="../../d7/d30/user__intf_8f90.html">src/common/user_intf.f90</a></code> with the subroutines that you will implement in your user file. Each user subroutine should be implemented under the <code>contains</code> statement, below <code>user_setup</code>.</p>
 <dl class="section note"><dt>Note</dt><dd>The above code snippet is the most basic code structure for the user file. Compiling it and running it would be equivalent to running the "vanilla" neko executable <code>bin/neko</code> in your local neko installation folder.</dd></dl>
 <h1><a class="anchor" id="autotoc_md110"></a>
@@ -684,7 +687,7 @@ Registries</h2>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../index.html">Neko Manual</a></li><li class="navelem"><a class="el" href="../../dd/d04/user-guide.html">User guide</a></li>
-    <li class="footer">Generated on Wed Jun 11 2025 03:48:07 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Thu Jun 12 2025 03:47:34 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

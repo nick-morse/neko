@@ -130,7 +130,7 @@ var searchData=
   ['blst_127',['blst',['../d8/d1a/structtree__amg_1_1tamg__hierarchy__t.html#a4d39858e7d8ca3d011382fba26cdaaad',1,'tree_amg::tamg_hierarchy_t']]],
   ['boundaries_128',['Specifying the boundaries',['../dd/d33/case-file.html#autotoc_md51',1,'']]],
   ['boundary_20conditions_129',['boundary conditions',['../dd/d33/case-file.html#case-file_fluid-boundary-conditions',1,'Boundary conditions'],['../dd/d33/case-file.html#autotoc_md61',1,'Boundary conditions'],['../d6/def/user-file.html#user-file_field-dirichlet-update',1,'Complex fluid and/or scalar boundary conditions'],['../d6/def/user-file.html#user-file_scalar-bc',1,'Scalar boundary conditions']]],
-  ['boundary_20type_20numbering_20in_20the_20tt_20output_5fboundary_20tt_20field_130',['Boundary type numbering in the &lt;tt&gt;output_boundary&lt;/tt&gt; field',['../dd/d33/case-file.html#autotoc_md45',1,'']]],
+  ['boundary_20type_20numbering_20in_20the_20tt_20output_5fboundary_20tt_20field_130',['Boundary type numbering in the &lt;tt&gt;output_boundary&lt;/tt&gt; field',['../dd/d33/case-file.html#autotoc_md46',1,'']]],
   ['boundary_20values_131',['Fluid pointwise velocity boundary values',['../d6/def/user-file.html#user-file_fluid-user-if',1,'']]],
   ['boussinesq_5fsource_5fterm_132',['boussinesq_source_term',['../d0/d10/namespaceboussinesq__source__term.html',1,'']]],
   ['boussinesq_5fsource_5fterm_2ef90_133',['boussinesq_source_term.f90',['../d7/d54/boussinesq__source__term_8f90.html',1,'']]],

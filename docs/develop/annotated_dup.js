@@ -254,6 +254,9 @@ var annotated_dup =
     [ "curve", "d0/d69/namespacecurve.html", [
       [ "curve_t", "dd/d69/structcurve_1_1curve__t.html", "dd/d69/structcurve_1_1curve__t" ]
     ] ],
+    [ "custom_types", "de/dba/namespacecustom__types.html", [
+      [ "my_source_term_t", "d4/dc1/structcustom__types_1_1my__source__term__t.html", "d4/dc1/structcustom__types_1_1my__source__term__t" ]
+    ] ],
     [ "cylinder_point_zone", "d4/ddd/namespacecylinder__point__zone.html", [
       [ "cylinder_point_zone_t", "d2/d18/structcylinder__point__zone_1_1cylinder__point__zone__t.html", "d2/d18/structcylinder__point__zone_1_1cylinder__point__zone__t" ]
     ] ],

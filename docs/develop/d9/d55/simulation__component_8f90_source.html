@@ -305,12 +305,12 @@ $(document).ready(function(){initNavTree('d9/d55/simulation__component_8f90_sour
 <div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    this%case =&gt; <span class="keywordflow">case</span></div>
 <div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    this%order = order</div>
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    <span class="keyword">call </span>this%preprocess_controller%init(<a class="code hl_namespace" href="../../dd/da8/namespacecase.html">case</a>%time%end_time, &amp;</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>         preprocess_control, preprocess_value)</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    <span class="keyword">call </span>this%compute_controller%init(<a class="code hl_namespace" href="../../dd/da8/namespacecase.html">case</a>%time%end_time, compute_control, &amp;</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>         compute_value)</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    <span class="keyword">call </span>this%output_controller%init(<a class="code hl_namespace" href="../../dd/da8/namespacecase.html">case</a>%time%end_time, output_control, &amp;</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>         output_value)</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    <span class="keyword">call </span>this%preprocess_controller%init(<a class="code hl_namespace" href="../../dd/da8/namespacecase.html">case</a>%time%start_time, &amp;</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>         <a class="code hl_namespace" href="../../dd/da8/namespacecase.html">case</a>%time%end_time, preprocess_control, preprocess_value)</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    <span class="keyword">call </span>this%compute_controller%init(<a class="code hl_namespace" href="../../dd/da8/namespacecase.html">case</a>%time%start_time, <a class="code hl_namespace" href="../../dd/da8/namespacecase.html">case</a>%time%end_time,&amp;</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>         compute_control, compute_value)</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    <span class="keyword">call </span>this%output_controller%init(<a class="code hl_namespace" href="../../dd/da8/namespacecase.html">case</a>%time%start_time, <a class="code hl_namespace" href="../../dd/da8/namespacecase.html">case</a>%time%end_time, &amp;</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>         output_control, output_value)</div>
 <div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span> </div>
 </div>
 <div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>  <span class="keyword">end subroutine </span>simulation_component_init_base_from_controllers_properties</div>
@@ -477,14 +477,14 @@ $(document).ready(function(){initNavTree('d9/d55/simulation__component_8f90_sour
 <div class="ttc" id="astructsimulation__component_1_1simulation__component__t_html"><div class="ttname"><a href="../../dc/d0d/structsimulation__component_1_1simulation__component__t.html">simulation_component::simulation_component_t</a></div><div class="ttdoc">Base abstract class for simulation components.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d55/simulation__component_8f90_source.html#l00049">simulation_component.f90:49</a></div></div>
 <div class="ttc" id="astructsimulation__component_1_1simulation__component__wrapper__t_html"><div class="ttname"><a href="../../d7/dc2/structsimulation__component_1_1simulation__component__wrapper__t.html">simulation_component::simulation_component_wrapper_t</a></div><div class="ttdoc">A helper type that is needed to have an array of polymorphic objects.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d55/simulation__component_8f90_source.html#l00104">simulation_component.f90:104</a></div></div>
 <div class="ttc" id="astructtime__based__controller_1_1time__based__controller__t_html"><div class="ttname"><a href="../../db/de7/structtime__based__controller_1_1time__based__controller__t.html">time_based_controller::time_based_controller_t</a></div><div class="ttdoc">A utility type for determining whether an action should be executed based on the current time value....</div><div class="ttdef"><b>Definition</b> <a href="../../d8/db0/time__based__controller_8f90_source.html#l00048">time_based_controller.f90:48</a></div></div>
-<div class="ttc" id="astructtime__state_1_1time__state__t_html"><div class="ttname"><a href="../../d7/d90/structtime__state_1_1time__state__t.html">time_state::time_state_t</a></div><div class="ttdoc">A struct that contains all info about the time, expand as needed.</div><div class="ttdef"><b>Definition</b> <a href="../../d7/dd6/time__state_8f90_source.html#l00041">time_state.f90:41</a></div></div>
+<div class="ttc" id="astructtime__state_1_1time__state__t_html"><div class="ttname"><a href="../../d7/d90/structtime__state_1_1time__state__t.html">time_state::time_state_t</a></div><div class="ttdoc">A struct that contains all info about the time, expand as needed.</div><div class="ttdef"><b>Definition</b> <a href="../../d7/dd6/time__state_8f90_source.html#l00043">time_state.f90:43</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_702567638a028346607c31c39047d6bd.html">simulation_components</a></li><li class="navelem"><a class="el" href="../../d9/d55/simulation__component_8f90.html">simulation_component.f90</a></li>
-    <li class="footer">Generated on Wed Jun 11 2025 03:48:07 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Thu Jun 12 2025 03:47:33 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

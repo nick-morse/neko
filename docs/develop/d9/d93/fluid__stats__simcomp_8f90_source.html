@@ -311,36 +311,51 @@ $(document).ready(function(){initNavTree('d9/d93/fluid__stats__simcomp_8f90_sour
 <div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    <span class="keywordtype">character(len=LOG_SIZE)</span> :: log_buf</div>
 <div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    <span class="keywordtype">integer</span> :: ierr</div>
 <div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    t = time%t</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    <span class="keywordflow">if</span> (t .ge. this%start_time) <span class="keywordflow">then</span></div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>       delta_t = t - this%time <span class="comment">!This is only a real number</span></div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span> </div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>       <span class="keyword">call </span>mpi_barrier(<a class="code hl_variable" href="../../d3/d8f/namespacecomm.html#a74658af6604200fabba70f45980ca1c6">neko_comm</a>, ierr)</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span> </div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>       sample_start_time = mpi_wtime()</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>       <span class="keyword">call </span>this%stats%update(delta_t)</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>       <span class="keyword">call </span>mpi_barrier(<a class="code hl_variable" href="../../d3/d8f/namespacecomm.html#a74658af6604200fabba70f45980ca1c6">neko_comm</a>, ierr)</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>       this%time = t</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>       sample_time = mpi_wtime() - sample_start_time</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    <span class="keywordflow">if</span> (time%start_time .gt. this%start_time) <span class="keywordflow">then</span></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>       <span class="keyword">write</span>(log_buf, <span class="stringliteral">&#39;(A)&#39;</span>) <span class="stringliteral">&#39;Simulation start time is later than the &#39;</span> &amp;</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>            // <span class="stringliteral">&#39;fluid stats start time.&#39;</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>       <span class="keyword">call </span><a class="code hl_variable" href="../../d8/da0/namespacelogger.html#ad728b3400b2e5dfa9ee65757c599c9ce">neko_log</a>%warning(log_buf)</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>       <span class="keyword">write</span>(log_buf, <span class="stringliteral">&#39;(A,E15.7)&#39;</span>) <span class="stringliteral">&#39;Simulation start time:&#39;</span>, time%start_time</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>       <span class="keyword">call </span><a class="code hl_variable" href="../../d8/da0/namespacelogger.html#ad728b3400b2e5dfa9ee65757c599c9ce">neko_log</a>%warning(log_buf)</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>       <span class="keyword">write</span>(log_buf, <span class="stringliteral">&#39;(A,E15.7)&#39;</span>) <span class="stringliteral">&#39;Fluid stats start time:&#39;</span>, this%start_time</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>       <span class="keyword">call </span><a class="code hl_variable" href="../../d8/da0/namespacelogger.html#ad728b3400b2e5dfa9ee65757c599c9ce">neko_log</a>%warning(log_buf)</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>       <span class="keyword">write</span>(log_buf, <span class="stringliteral">&#39;(A)&#39;</span>) <span class="stringliteral">&#39;Assigning the statistics start time to &#39;</span> &amp;</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>            // <span class="stringliteral">&#39;the simulation start time.&#39;</span></div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>       <span class="keyword">call </span><a class="code hl_variable" href="../../d8/da0/namespacelogger.html#ad728b3400b2e5dfa9ee65757c599c9ce">neko_log</a>%warning(log_buf)</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>       this%start_time = time%start_time</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>       this%time = time%start_time</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="keywordflow">    end if</span></div>
 <div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>       <span class="keyword">call </span><a class="code hl_variable" href="../../d8/da0/namespacelogger.html#ad728b3400b2e5dfa9ee65757c599c9ce">neko_log</a>%section(<span class="stringliteral">&#39;Fluid stats&#39;</span>)</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>       <span class="keyword">write</span>(log_buf, <span class="stringliteral">&#39;(A,E15.7)&#39;</span>) <span class="stringliteral">&#39;Sampling at time:&#39;</span>, t</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>       <span class="keyword">call </span><a class="code hl_variable" href="../../d8/da0/namespacelogger.html#ad728b3400b2e5dfa9ee65757c599c9ce">neko_log</a>%message(log_buf)</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>       <span class="keyword">write</span>(log_buf, <span class="stringliteral">&#39;(A33,E15.7)&#39;</span>) <span class="stringliteral">&#39;Simulationtime since last sample:&#39;</span>, &amp;</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>            delta_t</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>       <span class="keyword">call </span><a class="code hl_variable" href="../../d8/da0/namespacelogger.html#ad728b3400b2e5dfa9ee65757c599c9ce">neko_log</a>%message(log_buf)</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>       <span class="keyword">write</span>(log_buf, <span class="stringliteral">&#39;(A,E15.7)&#39;</span>) <span class="stringliteral">&#39;Sampling time (s):&#39;</span>, sample_time</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>       <span class="keyword">call </span><a class="code hl_variable" href="../../d8/da0/namespacelogger.html#ad728b3400b2e5dfa9ee65757c599c9ce">neko_log</a>%message(log_buf)</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>       <span class="keyword">call </span><a class="code hl_variable" href="../../d8/da0/namespacelogger.html#ad728b3400b2e5dfa9ee65757c599c9ce">neko_log</a>%end_section()</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="keywordflow">    end if</span></div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span> </div>
-</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>  <span class="keyword">end subroutine </span><a class="code hl_function" href="../../dd/dc6/namespacefluid__stats__simcomp.html#a7b2a2845423fe39902a18e6eb9d532ce">fluid_stats_simcomp_compute</a></div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    t = time%t</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    <span class="keywordflow">if</span> (t .ge. this%start_time) <span class="keywordflow">then</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>       delta_t = t - this%time <span class="comment">!This is only a real number</span></div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>       <span class="keyword">call </span>mpi_barrier(<a class="code hl_variable" href="../../d3/d8f/namespacecomm.html#a74658af6604200fabba70f45980ca1c6">neko_comm</a>, ierr)</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span> </div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>       sample_start_time = mpi_wtime()</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>       <span class="keyword">call </span>this%stats%update(delta_t)</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>       <span class="keyword">call </span>mpi_barrier(<a class="code hl_variable" href="../../d3/d8f/namespacecomm.html#a74658af6604200fabba70f45980ca1c6">neko_comm</a>, ierr)</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>       this%time = t</div>
 <div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="keyword">end module </span><a class="code hl_namespace" href="../../dd/dc6/namespacefluid__stats__simcomp.html">fluid_stats_simcomp</a></div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>       sample_time = mpi_wtime() - sample_start_time</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>       <span class="keyword">call </span><a class="code hl_variable" href="../../d8/da0/namespacelogger.html#ad728b3400b2e5dfa9ee65757c599c9ce">neko_log</a>%section(<span class="stringliteral">&#39;Fluid stats&#39;</span>)</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>       <span class="keyword">write</span>(log_buf, <span class="stringliteral">&#39;(A,E15.7)&#39;</span>) <span class="stringliteral">&#39;Sampling at time:&#39;</span>, t</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>       <span class="keyword">call </span><a class="code hl_variable" href="../../d8/da0/namespacelogger.html#ad728b3400b2e5dfa9ee65757c599c9ce">neko_log</a>%message(log_buf)</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>       <span class="keyword">write</span>(log_buf, <span class="stringliteral">&#39;(A33,E15.7)&#39;</span>) <span class="stringliteral">&#39;Simulationtime since last sample:&#39;</span>, &amp;</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>            delta_t</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>       <span class="keyword">call </span><a class="code hl_variable" href="../../d8/da0/namespacelogger.html#ad728b3400b2e5dfa9ee65757c599c9ce">neko_log</a>%message(log_buf)</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>       <span class="keyword">write</span>(log_buf, <span class="stringliteral">&#39;(A,E15.7)&#39;</span>) <span class="stringliteral">&#39;Sampling time (s):&#39;</span>, sample_time</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>       <span class="keyword">call </span><a class="code hl_variable" href="../../d8/da0/namespacelogger.html#ad728b3400b2e5dfa9ee65757c599c9ce">neko_log</a>%message(log_buf)</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>       <span class="keyword">call </span><a class="code hl_variable" href="../../d8/da0/namespacelogger.html#ad728b3400b2e5dfa9ee65757c599c9ce">neko_log</a>%end_section()</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="keywordflow">    end if</span></div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span> </div>
+</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>  <span class="keyword">end subroutine </span><a class="code hl_function" href="../../dd/dc6/namespacefluid__stats__simcomp.html#a7b2a2845423fe39902a18e6eb9d532ce">fluid_stats_simcomp_compute</a></div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span> </div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span><span class="keyword">end module </span><a class="code hl_namespace" href="../../dd/dc6/namespacefluid__stats__simcomp.html">fluid_stats_simcomp</a></div>
 <div class="ttc" id="ainterfacejson__utils_1_1json__get__or__default_html"><div class="ttname"><a href="../../d0/d70/interfacejson__utils_1_1json__get__or__default.html">json_utils::json_get_or_default</a></div><div class="ttdoc">Retrieves a parameter by name or assigns a provided default value. In the latter case also adds the m...</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d44/json__utils_8f90_source.html#l00054">json_utils.f90:54</a></div></div>
 <div class="ttc" id="ainterfacejson__utils_1_1json__get_html"><div class="ttname"><a href="../../d7/d48/interfacejson__utils_1_1json__get.html">json_utils::json_get</a></div><div class="ttdoc">Retrieves a parameter by name or throws an error.</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d44/json__utils_8f90_source.html#l00045">json_utils.f90:45</a></div></div>
 <div class="ttc" id="anamespacecase_html"><div class="ttname"><a href="../../dd/da8/namespacecase.html">case</a></div><div class="ttdoc">Defines a simulation case.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d0f/case_8f90_source.html#l00034">case.f90:34</a></div></div>
@@ -382,14 +397,14 @@ $(document).ready(function(){initNavTree('d9/d93/fluid__stats__simcomp_8f90_sour
 <div class="ttc" id="astructfluid__stats__output_1_1fluid__stats__output__t_html"><div class="ttname"><a href="../../d4/da7/structfluid__stats__output_1_1fluid__stats__output__t.html">fluid_stats_output::fluid_stats_output_t</a></div><div class="ttdoc">Defines an output for the fluid statistics computed using the fluid_stats_t object.</div><div class="ttdef"><b>Definition</b> <a href="../../de/d03/fluid__stats__output_8f90_source.html#l00049">fluid_stats_output.f90:49</a></div></div>
 <div class="ttc" id="astructfluid__stats__simcomp_1_1fluid__stats__simcomp__t_html"><div class="ttname"><a href="../../d1/d3b/structfluid__stats__simcomp_1_1fluid__stats__simcomp__t.html">fluid_stats_simcomp::fluid_stats_simcomp_t</a></div><div class="ttdoc">A simulation component that computes the velocity and pressure statistics up to 4th order....</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d93/fluid__stats__simcomp_8f90_source.html#l00063">fluid_stats_simcomp.f90:63</a></div></div>
 <div class="ttc" id="astructsimulation__component_1_1simulation__component__t_html"><div class="ttname"><a href="../../dc/d0d/structsimulation__component_1_1simulation__component__t.html">simulation_component::simulation_component_t</a></div><div class="ttdoc">Base abstract class for simulation components.</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d55/simulation__component_8f90_source.html#l00049">simulation_component.f90:49</a></div></div>
-<div class="ttc" id="astructtime__state_1_1time__state__t_html"><div class="ttname"><a href="../../d7/d90/structtime__state_1_1time__state__t.html">time_state::time_state_t</a></div><div class="ttdoc">A struct that contains all info about the time, expand as needed.</div><div class="ttdef"><b>Definition</b> <a href="../../d7/dd6/time__state_8f90_source.html#l00041">time_state.f90:41</a></div></div>
+<div class="ttc" id="astructtime__state_1_1time__state__t_html"><div class="ttname"><a href="../../d7/d90/structtime__state_1_1time__state__t.html">time_state::time_state_t</a></div><div class="ttdoc">A struct that contains all info about the time, expand as needed.</div><div class="ttdef"><b>Definition</b> <a href="../../d7/dd6/time__state_8f90_source.html#l00043">time_state.f90:43</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_702567638a028346607c31c39047d6bd.html">simulation_components</a></li><li class="navelem"><a class="el" href="../../d9/d93/fluid__stats__simcomp_8f90.html">fluid_stats_simcomp.f90</a></li>
-    <li class="footer">Generated on Wed Jun 11 2025 03:48:07 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Thu Jun 12 2025 03:47:33 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

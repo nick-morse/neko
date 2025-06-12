@@ -175,7 +175,7 @@ $(document).ready(function(){initNavTree('d9/db8/scalar__source__term_8f90_sourc
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keyword">call </span>rhs_fields%init(1)</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keyword">call </span>rhs_fields%assign(1, f)</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keyword">call </span>this%init_base(rhs_fields, coef, user, scalar_name)</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keyword">call </span>this%init_base(rhs_fields, coef, <a class="code hl_namespace" href="../../dc/d44/namespaceuser.html">user</a>, scalar_name)</div>
 </div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  <span class="keyword">end subroutine </span><a class="code hl_function" href="../../d9/d13/namespacescalar__source__term.html#a0cee14aef588b31e4f90c9faa51f237d">scalar_source_term_init</a></div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
@@ -193,8 +193,8 @@ $(document).ready(function(){initNavTree('d9/db8/scalar__source__term_8f90_sourc
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordflow">select type</span> (<a class="code hl_namespace" href="../../de/de7/namespacesource__term.html">source_term</a>)</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keywordflow">    type is</span> (<a class="code hl_struct" href="../../dd/d0f/structscalar__user__source__term_1_1scalar__user__source__term__t.html">scalar_user_source_term_t</a>)</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>       <span class="keyword">call </span><a class="code hl_namespace" href="../../de/de7/namespacesource__term.html">source_term</a>%init_from_components(rhs_fields, coef, <span class="keywordtype">type</span>, &amp;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            user%scalar_user_f_vector, &amp;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            user%scalar_user_f, variable_name)</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            <a class="code hl_namespace" href="../../dc/d44/namespaceuser.html">user</a>%scalar_user_f_vector, &amp;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            <a class="code hl_namespace" href="../../dc/d44/namespaceuser.html">user</a>%scalar_user_f, variable_name)</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="keywordflow">    end select</span></div>
 </div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  <span class="keyword">end subroutine </span><a class="code hl_function" href="../../d9/d13/namespacescalar__source__term.html#add4a92eb6739a6d332ea4c70f5975409">scalar_init_user_source</a></div>
@@ -210,6 +210,7 @@ $(document).ready(function(){initNavTree('d9/db8/scalar__source__term_8f90_sourc
 <div class="ttc" id="anamespacesource__term__handler_html"><div class="ttname"><a href="../../db/d94/namespacesource__term__handler.html">source_term_handler</a></div><div class="ttdoc">Implements the source_term_handler_t type.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/dc4/source__term__handler_8f90_source.html#l00035">source_term_handler.f90:35</a></div></div>
 <div class="ttc" id="anamespacesource__term_html"><div class="ttname"><a href="../../de/de7/namespacesource__term.html">source_term</a></div><div class="ttdoc">Implements the source_term_t type and a wrapper source_term_wrapper_t.</div><div class="ttdef"><b>Definition</b> <a href="../../df/d69/source__term_8f90_source.html#l00034">source_term.f90:34</a></div></div>
 <div class="ttc" id="anamespaceuser__intf_html"><div class="ttname"><a href="../../d9/dbc/namespaceuser__intf.html">user_intf</a></div><div class="ttdoc">Interfaces for user interaction with NEKO.</div><div class="ttdef"><b>Definition</b> <a href="../../d7/d30/user__intf_8f90_source.html#l00034">user_intf.f90:34</a></div></div>
+<div class="ttc" id="anamespaceuser_html"><div class="ttname"><a href="../../dc/d44/namespaceuser.html">user</a></div><div class="ttdef"><b>Definition</b> <a href="../../d3/d6f/fields__vectors__math_8f90_source.html#l00018">fields_vectors_math.f90:18</a></div></div>
 <div class="ttc" id="astructcoefs_1_1coef__t_html"><div class="ttname"><a href="../../d0/dea/structcoefs_1_1coef__t.html">coefs::coef_t</a></div><div class="ttdoc">Coefficients defined on a given (mesh, ) tuple. Arrays use indices (i,j,k,e): element e,...</div><div class="ttdef"><b>Definition</b> <a href="../../db/d85/coef_8f90_source.html#l00055">coef.f90:55</a></div></div>
 <div class="ttc" id="astructfield_1_1field__t_html"><div class="ttname"><a href="../../d3/d5f/structfield_1_1field__t.html">field::field_t</a></div><div class="ttdef"><b>Definition</b> <a href="../../d3/dc1/field_8f90_source.html#l00047">field.f90:47</a></div></div>
 <div class="ttc" id="astructfield__list_1_1field__list__t_html"><div class="ttname"><a href="../../d3/d90/structfield__list_1_1field__list__t.html">field_list::field_list_t</a></div><div class="ttdoc">field_list_t, To be able to group fields together</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d13/field__list_8f90_source.html#l00013">field_list.f90:13</a></div></div>
@@ -224,7 +225,7 @@ $(document).ready(function(){initNavTree('d9/db8/scalar__source__term_8f90_sourc
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_0691d6202b68dc26b40b4865e3c53c6d.html">scalar</a></li><li class="navelem"><a class="el" href="../../d9/db8/scalar__source__term_8f90.html">scalar_source_term.f90</a></li>
-    <li class="footer">Generated on Wed Jun 11 2025 03:48:07 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Thu Jun 12 2025 03:47:33 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

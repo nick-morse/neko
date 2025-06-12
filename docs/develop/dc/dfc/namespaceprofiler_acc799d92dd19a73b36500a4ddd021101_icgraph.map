@@ -14,7 +14,7 @@
 <area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="690,248,632,274,593,287,592,282,630,269,688,243"/>
 <area shape="rect" id="Node000012" href="$d8/da5/namespacepde__filter.html#aed804b27a5deacc75f58d30f5b2bd65d" title="Apply the filter." alt="" coords="443,349,595,389"/>
 <area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="720,252,682,297,658,320,632,339,596,355,594,351,629,334,655,316,678,293,716,249"/>
-<area shape="rect" id="Node000013" href="$d1/d2d/namespacesimulation.html#a8b2c3953323ec2e105c0c5c6f44c51e8" title="Compute a single time&#45;step of a case." alt="" coords="417,413,620,439"/>
+<area shape="rect" id="Node000013" href="$d1/d2d/namespacesimulation.html#a625edcf01f19970ace9c4af485edfb19" title="Compute a single time&#45;step of a case." alt="" coords="417,413,620,439"/>
 <area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="730,254,716,289,695,330,667,369,632,403,609,416,606,411,629,399,663,366,691,327,711,287,726,252"/>
 <area shape="rect" id="Node000006" href="$d0/d78/namespacegather__scatter.html#ab47747b3dc7d9b75b840e7c6aafdf347" title="Initialize a gather&#45;scatter kernel." alt="" coords="192,92,359,117"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="435,170,406,159,358,132,323,120,325,115,360,128,408,154,437,165"/>

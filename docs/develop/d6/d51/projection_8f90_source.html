@@ -350,7 +350,7 @@ $(document).ready(function(){initNavTree('d6/d51/projection_8f90_source.html','.
 <div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    <span class="keywordtype">character(len=*)</span>, <span class="keywordtype">optional</span> :: string</div>
 <div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    <span class="keywordflow">if</span> (tstep .gt. this%activ_step .and. this%L .gt. 0) <span class="keywordflow">then</span></div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>       <span class="keywordflow">if</span> (dt_controller%if_variable_dt) <span class="keywordflow">then</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>       <span class="keywordflow">if</span> (dt_controller%is_variable_dt) <span class="keywordflow">then</span></div>
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>          <span class="comment">! the time step at which dt is changed</span></div>
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>          <span class="keywordflow">if</span> (dt_controller%dt_last_change .eq. 0) <span class="keywordflow">then</span></div>
 <div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>             <span class="keyword">call </span>this%clear(n)</div>
@@ -387,7 +387,7 @@ $(document).ready(function(){initNavTree('d6/d51/projection_8f90_source.html','.
 <div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    <span class="keywordtype">type</span>(<a class="code hl_struct" href="../../d5/dab/structtime__step__controller_1_1time__step__controller__t.html">time_step_controller_t</a>), <span class="keywordtype">intent(in)</span> :: dt_controller</div>
 <div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span> </div>
 <div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    <span class="keywordflow">if</span> (tstep .gt. this%activ_step .and. this%L .gt. 0) <span class="keywordflow">then</span></div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>       <span class="keywordflow">if</span> (.not.(dt_controller%if_variable_dt) .or. &amp;</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>       <span class="keywordflow">if</span> (.not.(dt_controller%is_variable_dt) .or. &amp;</div>
 <div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>            (dt_controller%dt_last_change .gt. this%activ_step - 1)) <span class="keywordflow">then</span></div>
 <div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>          <span class="keyword">call </span>this%project_back(x, ax, coef, bclst, gs_h, n)</div>
 <div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span><span class="keywordflow">       end if</span></div>
@@ -927,14 +927,14 @@ $(document).ready(function(){initNavTree('d6/d51/projection_8f90_source.html','.
 <div class="ttc" id="astructcoefs_1_1coef__t_html"><div class="ttname"><a href="../../d0/dea/structcoefs_1_1coef__t.html">coefs::coef_t</a></div><div class="ttdoc">Coefficients defined on a given (mesh, ) tuple. Arrays use indices (i,j,k,e): element e,...</div><div class="ttdef"><b>Definition</b> <a href="../../db/d85/coef_8f90_source.html#l00055">coef.f90:55</a></div></div>
 <div class="ttc" id="astructgather__scatter_1_1gs__t_html"><div class="ttname"><a href="../../dd/db8/structgather__scatter_1_1gs__t.html">gather_scatter::gs_t</a></div><div class="ttdef"><b>Definition</b> <a href="../../d5/d7e/gather__scatter_8f90_source.html#l00062">gather_scatter.f90:62</a></div></div>
 <div class="ttc" id="astructprojection_1_1projection__t_html"><div class="ttname"><a href="../../d5/dcf/structprojection_1_1projection__t.html">projection::projection_t</a></div><div class="ttdef"><b>Definition</b> <a href="../../d6/d51/projection_8f90_source.html#l00091">projection.f90:91</a></div></div>
-<div class="ttc" id="astructtime__step__controller_1_1time__step__controller__t_html"><div class="ttname"><a href="../../d5/dab/structtime__step__controller_1_1time__step__controller__t.html">time_step_controller::time_step_controller_t</a></div><div class="ttdoc">Provides a tool to set time step dt.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/da8/time__step__controller_8f90_source.html#l00043">time_step_controller.f90:43</a></div></div>
+<div class="ttc" id="astructtime__step__controller_1_1time__step__controller__t_html"><div class="ttname"><a href="../../d5/dab/structtime__step__controller_1_1time__step__controller__t.html">time_step_controller::time_step_controller_t</a></div><div class="ttdoc">Provides a tool to set time step dt.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/da8/time__step__controller_8f90_source.html#l00044">time_step_controller.f90:44</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="../../d6/d51/projection_8f90.html">projection.f90</a></li>
-    <li class="footer">Generated on Wed Jun 11 2025 03:48:06 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Thu Jun 12 2025 03:47:32 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

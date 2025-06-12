@@ -19,5 +19,6 @@ var searchData=
   ['mesh_5ft_16',['mesh_t',['../d7/d28/structmesh_1_1mesh__t.html',1,'mesh']]],
   ['multigrid_5ft_17',['multigrid_t',['../dd/d1b/structhsmg_1_1multigrid__t.html',1,'hsmg']]],
   ['mxm_5fblas_18',['mxm_blas',['../dc/dac/interfacemxm__wrapper_1_1mxm__blas.html',1,'mxm_wrapper']]],
-  ['mxm_5flibxsmm_19',['mxm_libxsmm',['../de/dd8/interfacemxm__wrapper_1_1mxm__libxsmm.html',1,'mxm_wrapper']]]
+  ['mxm_5flibxsmm_19',['mxm_libxsmm',['../de/dd8/interfacemxm__wrapper_1_1mxm__libxsmm.html',1,'mxm_wrapper']]],
+  ['my_5fsource_5fterm_5ft_20',['my_source_term_t',['../d4/dc1/structcustom__types_1_1my__source__term__t.html',1,'custom_types']]]
 ];

@@ -765,6 +765,7 @@ var hierarchy =
       [ "brinkman_source_term::brinkman_source_term_t", "dc/dcc/structbrinkman__source__term_1_1brinkman__source__term__t.html", null ],
       [ "const_source_term::const_source_term_t", "d9/db9/structconst__source__term_1_1const__source__term__t.html", null ],
       [ "coriolis_source_term::coriolis_source_term_t", "db/dbf/structcoriolis__source__term_1_1coriolis__source__term__t.html", null ],
+      [ "custom_types::my_source_term_t", "d4/dc1/structcustom__types_1_1my__source__term__t.html", null ],
       [ "fluid_user_source_term::fluid_user_source_term_t", "d6/def/structfluid__user__source__term_1_1fluid__user__source__term__t.html", null ],
       [ "gradient_jump_penalty::gradient_jump_penalty_t", "d2/db5/structgradient__jump__penalty_1_1gradient__jump__penalty__t.html", null ],
       [ "scalar_user_source_term::scalar_user_source_term_t", "dd/d0f/structscalar__user__source__term_1_1scalar__user__source__term__t.html", null ]

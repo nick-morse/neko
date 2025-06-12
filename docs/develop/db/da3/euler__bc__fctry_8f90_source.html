@@ -166,7 +166,7 @@ $(document).ready(function(){initNavTree('db/da3/euler__bc__fctry_8f90_source.ht
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>       <span class="stringliteral">&quot;normal_outflow&quot;</span>]</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">contains</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  <span class="keyword">module</span> subroutine density_bc_factory(object, scheme, json, coef, user)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  <span class="keyword">module</span> subroutine density_bc_factory(object, scheme, json, coef, <a class="code hl_namespace" href="../../dc/d44/namespaceuser.html">user</a>)</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordtype">class</span>(bc_t), <span class="keywordtype">pointer</span>, <span class="keywordtype">intent(inout)</span> :: object</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">type</span>(fluid_scheme_compressible_euler_t), <span class="keywordtype">intent(in)</span> :: scheme</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">type</span>(json_file), <span class="keywordtype">intent(inout)</span> :: json</div>
@@ -198,7 +198,7 @@ $(document).ready(function(){initNavTree('db/da3/euler__bc__fctry_8f90_source.ht
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keyword">call </span>object%finalize()</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  <span class="keyword">end subroutine </span>density_bc_factory</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  <span class="keyword">module</span> subroutine pressure_bc_factory(object, scheme, json, coef, user)</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  <span class="keyword">module</span> subroutine pressure_bc_factory(object, scheme, json, coef, <a class="code hl_namespace" href="../../dc/d44/namespaceuser.html">user</a>)</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordtype">class</span>(bc_t), <span class="keywordtype">pointer</span>, <span class="keywordtype">intent(inout)</span> :: object</div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordtype">type</span>(fluid_scheme_compressible_euler_t), <span class="keywordtype">intent(in)</span> :: scheme</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordtype">type</span>(json_file), <span class="keywordtype">intent(inout)</span> :: json</div>
@@ -244,7 +244,7 @@ $(document).ready(function(){initNavTree('db/da3/euler__bc__fctry_8f90_source.ht
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="keywordflow">    end do</span></div>
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>  <span class="keyword">end subroutine </span>pressure_bc_factory</div>
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>  <span class="keyword">module</span> subroutine velocity_bc_factory(object, scheme, json, coef, user)</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>  <span class="keyword">module</span> subroutine velocity_bc_factory(object, scheme, json, coef, <a class="code hl_namespace" href="../../dc/d44/namespaceuser.html">user</a>)</div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <span class="keywordtype">class</span>(bc_t), <span class="keywordtype">pointer</span>, <span class="keywordtype">intent(inout)</span> :: object</div>
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <span class="keywordtype">type</span>(fluid_scheme_compressible_euler_t), <span class="keywordtype">intent(in)</span> :: scheme</div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keywordtype">type</span>(json_file), <span class="keywordtype">intent(inout)</span> :: json</div>
@@ -292,6 +292,7 @@ $(document).ready(function(){initNavTree('db/da3/euler__bc__fctry_8f90_source.ht
 <div class="ttc" id="anamespacenon__normal_html"><div class="ttname"><a href="../../d8/d74/namespacenon__normal.html">non_normal</a></div><div class="ttdoc">Dirichlet condition on axis aligned plane in the non normal direction.</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d20/non__normal_8f90_source.html#l00034">non_normal.f90:34</a></div></div>
 <div class="ttc" id="anamespacesymmetry_html"><div class="ttname"><a href="../../d1/d70/namespacesymmetry.html">symmetry</a></div><div class="ttdoc">Mixed Dirichlet-Neumann axis aligned symmetry plane.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d3a/symmetry_8f90_source.html#l00034">symmetry.f90:34</a></div></div>
 <div class="ttc" id="anamespaceuser__intf_html"><div class="ttname"><a href="../../d9/dbc/namespaceuser__intf.html">user_intf</a></div><div class="ttdoc">Interfaces for user interaction with NEKO.</div><div class="ttdef"><b>Definition</b> <a href="../../d7/d30/user__intf_8f90_source.html#l00034">user_intf.f90:34</a></div></div>
+<div class="ttc" id="anamespaceuser_html"><div class="ttname"><a href="../../dc/d44/namespaceuser.html">user</a></div><div class="ttdef"><b>Definition</b> <a href="../../d3/d6f/fields__vectors__math_8f90_source.html#l00018">fields_vectors_math.f90:18</a></div></div>
 <div class="ttc" id="anamespaceusr__inflow_html"><div class="ttname"><a href="../../dc/d45/namespaceusr__inflow.html">usr_inflow</a></div><div class="ttdoc">Defines inflow dirichlet conditions.</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d31/usr__inflow_8f90_source.html#l00034">usr_inflow.f90:34</a></div></div>
 <div class="ttc" id="anamespaceutils_html"><div class="ttname"><a href="../../d6/d84/namespaceutils.html">utils</a></div><div class="ttdoc">Utilities.</div><div class="ttdef"><b>Definition</b> <a href="../../df/d80/utils_8f90_source.html#l00035">utils.f90:35</a></div></div>
 <div class="ttc" id="anamespaceutils_html_ac2aece3826d2efe73113379fc55ae05b"><div class="ttname"><a href="../../d6/d84/namespaceutils.html#ac2aece3826d2efe73113379fc55ae05b">utils::neko_type_error</a></div><div class="ttdeci">subroutine, public neko_type_error(base_type, wrong_type, known_types)</div><div class="ttdoc">Reports an error allocating a type for a particular base pointer class.</div><div class="ttdef"><b>Definition</b> <a href="../../df/d80/utils_8f90_source.html#l00250">utils.f90:251</a></div></div>
@@ -311,7 +312,7 @@ $(document).ready(function(){initNavTree('db/da3/euler__bc__fctry_8f90_source.ht
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_48eb729a40134e424c89304faa5c21a9.html">fluid</a></li><li class="navelem"><a class="el" href="../../db/da3/euler__bc__fctry_8f90.html">euler_bc_fctry.f90</a></li>
-    <li class="footer">Generated on Wed Jun 11 2025 03:48:06 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Thu Jun 12 2025 03:47:32 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

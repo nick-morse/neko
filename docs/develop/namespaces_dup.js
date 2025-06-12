@@ -72,6 +72,7 @@ var namespaces_dup =
     [ "cuda_math", "d5/d2a/namespacecuda__math.html", "d5/d2a/namespacecuda__math" ],
     [ "curl_simcomp", "de/d95/namespacecurl__simcomp.html", "de/d95/namespacecurl__simcomp" ],
     [ "curve", "d0/d69/namespacecurve.html", "d0/d69/namespacecurve" ],
+    [ "custom_types", "de/dba/namespacecustom__types.html", "de/dba/namespacecustom__types" ],
     [ "cylinder_point_zone", "d4/ddd/namespacecylinder__point__zone.html", "d4/ddd/namespacecylinder__point__zone" ],
     [ "data_streamer", "da/d5b/namespacedata__streamer.html", "da/d5b/namespacedata__streamer" ],
     [ "datadist", "d7/d40/namespacedatadist.html", "d7/d40/namespacedatadist" ],
@@ -227,7 +228,7 @@ var namespaces_dup =
     [ "flow_ic", "d2/d13/namespaceflow__ic.html", "d2/d13/namespaceflow__ic" ],
     [ "flow_profile", "d4/d1e/namespaceflow__profile.html", "d4/d1e/namespaceflow__profile" ],
     [ "fluid_aux", "da/d33/namespacefluid__aux.html", [
-      [ "fluid_step_info", "da/d33/namespacefluid__aux.html#ad26a8590294c8e67dc50f94b39a339be", null ]
+      [ "fluid_step_info", "da/d33/namespacefluid__aux.html#a8f2660416094bbc4e9c2d6daa6a4d71c", null ]
     ] ],
     [ "fluid_output", "d6/d60/namespacefluid__output.html", "d6/d60/namespacefluid__output" ],
     [ "fluid_plan1", "d6/d78/namespacefluid__plan1.html", "d6/d78/namespacefluid__plan1" ],
@@ -571,7 +572,7 @@ var namespaces_dup =
       [ "simulation_init", "d1/d2d/namespacesimulation.html#ace16571473f6d4b638c29de2d77aaf7d", null ],
       [ "simulation_joblimit_chkp", "d1/d2d/namespacesimulation.html#ad5774a0a06b35c326984f6ba2ccce3e6", null ],
       [ "simulation_settime", "d1/d2d/namespacesimulation.html#a7db8b311cbafdaca7602b3c7812394bc", null ],
-      [ "simulation_step", "d1/d2d/namespacesimulation.html#a8b2c3953323ec2e105c0c5c6f44c51e8", null ]
+      [ "simulation_step", "d1/d2d/namespacesimulation.html#a625edcf01f19970ace9c4af485edfb19", null ]
     ] ],
     [ "simulation_component", "d2/def/namespacesimulation__component.html", "d2/def/namespacesimulation__component" ],
     [ "smagorinsky", "d9/d9a/namespacesmagorinsky.html", "d9/d9a/namespacesmagorinsky" ],
@@ -703,6 +704,31 @@ var namespaces_dup =
     [ "tri", "df/d69/namespacetri.html", "df/d69/namespacetri" ],
     [ "tri_mesh", "df/d32/namespacetri__mesh.html", "df/d32/namespacetri__mesh" ],
     [ "tuple", "df/dec/namespacetuple.html", "df/dec/namespacetuple" ],
+    [ "user", "dc/d44/namespaceuser.html", [
+      [ "fluid_compressible_user_ic", "dc/d44/namespaceuser.html#a352d5e96d5094c5897166e453767fbac", null ],
+      [ "fluid_user_f", "dc/d44/namespaceuser.html#a95f631aa5b029f6615e71bf609522c96", null ],
+      [ "fluid_user_f_vector", "dc/d44/namespaceuser.html#ade2e910e0d6870f768f8f823434d49e7", null ],
+      [ "fluid_user_ic", "dc/d44/namespaceuser.html#abd9e22f3f84cc8eac58b80aa92c90050", null ],
+      [ "init_user_simcomp", "dc/d44/namespaceuser.html#a3da5bd6fc80a73345f81224ea210dd64", null ],
+      [ "material_properties", "dc/d44/namespaceuser.html#ad2706f84046b9170e8a66789683e606d", null ],
+      [ "scalar_user_bc", "dc/d44/namespaceuser.html#ab8352769263812bf032a797353f7d179", null ],
+      [ "scalar_user_f", "dc/d44/namespaceuser.html#a1b99c6158bc232356749b9959c690d65", null ],
+      [ "scalar_user_f_vector", "dc/d44/namespaceuser.html#a5c688d3fbad8c7b75496934066d830e6", null ],
+      [ "scalar_user_ic", "dc/d44/namespaceuser.html#a7e80edc162aae21016057938bbcb7074", null ],
+      [ "user_check", "dc/d44/namespaceuser.html#abfab0d242cff71b601bc86e7d831c31f", null ],
+      [ "user_dirichlet_update", "dc/d44/namespaceuser.html#a6bb09f8690d730401b66626a4b652cf6", null ],
+      [ "user_finalize_modules", "dc/d44/namespaceuser.html#a5add651f08574e81b273eca8cc74e983", null ],
+      [ "user_init_modules", "dc/d44/namespaceuser.html#ae8fa4cc9a62fa3077c1bc3580ff17245", null ],
+      [ "user_mesh_setup", "dc/d44/namespaceuser.html#ae40b6c6c3d25af108125c7dbc0a57e94", null ],
+      [ "user_setup", "dc/d44/namespaceuser.html#a34728c151f0dbb7521a84b18b09cbd9d", null ],
+      [ "user_startup", "dc/d44/namespaceuser.html#abf32a86030ee16696c5eb391ad32990f", null ],
+      [ "case_params", "dc/d44/namespaceuser.html#a6c45828f5df5d6202da7110688440d8f", null ],
+      [ "my_field", "dc/d44/namespaceuser.html#acfd208d970fbfb53d1c238504de51c01", null ],
+      [ "my_field1", "dc/d44/namespaceuser.html#a04846841400d5f3a4c8ac3728085859e", null ],
+      [ "my_field2", "dc/d44/namespaceuser.html#aa06f137636ece94a3ecea28b63710ae8", null ],
+      [ "some_variable", "dc/d44/namespaceuser.html#a33f4028cbc0128b21d8fec50d386719b", null ],
+      [ "vec", "dc/d44/namespaceuser.html#a1e18a805b79655e37609fb21789fd515", null ]
+    ] ],
     [ "user_access_singleton", "d7/d7f/namespaceuser__access__singleton.html", "d7/d7f/namespaceuser__access__singleton" ],
     [ "user_intf", "d9/dbc/namespaceuser__intf.html", "d9/dbc/namespaceuser__intf" ],
     [ "uset", "df/da5/namespaceuset.html", "df/da5/namespaceuset" ],

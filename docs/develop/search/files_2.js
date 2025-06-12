@@ -4,7 +4,7 @@ var searchData=
   ['case_2dfile_2emd_1',['case-file.md',['../d1/d79/case-file_8md.html',1,'']]],
   ['case_2ef90_2',['case.f90',['../d2/d0f/case_8f90.html',1,'']]],
   ['cdtp_5fkernel_2eh_3',['cdtp_kernel.h',['../dd/d72/hip_2cdtp__kernel_8h.html',1,'(Global Namespace)'],['../d3/dd9/cuda_2cdtp__kernel_8h.html',1,'(Global Namespace)']]],
-  ['cfl_5fkernel_2eh_4',['cfl_kernel.h',['../d0/dc4/hip_2cfl__kernel_8h.html',1,'(Global Namespace)'],['../d6/d9b/cuda_2cfl__kernel_8h.html',1,'(Global Namespace)']]],
+  ['cfl_5fkernel_2eh_4',['cfl_kernel.h',['../d6/d9b/cuda_2cfl__kernel_8h.html',1,'(Global Namespace)'],['../d0/dc4/hip_2cfl__kernel_8h.html',1,'(Global Namespace)']]],
   ['cg_2ef90_5',['cg.f90',['../d5/d60/cg_8f90.html',1,'']]],
   ['cg_5fcoupled_2ef90_6',['cg_coupled.f90',['../dd/dbf/cg__coupled_8f90.html',1,'']]],
   ['cg_5fdevice_2ef90_7',['cg_device.f90',['../db/d41/cg__device_8f90.html',1,'']]],
@@ -13,7 +13,7 @@ var searchData=
   ['cheby_5fdevice_2ef90_10',['cheby_device.F90',['../d5/dd2/cheby__device_8F90.html',1,'']]],
   ['check_2ec_11',['check.c',['../dc/db5/check_8c.html',1,'']]],
   ['check_2ecu_12',['check.cu',['../db/dac/check_8cu.html',1,'']]],
-  ['check_2eh_13',['check.h',['../d5/d08/cuda_2check_8h.html',1,'(Global Namespace)'],['../d4/d7a/hip_2check_8h.html',1,'(Global Namespace)'],['../d0/d05/opencl_2check_8h.html',1,'(Global Namespace)']]],
+  ['check_2eh_13',['check.h',['../d0/d05/opencl_2check_8h.html',1,'(Global Namespace)'],['../d4/d7a/hip_2check_8h.html',1,'(Global Namespace)'],['../d5/d08/cuda_2check_8h.html',1,'(Global Namespace)']]],
   ['check_2ehip_14',['check.hip',['../d6/de5/check_8hip.html',1,'']]],
   ['checkpoint_2ef90_15',['checkpoint.f90',['../d3/d71/checkpoint_8f90.html',1,'']]],
   ['chkp_5ffile_2ef90_16',['chkp_file.f90',['../db/d8c/chkp__file_8f90.html',1,'']]],
@@ -23,7 +23,7 @@ var searchData=
   ['coef_2ecu_20',['coef.cu',['../d4/d95/coef_8cu.html',1,'']]],
   ['coef_2ef90_21',['coef.f90',['../db/d85/coef_8f90.html',1,'']]],
   ['coef_2ehip_22',['coef.hip',['../d9/dc3/coef_8hip.html',1,'']]],
-  ['coef_5fkernel_2eh_23',['coef_kernel.h',['../d0/d39/cuda_2coef__kernel_8h.html',1,'(Global Namespace)'],['../d8/d34/hip_2coef__kernel_8h.html',1,'(Global Namespace)']]],
+  ['coef_5fkernel_2eh_23',['coef_kernel.h',['../d8/d34/hip_2coef__kernel_8h.html',1,'(Global Namespace)'],['../d0/d39/cuda_2coef__kernel_8h.html',1,'(Global Namespace)']]],
   ['combine_5fpoint_5fzone_2ef90_24',['combine_point_zone.f90',['../d3/d34/combine__point__zone_8f90.html',1,'']]],
   ['comm_2ef90_25',['comm.F90',['../d1/db1/comm_8F90.html',1,'']]],
   ['comm_2eh_26',['comm.h',['../d8/db4/comm_8h.html',1,'']]],
@@ -53,5 +53,6 @@ var searchData=
   ['cuda_5fmath_2ef90_50',['cuda_math.f90',['../d5/dc6/cuda__math_8f90.html',1,'']]],
   ['curl_5fsimcomp_2ef90_51',['curl_simcomp.f90',['../da/dc8/curl__simcomp_8f90.html',1,'']]],
   ['curve_2ef90_52',['curve.f90',['../d2/dfc/curve_8f90.html',1,'']]],
-  ['cylinder_5fpoint_5fzone_2ef90_53',['cylinder_point_zone.f90',['../dd/d24/cylinder__point__zone_8f90.html',1,'']]]
+  ['custom_5ftypes_2ef90_53',['custom_types.f90',['../d6/d2a/custom__types_8f90.html',1,'']]],
+  ['cylinder_5fpoint_5fzone_2ef90_54',['cylinder_point_zone.f90',['../dd/d24/cylinder__point__zone_8f90.html',1,'']]]
 ];
