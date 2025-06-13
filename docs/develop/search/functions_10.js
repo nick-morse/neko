@@ -28,7 +28,7 @@ var searchData=
   ['permeability_5fkernel_25',['permeability_kernel',['../de/d72/hip_2filter__kernels_8h.html#a79e04ae1792d3601c40b2c33facbd3b6',1,'permeability_kernel(T *__restrict__ x, const T k_0, const T k_1, const T q, const int n):&#160;filter_kernels.h'],['../d4/d5b/cuda_2filter__kernels_8h.html#a79e04ae1792d3601c40b2c33facbd3b6',1,'permeability_kernel(T *__restrict__ x, const T k_0, const T k_1, const T q, const int n):&#160;filter_kernels.h'],['../d9/d3d/namespacefilters__cpu.html#ad57c2d45e046f65d72896e54865e4fdd',1,'filters_cpu::permeability_kernel()']]],
   ['phmg_5ffree_26',['phmg_free',['../d1/d38/namespacephmg.html#a653cec208d7427a4e8ab49ed998d7fe2',1,'phmg']]],
   ['phmg_5finit_27',['phmg_init',['../d1/d38/namespacephmg.html#a418fd06ee7695c0f6f3ba9a66c2594c9',1,'phmg']]],
-  ['phmg_5finit_5ffrom_5fcomponents_28',['phmg_init_from_components',['../d1/d38/namespacephmg.html#aa2882d45c5b22d80710c7cadd348592b',1,'phmg']]],
+  ['phmg_5finit_5ffrom_5fcomponents_28',['phmg_init_from_components',['../d1/d38/namespacephmg.html#a2c3ad9df3bbb398c7fd33a6d725949e2',1,'phmg']]],
   ['phmg_5fjacobi_5fsmoother_29',['phmg_jacobi_smoother',['../d1/d38/namespacephmg.html#a0bfdfc7e98d9c658d456ff3790e22562',1,'phmg']]],
   ['phmg_5fmg_5fcycle_30',['phmg_mg_cycle',['../d1/d38/namespacephmg.html#ad2399ef98a12756b4a63abff6f55c23c',1,'phmg']]],
   ['phmg_5fresid_5fmonitor_31',['phmg_resid_monitor',['../d1/d38/namespacephmg.html#a810bef12c508567a313351c78cac63e6',1,'phmg']]],

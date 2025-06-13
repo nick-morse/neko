@@ -18,7 +18,7 @@
 <area shape="poly" id="edge18_Node000001_Node000019" title=" " alt="" coords="870,339,817,396,782,427,743,452,703,467,701,462,740,448,779,423,813,393,866,336"/>
 <area shape="rect" id="Node000020" href="$d0/d19/namespacescalar__user__source__term.html#af21d8d1b876087064e3a30317ade1a4c" title="Computes the source term and adds the result to fields." alt="" coords="533,512,725,567"/>
 <area shape="poly" id="edge19_Node000001_Node000020" title=" " alt="" coords="875,340,854,376,824,420,787,464,743,503,724,514,721,510,740,499,783,460,820,416,850,373,871,337"/>
-<area shape="rect" id="Node000021" href="$d5/d1b/namespacetree__amg__multigrid.html#af98f6903d3a7aa8183e98c1c109cb212" title="Recrsive multigrid cycle for the TreeAMG solver object on device." alt="" coords="554,615,705,655"/>
+<area shape="rect" id="Node000021" href="$d5/d1b/namespacetree__amg__multigrid.html#aa05c674514ae6f8c5569c4b9afec19a5" title="Recrsive multigrid cycle for the TreeAMG solver object on device." alt="" coords="554,615,705,655"/>
 <area shape="poly" id="edge20_Node000001_Node000021" title=" " alt="" coords="880,341,862,390,833,454,793,521,770,552,743,581,716,602,687,618,685,613,714,597,740,577,765,549,789,518,828,451,857,388,875,339"/>
 <area shape="rect" id="Node000005" href="$d3/df3/namespacecoriolis__source__term.html#ad79345db7e7a06356d3dde33700dc0ae" title="Computes the source term and adds the result to fields." alt="" coords="281,5,447,60"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="527,138,516,131,500,116,491,102,482,88,468,75,446,62,448,57,471,71,486,85,496,99,504,113,519,127,530,133"/>

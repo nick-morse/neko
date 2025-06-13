@@ -105,7 +105,7 @@ var searchData=
   ['phmg_5fhrchy_102',['phmg_hrchy',['../d8/d4e/structphmg_1_1phmg__t.html#a6a22fc48e86986cc384aa5d99e782bc7',1,'phmg::phmg_t']]],
   ['phmg_5fhrchy_5ft_103',['phmg_hrchy_t',['../da/dde/structphmg_1_1phmg__hrchy__t.html',1,'phmg']]],
   ['phmg_5finit_104',['phmg_init',['../d1/d38/namespacephmg.html#a418fd06ee7695c0f6f3ba9a66c2594c9',1,'phmg']]],
-  ['phmg_5finit_5ffrom_5fcomponents_105',['phmg_init_from_components',['../d1/d38/namespacephmg.html#aa2882d45c5b22d80710c7cadd348592b',1,'phmg']]],
+  ['phmg_5finit_5ffrom_5fcomponents_105',['phmg_init_from_components',['../d1/d38/namespacephmg.html#a2c3ad9df3bbb398c7fd33a6d725949e2',1,'phmg']]],
   ['phmg_5fjacobi_5fsmoother_106',['phmg_jacobi_smoother',['../d1/d38/namespacephmg.html#a0bfdfc7e98d9c658d456ff3790e22562',1,'phmg']]],
   ['phmg_5flvl_5ft_107',['phmg_lvl_t',['../d5/dec/structphmg_1_1phmg__lvl__t.html',1,'phmg']]],
   ['phmg_5fmg_5fcycle_108',['phmg_mg_cycle',['../d1/d38/namespacephmg.html#ad2399ef98a12756b4a63abff6f55c23c',1,'phmg']]],

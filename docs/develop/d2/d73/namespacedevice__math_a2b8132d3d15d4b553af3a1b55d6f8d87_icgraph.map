@@ -26,7 +26,7 @@
 <area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="555,502,540,547,516,602,482,656,461,681,438,702,415,715,413,710,434,698,458,677,478,653,511,599,535,546,550,500"/>
 <area shape="rect" id="Node000016" href="$de/dcb/namespacesource__scalar.html#a49611bac6e580ca2b4fb3194e2e885d9" title="Eval routine for zero forcing." alt="" coords="247,763,409,803"/>
 <area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="558,502,545,556,522,623,487,692,464,723,438,751,411,768,408,764,434,747,460,720,483,689,517,621,540,555,553,501"/>
-<area shape="rect" id="Node000017" href="$d5/d1b/namespacetree__amg__multigrid.html#af98f6903d3a7aa8183e98c1c109cb212" title="Recrsive multigrid cycle for the TreeAMG solver object on device." alt="" coords="253,851,403,891"/>
+<area shape="rect" id="Node000017" href="$d5/d1b/namespacetree__amg__multigrid.html#aa05c674514ae6f8c5569c4b9afec19a5" title="Recrsive multigrid cycle for the TreeAMG solver object on device." alt="" coords="253,851,403,891"/>
 <area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="560,502,549,566,526,649,491,737,467,778,438,816,414,837,387,853,384,848,411,833,434,813,462,775,486,734,521,647,543,565,555,501"/>
 <area shape="rect" id="Node000018" href="$d5/d1b/namespacetree__amg__multigrid.html#aceff3d75610ff13856f0687a6c1c8343" title="Solver function for the TreeAMG solver object." alt="" coords="13,879,164,919"/>
 <area shape="poly" id="edge19_Node000001_Node000018" title=" " alt="" coords="559,502,544,597,519,719,502,780,483,833,462,877,438,905,404,925,367,937,328,944,288,945,212,937,147,921,148,916,213,932,288,940,327,939,365,932,401,920,434,901,457,874,478,831,497,778,513,718,539,596,554,501"/>

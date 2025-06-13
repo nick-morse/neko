@@ -5,7 +5,7 @@ var phmg_8f90 =
     [ "phmg::phmg_t", "d8/d4e/structphmg_1_1phmg__t.html", "d8/d4e/structphmg_1_1phmg__t" ],
     [ "phmg_free", "d4/da1/phmg_8f90.html#a653cec208d7427a4e8ab49ed998d7fe2", null ],
     [ "phmg_init", "d4/da1/phmg_8f90.html#a418fd06ee7695c0f6f3ba9a66c2594c9", null ],
-    [ "phmg_init_from_components", "d4/da1/phmg_8f90.html#aa2882d45c5b22d80710c7cadd348592b", null ],
+    [ "phmg_init_from_components", "d4/da1/phmg_8f90.html#a2c3ad9df3bbb398c7fd33a6d725949e2", null ],
     [ "phmg_jacobi_smoother", "d4/da1/phmg_8f90.html#a0bfdfc7e98d9c658d456ff3790e22562", null ],
     [ "phmg_mg_cycle", "d4/da1/phmg_8f90.html#ad2399ef98a12756b4a63abff6f55c23c", null ],
     [ "phmg_resid_monitor", "d4/da1/phmg_8f90.html#a810bef12c508567a313351c78cac63e6", null ],
