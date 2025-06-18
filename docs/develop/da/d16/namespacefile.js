@@ -3,7 +3,7 @@ var namespacefile =
     [ "file_t", "d6/dae/structfile_1_1file__t.html", "d6/dae/structfile_1_1file__t" ],
     [ "file_free", "da/d16/namespacefile.html#aa1b75b689ccaf533d011ac92fb6e8d5b", null ],
     [ "file_get_counter", "da/d16/namespacefile.html#a2e3ac7008bfeee477ba02e5c22e4283a", null ],
-    [ "file_init", "da/d16/namespacefile.html#a7d240c00516209edd9b960c28227462e", null ],
+    [ "file_init", "da/d16/namespacefile.html#a26e3da3769d69333b91328aa9d1305d0", null ],
     [ "file_read", "da/d16/namespacefile.html#a382c0a874d75f4e3f6e03fa52ae0e1ae", null ],
     [ "file_set_counter", "da/d16/namespacefile.html#a0f80193026d56ddfd5e13c0119d30776", null ],
     [ "file_set_header", "da/d16/namespacefile.html#a0167c68d0b7fa85eed2bb23f5a1cd6d2", null ],

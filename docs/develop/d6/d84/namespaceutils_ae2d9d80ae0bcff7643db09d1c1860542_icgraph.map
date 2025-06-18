@@ -32,8 +32,8 @@
 <area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="204,146,162,146,162,141,204,141"/>
 <area shape="rect" id="Node000013" href="$d6/d84/namespaceutils.html#a0962746ef1c8f4a3a6e83aae5ef2d7a0" title="Extracts the index of a field file. For example, &quot;myfield.f00045&quot; will return 45. If the suffix of th..." alt="" coords="447,321,573,361"/>
 <area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="664,384,573,360,574,355,665,379"/>
-<area shape="rect" id="Node000014" href="$d6/dae/structfile_1_1file__t.html#af6403c48b8d2a771b9bee5473d7a3809" title="File reader/writer constructor." alt="" coords="441,385,579,411"/>
-<area shape="poly" id="edge15_Node000012_Node000014" title=" " alt="" coords="633,401,580,401,580,395,633,395"/>
+<area shape="rect" id="Node000014" href="$da/d16/namespacefile.html#a26e3da3769d69333b91328aa9d1305d0" title="Constructor." alt="" coords="461,385,559,411"/>
+<area shape="poly" id="edge15_Node000012_Node000014" title=" " alt="" coords="633,401,560,401,560,395,633,395"/>
 <area shape="rect" id="Node000015" href="$da/d16/namespacefile.html#a0167c68d0b7fa85eed2bb23f5a1cd6d2" title="Set a file&#39;s header." alt="" coords="435,435,585,460"/>
 <area shape="poly" id="edge16_Node000012_Node000015" title=" " alt="" coords="658,416,567,437,566,432,657,411"/>
 <area shape="rect" id="Node000016" href="$da/d16/namespacefile.html#a20347acf22c138e1cb0adfd16c4242e7" title="Set a file&#39;s output layout." alt="" coords="437,484,583,509"/>

@@ -159,7 +159,7 @@ $(document).ready(function(){initNavTree('d9/d91/flow__ic_8f90_source.html','../
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="keywordtype">use </span><a class="code hl_namespace" href="../../d9/dac/namespacepoint__zone__registry.html">point_zone_registry</a>, <span class="keywordtype">only</span>: <a class="code hl_variable" href="../../d9/dac/namespacepoint__zone__registry.html#abf00a08e06fde5186c53f42fe2590229">neko_point_zone_registry</a></div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <span class="keywordtype">use </span><a class="code hl_namespace" href="../../d9/dfd/namespacefld__file__data.html">fld_file_data</a>, <span class="keywordtype">only</span>: <a class="code hl_struct" href="../../db/da1/structfld__file__data_1_1fld__file__data__t.html">fld_file_data_t</a></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  <span class="keywordtype">use </span><a class="code hl_namespace" href="../../d9/d41/namespacefld__file.html">fld_file</a>, <span class="keywordtype">only</span>: <a class="code hl_struct" href="../../dd/d2f/structfld__file_1_1fld__file__t.html">fld_file_t</a></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <span class="keywordtype">use </span><a class="code hl_namespace" href="../../da/d16/namespacefile.html">file</a>, <span class="keywordtype">only</span>: <a class="code hl_interface" href="../../d6/dae/structfile_1_1file__t.html">file_t</a></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <span class="keywordtype">use </span><a class="code hl_namespace" href="../../da/d16/namespacefile.html">file</a>, <span class="keywordtype">only</span>: <a class="code hl_struct" href="../../d6/dae/structfile_1_1file__t.html">file_t</a></div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  <span class="keywordtype">use </span><a class="code hl_namespace" href="../../dd/de1/namespaceglobal__interpolation.html">global_interpolation</a>, <span class="keywordtype">only</span>: <a class="code hl_struct" href="../../dc/df3/structglobal__interpolation_1_1global__interpolation__t.html">global_interpolation_t</a></div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <span class="keywordtype">use </span><a class="code hl_namespace" href="../../d9/da0/namespaceinterpolation.html">interpolation</a>, <span class="keywordtype">only</span>: <a class="code hl_struct" href="../../db/d74/structinterpolation_1_1interpolator__t.html">interpolator_t</a></div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="keywordtype">use </span><a class="code hl_namespace" href="../../d5/d0d/namespacespace.html">space</a>, <span class="keywordtype">only</span>: <a class="code hl_struct" href="../../da/d99/structspace_1_1space__t.html">space_t</a>, <a class="code hl_variable" href="../../d5/d0d/namespacespace.html#a9dbfc4fd0750ee0878eec8a16370a91d">gll</a></div>
@@ -169,7 +169,7 @@ $(document).ready(function(){initNavTree('d9/d91/flow__ic_8f90_source.html','../
 <div class="foldopen" id="foldopen00062" data-start="" data-end="">
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="../../d5/d04/interfaceflow__ic_1_1set__flow__ic.html">   62</a></span>  <span class="keyword">interface</span> <a class="code hl_interface" href="../../d5/d04/interfaceflow__ic_1_1set__flow__ic.html">set_flow_ic</a></div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>     <span class="keyword">module procedure</span> <a class="code hl_function" href="../../d2/d13/namespaceflow__ic.html#a388819509058bcb45eb50c8bcc4e5e20">set_flow_ic_int</a>, <a class="code hl_function" href="../../d2/d13/namespaceflow__ic.html#a02dff9466ac61b069c1cb35673182f96">set_flow_ic_usr</a>, &amp;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>      <a class="code hl_function" href="../../d2/d13/namespaceflow__ic.html#acc60679a1bf4f4cd80c4c966b8a0064f">set_compressible_flow_ic_usr</a></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>          <a class="code hl_function" href="../../d2/d13/namespaceflow__ic.html#acc60679a1bf4f4cd80c4c966b8a0064f">set_compressible_flow_ic_usr</a></div>
 </div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <span class="keyword">end interface </span><a class="code hl_interface" href="../../d5/d04/interfaceflow__ic_1_1set__flow__ic.html">set_flow_ic</a></div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
@@ -482,7 +482,7 @@ $(document).ready(function(){initNavTree('d9/d91/flow__ic_8f90_source.html','../
 <div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>    <span class="keywordtype">integer</span> :: sample_idx, sample_mesh_idx</div>
 <div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>    <span class="keywordtype">integer</span> :: last_index</div>
 <div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>    <span class="keywordtype">type</span>(<a class="code hl_struct" href="../../db/da1/structfld__file__data_1_1fld__file__data__t.html">fld_file_data_t</a>) :: fld_data</div>
-<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>    <span class="keywordtype">type</span>(<a class="code hl_interface" href="../../d6/dae/structfile_1_1file__t.html">file_t</a>) :: f</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>    <span class="keywordtype">type</span>(<a class="code hl_struct" href="../../d6/dae/structfile_1_1file__t.html">file_t</a>) :: f</div>
 <div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>    <span class="keywordtype">logical</span> :: mesh_mismatch</div>
 <div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span> </div>
 <div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>    <span class="comment">! ---- For the mesh to mesh interpolation</span></div>
@@ -506,13 +506,13 @@ $(document).ready(function(){initNavTree('d9/d91/flow__ic_8f90_source.html','../
 <div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span> </div>
 <div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>    <span class="keywordflow">if</span> (sample_idx .eq. -1) &amp;</div>
 <div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>         <span class="keyword">call </span><a class="code hl_interface" href="../../d7/d83/interfaceutils_1_1neko__error.html">neko_error</a>(<span class="stringliteral">&quot;Invalid file name for the initial condition. The&amp;</span></div>
-<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span><span class="stringliteral"></span><span class="stringliteral">      &amp; file format must be e.g. &#39;mean0.f00001&#39;&quot;</span>)</div>
+<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span><span class="stringliteral"></span><span class="stringliteral">    &amp; file format must be e.g. &#39;mean0.f00001&#39;&quot;</span>)</div>
 <div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span> </div>
 <div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>    <span class="comment">! Change from &quot;field0.f000*&quot; to &quot;field0.fld&quot; for the fld reader</span></div>
 <div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span>    <span class="keyword">call </span><a class="code hl_function" href="../../d6/d84/namespaceutils.html#a94a1b10b4fd0d52a2bbd0bdfbac01692">filename_chsuffix</a>(file_name, file_name, <span class="stringliteral">&#39;fld&#39;</span>)</div>
 <div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span> </div>
 <div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>    <span class="keyword">call </span>fld_data%init</div>
-<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>    f = <a class="code hl_interface" href="../../d6/dae/structfile_1_1file__t.html">file_t</a>(trim(file_name))</div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>    <span class="keyword">call </span>f%init(trim(file_name))</div>
 <div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span> </div>
 <div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>    <span class="keywordflow">if</span> (interpolate) <span class="keywordflow">then</span></div>
 <div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span> </div>
@@ -527,7 +527,7 @@ $(document).ready(function(){initNavTree('d9/d91/flow__ic_8f90_source.html','../
 <div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span> </div>
 <div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>          <span class="keywordflow">if</span> (sample_mesh_idx .eq. -1) <span class="keywordflow">then</span></div>
 <div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>             <span class="keyword">call </span><a class="code hl_interface" href="../../d7/d83/interfaceutils_1_1neko__error.html">neko_error</a>(<span class="stringliteral">&quot;Invalid file name for the initial condition. &amp;</span></div>
-<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span><span class="stringliteral"></span><span class="stringliteral">               &amp;The file format must be e.g. &#39;mean0.f00001&#39;&quot;</span>)</div>
+<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span><span class="stringliteral"></span><span class="stringliteral">             &amp;The file format must be e.g. &#39;mean0.f00001&#39;&quot;</span>)</div>
 <div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span><span class="keywordflow">          end if</span></div>
 <div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span> </div>
 <div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span>          <span class="keyword">write</span> (log_buf, <span class="stringliteral">&#39;(A,ES12.6)&#39;</span>) <span class="stringliteral">&quot;Tolerance     : &quot;</span>, tolerance</div>
@@ -561,10 +561,10 @@ $(document).ready(function(){initNavTree('d9/d91/flow__ic_8f90_source.html','../
 <div class="line"><a id="l00470" name="l00470"></a><span class="lineno">  470</span> </div>
 <div class="line"><a id="l00471" name="l00471"></a><span class="lineno">  471</span>    <span class="keywordflow">if</span> (mesh_mismatch .and. .not. interpolate) <span class="keywordflow">then</span></div>
 <div class="line"><a id="l00472" name="l00472"></a><span class="lineno">  472</span>       <span class="keyword">call </span><a class="code hl_interface" href="../../d7/d83/interfaceutils_1_1neko__error.html">neko_error</a>(<span class="stringliteral">&quot;The fld file must match the current mesh! &amp;</span></div>
-<div class="line"><a id="l00473" name="l00473"></a><span class="lineno">  473</span><span class="stringliteral"></span><span class="stringliteral">         &amp;Use &#39;interpolate&#39;: &#39;true&#39; to enable interpolation.&quot;</span>)</div>
+<div class="line"><a id="l00473" name="l00473"></a><span class="lineno">  473</span><span class="stringliteral"></span><span class="stringliteral">       &amp;Use &#39;interpolate&#39;: &#39;true&#39; to enable interpolation.&quot;</span>)</div>
 <div class="line"><a id="l00474" name="l00474"></a><span class="lineno">  474</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (.not. mesh_mismatch .and. interpolate) <span class="keywordflow">then</span></div>
 <div class="line"><a id="l00475" name="l00475"></a><span class="lineno">  475</span>       <span class="keyword">call </span><a class="code hl_variable" href="../../d8/da0/namespacelogger.html#ad728b3400b2e5dfa9ee65757c599c9ce">neko_log</a>%warning(<span class="stringliteral">&quot;You have activated interpolation but you might &amp;</span></div>
-<div class="line"><a id="l00476" name="l00476"></a><span class="lineno">  476</span><span class="stringliteral"></span><span class="stringliteral">         &amp;still be using the same mesh.&quot;</span>)</div>
+<div class="line"><a id="l00476" name="l00476"></a><span class="lineno">  476</span><span class="stringliteral"></span><span class="stringliteral">       &amp;still be using the same mesh.&quot;</span>)</div>
 <div class="line"><a id="l00477" name="l00477"></a><span class="lineno">  477</span><span class="keywordflow">    end if</span></div>
 <div class="line"><a id="l00478" name="l00478"></a><span class="lineno">  478</span> </div>
 <div class="line"><a id="l00479" name="l00479"></a><span class="lineno">  479</span>    <span class="comment">! Mesh interpolation if specified</span></div>
@@ -575,11 +575,11 @@ $(document).ready(function(){initNavTree('d9/d91/flow__ic_8f90_source.html','../
 <div class="line"><a id="l00484" name="l00484"></a><span class="lineno">  484</span><span class="keywordflow">       type is</span> (<a class="code hl_struct" href="../../dd/d2f/structfld__file_1_1fld__file__t.html">fld_file_t</a>)</div>
 <div class="line"><a id="l00485" name="l00485"></a><span class="lineno">  485</span>          <span class="keywordflow">if</span> (.not. ft%dp_precision) <span class="keywordflow">then</span></div>
 <div class="line"><a id="l00486" name="l00486"></a><span class="lineno">  486</span>             <span class="keyword">call </span><a class="code hl_function" href="../../d6/d84/namespaceutils.html#a8de91e60607d8bf98d265d9e9a90f88f">neko_warning</a>(<span class="stringliteral">&quot;The coordinates read from the field file are &amp;</span></div>
-<div class="line"><a id="l00487" name="l00487"></a><span class="lineno">  487</span><span class="stringliteral"></span><span class="stringliteral">               &amp;in single precision.&quot;</span>)</div>
+<div class="line"><a id="l00487" name="l00487"></a><span class="lineno">  487</span><span class="stringliteral"></span><span class="stringliteral">             &amp;in single precision.&quot;</span>)</div>
 <div class="line"><a id="l00488" name="l00488"></a><span class="lineno">  488</span>             <span class="keyword">call </span><a class="code hl_variable" href="../../d8/da0/namespacelogger.html#ad728b3400b2e5dfa9ee65757c599c9ce">neko_log</a>%message(<span class="stringliteral">&quot;It is recommended to use a mesh in double &amp;</span></div>
-<div class="line"><a id="l00489" name="l00489"></a><span class="lineno">  489</span><span class="stringliteral"></span><span class="stringliteral">               &amp;precision for better interpolation results.&quot;</span>)</div>
+<div class="line"><a id="l00489" name="l00489"></a><span class="lineno">  489</span><span class="stringliteral"></span><span class="stringliteral">             &amp;precision for better interpolation results.&quot;</span>)</div>
 <div class="line"><a id="l00490" name="l00490"></a><span class="lineno">  490</span>             <span class="keyword">call </span><a class="code hl_variable" href="../../d8/da0/namespacelogger.html#ad728b3400b2e5dfa9ee65757c599c9ce">neko_log</a>%message(<span class="stringliteral">&quot;If the interpolation does not work, you&amp;</span></div>
-<div class="line"><a id="l00491" name="l00491"></a><span class="lineno">  491</span><span class="stringliteral"></span><span class="stringliteral">               &amp;can try to increase the tolerance.&quot;</span>)</div>
+<div class="line"><a id="l00491" name="l00491"></a><span class="lineno">  491</span><span class="stringliteral"></span><span class="stringliteral">             &amp;can try to increase the tolerance.&quot;</span>)</div>
 <div class="line"><a id="l00492" name="l00492"></a><span class="lineno">  492</span><span class="keywordflow">          end if</span></div>
 <div class="line"><a id="l00493" name="l00493"></a><span class="lineno">  493</span><span class="keywordflow">       class default</span></div>
 <div class="line"><a id="l00494" name="l00494"></a><span class="lineno">  494</span><span class="keywordflow">       end select</span></div>
@@ -700,7 +700,7 @@ $(document).ready(function(){initNavTree('d9/d91/flow__ic_8f90_source.html','../
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_48eb729a40134e424c89304faa5c21a9.html">fluid</a></li><li class="navelem"><a class="el" href="../../d9/d91/flow__ic_8f90.html">flow_ic.f90</a></li>
-    <li class="footer">Generated on Tue Jun 17 2025 03:49:01 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Wed Jun 18 2025 03:48:14 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

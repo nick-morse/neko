@@ -159,7 +159,7 @@ $(document).ready(function(){initNavTree('d7/d74/scalar__ic_8f90_source.html','.
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="keywordtype">use </span><a class="code hl_namespace" href="../../d9/dfd/namespacefld__file__data.html">fld_file_data</a>, <span class="keywordtype">only</span>: <a class="code hl_struct" href="../../db/da1/structfld__file__data_1_1fld__file__data__t.html">fld_file_data_t</a></div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <span class="keywordtype">use </span><a class="code hl_namespace" href="../../d9/d41/namespacefld__file.html">fld_file</a>, <span class="keywordtype">only</span>: <a class="code hl_struct" href="../../dd/d2f/structfld__file_1_1fld__file__t.html">fld_file_t</a></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  <span class="keywordtype">use </span><a class="code hl_namespace" href="../../d3/d51/namespacecheckpoint.html">checkpoint</a>, <span class="keywordtype">only</span>: <a class="code hl_struct" href="../../d9/d88/structcheckpoint_1_1chkp__t.html">chkp_t</a></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <span class="keywordtype">use </span><a class="code hl_namespace" href="../../da/d16/namespacefile.html">file</a>, <span class="keywordtype">only</span>: <a class="code hl_interface" href="../../d6/dae/structfile_1_1file__t.html">file_t</a></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <span class="keywordtype">use </span><a class="code hl_namespace" href="../../da/d16/namespacefile.html">file</a>, <span class="keywordtype">only</span>: <a class="code hl_struct" href="../../d6/dae/structfile_1_1file__t.html">file_t</a></div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  <span class="keywordtype">use </span><a class="code hl_namespace" href="../../dd/de1/namespaceglobal__interpolation.html">global_interpolation</a>, <span class="keywordtype">only</span>: <a class="code hl_struct" href="../../dc/df3/structglobal__interpolation_1_1global__interpolation__t.html">global_interpolation_t</a></div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <span class="keywordtype">use </span><a class="code hl_namespace" href="../../d9/da0/namespaceinterpolation.html">interpolation</a>, <span class="keywordtype">only</span>: <a class="code hl_struct" href="../../db/d74/structinterpolation_1_1interpolator__t.html">interpolator_t</a></div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="keywordtype">use </span><a class="code hl_namespace" href="../../d5/d0d/namespacespace.html">space</a>, <span class="keywordtype">only</span>: <a class="code hl_struct" href="../../da/d99/structspace_1_1space__t.html">space_t</a>, <a class="code hl_variable" href="../../d5/d0d/namespacespace.html#a9dbfc4fd0750ee0878eec8a16370a91d">gll</a></div>
@@ -329,7 +329,7 @@ $(document).ready(function(){initNavTree('d7/d74/scalar__ic_8f90_source.html','.
 <div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    <span class="keywordtype">integer</span> :: sample_idx, sample_mesh_idx</div>
 <div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    <span class="keywordtype">integer</span> :: last_index</div>
 <div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    <span class="keywordtype">type</span>(<a class="code hl_struct" href="../../db/da1/structfld__file__data_1_1fld__file__data__t.html">fld_file_data_t</a>) :: fld_data</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <span class="keywordtype">type</span>(<a class="code hl_interface" href="../../d6/dae/structfile_1_1file__t.html">file_t</a>) :: f</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <span class="keywordtype">type</span>(<a class="code hl_struct" href="../../d6/dae/structfile_1_1file__t.html">file_t</a>) :: f</div>
 <div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    <span class="keywordtype">logical</span> :: mesh_mismatch</div>
 <div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
 <div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    <span class="comment">! ---- For the mesh to mesh interpolation</span></div>
@@ -358,7 +358,7 @@ $(document).ready(function(){initNavTree('d7/d74/scalar__ic_8f90_source.html','.
 <div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    <span class="keyword">call </span><a class="code hl_function" href="../../d6/d84/namespaceutils.html#a94a1b10b4fd0d52a2bbd0bdfbac01692">filename_chsuffix</a>(file_name, file_name, <span class="stringliteral">&#39;fld&#39;</span>)</div>
 <div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span> </div>
 <div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    <span class="keyword">call </span>fld_data%init</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    f = <a class="code hl_interface" href="../../d6/dae/structfile_1_1file__t.html">file_t</a>(trim(file_name))</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    <span class="keyword">call </span>f%init(trim(file_name))</div>
 <div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span> </div>
 <div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    <span class="keywordflow">if</span> (interpolate) <span class="keywordflow">then</span></div>
 <div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span> </div>
@@ -525,7 +525,7 @@ $(document).ready(function(){initNavTree('d7/d74/scalar__ic_8f90_source.html','.
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_0691d6202b68dc26b40b4865e3c53c6d.html">scalar</a></li><li class="navelem"><a class="el" href="../../d7/d74/scalar__ic_8f90.html">scalar_ic.f90</a></li>
-    <li class="footer">Generated on Tue Jun 17 2025 03:49:02 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Wed Jun 18 2025 03:48:15 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

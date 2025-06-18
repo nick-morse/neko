@@ -235,7 +235,7 @@ var searchData=
   ['file_5f_232',['file_',['../dd/d5f/structoutput_1_1output__t.html#adf461dea61d83b5cc030eec5d76f5730',1,'output::output_t']]],
   ['file_5ffree_233',['file_free',['../da/d16/namespacefile.html#aa1b75b689ccaf533d011ac92fb6e8d5b',1,'file::file_free()'],['../d6/dae/structfile_1_1file__t.html#a1e1b77b11885d226bee393d41ba94ef3',1,'file::file_t::file_free()']]],
   ['file_5fget_5fcounter_234',['file_get_counter',['../da/d16/namespacefile.html#a2e3ac7008bfeee477ba02e5c22e4283a',1,'file']]],
-  ['file_5finit_235',['file_init',['../d6/dae/structfile_1_1file__t.html#af6403c48b8d2a771b9bee5473d7a3809',1,'file::file_t::file_init()'],['../da/d16/namespacefile.html#a7d240c00516209edd9b960c28227462e',1,'file::file_init(fname, header, precision, layout)']]],
+  ['file_5finit_235',['file_init',['../da/d16/namespacefile.html#a26e3da3769d69333b91328aa9d1305d0',1,'file']]],
   ['file_5fread_236',['file_read',['../da/d16/namespacefile.html#a382c0a874d75f4e3f6e03fa52ae0e1ae',1,'file']]],
   ['file_5fset_5fcounter_237',['file_set_counter',['../da/d16/namespacefile.html#a0f80193026d56ddfd5e13c0119d30776',1,'file']]],
   ['file_5fset_5fheader_238',['file_set_header',['../da/d16/namespacefile.html#a0167c68d0b7fa85eed2bb23f5a1cd6d2',1,'file']]],

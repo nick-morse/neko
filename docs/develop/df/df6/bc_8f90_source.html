@@ -629,13 +629,13 @@ $(document).ready(function(){initNavTree('df/df6/bc_8f90_source.html','../../');
 <div class="foldopen" id="foldopen00581" data-start="" data-end="">
 <div class="line"><a id="l00581" name="l00581"></a><span class="lineno"><a class="line" href="../../d0/dc0/namespacebc.html#ac725cd64024298da9e4e2122b006c546">  581</a></span>  <span class="keyword">subroutine </span><a class="code hl_function" href="../../d0/dc0/namespacebc.html#ac725cd64024298da9e4e2122b006c546">bc_debug_mask</a>(this, file_name)</div>
 <div class="line"><a id="l00582" name="l00582"></a><span class="lineno">  582</span>    <span class="keywordtype">use </span><a class="code hl_namespace" href="../../dc/da9/namespacefield.html">field</a>, <span class="keywordtype">only</span> : <a class="code hl_struct" href="../../d3/d5f/structfield_1_1field__t.html">field_t</a></div>
-<div class="line"><a id="l00583" name="l00583"></a><span class="lineno">  583</span>    <span class="keywordtype">use </span><a class="code hl_namespace" href="../../da/d16/namespacefile.html">file</a>, <span class="keywordtype">only</span> : <a class="code hl_interface" href="../../d6/dae/structfile_1_1file__t.html">file_t</a></div>
+<div class="line"><a id="l00583" name="l00583"></a><span class="lineno">  583</span>    <span class="keywordtype">use </span><a class="code hl_namespace" href="../../da/d16/namespacefile.html">file</a>, <span class="keywordtype">only</span> : <a class="code hl_struct" href="../../d6/dae/structfile_1_1file__t.html">file_t</a></div>
 <div class="line"><a id="l00584" name="l00584"></a><span class="lineno">  584</span> </div>
 <div class="line"><a id="l00585" name="l00585"></a><span class="lineno">  585</span>    <span class="keywordtype">class</span>(<a class="code hl_struct" href="../../d6/db3/structbc_1_1bc__t.html">bc_t</a>), <span class="keywordtype">intent(inout)</span> :: this</div>
 <div class="line"><a id="l00586" name="l00586"></a><span class="lineno">  586</span>    <span class="keywordtype">character(len=*)</span>, <span class="keywordtype">intent(in)</span> :: file_name</div>
 <div class="line"><a id="l00587" name="l00587"></a><span class="lineno">  587</span>    <span class="keywordtype">type</span>(<a class="code hl_struct" href="../../d3/d5f/structfield_1_1field__t.html">field_t</a>) :: bdry_field</div>
 <div class="line"><a id="l00588" name="l00588"></a><span class="lineno">  588</span>    <span class="keywordtype">integer</span>:: i, m, k</div>
-<div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span>    <span class="keywordtype">type</span>(<a class="code hl_interface" href="../../d6/dae/structfile_1_1file__t.html">file_t</a>) :: dump_file</div>
+<div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span>    <span class="keywordtype">type</span>(<a class="code hl_struct" href="../../d6/dae/structfile_1_1file__t.html">file_t</a>) :: dump_file</div>
 <div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span> </div>
 <div class="line"><a id="l00591" name="l00591"></a><span class="lineno">  591</span>    <span class="keyword">call </span>bdry_field%init(this%coef%dof, <span class="stringliteral">&#39;bdry&#39;</span>)</div>
 <div class="line"><a id="l00592" name="l00592"></a><span class="lineno">  592</span>    m = this%msk(0)</div>
@@ -643,7 +643,7 @@ $(document).ready(function(){initNavTree('df/df6/bc_8f90_source.html','../../');
 <div class="line"><a id="l00594" name="l00594"></a><span class="lineno">  594</span>       k = this%msk(i)</div>
 <div class="line"><a id="l00595" name="l00595"></a><span class="lineno">  595</span>       bdry_field%x(k,1,1,1) = 1.0_rp</div>
 <div class="line"><a id="l00596" name="l00596"></a><span class="lineno">  596</span><span class="keywordflow">    end do</span></div>
-<div class="line"><a id="l00597" name="l00597"></a><span class="lineno">  597</span>    dump_file = <a class="code hl_interface" href="../../d6/dae/structfile_1_1file__t.html">file_t</a>(file_name)</div>
+<div class="line"><a id="l00597" name="l00597"></a><span class="lineno">  597</span>    <span class="keyword">call </span>dump_file%init(file_name)</div>
 <div class="line"><a id="l00598" name="l00598"></a><span class="lineno">  598</span>    <span class="keyword">call </span>dump_file%write(bdry_field)</div>
 <div class="line"><a id="l00599" name="l00599"></a><span class="lineno">  599</span> </div>
 </div>
@@ -713,7 +713,7 @@ $(document).ready(function(){initNavTree('df/df6/bc_8f90_source.html','../../');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_96f7c11e9d5d0b09f433cbf8fd37f2d0.html">bc</a></li><li class="navelem"><a class="el" href="../../df/df6/bc_8f90.html">bc.f90</a></li>
-    <li class="footer">Generated on Tue Jun 17 2025 03:49:01 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Wed Jun 18 2025 03:48:14 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -1,8 +1,8 @@
 var structfile_1_1file__t =
 [
     [ "file_free", "d6/dae/structfile_1_1file__t.html#a1e1b77b11885d226bee393d41ba94ef3", null ],
-    [ "file_init", "d6/dae/structfile_1_1file__t.html#af6403c48b8d2a771b9bee5473d7a3809", null ],
     [ "get_counter", "d6/dae/structfile_1_1file__t.html#a21425101d3d915ef697625c9536d06e4", null ],
+    [ "init", "d6/dae/structfile_1_1file__t.html#a4bf6344980f5b4256a852104f325f240", null ],
     [ "read", "d6/dae/structfile_1_1file__t.html#a99beed03fe3f91030960ee70927df9e1", null ],
     [ "set_counter", "d6/dae/structfile_1_1file__t.html#adb1bee9d9b6c5fa515b53516a5e2552a", null ],
     [ "set_header", "d6/dae/structfile_1_1file__t.html#af62ef15acfa6aed63da611329fa10c4a", null ],

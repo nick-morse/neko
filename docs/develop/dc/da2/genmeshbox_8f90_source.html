@@ -249,7 +249,7 @@ $(document).ready(function(){initNavTree('dc/da2/genmeshbox_8f90_source.html','.
 <div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>  <span class="keywordflow">if</span> (trim(dist_x_fname) .eq. <span class="stringliteral">&#39;uniform&#39;</span>) <span class="keywordflow">then</span></div>
 <div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>     el_len_x(:) = (x1 - x0)/nelx</div>
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>  <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>     dist_x_file = file_t(trim(dist_x_fname))</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>     <span class="keyword">call </span>dist_x_file%init(trim(dist_x_fname))</div>
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>     <span class="keyword">call </span>dist_x%init(nelx+1)</div>
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>     <span class="keyword">call </span>dist_x_file%read(dist_x)</div>
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>     <span class="keywordflow">do</span> i = 1, nelx</div>
@@ -262,7 +262,7 @@ $(document).ready(function(){initNavTree('dc/da2/genmeshbox_8f90_source.html','.
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>  <span class="keywordflow">if</span> (trim(dist_y_fname) .eq. <span class="stringliteral">&#39;uniform&#39;</span>) <span class="keywordflow">then</span></div>
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>     el_len_y(:) = (y1 - y0)/nely</div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>  <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>     dist_y_file = file_t(trim(dist_y_fname))</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>     <span class="keyword">call </span>dist_y_file%init(trim(dist_y_fname))</div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>     <span class="keyword">call </span>dist_y%init(nely+1)</div>
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>     <span class="keyword">call </span>dist_y_file%read(dist_y)</div>
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>     <span class="keywordflow">do</span> i = 1, nely</div>
@@ -275,7 +275,7 @@ $(document).ready(function(){initNavTree('dc/da2/genmeshbox_8f90_source.html','.
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>  <span class="keywordflow">if</span> (trim(dist_z_fname) .eq. <span class="stringliteral">&#39;uniform&#39;</span>) <span class="keywordflow">then</span></div>
 <div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>     el_len_z(:) = (z1 - z0)/nelz</div>
 <div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>  <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>     dist_z_file = file_t(trim(dist_z_fname))</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>     <span class="keyword">call </span>dist_z_file%init(trim(dist_z_fname))</div>
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>     <span class="keyword">call </span>dist_z%init(nelz+1)</div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>     <span class="keyword">call </span>dist_z_file%read(dist_z)</div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>     <span class="keywordflow">do</span> i = 1, nelz</div>
@@ -454,7 +454,7 @@ $(document).ready(function(){initNavTree('dc/da2/genmeshbox_8f90_source.html','.
 <div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>  <span class="keyword">call </span>msh%finalize()</div>
 <div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span> </div>
 <div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span> </div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>  <a class="code hl_namespace" href="../../da/dd2/namespacenmsh__file.html">nmsh_file</a> = file_t(fname)</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>  <span class="keyword">call </span><a class="code hl_namespace" href="../../da/dd2/namespacenmsh__file.html">nmsh_file</a>%init(fname)</div>
 <div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span> </div>
 <div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>  <span class="keyword">call </span><a class="code hl_namespace" href="../../da/dd2/namespacenmsh__file.html">nmsh_file</a>%write(msh)</div>
 <div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span> </div>
@@ -475,7 +475,7 @@ $(document).ready(function(){initNavTree('dc/da2/genmeshbox_8f90_source.html','.
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_3847941dc22744d30c1d316a1f1a60e2.html">contrib</a></li><li class="navelem"><a class="el" href="../../dir_d139e10e1d28ed9c5fa710f4c177d0eb.html">genmeshbox</a></li><li class="navelem"><a class="el" href="../../dc/da2/genmeshbox_8f90.html">genmeshbox.f90</a></li>
-    <li class="footer">Generated on Tue Jun 17 2025 03:49:01 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Wed Jun 18 2025 03:48:14 for Neko by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="Extract a filename&#39;s suffix." alt="" coords="640,201,799,226"/>
 <area shape="rect" id="Node000002" href="$d6/d84/namespaceutils.html#a0962746ef1c8f4a3a6e83aae5ef2d7a0" title="Extracts the index of a field file. For example, &quot;myfield.f00045&quot; will return 45. If the suffix of th..." alt="" coords="447,37,573,77"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="697,192,651,143,622,116,591,93,567,80,569,75,593,88,625,112,655,139,701,188"/>
-<area shape="rect" id="Node000007" href="$d6/dae/structfile_1_1file__t.html#af6403c48b8d2a771b9bee5473d7a3809" title="File reader/writer constructor." alt="" coords="441,102,579,127"/>
+<area shape="rect" id="Node000007" href="$da/d16/namespacefile.html#a26e3da3769d69333b91328aa9d1305d0" title="Constructor." alt="" coords="461,102,559,127"/>
 <area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="686,195,642,169,591,142,557,130,559,125,593,138,645,164,689,191"/>
 <area shape="rect" id="Node000008" href="$da/d16/namespacefile.html#a0167c68d0b7fa85eed2bb23f5a1cd6d2" title="Set a file&#39;s header." alt="" coords="435,151,585,177"/>
 <area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="651,200,564,179,565,174,652,195"/>
