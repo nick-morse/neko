@@ -129,9 +129,10 @@ contains
     ! Here we assume the projection space sizes and activate steps
     ! for all three velocity equations are the same
     if (tstep .gt. this%activ_step .and. this%L .gt. 0) then
-       if (.not.(dt_controller%if_variable_dt) .or. &
+       if ((.not. dt_controller%is_variable_dt) .or. &
             (dt_controller%dt_last_change .gt. this%activ_step - 1)) then
-          call this%project_back(x_u, x_v, x_w, Ax, coef, bclst_u, bclst_v, bclst_w, gs_h, n)
+          call this%project_back(x_u, x_v, x_w, Ax, coef, bclst_u, bclst_v, &
+               bclst_w, gs_h, n)
        end if
     end if
 
@@ -219,9 +220,9 @@ contains
        call copy(this%proj_w%xx(1, this%proj_w%m), x_w, n) ! Update (X,B)
     end if
 
-    call Ax%compute_vector(this%proj_u%bb(1,this%proj_u%m), &
-         this%proj_v%bb(1,this%proj_v%m), &
-         this%proj_w%bb(1,this%proj_w%m), x_u, x_v, x_w, &
+    call Ax%compute_vector(this%proj_u%bb(1, this%proj_u%m), &
+         this%proj_v%bb(1, this%proj_v%m), &
+         this%proj_w%bb(1, this%proj_w%m), x_u, x_v, x_w, &
          coef, coef%msh, coef%Xh)
     !cyclic_mod_checked
     !write(*, *) 'Rotate from projection_vel'
@@ -237,9 +238,9 @@ contains
     !call rotate_cyc(this%proj_u%bb(:,this%proj_u%m), this%proj_v%bb(:,this%proj_v%m),&
     !this%proj_w%bb(:,this%proj_w%m), 0, coef)
 
-    call bclst_u%apply_scalar(this%proj_u%bb(1,this%proj_u%m), n)
-    call bclst_v%apply_scalar(this%proj_v%bb(1,this%proj_v%m), n)
-    call bclst_w%apply_scalar(this%proj_w%bb(1,this%proj_w%m), n)
+    call bclst_u%apply_scalar(this%proj_u%bb(1, this%proj_u%m), n)
+    call bclst_v%apply_scalar(this%proj_v%bb(1, this%proj_v%m), n)
+    call bclst_w%apply_scalar(this%proj_w%bb(1, this%proj_w%m), n)
 
     call proj_ortho(this%proj_u, coef, n)
     call proj_ortho(this%proj_v, coef, n)

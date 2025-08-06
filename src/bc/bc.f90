@@ -1,4 +1,4 @@
-! Copyright (c) 2020-2024, The Neko Authors
+! Copyright (c) 2020-2025, The Neko Authors
 ! All rights reserved.
 !
 ! Redistribution and use in source and binary forms, with or without
@@ -35,7 +35,7 @@ module bc
   use neko_config, only : NEKO_BCKND_DEVICE
   use num_types, only : rp
   use device, only : device_get_ptr, HOST_TO_DEVICE, device_memcpy, &
-       device_free, device_map, DEVICE_TO_HOST
+       device_free, device_map, DEVICE_TO_HOST, glb_cmd_queue
   use iso_c_binding, only: c_associated
   use dofmap, only : dofmap_t
   use coefs, only : coef_t
@@ -50,6 +50,7 @@ module bc
   use utils, only : neko_error, linear_index, split_string
   use, intrinsic :: iso_c_binding, only : c_ptr, C_NULL_PTR
   use json_module, only : json_file
+  use time_state, only : time_state_t
   implicit none
   private
 
@@ -136,7 +137,7 @@ module bc
      subroutine bc_constructor(this, coef, json)
        import :: bc_t, coef_t, json_file
        class(bc_t), intent(inout), target :: this
-       type(coef_t), intent(in) :: coef
+       type(coef_t), target, intent(in) :: coef
        type(json_file), intent(inout) :: json
      end subroutine bc_constructor
   end interface
@@ -162,17 +163,15 @@ module bc
      !> Apply the boundary condition to a scalar field
      !! @param x The field for which to apply the boundary condition.
      !! @param n The size of x.
-     !! @param t Current time.
-     !! @param tstep Current time-step.
+     !! @param time Current time state.
      !! @param strong Whether we are setting a strong or a weak bc.
-     subroutine bc_apply_scalar(this, x, n, t, tstep, strong)
-       import :: bc_t
+     subroutine bc_apply_scalar(this, x, n, time, strong)
+       import :: bc_t, time_state_t
        import :: rp
        class(bc_t), intent(inout) :: this
        integer, intent(in) :: n
        real(kind=rp), intent(inout), dimension(n) :: x
-       real(kind=rp), intent(in), optional :: t
-       integer, intent(in), optional :: tstep
+       type(time_state_t), intent(in), optional :: time
        logical, intent(in), optional :: strong
      end subroutine bc_apply_scalar
   end interface
@@ -186,16 +185,15 @@ module bc
      !! @param t Current time.
      !! @param tstep Current time-step.
      !! @param strong Whether we are setting a strong or a weak bc.
-     subroutine bc_apply_vector(this, x, y, z, n, t, tstep, strong)
-       import :: bc_t
+     subroutine bc_apply_vector(this, x, y, z, n, time, strong)
+       import :: bc_t, time_state_t
        import :: rp
        class(bc_t), intent(inout) :: this
        integer, intent(in) :: n
        real(kind=rp), intent(inout), dimension(n) :: x
        real(kind=rp), intent(inout), dimension(n) :: y
        real(kind=rp), intent(inout), dimension(n) :: z
-       real(kind=rp), intent(in), optional :: t
-       integer, intent(in), optional :: tstep
+       type(time_state_t), intent(in), optional :: time
        logical, intent(in), optional :: strong
      end subroutine bc_apply_vector
   end interface
@@ -203,18 +201,18 @@ module bc
   abstract interface
      !> Apply the boundary condition to a scalar field on the device
      !! @param x_d Device pointer to the field.
-     !! @param t The time value.
-     !! @param tstep The time iteration.
+     !! @param time The time state.
      !! @param strong Whether we are setting a strong or a weak bc.
-     subroutine bc_apply_scalar_dev(this, x_d, t, tstep, strong)
+     !! @param strm Device stream
+     subroutine bc_apply_scalar_dev(this, x_d, time, strong, strm)
        import :: c_ptr
-       import :: bc_t
+       import :: bc_t, time_state_t
        import :: rp
        class(bc_t), intent(inout), target :: this
-       type(c_ptr) :: x_d
-       real(kind=rp), intent(in), optional :: t
-       integer, intent(in), optional :: tstep
+       type(c_ptr), intent(inout) :: x_d
+       type(time_state_t), intent(in), optional :: time
        logical, intent(in), optional :: strong
+       type(c_ptr), intent(inout) :: strm
      end subroutine bc_apply_scalar_dev
   end interface
 
@@ -223,20 +221,19 @@ module bc
      !! @param x_d Device pointer to the values to be applied for the x comp.
      !! @param y_d Device pointer to the values to be applied for the y comp.
      !! @param z_d Device pointer to the values to be applied for the z comp.
-     !! @param t The time value.
-     !! @param tstep Current time-step.
+     !! @param time The time state.
      !! @param strong Whether we are setting a strong or a weak bc.
-     subroutine bc_apply_vector_dev(this, x_d, y_d, z_d, t, tstep, strong)
-       import :: c_ptr
-       import :: bc_t
+     !! @param strm Device stream
+     subroutine bc_apply_vector_dev(this, x_d, y_d, z_d, time, strong, strm)
+       import :: c_ptr, bc_t, time_state_t
        import :: rp
        class(bc_t), intent(inout), target :: this
-       type(c_ptr) :: x_d
-       type(c_ptr) :: y_d
-       type(c_ptr) :: z_d
-       real(kind=rp), intent(in), optional :: t
-       integer, intent(in), optional :: tstep
+       type(c_ptr), intent(inout) :: x_d
+       type(c_ptr), intent(inout) :: y_d
+       type(c_ptr), intent(inout) :: z_d
+       type(time_state_t), intent(in), optional :: time
        logical, intent(in), optional :: strong
+       type(c_ptr), intent(inout) :: strm
      end subroutine bc_apply_vector_dev
   end interface
 
@@ -296,45 +293,40 @@ contains
   !! @param y The y comp of the field for which to apply the bc.
   !! @param z The z comp of the field for which to apply the bc.
   !! @param n The size of x, y, and z.
-  !! @param t Current time.
-  !! @param tstep The current time iteration.
-  subroutine bc_apply_vector_generic(this, x, y, z, n, t, tstep)
+  !! @param time Current time state.
+  !! @param Device stream
+  subroutine bc_apply_vector_generic(this, x, y, z, n, time, strm)
     class(bc_t), intent(inout) :: this
     integer, intent(in) :: n
     real(kind=rp), intent(inout), dimension(n) :: x
     real(kind=rp), intent(inout), dimension(n) :: y
     real(kind=rp), intent(inout), dimension(n) :: z
-    real(kind=rp), intent(in), optional :: t
-    integer, intent(in), optional :: tstep
+    type(time_state_t), intent(in), optional :: time
+    type(c_ptr), optional :: strm
+    type(c_ptr) :: strm_
     type(c_ptr) :: x_d
     type(c_ptr) :: y_d
     type(c_ptr) :: z_d
     integer :: i
 
-
     if (NEKO_BCKND_DEVICE .eq. 1) then
+
+       if (present(strm)) then
+          strm_ = strm
+       else
+          strm_ = glb_cmd_queue
+       end if
+
        x_d = device_get_ptr(x)
        y_d = device_get_ptr(y)
        z_d = device_get_ptr(z)
-       if (present(t) .and. present(tstep)) then
-          call this%apply_vector_dev(x_d, y_d, z_d, t = t, tstep = tstep)
-       else if (present(t)) then
-          call this%apply_vector_dev(x_d, y_d, z_d, t = t)
-       else if (present(tstep)) then
-          call this%apply_vector_dev(x_d, y_d, z_d, tstep = tstep)
+       if (present(time)) then
+          call this%apply_vector_dev(x_d, y_d, z_d, time = time, strm = strm_)
        else
-          call this%apply_vector_dev(x_d, y_d, z_d)
+          call this%apply_vector_dev(x_d, y_d, z_d, strm = strm_)
        end if
     else
-       if (present(t) .and. present(tstep)) then
-          call this%apply_vector(x, y, z, n, t = t, tstep = tstep)
-       else if (present(t)) then
-          call this%apply_vector(x, y, z, n, t = t)
-       else if (present(tstep)) then
-          call this%apply_vector(x, y, z, n, tstep = tstep)
-       else
-          call this%apply_vector(x, y, z, n)
-       end if
+       call this%apply_vector(x, y, z, n, time = time)
     end if
 
   end subroutine bc_apply_vector_generic
@@ -345,39 +337,31 @@ contains
   !! @param y The y comp of the field for which to apply the bc.
   !! @param z The z comp of the field for which to apply the bc.
   !! @param n The size of x, y, and z.
-  !! @param t Current time.
-  !! @param tstep The current time iteration.
-  subroutine bc_apply_scalar_generic(this, x, n, t, tstep)
+  !! @param time Current time state.
+  !! @param strm Device stream
+  subroutine bc_apply_scalar_generic(this, x, n, time, strm)
     class(bc_t), intent(inout) :: this
     integer, intent(in) :: n
     real(kind=rp), intent(inout), dimension(n) :: x
-    real(kind=rp), intent(in), optional :: t
-    integer, intent(in), optional :: tstep
+    type(time_state_t), intent(in), optional :: time
+    type(c_ptr), optional :: strm
+    type(c_ptr) :: strm_
     type(c_ptr) :: x_d
     integer :: i
 
 
     if (NEKO_BCKND_DEVICE .eq. 1) then
+
+       if (present(strm)) then
+          strm_ = strm
+       else
+          strm_ = glb_cmd_queue
+       end if
+
        x_d = device_get_ptr(x)
-       if (present(t) .and. present(tstep)) then
-          call this%apply_scalar_dev(x_d, t = t, tstep = tstep)
-       else if (present(t)) then
-          call this%apply_scalar_dev(x_d, t = t)
-       else if (present(tstep)) then
-          call this%apply_scalar_dev(x_d, tstep = tstep)
-       else
-          call this%apply_scalar_dev(x_d)
-       end if
+       call this%apply_scalar_dev(x_d, time = time, strm = strm_)
     else
-       if (present(t) .and. present(tstep)) then
-          call this%apply_scalar(x, n, t = t, tstep = tstep)
-       else if (present(t)) then
-          call this%apply_scalar(x, n, t = t)
-       else if (present(tstep)) then
-          call this%apply_scalar(x, n, tstep = tstep)
-       else
-          call this%apply_scalar(x, n)
-       end if
+       call this%apply_scalar(x, n, time = time)
     end if
 
   end subroutine bc_apply_scalar_generic
@@ -516,6 +500,14 @@ contains
           end do
        end select
     end do
+    this%facet(0) = msk_c
+    if (NEKO_BCKND_DEVICE .eq. 1) then
+       !Observe the facet_mask is junk if only_facet is false
+       n = msk_c + 1
+       call device_map(this%facet, this%facet_d, n)
+       call device_memcpy(this%facet, this%facet_d, n, &
+            HOST_TO_DEVICE, sync = .true.)
+    end if
     if ( .not. only_facet) then
        !Makes check for points not on facet that should have bc applied
        call test_field%init(this%dof)
@@ -557,16 +549,11 @@ contains
     end if
 
     this%msk(0) = msk_c
-    this%facet(0) = msk_c
 
     if (NEKO_BCKND_DEVICE .eq. 1) then
        n = msk_c + 1
        call device_map(this%msk, this%msk_d, n)
-       call device_map(this%facet, this%facet_d, n)
-
        call device_memcpy(this%msk, this%msk_d, n, &
-            HOST_TO_DEVICE, sync = .false.)
-       call device_memcpy(this%facet, this%facet_d, n, &
             HOST_TO_DEVICE, sync = .true.)
     end if
 
@@ -591,7 +578,7 @@ contains
        k = this%msk(i)
        bdry_field%x(k,1,1,1) = 1.0_rp
     end do
-    dump_file = file_t(file_name)
+    call dump_file%init(file_name)
     call dump_file%write(bdry_field)
 
   end subroutine bc_debug_mask

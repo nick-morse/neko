@@ -133,7 +133,8 @@ contains
   !! @param gs Gather-Scatter object.
   !! @param usr_ic User defined initial condition function.
   !! @param params JSON parameters.
-  subroutine set_scalar_ic_usr(s, coef, gs, usr_ic, params)
+  subroutine set_scalar_ic_usr(field_name, s, coef, gs, usr_ic, params)
+    character(len=*), intent(in) :: field_name
     type(field_t), intent(inout) :: s
     type(coef_t), intent(in) :: coef
     type(gs_t), intent(inout) :: gs
@@ -227,7 +228,7 @@ contains
     zone => neko_point_zone_registry%get_point_zone(trim(zone_name))
 
     call set_scalar_ic_uniform(s, base_value)
-    call cfill_mask(s%x, zone_value, size, zone%mask, zone%size)
+    call cfill_mask(s%x, zone_value, size, zone%mask%get(), zone%size)
 
   end subroutine set_scalar_ic_point_zone
 
@@ -286,7 +287,7 @@ contains
     call filename_chsuffix(file_name, file_name, 'fld')
 
     call fld_data%init
-    f = file_t(trim(file_name))
+    call f%init(trim(file_name))
 
     if (interpolate) then
 
@@ -359,7 +360,8 @@ contains
        end select
 
        ! Generates an interpolator object and performs the point search
-       global_interp = fld_data%generate_interpolator(s%dof, s%msh, tolerance)
+       call fld_data%generate_interpolator(global_interp, s%dof, s%msh, &
+            tolerance)
 
        ! Evaluate scalar
        call global_interp%evaluate(s%x, fld_data%t%x)

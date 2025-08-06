@@ -68,7 +68,7 @@ contains
 
   !> Constructor from json.
   subroutine les_simcomp_init_from_json(this, json, case)
-    class(les_simcomp_t), intent(inout) :: this
+    class(les_simcomp_t), intent(inout), target :: this
     type(json_file), intent(inout) :: json
     class(case_t), intent(inout), target :: case
     character(len=:), allocatable :: name
@@ -76,14 +76,6 @@ contains
     character(len=20) :: fields(2)
 
     call this%free()
-
-    ! Check for whether eddy viscosity is enabled in fluid_scheme_incompressible
-    if (case%fluid%variable_material_properties .eqv. .false.) then
-       call neko_error("Eddy viscosity is not acting &
-       &on the equations. &
-       &Please set up a nut_field option &
-       &in the fluid solver")
-    end if
 
     ! Add fields keyword to the json so that the field_writer picks it up.
     ! Will also add fields to the registry if missing.

@@ -282,6 +282,10 @@ contains
     !> @todo resize onces final size is known
     !! Only init if we generate connectivity
     if (this%lgenc) then
+       ! Temporary workaround to avoid long vacations with Cray Fortran
+       if (allocated(this%point_neigh)) then
+          deallocate(this%point_neigh)
+       end if
        allocate(this%point_neigh(this%gdim*this%npts*this%nelv))
        do i = 1, this%gdim*this%npts*this%nelv
           call this%point_neigh(i)%init()
@@ -356,7 +360,8 @@ contains
        do i = 1, this%gdim * this%npts * this%nelv
           call this%point_neigh(i)%free()
        end do
-       deallocate(this%point_neigh)
+       ! This causes Cray Fortran to take a long vacation
+       !deallocate(this%point_neigh)
     end if
 
     if (allocated(this%facet_type)) then
@@ -402,7 +407,8 @@ contains
     end do
     call this%curve%finalize()
 
-    call this%check_right_handedness()
+    ! Due to a bug, right handedness check disabled for the time being.
+    !call this%check_right_handedness()
 
   end subroutine mesh_finalize
 

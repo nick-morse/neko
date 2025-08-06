@@ -48,12 +48,14 @@ submodule(fluid_pnpn) fluid_pnpn_bc_fctry
   implicit none
 
   ! List of all possible types created by the boundary condition factories
-  character(len=25) :: FLUID_PNPN_KNOWN_BCS(13) = [character(len=25) :: &
+  character(len=25) :: FLUID_PNPN_KNOWN_BCS(15) = [character(len=25) :: &
        "symmetry", &
        "velocity_value", &
        "no_slip", &
        "outflow", &
        "normal_outflow", &
+       "outflow+user", &
+       "normal_outflow+user", &
        "outflow+dong", &
        "normal_outflow+dong", &
        "shear_stress", &
@@ -75,7 +77,7 @@ contains
     class(bc_t), pointer, intent(inout) :: object
     type(fluid_pnpn_t), intent(in) :: scheme
     type(json_file), intent(inout) :: json
-    type(coef_t), intent(in) :: coef
+    type(coef_t), target, intent(in) :: coef
     type(user_t), intent(in) :: user
     character(len=:), allocatable :: type
     integer :: i, j, k
@@ -90,7 +92,7 @@ contains
     case ("outflow+dong", "normal_outflow+dong")
        allocate(dong_outflow_t::object)
 
-    case ("user_pressure")
+    case ("user_pressure", "outflow+user", "normal_outflow+user")
        allocate(field_dirichlet_t::object)
        select type (obj => object)
        type is (field_dirichlet_t)
@@ -137,7 +139,7 @@ contains
     class(bc_t), pointer, intent(inout) :: object
     type(fluid_pnpn_t), intent(in) :: scheme
     type(json_file), intent(inout) :: json
-    type(coef_t), intent(in) :: coef
+    type(coef_t), target, intent(in) :: coef
     type(user_t), intent(in) :: user
     character(len=:), allocatable :: type
     integer :: i, j, k
@@ -152,7 +154,7 @@ contains
        allocate(inflow_t::object)
     case ("no_slip")
        allocate(zero_dirichlet_t::object)
-    case ("normal_outflow", "normal_outflow+dong")
+    case ("normal_outflow", "normal_outflow+dong", "normal_outflow+user")
        allocate(non_normal_t::object)
     case ("blasius_profile")
        allocate(blasius_t::object)
@@ -160,10 +162,8 @@ contains
        allocate(shear_stress_t::object)
     case ("wall_model")
        allocate(wall_model_bc_t::object)
-       ! Kind of hack, but maybe OK? The thing is, we need the nu for
-       ! initing the wall model, and forcing the user duplicate that there
-       ! would be a nightmare.
-       call json%add("nu", scheme%mu / scheme%rho)
+       ! Kind of hack, but  OK for now
+       call json%add("scheme_name", scheme%name)
 
     case ("user_velocity")
        allocate(field_dirichlet_vector_t::object)

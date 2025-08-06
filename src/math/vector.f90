@@ -51,7 +51,7 @@ module vector
      !> Device pointer.
      type(c_ptr) :: x_d = C_NULL_PTR
      !> Size of vector.
-     integer :: n = 0
+     integer, private :: n = 0
    contains
      !> Initialise a vector of size `n`.
      procedure, pass(v) :: init => vector_init
@@ -103,7 +103,8 @@ module vector
           vector_pointwise_mult
      generic :: operator(/) => vector_cdiv_left, vector_cdiv_right, &
           vector_pointwise_div
-     generic :: operator(**) => vector_pointwise_power
+     ! Seems to crash the cray compiler
+     !generic :: operator(**) => vector_pointwise_power
 
      ! Private interfaces
      procedure, pass(a), private :: alloc => vector_allocate
@@ -121,17 +122,11 @@ contains
     class(vector_t), intent(inout) :: v
     integer, intent(in) :: n
 
-    call v%free()
-
-    allocate(v%x(n))
+    call v%alloc(n)
     v%x = 0.0_rp
-
     if (NEKO_BCKND_DEVICE .eq. 1) then
-       call device_map(v%x, v%x_d, n)
        call device_cfill(v%x_d, 0.0_rp, n)
     end if
-
-    v%n = n
 
   end subroutine vector_init
 
@@ -140,6 +135,7 @@ contains
     class(vector_t), intent(inout) :: a
     integer, intent(in) :: n
 
+    if (n .eq. 0) call neko_error('Vector cannot have size 0')
     call a%free()
 
     a%n = n
@@ -167,7 +163,7 @@ contains
   end subroutine vector_free
 
   !> Return the number of entries in the vector.
-  function vector_size(v) result(s)
+  pure function vector_size(v) result(s)
     class(vector_t), intent(in) :: v
     integer :: s
     s = v%n
@@ -193,9 +189,7 @@ contains
     class(vector_t), intent(inout) :: v
     real(kind=rp), intent(in) :: s
 
-    if (.not. allocated(v%x)) then
-       call neko_error('Vector not allocated')
-    end if
+    if (v%n .eq. 0) call neko_error('Vector not allocated')
 
     if (NEKO_BCKND_DEVICE .eq. 1) then
        call device_cfill(v%x_d, s, v%n)
@@ -305,9 +299,10 @@ contains
     call v%alloc(a%n)
 
     if (NEKO_BCKND_DEVICE .eq. 1) then
+       v = a
        call device_cmult(v%x_d, -1.0_rp, v%n)
     else
-       v%x = -v%x
+       v%x = -a%x
     end if
 
   end function vector_chsign
@@ -364,17 +359,12 @@ contains
     integer :: i
 
     call v%alloc(a%n)
+    v = 1.0_rp
     if (b .eq. 0) then
-       v = 1.0_rp
        return
     end if
-    if (NEKO_BCKND_DEVICE .eq. 1) then
-       call device_copy(v%x_d, a%x_d, v%n)
-    else
-       call copy(v%x, a%x,v%n)
-    end if
 
-    do i = 2, b
+    do i = 1, b
        if (NEKO_BCKND_DEVICE .eq. 1) then
           call device_col2(v%x_d, a%x_d, v%n)
        else

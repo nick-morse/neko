@@ -187,12 +187,12 @@ contains
     end associate
 
     if (NEKO_BCKND_DEVICE .eq. 1) then
-       associate(p => this%p, rho_field => this%rho_field, &
+       associate(p => this%p, rho => this%rho, &
             u => this%u, v => this%v, w => this%w, &
             m_x => this%m_x, m_y => this%m_y, m_z => this%m_z)
          call device_memcpy(p%x, p%x_d, p%dof%size(), &
               HOST_TO_DEVICE, sync = .false.)
-         call device_memcpy(rho_field%x, rho_field%x_d, rho_field%dof%size(), &
+         call device_memcpy(rho%x, rho%x_d, rho%dof%size(), &
               HOST_TO_DEVICE, sync = .false.)
          call device_memcpy(u%x, u%x_d, u%dof%size(), &
               HOST_TO_DEVICE, sync = .false.)
@@ -231,6 +231,8 @@ contains
   subroutine fluid_scheme_compressible_euler_free(this)
     class(fluid_scheme_compressible_euler_t), intent(inout) :: this
 
+    call this%scheme_free()
+
     if (allocated(this%Ax)) then
        deallocate(this%Ax)
     end if
@@ -266,9 +268,7 @@ contains
          m_x=> this%m_x, m_y => this%m_y, m_z => this%m_z, &
          Xh => this%Xh, msh => this%msh, Ax => this%Ax, &
          c_Xh => this%c_Xh, dm_Xh => this%dm_Xh, gs_Xh => this%gs_Xh, &
-         rho => this%rho, mu => this%mu, E => this%E, &
-         rho_field => this%rho_field, mu_field => this%mu_field, &
-         ulag => this%ulag, vlag => this%vlag, wlag => this%wlag, &
+         E => this%E, rho => this%rho, mu => this%mu, &
          f_x => this%f_x, f_y => this%f_y, f_z => this%f_z, &
          drho => this%drho, dm_x => this%dm_x, dm_y => this%dm_y, &
          dm_z => this%dm_z, dE => this%dE, &
@@ -280,45 +280,45 @@ contains
       ! Hack: If m_z is always zero, use it to visualize rho
       ! call field_cfill(m_z, 0.0_rp, n)
 
-      call euler_rhs%step(rho_field, m_x, m_y, m_z, E, &
+      call euler_rhs%step(rho, m_x, m_y, m_z, E, &
            p, u, v, w, Ax, &
            c_Xh, gs_Xh, h, c_avisc_low, &
            rk_scheme, dt)
 
       !> Apply density boundary conditions
-      call this%bcs_density%apply(rho_field, t, tstep)
+      call this%bcs_density%apply(rho, time)
 
       !> Update variables
       ! Update u, v, w
       call field_copy(u, m_x, n)
-      call field_invcol2(u, rho_field, n)
+      call field_invcol2(u, rho, n)
       call field_copy(v, m_y, n)
-      call field_invcol2(v, rho_field, n)
+      call field_invcol2(v, rho, n)
       call field_copy(w, m_z, n)
-      call field_invcol2(w, rho_field, n)
+      call field_invcol2(w, rho, n)
 
       !> Apply velocity boundary conditions
       call this%bcs_vel%apply_vector(u%x, v%x, w%x, &
-           dm_Xh%size(), t, tstep, strong = .true.)
+           dm_Xh%size(), time, strong = .true.)
       call field_copy(m_x, u, n)
-      call field_col2(m_x, rho_field, n)
+      call field_col2(m_x, rho, n)
       call field_copy(m_y, v, n)
-      call field_col2(m_y, rho_field, n)
+      call field_col2(m_y, rho, n)
       call field_copy(m_z, w, n)
-      call field_col2(m_z, rho_field, n)
+      call field_col2(m_z, rho, n)
 
       !> Update p = (gamma - 1) * (E - 0.5 * rho * (u^2 + v^2 + w^2))
       call field_col3(temp, u, u, n)
       call field_addcol3(temp, v, v, n)
       call field_addcol3(temp, w, w, n)
-      call field_col2(temp, rho_field, n)
+      call field_col2(temp, rho, n)
       call field_cmult(temp, 0.5_rp, n)
       call field_copy(p, E, n)
       call field_sub2(p, temp, n)
       call field_cmult(p, this%gamma - 1.0_rp, n)
 
       !> Apply pressure boundary conditions
-      call this%bcs_prs%apply(p, t, tstep)
+      call this%bcs_prs%apply(p, time)
       ! TODO: Make sure pressure is positive
       ! E = p / (gamma - 1) + 0.5 * rho * (u^2 + v^2 + w^2)
       call field_copy(E, p, n)
@@ -326,10 +326,8 @@ contains
       ! temp = 0.5 * rho * (u^2 + v^2 + w^2)
       call field_add2(E, temp, n)
 
-      !> TODO: Update maximum wave speed
-
       ! Hack: If m_z is always zero, use it to visualize rho
-      ! call field_copy(w, rho_field, n)
+      ! call field_copy(w, rho, n)
 
     end associate
     call profiler_end_region('Fluid compressible', 1)
@@ -343,7 +341,7 @@ contains
   !> @param user User-defined boundary conditions
   !> @param params Configuration parameters
   subroutine fluid_scheme_compressible_euler_setup_bcs(this, user, params)
-    class(fluid_scheme_compressible_euler_t), intent(inout) :: this
+    class(fluid_scheme_compressible_euler_t), target, intent(inout) :: this
     type(user_t), target, intent(in) :: user
     type(json_file), intent(inout) :: params
     integer :: i, n_bcs, zone_index, j, zone_size, global_zone_size, ierr
@@ -429,6 +427,20 @@ contains
              call this%bcs_density%append(bc_i)
           end if
        end do
+    else
+       ! Check that there are no labeled zones, i.e. all are periodic.
+       do i = 1, size(this%msh%labeled_zones)
+          if (this%msh%labeled_zones(i)%size .gt. 0) then
+             call neko_error("No boundary_conditions entry in the case file!")
+          end if
+       end do
+
+       ! For a pure periodic case, we still need to initilise the bc lists
+       ! to a zero size to avoid issues with apply() in step()
+       call this%bcs_prs%init()
+       call this%bcs_vel%init()
+       call this%bcs_density%init()
+
     end if
   end subroutine fluid_scheme_compressible_euler_setup_bcs
 

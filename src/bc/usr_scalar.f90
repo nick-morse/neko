@@ -1,4 +1,4 @@
-! Copyright (c) 2023, The Neko Authors
+! Copyright (c) 2023-2025, The Neko Authors
 ! All rights reserved.
 !
 ! Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,9 @@ module usr_scalar
   use device_inhom_dirichlet
   use utils, only : neko_error, nonlinear_index, neko_warning
   use json_module, only : json_file
+  use json_utils, only : json_get
   use, intrinsic :: iso_c_binding, only : c_sizeof, c_ptr, C_NULL_PTR
+  use time_state, only : time_state_t
   implicit none
   private
 
@@ -47,6 +49,7 @@ module usr_scalar
   type, public, extends(bc_t) :: usr_scalar_t
      procedure(usr_scalar_bc_eval), nopass, pointer :: eval => null()
      type(c_ptr), private :: usr_x_d = C_NULL_PTR
+     character(len=:), allocatable :: field_name
    contains
      procedure, pass(this) :: apply_scalar => usr_scalar_apply_scalar
      procedure, pass(this) :: apply_vector => usr_scalar_apply_vector
@@ -80,9 +83,10 @@ module usr_scalar
      !! @param ie The element idx of this point
      !! @param t Current time
      !! @param tstep Current time-step
-     subroutine usr_scalar_bc_eval(s, x, y, z, nx, ny, nz, &
+     subroutine usr_scalar_bc_eval(scalar_name, s, x, y, z, nx, ny, nz, &
           ix, iy, iz, ie, t, tstep)
        import rp
+       character(len=*), intent(in) :: scalar_name
        real(kind=rp), intent(inout) :: s
        real(kind=rp), intent(in) :: x
        real(kind=rp), intent(in) :: y
@@ -109,10 +113,18 @@ contains
   !! @param[inout] json The JSON object configuring the boundary condition.
   subroutine usr_scalar_init(this, coef, json)
     class(usr_scalar_t), intent(inout), target :: this
-    type(coef_t), intent(in) :: coef
+    type(coef_t), target, intent(in) :: coef
     type(json_file), intent(inout) :: json
+    character(len=:), allocatable :: field_name_temp
 
     call this%init_base(coef)
+
+    if (json%valid_path('field_name')) then
+       call json_get(json, 'field_name', field_name_temp)
+       this%field_name = field_name_temp
+    else
+       this%field_name = 's'
+    end if
   end subroutine usr_scalar_init
 
   subroutine usr_scalar_free(this)
@@ -124,6 +136,10 @@ contains
        call device_free(this%usr_x_d)
     end if
 
+    if (allocated(this%field_name)) then
+       deallocate(this%field_name)
+    end if
+
   end subroutine usr_scalar_free
 
   !> Scalar apply
@@ -131,28 +147,27 @@ contains
   !! Applies boundary conditions in eval on x
   !! @param x The field array to apply the boundary condition to.
   !! @param n The size of x.
-  subroutine usr_scalar_apply_scalar(this, x, n, t, tstep, strong)
+  subroutine usr_scalar_apply_scalar(this, x, n, time, strong)
     class(usr_scalar_t), intent(inout) :: this
     integer, intent(in) :: n
     real(kind=rp), intent(inout), dimension(n) :: x
-    real(kind=rp), intent(in), optional :: t
-    integer, intent(in), optional :: tstep
+    type(time_state_t), intent(in), optional :: time
     logical, intent(in), optional :: strong
     integer :: i, m, k, idx(4), facet, tstep_
     real(kind=rp) :: t_
-    logical :: strong_ = .true.
+    logical :: strong_
 
-    if (present(strong)) strong_ = strong
-
-    if (present(t)) then
-       t_ = t
+    if (present(strong)) then
+       strong_ = strong
     else
-       t_ = 0.0_rp
+       strong_ = .true.
     end if
 
-    if (present(tstep)) then
-       tstep_ = tstep
+    if (present(time)) then
+       t_ = time%t
+       tstep_ = time%tstep
     else
+       t_ = 0.0_rp
        tstep_ = 1
     end if
 
@@ -167,7 +182,7 @@ contains
             idx = nonlinear_index(k, lx, lx, lx)
             select case (facet)
             case (1, 2)
-               call this%eval(x(k), &
+               call this%eval(this%field_name, x(k), &
                     xc(idx(1), idx(2), idx(3), idx(4)), &
                     yc(idx(1), idx(2), idx(3), idx(4)), &
                     zc(idx(1), idx(2), idx(3), idx(4)), &
@@ -177,7 +192,7 @@ contains
                     idx(1), idx(2), idx(3), idx(4), &
                     t_, tstep_)
             case (3, 4)
-               call this%eval(x(k), &
+               call this%eval(this%field_name, x(k), &
                     xc(idx(1), idx(2), idx(3), idx(4)), &
                     yc(idx(1), idx(2), idx(3), idx(4)), &
                     zc(idx(1), idx(2), idx(3), idx(4)), &
@@ -187,7 +202,7 @@ contains
                     idx(1), idx(2), idx(3), idx(4), &
                     t_, tstep_)
             case (5, 6)
-               call this%eval(x(k), &
+               call this%eval(this%field_name, x(k), &
                     xc(idx(1), idx(2), idx(3), idx(4)), &
                     yc(idx(1), idx(2), idx(3), idx(4)), &
                     zc(idx(1), idx(2), idx(3), idx(4)), &
@@ -207,31 +222,32 @@ contains
   !! Applies boundary conditions in eval on x
   !! @param x The array of values to apply.
   !! @param n The size of x.
-  subroutine usr_scalar_apply_scalar_dev(this, x_d, t, tstep, strong)
+  !! @param strm Device stream
+  subroutine usr_scalar_apply_scalar_dev(this, x_d, time, strong, strm)
     class(usr_scalar_t), intent(inout), target :: this
-    type(c_ptr) :: x_d
-    real(kind=rp), intent(in), optional :: t
-    integer, intent(in), optional :: tstep
+    type(c_ptr), intent(inout) :: x_d
+    type(time_state_t), intent(in), optional :: time
     logical, intent(in), optional :: strong
+    type(c_ptr),intent(inout) :: strm
     integer :: i, m, k, idx(4), facet, tstep_
     real(kind=rp) :: t_
     integer(c_size_t) :: s
     real(kind=rp), allocatable :: x(:)
-    logical :: strong_ = .true.
+    logical :: strong_
 
     m = this%msk(0)
 
-    if (present(strong)) strong_ = strong
-
-    if (present(t)) then
-       t_ = t
+    if (present(strong)) then
+       strong_ = strong
     else
-       t_ = 0.0_rp
+       strong_ = strong
     end if
 
-    if (present(tstep)) then
-       tstep_ = tstep
+    if (present(time)) then
+       t_ = time%t
+       tstep_ = time%tstep
     else
+       t_ = 0.0_rp
        tstep_ = 1
     end if
 
@@ -252,9 +268,9 @@ contains
             k = this%msk(i)
             facet = this%facet(i)
             idx = nonlinear_index(k, lx, lx, lx)
-            select case(facet)
+            select case (facet)
             case (1,2)
-               call this%eval(x(i), &
+               call this%eval(this%field_name, x(i), &
                     xc(idx(1), idx(2), idx(3), idx(4)), &
                     yc(idx(1), idx(2), idx(3), idx(4)), &
                     zc(idx(1), idx(2), idx(3), idx(4)), &
@@ -264,7 +280,7 @@ contains
                     idx(1), idx(2), idx(3), idx(4), &
                     t_, tstep_)
             case (3,4)
-               call this%eval(x(i), &
+               call this%eval(this%field_name, x(i), &
                     xc(idx(1), idx(2), idx(3), idx(4)), &
                     yc(idx(1), idx(2), idx(3), idx(4)), &
                     zc(idx(1), idx(2), idx(3), idx(4)), &
@@ -274,7 +290,7 @@ contains
                     idx(1), idx(2), idx(3), idx(4), &
                     t_, tstep_)
             case (5,6)
-               call this%eval(x(i), &
+               call this%eval(this%field_name, x(i), &
                     xc(idx(1), idx(2), idx(3), idx(4)), &
                     yc(idx(1), idx(2), idx(3), idx(4)), &
                     zc(idx(1), idx(2), idx(3), idx(4)), &
@@ -293,7 +309,7 @@ contains
 
       if (strong_) then
          call device_inhom_dirichlet_apply_scalar(this%msk_d, x_d, &
-              this%usr_x_d, m)
+              this%usr_x_d, m, strm)
       end if
     end associate
 
@@ -301,27 +317,27 @@ contains
   end subroutine usr_scalar_apply_scalar_dev
 
   !> No-op vector apply
-  subroutine usr_scalar_apply_vector(this, x, y, z, n, t, tstep, strong)
+  subroutine usr_scalar_apply_vector(this, x, y, z, n, time, strong)
     class(usr_scalar_t), intent(inout) :: this
     integer, intent(in) :: n
     real(kind=rp), intent(inout), dimension(n) :: x
     real(kind=rp), intent(inout), dimension(n) :: y
     real(kind=rp), intent(inout), dimension(n) :: z
-    real(kind=rp), intent(in), optional :: t
-    integer, intent(in), optional :: tstep
+    type(time_state_t), intent(in), optional :: time
     logical, intent(in), optional :: strong
 
   end subroutine usr_scalar_apply_vector
 
   !> No-op vector apply (device version)
-  subroutine usr_scalar_apply_vector_dev(this, x_d, y_d, z_d, t, tstep, strong)
+  subroutine usr_scalar_apply_vector_dev(this, x_d, y_d, z_d, &
+       time, strong, strm)
     class(usr_scalar_t), intent(inout), target :: this
-    type(c_ptr) :: x_d
-    type(c_ptr) :: y_d
-    type(c_ptr) :: z_d
-    real(kind=rp), intent(in), optional :: t
-    integer, intent(in), optional :: tstep
+    type(c_ptr), intent(inout) :: x_d
+    type(c_ptr), intent(inout) :: y_d
+    type(c_ptr), intent(inout) :: z_d
+    type(time_state_t), intent(in), optional :: time
     logical, intent(in), optional :: strong
+    type(c_ptr), intent(inout) :: strm
 
   end subroutine usr_scalar_apply_vector_dev
 
@@ -359,7 +375,7 @@ contains
   subroutine usr_scalar_finalize(this, only_facets)
     class(usr_scalar_t), target, intent(inout) :: this
     logical, optional, intent(in) :: only_facets
-    logical :: only_facets_ = .false.
+    logical :: only_facets_
 
     if (present(only_facets)) then
        only_facets_ = only_facets

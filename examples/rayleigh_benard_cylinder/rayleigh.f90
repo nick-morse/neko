@@ -5,18 +5,19 @@ module user
   !> Variables to store the Rayleigh and Prandlt numbers
   real(kind=rp) :: Ra = 0
   real(kind=rp) :: Re = 0
+  real(kind=rp) :: mu = 0
   real(kind=rp) :: Pr = 0
 
   !> =============================================
 
 contains
   ! Register user defined functions (see user_intf.f90)
-  subroutine user_setup(u)
-    type(user_t), intent(inout) :: u
-    u%scalar_user_ic => set_initial_conditions_for_s
-    u%scalar_user_bc => set_scalar_boundary_conditions
-    u%material_properties => set_material_properties
-    u%user_startup => startup
+  subroutine user_setup(user)
+    type(user_t), intent(inout) :: user
+    user%scalar_user_ic => set_initial_conditions_for_s
+    user%scalar_user_bc => set_scalar_boundary_conditions
+    user%material_properties => set_material_properties
+    user%user_startup => startup
   end subroutine user_setup
 
   subroutine startup(params)
@@ -25,22 +26,30 @@ contains
     call json_get(params, "case.fluid.Ra", Ra)
     call json_get(params, "case.scalar.Pr", Pr)
     Re = sqrt(Ra / Pr)
+    mu = 1.0_rp / Re
   end subroutine startup
 
-  subroutine set_material_properties(t, tstep, rho, mu, cp, lambda, params)
+  ! Used here for demonstration purposes. Since the properties are
+  ! actually const, it is better to set them directly in the startup routine,
+  ! by adding the appropriate entries to the user file.
+  subroutine set_material_properties(t, tstep, name, properties)
     real(kind=rp), intent(in) :: t
     integer, intent(in) :: tstep
-    real(kind=rp), intent(inout) :: rho, mu, cp, lambda
-    type(json_file), intent(inout) :: params
+    character(len=*), intent(in) :: name
+    type(field_list_t), intent(inout) :: properties
 
-    mu = 1.0_rp / Re
-    lambda = mu / Pr
-    rho = 1.0_rp
-    cp = 1.0_rp
+    if (name .eq. "fluid") then
+       call field_cfill(properties%get_by_name("fluid_rho"), 1.0_rp)
+       call field_cfill(properties%get_by_name("fluid_mu"), mu)
+    else if (name .eq. "scalar") then
+       call field_cfill(properties%get_by_name("scalar_cp"), 1.0_rp)
+       call field_cfill(properties%get_by_name("scalar_lambda"), mu / Pr)
+    end if
   end subroutine set_material_properties
 
 
-  subroutine set_scalar_boundary_conditions(s, x, y, z, nx, ny, nz, ix, iy, iz, ie, t, tstep)
+  subroutine set_scalar_boundary_conditions(scalar_name, s, x, y, z, nx, ny, nz, ix, iy, iz, ie, t, tstep)
+    character(len=*), intent(in) :: scalar_name
     real(kind=rp), intent(inout) :: s
     real(kind=rp), intent(in) :: x
     real(kind=rp), intent(in) :: y

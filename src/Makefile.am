@@ -1,12 +1,17 @@
 lib_LTLIBRARIES = libneko.la
 libneko_la_LDFLAGS = -release ${PACKAGE_VERSION}
 neko_fortran_SOURCES = \
+	api/neko_api.f90\
 	config/num_types.f90\
 	common/structs.f90\
 	io/format/nmsh.f90\
 	io/format/re2.f90\
 	io/format/map.f90\
 	io/format/stl.f90\
+	io/buffer/buffer.F90\
+	io/buffer/buffer_1d.F90\
+	io/buffer/buffer_4d.F90\
+	io/buffer/buffer_4d_npar.F90\
 	common/log.f90\
 	comm/comm.F90\
 	mesh/curve.f90\
@@ -16,8 +21,10 @@ neko_fortran_SOURCES = \
 	common/utils.f90\
 	common/time_state.f90\
 	common/json_utils.f90\
+	common/mask.f90\
 	common/system.f90\
 	common/runtime_statistics.f90\
+	common/user_access_singleton.f90\
 	math/mxm_wrapper.F90\
 	sem/speclib.f90 \
 	qoi/drag_torque.f90\
@@ -123,6 +130,7 @@ neko_fortran_SOURCES = \
 	io/map_file.f90\
 	io/re2_file.f90\
 	io/rea_file.f90\
+	io/bp_file.F90\
 	io/fld_file.f90\
 	io/fld_file_data.f90\
 	io/vtk_file.f90\
@@ -288,6 +296,7 @@ neko_fortran_SOURCES = \
 	bc/bcknd/device/device_dong_outflow.F90\
 	scalar/bcknd/device/scalar_residual_device.F90\
 	scalar/scalar_scheme.f90\
+	scalar/scalars.f90\
 	scalar/scalar_pnpn.f90\
 	scalar/scalar_pnpn_bc_fctry.f90\
 	scalar/scalar_aux.f90\
@@ -301,11 +310,13 @@ neko_fortran_SOURCES = \
 	scalar/source_scalar.f90\
 	simulation_components/simulation_component.f90\
 	simulation_components/simcomp_executor.f90\
-	simulation_components/vorticity.f90\
 	simulation_components/spectral_error.f90\
 	simulation_components/lambda2.f90\
-	simulation_components/weak_grad.f90\
-	simulation_components/derivative.f90\
+	simulation_components/curl_simcomp.f90\
+	simulation_components/divergence_simcomp.f90\
+	simulation_components/weak_gradient_simcomp.f90\
+	simulation_components/gradient_simcomp.f90\
+	simulation_components/derivative_simcomp.f90\
 	simulation_components/les_simcomp.f90\
 	simulation_components/simulation_component_fctry.f90\
 	source_terms/source_term.f90\
@@ -321,15 +332,16 @@ neko_fortran_SOURCES = \
 	source_terms/bcknd/device/boussinesq_source_term_device.f90\
 	source_terms/source_term_fctry.f90\
 	source_terms/brinkman_source_term.f90\
-	source_terms/brinkman/filters.f90\
-	source_terms/brinkman/filter.f90\
-	source_terms/brinkman/PDE_filter.f90\
-	source_terms/brinkman/elementwise_filter.f90\
-	source_terms/bcknd/cpu/filters_cpu.f90\
-	source_terms/bcknd/device/filters_device.F90\
-	source_terms/bcknd/device/cuda/cuda_filters.f90\
-	source_terms/bcknd/device/hip/hip_filters.f90\
-	source_terms/bcknd/device/opencl/opencl_filters.f90\
+	filter/mappings.f90\
+	filter/filter.f90\
+	filter/filter_fctry.f90\
+	filter/PDE_filter.f90\
+	filter/elementwise_filter.f90\
+	filter/bcknd/cpu/mappings_cpu.f90\
+	filter/bcknd/device/mappings_device.F90\
+	filter/bcknd/device/cuda/cuda_mappings.f90\
+	filter/bcknd/device/hip/hip_mappings.f90\
+	filter/bcknd/device/opencl/opencl_mappings.f90\
 	source_terms/gradient_jump_penalty.f90\
 	source_terms/bcknd/device/device_gradient_jump_penalty.F90\
 	les/les_model.f90\
@@ -353,8 +365,13 @@ neko_fortran_SOURCES = \
 	les/wale.f90\
 	les/bcknd/cpu/wale_cpu.f90\
 	wall_models/wall_model.f90\
+	wall_models/bcknd/device/wall_model_device.F90\
 	wall_models/rough_log_law.f90\
+	wall_models/bcknd/cpu/rough_log_law_cpu.f90\
+	wall_models/bcknd/device/rough_log_law_device.F90\
 	wall_models/spalding.f90\
+	wall_models/bcknd/cpu/spalding_cpu.f90\
+	wall_models/bcknd/device/spalding_device.F90\
 	wall_models/wall_model_fctry.f90\
 	neko.f90
 
@@ -392,6 +409,7 @@ libneko_la_SOURCES += \
 	math/bcknd/device/hip/opr_opgrad.hip\
 	math/bcknd/device/hip/opr_lambda2.hip\
 	math/bcknd/device/hip/opr_cfl.hip\
+	math/bcknd/device/hip/opr_compute_max_wave_speed.hip\
 	math/bcknd/device/hip/ax_helm.hip\
 	math/bcknd/device/hip/ax_helm_full.hip\
 	krylov/bcknd/device/hip/pc_jacobi.hip\
@@ -415,12 +433,15 @@ libneko_la_SOURCES += \
 	fluid/stress_formulation/bcknd/device/hip/pnpn_stress_res.hip\
 	scalar/bcknd/device/hip/scalar_residual.hip\
 	sem/bcknd/device/hip/coef.hip\
-	source_terms/bcknd/device/hip/filters.hip\
+	filter/bcknd/device/hip/mappings.hip\
 	source_terms/bcknd/device/hip/gradient_jump_penalty.hip\
 	les/bcknd/device/hip/sigma_nut.hip\
 	les/bcknd/device/hip/vreman_nut.hip\
 	les/bcknd/device/hip/smagorinsky_nut.hip\
-	les/bcknd/device/hip/dynamic_smagorinsky_nut.hip
+	les/bcknd/device/hip/dynamic_smagorinsky_nut.hip\
+	wall_models/bcknd/device/hip/wall_model.hip\
+	wall_models/bcknd/device/hip/spalding.hip\
+	wall_models/bcknd/device/hip/rough_log_law.hip
 endif
 
 if ENABLE_CUDA
@@ -438,6 +459,7 @@ libneko_la_SOURCES += \
 	math/bcknd/device/cuda/opr_lambda2.cu\
 	math/bcknd/device/cuda/opr_cfl.cu\
 	math/bcknd/device/cuda/opr_rotate_cyc.cu\
+	math/bcknd/device/cuda/opr_compute_max_wave_speed.cu\
 	math/bcknd/device/cuda/ax_helm.cu\
 	math/bcknd/device/cuda/ax_helm_full.cu\
 	krylov/bcknd/device/cuda/pc_jacobi.cu\
@@ -462,13 +484,16 @@ libneko_la_SOURCES += \
 	fluid/stress_formulation/bcknd/device/cuda/pnpn_stress_res.cu\
 	scalar/bcknd/device/cuda/scalar_residual.cu\
 	sem/bcknd/device/cuda/coef.cu\
-	source_terms/bcknd/device/cuda/filters.cu\
+	filter/bcknd/device/cuda/mappings.cu\
 	source_terms/bcknd/device/cuda/gradient_jump_penalty.cu\
 	les/bcknd/device/cuda/sigma_nut.cu\
 	les/bcknd/device/cuda/vreman_nut.cu\
 	les/bcknd/device/cuda/smagorinsky_nut.cu\
 	les/bcknd/device/cuda/dynamic_smagorinsky_nut.cu\
-	comm/bcknd/device/cuda/comm_nvshmem.cu
+	comm/bcknd/device/cuda/comm_nvshmem.cu\
+	wall_models/bcknd/device/cuda/wall_model.cu\
+	wall_models/bcknd/device/cuda/spalding.cu\
+	wall_models/bcknd/device/cuda/rough_log_law.cu
 
 
 BUILT_SOURCES = libtool_cuda
@@ -490,6 +515,7 @@ libneko_la_SOURCES += \
 	math/bcknd/device/opencl/opr_opgrad.c\
 	math/bcknd/device/opencl/opr_lambda2.c\
 	math/bcknd/device/opencl/opr_cfl.c\
+	math/bcknd/device/opencl/opr_compute_max_wave_speed.c\
 	math/bcknd/device/opencl/ax_helm.c\
 	krylov/bcknd/device/opencl/pc_jacobi.c\
 	gs/bcknd/device/opencl/gs.c\
@@ -506,7 +532,7 @@ libneko_la_SOURCES += \
 	fluid/bcknd/device/opencl/euler_res.c\
 	scalar/bcknd/device/opencl/scalar_residual.c\
 	sem/bcknd/device/opencl/coef.c\
-	source_terms/bcknd/device/opencl/filters.c
+	filter/bcknd/device/opencl/mappings.c
 
 %.cl.h: %.cl
 	bash ./scripts/cltostring.sh $<
@@ -592,12 +618,18 @@ CLEANFILES += \
 	fluid/bcknd/device/opencl/*.cl.h\
 	scalar/bcknd/device/opencl/*.cl.h\
 	sem/bcknd/device/opencl/*.cl.h\
-	source_terms/bcknd/device/opencl/*.cl.h
+	source_terms/bcknd/device/opencl/*.cl.h\
+	filter/bcknd/device/opencl/*.cl.h
 endif
 
 if ENABLE_MAKEDEPF90
 depend:
 	$(MAKEDEPF90) $(neko_fortran_SOURCES) | $(SED) 's/\.o/\.lo/g'  > .depends
+endif
+
+if ENABLE_PYTHON
+nobase_python_PYTHON = python/pyneko/__init__.py\
+		       python/pyneko/intf.py
 endif
 
 # Note we need to list any headers etc here for the dist. script
@@ -641,6 +673,9 @@ EXTRA_DIST = \
 	les/bcknd/device/cuda/vreman_nut_kernel.h\
 	les/bcknd/device/cuda/smagorinsky_nut_kernel.h\
 	les/bcknd/device/cuda/dynamic_smagorinsky_nut_kernel.h\
+	wall_models/bcknd/device/cuda/wall_model_kernel.h\
+	wall_models/bcknd/device/cuda/spalding_kernel.h\
+	wall_models/bcknd/device/cuda/rough_log_law_kernel.h\
 	bc/bcknd/device/hip/dirichlet_kernel.h\
 	bc/bcknd/device/hip/inflow_kernel.h\
 	bc/bcknd/device/hip/zero_dirichlet_kernel.h\
@@ -686,6 +721,9 @@ EXTRA_DIST = \
 	les/bcknd/device/hip/vreman_nut_kernel.h\
 	les/bcknd/device/hip/smagorinsky_nut_kernel.h\
 	les/bcknd/device/hip/dynamic_smagorinsky_nut_kernel.h\
+	wall_models/bcknd/device/hip/wall_model_kernel.h\
+	wall_models/bcknd/device/hip/spalding_kernel.h\
+	wall_models/bcknd/device/hip/rough_log_law_kernel.h\
 	bc/bcknd/device/opencl/dirichlet_kernel.cl\
 	bc/bcknd/device/opencl/inflow_kernel.cl\
 	bc/bcknd/device/opencl/zero_dirichlet_kernel.cl\
@@ -707,6 +745,7 @@ EXTRA_DIST = \
 	math/bcknd/device/opencl/conv1_kernel.cl\
 	math/bcknd/device/opencl/lambda2_kernel.cl\
 	math/bcknd/device/opencl/cfl_kernel.cl\
+	math/bcknd/device/opencl/compute_max_wave_speed_kernel.cl\
 	common/bcknd/device/opencl/rhs_maker_kernel.cl\
 	fluid/bcknd/device/opencl/pnpn_res_kernel.cl\
 	fluid/bcknd/device/opencl/euler_res_kernel.cl\
@@ -718,11 +757,12 @@ EXTRA_DIST = \
 	math/bcknd/device/device_mpi_op.h\
 	math/bcknd/device/device_nccl_reduce.h\
 	math/bcknd/device/device_nccl_op.h\
-	source_terms/bcknd/device/cuda/filter_kernels.h\
-	source_terms/bcknd/device/hip/filter_kernels.h\
-	source_terms/bcknd/device/opencl/filter_kernels.cl\
+	filter/bcknd/device/cuda/mapping_kernels.h\
+	filter/bcknd/device/hip/mapping_kernels.h\
+	filter/bcknd/device/opencl/mapping_kernels.cl\
 	source_terms/bcknd/device/cuda/gradient_jump_penalty_kernel.h\
 	source_terms/bcknd/device/hip/gradient_jump_penalty_kernel.h\
+	device/device_config.h\
 	device/opencl/jit.h\
 	device/opencl/prgm_lib.h\
 	device/opencl/check.h\
@@ -732,8 +772,12 @@ EXTRA_DIST = \
 	comm/comm.h\
 	common/neko_log.h
 
+
 # Expose the listed headers in the package
 nobase_pkginclude_HEADERS = ${EXTRA_DIST}
+
+# Expose API header
+include_HEADERS = api/neko.h
 
 # Fortran deps. (updated with makedepf90 via target 'depend')
 include	.depends

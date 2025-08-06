@@ -54,9 +54,10 @@ module field_writer
    contains
      !> Constructor from json, wrapping the actual constructor.
      procedure, pass(this) :: init => field_writer_init_from_json
-     !> Constructor from components, passing time_based_controllers.
+     !> Generic for constructing from components.
      generic :: init_from_components => &
           init_from_controllers, init_from_controllers_properties
+     !> Constructor from components, passing time_based_controllers.
      procedure, pass(this) :: init_from_controllers => &
           field_writer_init_from_controllers
      !> Constructor from components, passing the properties of
@@ -77,7 +78,7 @@ contains
   !> @param json JSON object with the parameters.
   !! @param case The case object.
   subroutine field_writer_init_from_json(this, json, case)
-    class(field_writer_t), intent(inout) :: this
+    class(field_writer_t), intent(inout), target :: this
     type(json_file), intent(inout) :: json
     class(case_t), intent(inout), target :: case
     character(len=:), allocatable :: filename
