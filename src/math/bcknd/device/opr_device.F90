@@ -142,6 +142,19 @@ module opr_device
   end interface
 
   interface
+     subroutine hip_rotate_cyc(rx_d, ry_d, rz_d, & 
+          x_d, y_d, z_d, &
+          cyc_angle_d, idir, nelv, lx) &
+          bind(c, name = 'hip_rotate_cyc')
+       use, intrinsic :: iso_c_binding
+       type(c_ptr), value :: rx_d, ry_d, rz_d
+       type(c_ptr), value :: x_d, y_d, z_d
+       type(c_ptr), value :: cyc_angle_d
+       integer(c_int) :: idir, nelv, lx
+     end subroutine hip_rotate_cyc
+  end interface
+
+  interface
      subroutine hip_compute_max_wave_speed(max_wave_speed_d, u_d, v_d, w_d, &
           gamma, p_d, rho_d, n) &
           bind(c, name = 'hip_compute_max_wave_speed')
@@ -786,7 +799,10 @@ contains
     ry_d = device_get_ptr(ry)
     rz_d = device_get_ptr(rz)
 #ifdef HAVE_HIP
-     call neko_error('No device backend configured for rotate_cyc')
+    call hip_rotate_cyc(rx_d, ry_d, rz_d, &
+         coef%dof%x_d, coef%dof%y_d, coef%dof%z_d, &
+         coef%cyc_angle_d, &
+         idir, coef%msh%nelv, coef%Xh%lx)
 #elif HAVE_CUDA
     call cuda_rotate_cyc(rx_d, ry_d, rz_d, &
          coef%dof%x_d, coef%dof%y_d, coef%dof%z_d, &
@@ -809,7 +825,10 @@ subroutine opr_device_rotate_cyc_r1(rx, ry, rz, idir, coef)
      ry_d = device_get_ptr(ry)
      rz_d = device_get_ptr(rz)
 #ifdef HAVE_HIP
-      call neko_error('No device backend configured for rotate_cyc')
+     call hip_rotate_cyc(rx_d, ry_d, rz_d, &
+          coef%dof%x_d, coef%dof%y_d, coef%dof%z_d, &
+          coef%cyc_angle_d, &
+          idir, coef%msh%nelv, coef%Xh%lx)
 #elif HAVE_CUDA
      call cuda_rotate_cyc(rx_d, ry_d, rz_d, &
           coef%dof%x_d, coef%dof%y_d, coef%dof%z_d, &
