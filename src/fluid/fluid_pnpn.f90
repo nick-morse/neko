@@ -284,7 +284,8 @@ contains
     call json_get_or_default(params, "case.fluid.full_stress_formulation", &
          this%full_stress_formulation, .false.)
 
-    if (this%full_stress_formulation .or.  this%c_Xh%cyclic) then
+    if (this%full_stress_formulation) then
+    !if (this%full_stress_formulation .or. this%c_Xh%cyclic) then
        ! Setup backend dependent Ax routines
        call ax_helm_factory(this%Ax_vel, full_formulation = .true.)
 
