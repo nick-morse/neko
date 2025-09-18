@@ -412,7 +412,6 @@ libneko_la_SOURCES += \
 	math/bcknd/device/hip/opr_lambda2.hip\
 	math/bcknd/device/hip/opr_cfl.hip\
 	math/bcknd/device/hip/opr_rotate_cyc.hip\
-	math/bcknd/device/hip/opr_compute_max_wave_speed.hip\
 	math/bcknd/device/hip/ax_helm.hip\
 	math/bcknd/device/hip/ax_helm_full.hip\
 	krylov/bcknd/device/hip/pc_jacobi.hip\

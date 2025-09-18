@@ -166,19 +166,6 @@ module opr_device
   end interface
 
   interface
-     subroutine hip_rotate_cyc(rx_d, ry_d, rz_d, & 
-          x_d, y_d, z_d, &
-          cyc_angle_d, idir, nelv, lx) &
-          bind(c, name = 'hip_rotate_cyc')
-       use, intrinsic :: iso_c_binding
-       type(c_ptr), value :: rx_d, ry_d, rz_d
-       type(c_ptr), value :: x_d, y_d, z_d
-       type(c_ptr), value :: cyc_angle_d
-       integer(c_int) :: idir, nelv, lx
-     end subroutine hip_rotate_cyc
-  end interface
-
-  interface
      subroutine hip_set_convect_rst(cr_d, cs_d, ct_d, cx_d, cy_d, cz_d, &
           drdx_d, dsdx_d, dtdx_d, drdy_d, dsdy_d, dtdy_d, drdz_d, dsdz_d, &
           dtdz_d, w3_d, nel, lx) bind(c, name = 'hip_set_convect_rst')
@@ -292,19 +279,6 @@ module opr_device
        real(c_rp) :: dt
        integer(c_int) :: nel, lx
      end function cuda_cfl
-  end interface
-
-  interface
-     subroutine cuda_rotate_cyc(rx_d, ry_d, rz_d, & 
-          x_d, y_d, z_d, &
-          cyc_angle_d, idir, nelv, lx) &
-          bind(c, name = 'cuda_rotate_cyc')
-       use, intrinsic :: iso_c_binding
-       type(c_ptr), value :: rx_d, ry_d, rz_d
-       type(c_ptr), value :: x_d, y_d, z_d
-       type(c_ptr), value :: cyc_angle_d
-       integer(c_int) :: idir, nelv, lx
-     end subroutine cuda_rotate_cyc
   end interface
 
   interface
