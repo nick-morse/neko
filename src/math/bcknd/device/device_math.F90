@@ -47,16 +47,6 @@ module device_math
   implicit none
   private
 
-  interface device_pwmax
-     module procedure device_pwmax_vec2, device_pwmax_vec3, &
-          device_pwmax_sca2, device_pwmax_sca3
-  end interface device_pwmax
-
-  interface device_pwmin
-     module procedure device_pwmin_vec2, device_pwmin_vec3, &
-          device_pwmin_sca2, device_pwmin_sca3
-  end interface device_pwmin
-
   interface device_cadd
      module procedure device_radd, device_iadd
   end interface device_cadd
@@ -64,15 +54,17 @@ module device_math
   public :: device_copy, device_rzero, device_rone, device_cmult, &
        device_cmult2, device_cadd, device_cadd2, device_cfill, device_add2, &
        device_add3, device_add4, device_add2s1, device_add2s2, &
-       device_addsqr2s2, device_add3s2, device_invcol1, device_invcol2, &
-       device_col2, device_col3, device_subcol3, device_sub2, device_sub3, &
-       device_addcol3, device_addcol4, device_vdot3, device_vlsc3, &
+       device_addsqr2s2, device_add3s2, device_add4s3, device_add5s4, &
+       device_invcol1, device_invcol2, device_col2, device_col3, &
+       device_subcol3, device_sub2, device_sub3, device_addcol3, &
+       device_addcol4, device_addcol3s2, device_vdot3, device_vlsc3, &
        device_glsc3, device_glsc3_many, device_add2s2_many, device_glsc2, &
        device_glsum, device_masked_copy_0, device_cfill_mask, &
        device_vcross, device_absval, device_masked_atomic_reduction_0, &
-       device_pwmax, device_pwmin, device_masked_gather_copy_0, &
-       device_masked_scatter_copy_0, device_invcol3, device_cdiv, device_cdiv2, &
-       device_glsubnorm
+       device_masked_gather_copy_0, device_masked_scatter_copy_0, &
+       device_invcol3, device_cdiv, device_cdiv2, device_glsubnorm, &
+       device_pwmax2, device_pwmax3, device_cpwmax2, device_cpwmax3, &
+       device_pwmin2, device_pwmin3, device_cpwmin2, device_cpwmin3
 
 contains
 
@@ -655,6 +647,60 @@ contains
 #endif
   end subroutine device_add3s2
 
+  !> Returns \f$ a = c1 * b + c2 * c + c3 * d\f$
+  subroutine device_add4s3(a_d, b_d, c_d, d_d, c1, c2 , c3, n, strm)
+    type(c_ptr) :: a_d, b_d, c_d, d_d
+    real(kind=rp) :: c1, c2, c3
+    integer :: n
+    type(c_ptr), optional :: strm
+    type(c_ptr) :: strm_
+
+    if (n .lt. 1) return
+
+    if (present(strm)) then
+       strm_ = strm
+    else
+       strm_ = glb_cmd_queue
+    end if
+
+#if HAVE_HIP
+    call hip_add4s3(a_d, b_d, c_d, d_d, c1, c2, c3, n, strm_)
+#elif HAVE_CUDA
+    call cuda_add4s3(a_d, b_d, c_d, d_d, c1, c2, c3, n, strm_)
+#elif HAVE_OPENCL
+    call opencl_add4s3(a_d, b_d, c_d, d_d, c1, c2, c3, n, strm_)
+#else
+    call neko_error('No device backend configured')
+#endif
+  end subroutine device_add4s3
+
+  !> Returns \f$ a = a + c1 * b + c2 * c + c3 * d + c4 * e\f$
+  subroutine device_add5s4(a_d, b_d, c_d, d_d, e_d, c1, c2 , c3, c4, n, strm)
+    type(c_ptr) :: a_d, b_d, c_d, d_d, e_d
+    real(kind=rp) :: c1, c2, c3, c4
+    integer :: n
+    type(c_ptr), optional :: strm
+    type(c_ptr) :: strm_
+
+    if (n .lt. 1) return
+
+    if (present(strm)) then
+       strm_ = strm
+    else
+       strm_ = glb_cmd_queue
+    end if
+
+#if HAVE_HIP
+    call hip_add5s4(a_d, b_d, c_d, d_d, e_d, c1, c2, c3, c4, n, strm_)
+#elif HAVE_CUDA
+    call cuda_add5s4(a_d, b_d, c_d, d_d, e_d, c1, c2, c3, c4, n, strm_)
+#elif HAVE_OPENCL
+    call opencl_add5s4(a_d, b_d, c_d, d_d, e_d, c1, c2, c3, c4, n, strm_)
+#else
+    call neko_error('No device backend configured')
+#endif
+  end subroutine device_add5s4
+
   !> Invert a vector \f$ a = 1 / a \f$
   subroutine device_invcol1(a_d, n, strm)
     type(c_ptr) :: a_d
@@ -912,6 +958,33 @@ contains
     call neko_error('No device backend configured')
 #endif
   end subroutine device_addcol4
+
+  !> Returns \f$ a = a + s(b*c) \f$
+  subroutine device_addcol3s2(a_d, b_d, c_d, s, n, strm)
+    type(c_ptr) :: a_d, b_d, c_d
+    real(kind=rp) :: s
+    integer :: n
+    type(c_ptr), optional :: strm
+    type(c_ptr) :: strm_
+
+    if (n .lt. 1) return
+
+    if (present(strm)) then
+       strm_ = strm
+    else
+       strm_ = glb_cmd_queue
+    end if
+
+#if HAVE_HIP
+    call hip_addcol3s2(a_d, b_d, c_d, s, n, strm_)
+#elif HAVE_CUDA
+    call cuda_addcol3s2(a_d, b_d, c_d, s, n, strm_)
+#elif HAVE_OPENCL
+    call opencl_addcol3s2(a_d, b_d, c_d, s, n, strm_)
+#else
+    call neko_error('No device backend configured')
+#endif
+  end subroutine device_addcol3s2
 
   !> Compute a dot product \f$ dot = u \cdot v \f$ (3-d version)
   !! assuming vector components \f$ u = (u_1, u_2, u_3) \f$ etc.
@@ -1228,7 +1301,7 @@ contains
 
   !> Compute the point-wise maximum of two vectors
   !! \f$ a_i = \max(a_i, b_i) \f$
-  subroutine device_pwmax_vec2(a_d, b_d, n, strm)
+  subroutine device_pwmax2(a_d, b_d, n, strm)
     type(c_ptr) :: a_d, b_d
     integer :: n
     type(c_ptr), optional :: strm
@@ -1247,15 +1320,15 @@ contains
 #elif HAVE_CUDA
     call cuda_pwmax_vec2(a_d, b_d, n, strm_)
 #elif HAVE_OPENCL
-    call neko_error('No OpenCL backend for device_pwmax_vec2')
+    call neko_error('No OpenCL backend for device_pwmax2')
 #else
     call neko_error('No device backend configured')
 #endif
-  end subroutine device_pwmax_vec2
+  end subroutine device_pwmax2
 
   !> Compute the point-wise maximum of two vectors
   !! \f$ a_i = \max(b_i, c_i) \f$
-  subroutine device_pwmax_vec3(a_d, b_d, c_d, n, strm)
+  subroutine device_pwmax3(a_d, b_d, c_d, n, strm)
     type(c_ptr) :: a_d, b_d, c_d
     integer :: n
     type(c_ptr), optional :: strm
@@ -1274,16 +1347,16 @@ contains
 #elif HAVE_CUDA
     call cuda_pwmax_vec3(a_d, b_d, c_d, n, strm_)
 #elif HAVE_OPENCL
-    call neko_error('No OpenCL backend for device_pwmax_vec3')
+    call neko_error('No OpenCL backend for device_pwmax3')
 #else
     call neko_error('No device backend configured')
 #endif
 
-  end subroutine device_pwmax_vec3
+  end subroutine device_pwmax3
 
   !> Compute the point-wise maximum of a vector and a scalar
   !! \f$ a_i = \max(a_i, c) \f$
-  subroutine device_pwmax_sca2(a_d, c, n, strm)
+  subroutine device_cpwmax2(a_d, c, n, strm)
     type(c_ptr) :: a_d
     real(kind=rp), intent(in) :: c
     integer :: n
@@ -1303,16 +1376,16 @@ contains
 #elif HAVE_CUDA
     call cuda_pwmax_sca2(a_d, c, n, strm_)
 #elif HAVE_OPENCL
-    call neko_error('No OpenCL backend for device_pwmax_sca2')
+    call neko_error('No OpenCL backend for device_cpwmax2')
 #else
     call neko_error('No device backend configured')
 #endif
 
-  end subroutine device_pwmax_sca2
+  end subroutine device_cpwmax2
 
   !> Compute the point-wise maximum of a vector and a scalar
   !! \f$ a_i = \max(b_i, c) \f$
-  subroutine device_pwmax_sca3(a_d, b_d, c, n, strm)
+  subroutine device_cpwmax3(a_d, b_d, c, n, strm)
     type(c_ptr) :: a_d, b_d
     real(kind=rp), intent(in) :: c
     integer :: n
@@ -1332,19 +1405,19 @@ contains
 #elif HAVE_CUDA
     call cuda_pwmax_sca3(a_d, b_d, c, n, strm_)
 #elif HAVE_OPENCL
-    call neko_error('No OpenCL backend for device_pwmax_sca3')
+    call neko_error('No OpenCL backend for device_cpwmax3')
 #else
     call neko_error('No device backend configured')
 #endif
 
-  end subroutine device_pwmax_sca3
+  end subroutine device_cpwmax3
 
   ! ========================================================================== !
   ! Device point-wise min
 
   !> Compute the point-wise minimum of two vectors
   !! \f$ a_i = \min(a_i, b_i) \f$
-  subroutine device_pwmin_vec2(a_d, b_d, n, strm)
+  subroutine device_pwmin2(a_d, b_d, n, strm)
     type(c_ptr) :: a_d, b_d
     integer :: n
     type(c_ptr), optional :: strm
@@ -1363,15 +1436,15 @@ contains
 #elif HAVE_CUDA
     call cuda_pwmin_vec2(a_d, b_d, n, strm_)
 #elif HAVE_OPENCL
-    call neko_error('No OpenCL backend for device_pwmin_vec2')
+    call neko_error('No OpenCL backend for device_pwmin2')
 #else
     call neko_error('No device backend configured')
 #endif
-  end subroutine device_pwmin_vec2
+  end subroutine device_pwmin2
 
   !> Compute the point-wise minimum of two vectors
   !! \f$ a_i = \min(b_i, c_i) \f$
-  subroutine device_pwmin_vec3(a_d, b_d, c_d, n, strm)
+  subroutine device_pwmin3(a_d, b_d, c_d, n, strm)
     type(c_ptr) :: a_d, b_d, c_d
     integer :: n
     type(c_ptr), optional :: strm
@@ -1390,16 +1463,16 @@ contains
 #elif HAVE_CUDA
     call cuda_pwmin_vec3(a_d, b_d, c_d, n, strm_)
 #elif HAVE_OPENCL
-    call neko_error('No OpenCL backend for device_pwmin_vec3')
+    call neko_error('No OpenCL backend for device_pwmin3')
 #else
     call neko_error('No device backend configured')
 #endif
 
-  end subroutine device_pwmin_vec3
+  end subroutine device_pwmin3
 
   !> Compute the point-wise minimum of a vector and a scalar
   !! \f$ a_i = \min(a_i, c) \f$
-  subroutine device_pwmin_sca2(a_d, c, n, strm)
+  subroutine device_cpwmin2(a_d, c, n, strm)
     type(c_ptr) :: a_d
     real(kind=rp), intent(in) :: c
     integer :: n
@@ -1419,16 +1492,16 @@ contains
 #elif HAVE_CUDA
     call cuda_pwmin_sca2(a_d, c, n, strm_)
 #elif HAVE_OPENCL
-    call neko_error('No OpenCL backend for device_pwmin_sca2')
+    call neko_error('No OpenCL backend for device_cpwmin2')
 #else
     call neko_error('No device backend configured')
 #endif
 
-  end subroutine device_pwmin_sca2
+  end subroutine device_cpwmin2
 
   !> Compute the point-wise minimum of a vector and a scalar
   !! \f$ a_i = \min(b_i, c) \f$
-  subroutine device_pwmin_sca3(a_d, b_d, c, n, strm)
+  subroutine device_cpwmin3(a_d, b_d, c, n, strm)
     type(c_ptr) :: a_d, b_d
     real(kind=rp), intent(in) :: c
     integer :: n
@@ -1448,12 +1521,12 @@ contains
 #elif HAVE_CUDA
     call cuda_pwmin_sca3(a_d, b_d, c, n, strm_)
 #elif HAVE_OPENCL
-    call neko_error('No OpenCL backend for device_pwmin_sca3')
+    call neko_error('No OpenCL backend for device_cpwmin3')
 #else
     call neko_error('No device backend configured')
 #endif
 
-  end subroutine device_pwmin_sca3
+  end subroutine device_cpwmin3
 
   ! ========================================================================== !
   ! Integer operations
