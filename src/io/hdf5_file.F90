@@ -406,6 +406,7 @@ contains
     type(field_series_ptr_t), allocatable, intent(inout) :: fsp(:)
     real(kind=rp), pointer, intent(inout) :: dtlag(:)
     real(kind=rp), pointer, intent(inout) :: tlag(:)
+    type(field_series_t), pointer :: slag
     integer :: i, j, fp_size, fp_cur, fsp_size, fsp_cur, scalar_count, ab_count
     character(len=32) :: scalar_name
 
@@ -506,10 +507,9 @@ contains
 
        if (scalar_count .gt. 1) then
           do i = 1, scalar_count
-             associate(slag => data%scalar_lags%get(i))
-               fp(fp_cur)%ptr => slag%f
-               fp_cur = fp_cur + 1
-             end associate
+             slag => data%scalar_lags%get(i)
+             fp(fp_cur)%ptr => slag%f
+             fp_cur = fp_cur + 1
           end do
 
           do i = 1, scalar_count
