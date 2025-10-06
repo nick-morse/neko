@@ -60,7 +60,11 @@ void dong_outflow_apply_scalar_kernel(__global const int * __restrict__ msk,
     const real vk = v[k];
     const real wk = w[k];
     const real vn = uk*normal_x[i] + vk*normal_y[i] + wk*normal_z[i];
-    const real S0 = 0.5*(1.0 - tanh(vn/(uinf*delta)));
+    //const real S0 = 0.5*(1.0 - tanh(vn/(uinf*delta)));
+    const real val = vn / (uinf*delta);
+    const real S0 = (val >= 0.0) ? 0.0 :
+                    (val <= -1.0) ? 1.0 :
+                    1.0 / (1.0 + expf(-((1.0 / (val + 1.0)) + 1.0 / val)));
     x[k] = -0.5*(uk*uk+vk*vk+wk*wk)*S0;
   }
 }

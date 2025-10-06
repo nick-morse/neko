@@ -103,7 +103,7 @@ contains
     type(time_state_t), intent(in), optional :: time
     logical, intent(in), optional :: strong
     integer :: i, m, k, facet, idx(4)
-    real(kind=rp) :: vn, S0, ux, uy, uz, normal_xyz(3)
+    real(kind=rp) :: vn, S0, ux, uy, uz, normal_xyz(3), val
     logical :: strong_
 
     if (present(strong)) then
@@ -125,7 +125,18 @@ contains
           normal_xyz = this%coef%get_normal(idx(1), idx(2), idx(3), idx(4), &
                facet)
           vn = ux*normal_xyz(1) + uy*normal_xyz(2) + uz*normal_xyz(3)
-          S0 = 0.5_rp*(1.0_rp - tanh(vn / (this%uinf * this%delta)))
+
+          !S0 = 0.5_rp*(1.0_rp - tanh(vn / (this%uinf * this%delta)))
+          
+          ! Change so step is zero at/near zero
+          val = vn / (this%uinf * this%delta)
+          if (val .ge. 0.0_rp) then
+             S0 = 0.0_rp
+          else if (val .le. -1.0_rp) then
+             S0 = 1.0_rp
+          else
+             S0 = 1.0_rp/(1.0_rp + exp(-((val + 1.0_rp)**(-1) + val**(-1))))
+          end if
 
           x(k) = -0.5*(ux*ux+uy*uy+uz*uz)*S0
        end do
