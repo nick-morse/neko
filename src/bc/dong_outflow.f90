@@ -103,7 +103,8 @@ contains
     type(time_state_t), intent(in), optional :: time
     logical, intent(in), optional :: strong
     integer :: i, m, k, facet, idx(4)
-    real(kind=rp) :: vn, S0, ux, uy, uz, normal_xyz(3), val
+    real(kind=rp) :: vn, S0, ux, uy, uz, normal_xyz(3), val, val_c
+    real(kind=rp), parameter :: eps = 1e-6
     logical :: strong_
 
     if (present(strong)) then
@@ -130,13 +131,8 @@ contains
           
           ! Change so step is zero at/near zero
           val = vn / (this%uinf * this%delta)
-          if (val .ge. 0.0_rp) then
-             S0 = 0.0_rp
-          else if (val .le. -1.0_rp) then
-             S0 = 1.0_rp
-          else
-             S0 = 1.0_rp/(1.0_rp + exp(-((val + 1.0_rp)**(-1) + val**(-1))))
-          end if
+          val_c = min(max(val, -1.0 + eps), -eps);
+          S0 = min(max(-val, 0.0), 1.0) / (1.0 + exp(-((1.0 / (val_c + 1.0)) + 1.0 / val_c)));
 
           x(k) = -0.5*(ux*ux+uy*uy+uz*uz)*S0
        end do

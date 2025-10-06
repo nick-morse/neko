@@ -61,10 +61,10 @@ void dong_outflow_apply_scalar_kernel(__global const int * __restrict__ msk,
     const real wk = w[k];
     const real vn = uk*normal_x[i] + vk*normal_y[i] + wk*normal_z[i];
     //const real S0 = 0.5*(1.0 - tanh(vn/(uinf*delta)));
+    const real eps = 1e-6;
     const real val = vn / (uinf*delta);
-    const real S0 = (val >= 0.0) ? 0.0 :
-                    (val <= -1.0) ? 1.0 :
-                    1.0 / (1.0 + expf(-((1.0 / (val + 1.0)) + 1.0 / val)));
+    const real val_c = fmin(fmax(val, T(-1.0 + eps)), T(-eps));
+    const real S0 = fmin(fmax(-val, 0.0), 1.0) / (1.0 + expf(-((1.0 / (val_c + 1.0)) + 1.0 / val_c)));
     x[k] = -0.5*(uk*uk+vk*vk+wk*wk)*S0;
   }
 }
