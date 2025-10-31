@@ -506,11 +506,14 @@ contains
        fp_cur = 5
 
        if (scalar_count .gt. 1) then
-          do i = 1, scalar_count
-             slag => data%scalar_lags%get(i)
-             fp(fp_cur)%ptr => slag%f
-             fp_cur = fp_cur + 1
-          end do
+          block
+            type(field_series_t), pointer :: slag
+            do i = 1, scalar_count
+               slag => data%scalar_lags%get(i)
+               fp(fp_cur)%ptr => slag%f
+               fp_cur = fp_cur + 1
+            end do
+          end block
 
           do i = 1, scalar_count
              fp(fp_cur)%ptr => data%scalar_abx1(i)%ptr

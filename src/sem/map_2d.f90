@@ -17,7 +17,7 @@ module map_2d
   use device, only : device_memcpy, HOST_TO_DEVICE, DEVICE_TO_HOST
   use comm, only : NEKO_COMM
   use neko_config, only : NEKO_BCKND_DEVICE
-  use mpi_f08, only : MPI_Allreduce, MPI_INTEGER, MPI_SUM
+  use mpi_f08, only : MPI_Allreduce, MPI_INTEGER, MPI_SUM, MPI_Exscan
   use fld_file_data, only : fld_file_data_t
   implicit none
   private
@@ -173,7 +173,7 @@ contains
     class(map_2d_t), intent(inout) :: this
     type(fld_file_data_t), intent(inout) :: fld_data2D
     type(field_list_t), intent(inout) :: fld_data3D
-    real(kind=rp), pointer, dimension(:,:,:,:) :: x_ptr, y_ptr
+    real(kind=rp), pointer, contiguous, dimension(:,:,:,:) :: x_ptr, y_ptr
 
     type(vector_ptr_t), allocatable :: fields2d(:)
     integer :: n_2d, n

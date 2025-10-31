@@ -56,8 +56,7 @@ module fluid_pnpn
   use advection, only : advection_t, advection_factory
   use profiler, only : profiler_start_region, profiler_end_region
   use json_module, only : json_file, json_core, json_value
-  use json_utils, only : json_get, json_get_or_default, json_extract_item, &
-       json_extract_object
+  use json_utils, only : json_get, json_get_or_default, json_extract_item
   use json_module, only : json_file
   use ax_product, only : ax_t, ax_helm_factory
   use field, only : field_t
@@ -393,7 +392,7 @@ contains
     call json_get(params, 'case.fluid.pressure_solver.type', solver_type)
     call json_get(params, 'case.fluid.pressure_solver.preconditioner.type', &
          precon_type)
-    call json_extract_object(params, &
+    call json_get(params, &
          'case.fluid.pressure_solver.preconditioner', precon_params)
     call json_get(params, 'case.fluid.pressure_solver.absolute_tolerance', &
          abs_tol)
@@ -413,7 +412,7 @@ contains
 
     ! Initialize the advection factory
     call json_get_or_default(params, 'case.fluid.advection', advection, .true.)
-    call json_extract_object(params, 'case.numerics', numerics_params)
+    call json_get(params, 'case.numerics', numerics_params)
     call advection_factory(this%adv, numerics_params, this%c_Xh, &
          this%ulag, this%vlag, this%wlag, &
          chkp%dtlag, chkp%tlag, this%ext_bdf, &
@@ -553,6 +552,17 @@ contains
     !Deallocate velocity and pressure fields
     call this%scheme_free()
 
+    if (allocated(this%ext_bdf)) then
+       call this%ext_bdf%free()
+       deallocate(this%ext_bdf)
+    end if
+
+    call this%bc_vel_res%free()
+    call this%bc_du%free()
+    call this%bc_dv%free()
+    call this%bc_dw%free()
+    call this%bc_dp%free()
+
     call this%bc_prs_surface%free()
     call this%bc_sym_surface%free()
     call this%bclst_vel_res%free()
@@ -581,6 +591,11 @@ contains
     call this%advx%free()
     call this%advy%free()
     call this%advz%free()
+
+    if (allocated(this%adv)) then
+       call this%adv%free()
+       deallocate(this%adv)
+    end if
 
     if (allocated(this%Ax_vel)) then
        deallocate(this%Ax_vel)
