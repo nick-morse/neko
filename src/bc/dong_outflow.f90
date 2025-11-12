@@ -132,7 +132,7 @@ contains
           ! Change so step is zero at/near zero
           val = vn / (this%uinf * this%delta)
           val_c = min(max(val, -1.0 + eps), -eps);
-          S0 = min(max(-val, 0.0), 1.0) / (1.0 + exp(-((1.0 / (val_c + 1.0)) + 1.0 / val_c)));
+          S0 = 1.0 / (1.0 + exp(-((1.0 / (val_c + 1.0)) + 1.0 / val_c)));
 
           x(k) = -0.5*(ux*ux+uy*uy+uz*uz)*S0
        end do

@@ -65,7 +65,7 @@ void dong_outflow_apply_scalar_kernel(const int * __restrict__ msk,
     const T eps = 1e-6;
     const T val = vn / (uinf*delta);
     const T val_c = fmin(fmax(val, T(-1.0 + eps)), T(-eps));
-    const T S0 = fmin(fmax(-val, 0.0), 1.0) / (1.0 + exp(-((1.0 / (val_c + 1.0)) + 1.0 / val_c)));
+    const T S0 = 1.0 / (1.0 + exp(-((1.0 / (val_c + 1.0)) + 1.0 / val_c)));
     x[k] = -0.5*(uk*uk+vk*vk+wk*wk)*S0;
   }
 }
