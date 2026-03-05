@@ -42,7 +42,7 @@ module coefs
        chsign, rzero, invers2, glsum, glmax, absval, NEKO_EPS
   use mesh, only : mesh_t
   use device_math, only : device_rone, device_invcol1, &
-       device_glsum, device_absval
+       device_glsum, device_glmax, device_absval
   use device_coef, only : device_coef_generate_geo, &
        device_coef_generate_dxydrst
   use mxm_wrapper, only : mxm
@@ -1379,16 +1379,16 @@ contains
           norm_dss = device_glmax(normx_d, ntot) .lt. NEKO_EPS .and. &
                      device_glmax(normy_d, ntot) .lt. NEKO_EPS .and. &
                      device_glmax(normz_d, ntot) .lt. NEKO_EPS
-          write(*, *) "GLMAX ", device_glmax(normx, ntot), device_glmax(normy, ntot), device_glmax(normz, ntot)
-          write(*, *) "GLSUM ", device_glsum(normx, ntot)/np_glb, device_glsum(normy, ntot)/np_glb, &
-                                device_glsum(normz, ntot)/np_glb
+          write(*, *) "GLMAX ", device_glmax(normx_d, ntot), device_glmax(normy_d, ntot), device_glmax(normz_d, ntot)
+          write(*, *) "GLSUM ", device_glsum(normx_d, ntot)/np_glb, device_glsum(normy_d, ntot)/np_glb, &
+                                device_glsum(normz_d, ntot)/np_glb
        else
           call absval(normx, ntot)
           call absval(normy, ntot)
           call absval(normz, ntot)
-          norm_dss = glmax(normx_d, ntot) .lt. NEKO_EPS .and. &
-                     glmax(normy_d, ntot) .lt. NEKO_EPS .and. &
-                     glmax(normz_d, ntot) .lt. NEKO_EPS
+          norm_dss = glmax(normx, ntot) .lt. NEKO_EPS .and. &
+                     glmax(normy, ntot) .lt. NEKO_EPS .and. &
+                     glmax(normz, ntot) .lt. NEKO_EPS
           write(*, *) "GLMAX ", glmax(normx, ntot), glmax(normy, ntot), glmax(normz, ntot)
           write(*, *) "GLSUM ", glsum(normx, ntot)/np_glb, glsum(normy, ntot)/np_glb, &
                                 glsum(normz, ntot)/np_glb
