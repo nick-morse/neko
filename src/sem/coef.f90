@@ -39,7 +39,7 @@ module coefs
   use dofmap, only : dofmap_t
   use space, only: space_t
   use math, only : rone, invcol1, addcol3, subcol3, copy, &
-       chsign, rzero, invers2, glsum, absval, NEKO_EPS
+       chsign, rzero, invers2, glsum, glmax, absval, NEKO_EPS
   use mesh, only : mesh_t
   use device_math, only : device_rone, device_invcol1, &
        device_glsum, device_absval
@@ -48,7 +48,10 @@ module coefs
   use mxm_wrapper, only : mxm
   use device
   use utils, only : index_is_on_facet, linear_index, &
-       neko_error
+       neko_error, neko_warning
+  use comm, only : NEKO_COMM
+  use neko_config, only : NEKO_BCKND_DEVICE
+  use mpi_f08, only : MPI_Allreduce, MPI_INTEGER, MPI_SUM
   use, intrinsic :: iso_c_binding
   implicit none
   private
@@ -1227,6 +1230,8 @@ contains
     integer :: i, j, k, pf, pe, n, nc, ncyc
 
     np = coef%msh%periodic%size
+    if (np .eq. 0) return 
+      
     lx = coef%Xh%lx
     ly = coef%Xh%ly
     lz = coef%Xh%lz
@@ -1287,7 +1292,7 @@ contains
     !switched on. If not, then the current rotation logic
     !is not sufficient and must be modified.
     !"cyclic": true in case file invokes these checks.
-    integer :: np, n, lx, pf, pe, i, j, k, nc, ipass, ntot, ncyc
+    integer :: np, np_glb, n, lx, pf, pe, i, j, k, nc, ipass, ntot, ncyc, ierr
     real(kind=rp) :: un(3)
     real(kind=rp), allocatable :: normx(:,:,:,:)
     real(kind=rp), allocatable :: normy(:,:,:,:)
@@ -1304,12 +1309,16 @@ contains
     ncyc = np*lx*lx
 
     if (.not. this%cyclic) return
+    
+    call MPI_Allreduce(np, np_glb, 1, &
+         MPI_INTEGER, MPI_SUM, NEKO_COMM, ierr)
 
-    if (np .eq. 0) then
+    if (np_glb .eq. 0) then
        call neko_error("There are no periodic boundaries. " // &
             "Switch cyclic off in the case file.")
     end if
 
+    !call coef_generate_cyclic_bc(this)
     allocate(normx(lx, lx, lx, this%msh%nelv))
     allocate(normy(lx, lx, lx, this%msh%nelv))
     allocate(normz(lx, lx, lx, this%msh%nelv))
@@ -1368,25 +1377,30 @@ contains
           call device_absval(normx_d, ntot)
           call device_absval(normy_d, ntot)
           call device_absval(normz_d, ntot)
-          norm_dss = device_glsum(normx_d, ntot)/ntot .lt. 100.0*NEKO_EPS .and. &
-               device_glsum(normy_d, ntot)/ntot .lt. 100.0*NEKO_EPS .and. &
-               device_glsum(normz_d, ntot)/ntot .lt. 100.0*NEKO_EPS
+          norm_dss = device_glsum(normx_d, ntot)/np_glb .lt. 100.0*NEKO_EPS .and. &
+               device_glsum(normy_d, ntot)/np_glb .lt. 100.0*NEKO_EPS .and. &
+               device_glsum(normz_d, ntot)/np_glb .lt. 100.0*NEKO_EPS
+          write(*, *) device_glsum(normx_d, ntot)/np_glb, device_glsum(normy_d, ntot)/np_glb, & 
+            device_glsum(normz_d, ntot)/np_glb
        else
           call absval(normx, ntot)
           call absval(normy, ntot)
           call absval(normz, ntot)
-          norm_dss = glsum(normx, ntot)/ntot .lt. 100*NEKO_EPS .and. &
-               glsum(normy, ntot)/ntot .lt. 100*NEKO_EPS .and. &
-               glsum(normz, ntot)/ntot .lt. 100*NEKO_EPS
+          norm_dss = glsum(normx, ntot)/np_glb .lt. 100*NEKO_EPS .and. &
+               glsum(normy, ntot)/np_glb .lt. 100*NEKO_EPS .and. &
+               glsum(normz, ntot)/np_glb .lt. 100*NEKO_EPS
+          write(*, *) "GLMAX ", glmax(normx, ntot), glmax(normy, ntot), glmax(normz, ntot)
+          write(*, *) "GLSUM ", glsum(normx, ntot)/np_glb, glsum(normy, ntot)/np_glb, &
+                                glsum(normz, ntot)/np_glb
        end if
 
        if (ipass .eq. 1 .and. norm_dss) then
-          call neko_error("Cyclic rotation is not required. " // &
+          call neko_warning("Cyclic rotation is not required. " // &
                "Switch it off in case file.")
           !else if (ipass .eq. 1 .and. norm_dss .eqv. false)
           !wait for ipass=2 to check if current rotation logic is sufficient
        else if (ipass .eq. 2 .and. .not. norm_dss) then
-          call neko_error("Cylic rotation is required, but " // &
+          call neko_warning("Cylic rotation is required, but " // &
                "rotation logic must be modified.")
           !if (ipass .eq. 2 .and. norm_dss)
           !current logic is sufficient, proceed.
