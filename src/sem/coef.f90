@@ -1318,7 +1318,6 @@ contains
             "Switch cyclic off in the case file.")
     end if
 
-    !call coef_generate_cyclic_bc(this)
     allocate(normx(lx, lx, lx, this%msh%nelv))
     allocate(normy(lx, lx, lx, this%msh%nelv))
     allocate(normz(lx, lx, lx, this%msh%nelv))
@@ -1377,18 +1376,19 @@ contains
           call device_absval(normx_d, ntot)
           call device_absval(normy_d, ntot)
           call device_absval(normz_d, ntot)
-          norm_dss = device_glsum(normx_d, ntot)/np_glb .lt. 100.0*NEKO_EPS .and. &
-               device_glsum(normy_d, ntot)/np_glb .lt. 100.0*NEKO_EPS .and. &
-               device_glsum(normz_d, ntot)/np_glb .lt. 100.0*NEKO_EPS
-          write(*, *) device_glsum(normx_d, ntot)/np_glb, device_glsum(normy_d, ntot)/np_glb, & 
-            device_glsum(normz_d, ntot)/np_glb
+          norm_dss = device_glmax(normx_d, ntot) .lt. NEKO_EPS .and. &
+                     device_glmax(normy_d, ntot) .lt. NEKO_EPS .and. &
+                     device_glmax(normz_d, ntot) .lt. NEKO_EPS
+          write(*, *) "GLMAX ", device_glmax(normx, ntot), device_glmax(normy, ntot), device_glmax(normz, ntot)
+          write(*, *) "GLSUM ", device_glsum(normx, ntot)/np_glb, device_glsum(normy, ntot)/np_glb, &
+                                device_glsum(normz, ntot)/np_glb
        else
           call absval(normx, ntot)
           call absval(normy, ntot)
           call absval(normz, ntot)
-          norm_dss = glsum(normx, ntot)/np_glb .lt. 100*NEKO_EPS .and. &
-               glsum(normy, ntot)/np_glb .lt. 100*NEKO_EPS .and. &
-               glsum(normz, ntot)/np_glb .lt. 100*NEKO_EPS
+          norm_dss = glmax(normx_d, ntot) .lt. NEKO_EPS .and. &
+                     glmax(normy_d, ntot) .lt. NEKO_EPS .and. &
+                     glmax(normz_d, ntot) .lt. NEKO_EPS
           write(*, *) "GLMAX ", glmax(normx, ntot), glmax(normy, ntot), glmax(normz, ntot)
           write(*, *) "GLSUM ", glsum(normx, ntot)/np_glb, glsum(normy, ntot)/np_glb, &
                                 glsum(normz, ntot)/np_glb
