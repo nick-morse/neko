@@ -117,6 +117,7 @@ contains
     !Im actually not sure what to do if one has two dong that share a corner.
     if (strong_) then
        m = this%msk(0)
+       !$omp parallel do private(k, facet, ux, uy, uz, idx, normal_xyz, vn, S0)
        do i = 1, m
           k = this%msk(i)
           facet = this%facet(i)
@@ -137,6 +138,7 @@ contains
 
           x(k) = -0.5*(ux*ux+uy*uy+uz*uz)*S0
        end do
+       !$omp end parallel do
     end if
   end subroutine dong_outflow_apply_scalar
 
@@ -252,6 +254,7 @@ contains
        allocate(temp_x(m))
        allocate(temp_y(m))
        allocate(temp_z(m))
+       !$omp parallel do private(k, facet, idx, normal_xyz)
        do i = 1, m
           k = this%msk(i)
           facet = this%facet(i)
@@ -262,6 +265,7 @@ contains
           temp_y(i) = normal_xyz(2)
           temp_z(i) = normal_xyz(3)
        end do
+       !$omp end parallel do
        call device_memcpy(temp_x, this%normal_x_d, m, HOST_TO_DEVICE, &
             sync = .false.)
        call device_memcpy(temp_y, this%normal_y_d, m, HOST_TO_DEVICE, &
