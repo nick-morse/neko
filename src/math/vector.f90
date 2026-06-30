@@ -34,13 +34,13 @@
 module vector
   use neko_config, only : NEKO_BCKND_DEVICE
   use num_types, only : rp
-  use device, only : device_map, device_free, device_deassociate, &
+  use device, only : device_map, device_unmap, &
        device_memcpy, device_sync, HOST_TO_DEVICE
   use math, only : cfill, copy
   use device_math, only : device_copy, device_cfill, device_cmult, &
        device_sub3, device_cmult2, device_add3, device_cadd2, device_col3, &
        device_col2, device_invcol3, device_cdiv2
-  use utils, only : neko_error
+  use utils, only : neko_error, NEKO_VARNAME_LEN
   use, intrinsic :: iso_c_binding
   implicit none
   private
@@ -48,7 +48,7 @@ module vector
   type, public :: vector_t
      !> Vector entries.
      real(kind=rp), allocatable :: x(:)
-     character(len=80) :: name = "" !< Name of the vector
+     character(len=NEKO_VARNAME_LEN) :: name = "" !< Name of the vector
      !> Device pointer.
      type(c_ptr) :: x_d = C_NULL_PTR
      !> Size of vector.
@@ -130,12 +130,10 @@ contains
     class(vector_t), intent(inout) :: v
 
     if (allocated(v%x)) then
+       if (NEKO_BCKND_DEVICE .eq. 1) then
+          call device_unmap(v%x, v%x_d)
+       end if
        deallocate(v%x)
-    end if
-
-    if (c_associated(v%x_d)) then
-       call device_deassociate(v%x)
-       call device_free(v%x_d)
     end if
 
     v%n = 0

@@ -37,8 +37,9 @@
 module probes
   use num_types, only : rp, dp
   use matrix, only : matrix_t
+  use vector, only : vector_t
   use logger, only : neko_log, LOG_SIZE, NEKO_LOG_DEBUG
-  use utils, only : neko_error, nonlinear_index
+  use utils, only : neko_error, nonlinear_index, NEKO_VARNAME_LEN
   use field_list, only : field_list_t
   use time_state, only : time_state_t
   use simulation_component, only : simulation_component_t
@@ -54,11 +55,14 @@ module probes
   use point_zone_registry, only : neko_point_zone_registry
   use file, only : file_t, file_free
   use csv_file, only : csv_file_t
+  use hdf5_file, only : hdf5_file_t
+  use math, only : copy
+  use device_math, only : device_copy
   use case, only : case_t
   use, intrinsic :: iso_c_binding
   use comm, only : NEKO_COMM, pe_rank, pe_size, MPI_REAL_PRECISION
   use neko_config, only : NEKO_BCKND_DEVICE
-  use device, only : device_memcpy, DEVICE_TO_HOST, device_map, device_free
+  use device, only : device_memcpy, DEVICE_TO_HOST, device_map, device_unmap
   use mpi_f08, only : MPI_Allreduce, MPI_INTEGER, MPI_SUM, &
        MPI_DOUBLE_PRECISION, MPI_Gatherv, MPI_Gather, MPI_Exscan
   implicit none
@@ -84,7 +88,7 @@ module probes
      integer :: n_local_probes
      !> Fields to be probed
      type(field_list_t) :: sampled_fields
-     character(len=20), allocatable :: which_fields(:)
+     character(len=NEKO_VARNAME_LEN), allocatable :: which_fields(:)
      !> Allocated on rank 0
      integer, allocatable :: n_local_probes_tot_offset(:)
      integer, allocatable :: n_local_probes_tot(:)
@@ -94,6 +98,8 @@ module probes
      !> Output variables
      type(file_t) :: fout
      type(matrix_t) :: mat_out
+     type(vector_t) :: vec_out
+     logical :: append_out = .true.
    contains
      !> Initialize from json.
      procedure, pass(this) :: init => probes_init_from_json
@@ -159,6 +165,7 @@ contains
     call json_get(json, 'output_file', output_file)
     call json_get_or_lookup_or_default(json, 'start_time', this%start_time, &
          -1.0_rp)
+    call json_get_or_default(json, 'append_output', this%append_out, .true.)
 
     call this%sampled_fields%init(this%n_fields)
     do i = 1, this%n_fields
@@ -515,8 +522,9 @@ contains
 
     character(len=1024) :: header_line
     real(kind=rp), allocatable :: global_output_coords(:,:)
-    integer :: i, ierr
+    integer :: i, ierr, out_int
     type(matrix_t) :: mat_coords
+    logical :: attr_exist = .false.
 
     this%name = name
 
@@ -538,7 +546,7 @@ contains
     end if
 
     !> Initialize the output file
-    call this%fout%init(trim(output_file))
+    call this%fout%init(this%case%output_directory // trim(output_file))
 
     select type (ft => this%fout%file_type)
     type is (csv_file_t)
@@ -546,9 +554,11 @@ contains
        this%seq_io = .true.
 
        ! Build the header
-       write(header_line, '(I0,A,I0)') this%n_global_probes, ",", this%n_fields
+       write(header_line, '(I0, A, I0)') this%n_global_probes, achar(44), &
+            this%n_fields
        do i = 1, this%n_fields
-          header_line = trim(header_line) // "," // trim(this%which_fields(i))
+          header_line = trim(header_line) // achar(44) // &
+               trim(this%which_fields(i))
        end do
        call this%fout%set_header(header_line)
 
@@ -575,9 +585,46 @@ contains
                global_output_coords, 3)
           !! Write the data to the file
           call this%fout%write(mat_coords)
+          call mat_coords%free()
        end if
+    class is (hdf5_file_t)
+
+       !> This is always on cpus.
+       if (this%append_out) then
+          call ft%set_overwrite(.false.)
+       else
+          call ft%set_overwrite(.true.)
+       end if
+       call mat_coords%init(3, this%n_local_probes, "coordinates")
+       call copy(mat_coords%x, this%xyz, 3*this%n_local_probes)
+
+       !> Set up output
+       call ft%open("w")
+       call ft%set_active_group("probes")
+
+       ! Check if the NSteps attribute already exists
+       call ft%read_attribute("NSteps", out_int, attr_exist)
+       if (attr_exist) then
+          ! If the attribute exists,
+          ! do not write the coordinates but register the executions
+          this%output_controller%nexecutions = out_int
+       else
+          ! Write out the mesh
+          call ft%write_dataset(mat_coords)
+          out_int = this%n_global_probes
+          call ft%write_attribute("NProbes", out_int)
+       end if
+       call ft%close()
+
+       !> Set up the output matrix
+       this%seq_io = .false.
+       call this%vec_out%init(this%n_local_probes, "interpolated_fields_trsp")
+
+       ! Free temporaries
+       call mat_coords%free()
+
     class default
-       call neko_error("Invalid data. Expected csv_file_t.")
+       call neko_error("Invalid data. Expected csv_file_t or hdf5_file_t.")
     end select
 
   end subroutine probes_init_common
@@ -589,10 +636,6 @@ contains
 
     if (allocated(this%xyz)) then
        deallocate(this%xyz)
-    end if
-
-    if (allocated(this%out_values)) then
-       deallocate(this%out_values)
     end if
 
     if (allocated(this%out_vals_trsp)) then
@@ -617,17 +660,19 @@ contains
        deallocate(this%which_fields)
     end if
 
-    if (allocated(this%out_values_d)) then
-       do i = 1, size(this%out_values_d)
-          if (c_associated(this%out_values_d(i))) then
-             call device_free(this%out_values_d(i))
-          end if
-       end do
-       deallocate(this%out_values_d)
+    if (allocated(this%out_values)) then
+       if (NEKO_BCKND_DEVICE .eq. 1) then
+          do i = 1, this%n_fields
+             call device_unmap(this%out_values(:,i), this%out_values_d(i))
+          end do
+       end if
+       if (allocated(this%out_values_d)) deallocate(this%out_values_d)
+       deallocate(this%out_values)
     end if
 
     call this%global_interp%free()
     call this%mat_out%free()
+    call this%vec_out%free()
 
   end subroutine probes_free
 
@@ -672,8 +717,8 @@ contains
        write (log_buf, *) pe_rank, "/", this%global_interp%pe_owner(i), &
             "/" , this%global_interp%el_owner0(i)
        call neko_log%message(log_buf)
-       write(log_buf, '(A5,"(",F10.6,",",F10.6,",",F10.6,")")') &
-            "rst: ", this%global_interp%rst(:,i)
+       write(log_buf, '(A5, "(", F10.6, ",", F10.6, ",", F10.6, ")")') &
+            "rst: ", this%global_interp%rst(:, i)
        call neko_log%message(log_buf)
     end do
   end subroutine probes_debug
@@ -708,6 +753,10 @@ contains
     type(time_state_t), intent(in) :: time
     integer :: i, ierr
     logical :: do_interp_on_host = .false.
+    character(len=1000) :: group_name
+    real(kind=rp) :: time_
+    type(vector_t) :: vec_time
+    integer :: out_int
 
     !> Do not execute if we are below the start_time
     if (time%t .lt. this%start_time) return
@@ -727,25 +776,90 @@ contains
     end if
 
     if (this%output_controller%check(time)) then
-       ! Gather all values to rank 0
-       ! If io is only done at root
-       if (this%seq_io) then
-          call trsp(this%out_vals_trsp, this%n_fields, &
-               this%out_values, this%n_local_probes)
-          call MPI_Gatherv(this%out_vals_trsp, &
-               this%n_fields*this%n_local_probes, &
-               MPI_REAL_PRECISION, this%global_output_values, &
-               this%n_fields*this%n_local_probes_tot, &
-               this%n_fields*this%n_local_probes_tot_offset, &
-               MPI_REAL_PRECISION, 0, NEKO_COMM, ierr)
-          if (pe_rank .eq. 0) then
-             call trsp(this%mat_out%x, this%n_global_probes, &
-                  this%global_output_values, this%n_fields)
-             call this%fout%write(this%mat_out, time%t)
+       select type (ft => this%fout%file_type)
+       type is (csv_file_t)
+          ! Gather all values to rank 0
+          ! If io is only done at root
+          if (this%seq_io) then
+             call trsp(this%out_vals_trsp, this%n_fields, &
+                  this%out_values, this%n_local_probes)
+             call MPI_Gatherv(this%out_vals_trsp, &
+                  this%n_fields*this%n_local_probes, &
+                  MPI_REAL_PRECISION, this%global_output_values, &
+                  this%n_fields*this%n_local_probes_tot, &
+                  this%n_fields*this%n_local_probes_tot_offset, &
+                  MPI_REAL_PRECISION, 0, NEKO_COMM, ierr)
+             if (pe_rank .eq. 0) then
+                call trsp(this%mat_out%x, this%n_global_probes, &
+                     this%global_output_values, this%n_fields)
+                call this%fout%write(this%mat_out, time%t)
+             end if
+          else
+             call neko_error("CSV outputs only works sequentially")
           end if
-       else
-          call neko_error('probes sim comp, parallel io need implementation')
-       end if
+
+       type is (hdf5_file_t)
+
+          if (this%seq_io) then
+             call neko_error("HDF5 outputs only works in parallel currently.")
+
+          else
+
+             ! Append output format
+             if (this%append_out) then
+
+                call ft%open("w")
+                call ft%set_active_group("probes")
+                ! Write Nsteps in root
+                out_int = this%output_controller%nexecutions + 1
+                call ft%write_attribute("NSteps", out_int)
+                ! Write out the data
+                do i = 1, this%n_fields
+                   call copy(this%vec_out%x, this%out_values(:,i), &
+                        this%vec_out%size())
+                   this%vec_out%name = trim(this%which_fields(i))
+                   call ft%write_dataset(this%vec_out)
+                end do
+
+                ! Write the time by hacking the vector write
+                if (pe_rank .eq. 0) then
+                   call vec_time%init(1, "time")
+                   vec_time%x(1) = time%t
+                else
+                   call vec_time%init(0, "time")
+                end if
+                call ft%write_dataset(vec_time)
+                call vec_time%free()
+                call ft%close()
+
+                ! Write data in different steps
+             else
+
+                out_int = this%output_controller%nexecutions + 1
+                ! Set up the name
+                write(group_name, '(A,I0)') "probes/Step_", out_int
+                call ft%open("w")
+                call ft%set_active_group("probes")
+                ! Write Nsteps in root
+                call ft%write_attribute("NSteps", out_int)
+                ! Write out the data
+                call ft%set_active_group(trim(group_name))
+                do i = 1, this%n_fields
+                   call copy(this%vec_out%x, this%out_values(:,i), &
+                        this%vec_out%size())
+                   this%vec_out%name = trim(this%which_fields(i))
+                   call ft%write_dataset(this%vec_out)
+                end do
+                ! Write the time as an attribute
+                time_ = time%t
+                call ft%write_attribute("time", time_)
+                call ft%close()
+             end if
+
+          end if
+       class default
+          call neko_error("Invalid data. Expected csv_file_t or hdf5_file_t.")
+       end select
 
        !! Register the execution of the activity
        call this%output_controller%register_execution()
@@ -761,6 +875,8 @@ contains
     character(len=:), allocatable :: points_file
     real(kind=rp), allocatable :: xyz(:,:)
     integer, intent(inout) :: n_local_probes, n_global_probes
+    type(matrix_t) :: mat_in
+    integer :: ierr
 
     !> Supporting variables
     type(file_t) :: file_in
@@ -771,6 +887,19 @@ contains
     type is (csv_file_t)
        call read_xyz_from_csv(xyz, n_local_probes, n_global_probes, ft)
        this%seq_io = .true.
+    type is (hdf5_file_t)
+       call ft%open("r")
+       call ft%read_dataset("xyz", mat_in, "rank_0")
+       call ft%close()
+
+       ! Copy the data to the xyz location
+       n_local_probes = mat_in%get_ncols()
+       call MPI_Allreduce(n_local_probes, n_global_probes, 1, MPI_INTEGER, &
+            MPI_SUM, NEKO_COMM, ierr)
+
+       allocate(xyz(3, n_local_probes)) ! We asume that axis 1 has 3 entries
+       call copy(xyz, mat_in%x, 3*n_local_probes)
+       call mat_in%free()
     class default
        call neko_error("Invalid data. Expected csv_file_t.")
     end select

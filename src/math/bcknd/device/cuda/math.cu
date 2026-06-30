@@ -63,14 +63,31 @@ extern "C" {
 
   /** Fortran wrapper for masked copy
    * Copy a vector \f$ a(mask) = b(mask) \f$
+   * Mask is BC style
    */
-  void cuda_masked_copy(void *a, void *b, void *mask,
+  void cuda_masked_copy_0(void *a, void *b, void *mask,
                         int *n, int *m, cudaStream_t strm) {
 
     const dim3 nthrds(1024, 1, 1);
     const dim3 nblcks(((*m)+1024 - 1)/ 1024, 1, 1);
 
-    masked_copy_kernel<real><<<nblcks, nthrds, 0, strm>>>
+    masked_copy_kernel_0<real><<<nblcks, nthrds, 0, strm>>>
+      ((real *) a, (real*) b,(int*) mask, *n, *m);
+    CUDA_CHECK(cudaGetLastError());
+
+  }
+  
+  /** Fortran wrapper for masked copy
+   * Copy a vector \f$ a(mask) = b(mask) \f$
+   * Mask is Point Zone style.
+   */
+  void cuda_masked_copy_aligned(void *a, void *b, void *mask,
+                        int *n, int *m, cudaStream_t strm) {
+
+    const dim3 nthrds(1024, 1, 1);
+    const dim3 nblcks(((*m)+1024 - 1)/ 1024, 1, 1);
+
+    masked_copy_kernel_aligned<real><<<nblcks, nthrds, 0, strm>>>
       ((real *) a, (real*) b,(int*) mask, *n, *m);
     CUDA_CHECK(cudaGetLastError());
 
@@ -106,6 +123,24 @@ extern "C" {
 
   }
 
+  /** Fortran wrapper for face-masked gather copy
+   * Copy a face-local field \f$ a(i) = b(face(mask(i), facet(i))) \f$
+   */
+  void cuda_face_masked_gather_copy(void *a, void *b, void *mask,
+                                    void *facet, int *n1, int *n2, int *lx,
+                                    int *ly, int *lz, int *m,
+                                    cudaStream_t strm) {
+
+    const dim3 nthrds(1024, 1, 1);
+    const dim3 nblcks(((*m)+1024 - 1)/ 1024, 1, 1);
+
+    face_masked_gather_copy_kernel<real><<<nblcks, nthrds, 0, strm>>>
+      ((real *) a, (real *) b, (int *) mask, (int *) facet, *n1, *n2, *lx,
+       *ly, *lz, *m);
+    CUDA_CHECK(cudaGetLastError());
+
+  }
+
   /** Fortran wrapper for masked atomic reduction
    * update a vector \f$ a += b(mask) \f$ where mask is not unique
    */
@@ -130,6 +165,20 @@ extern "C" {
     const dim3 nblcks(((*m)+1024 - 1)/ 1024, 1, 1);
 
     masked_scatter_copy_kernel<real><<<nblcks, nthrds, 0, strm>>>
+      ((real *) a, (real*) b,(int*) mask, *n, *m);
+    CUDA_CHECK(cudaGetLastError());
+  }
+  
+  /** Fortran wrapper for masked scatter copy with aligned mask
+   * Copy a vector \f$ a(mask(i)) = b(i) \f$
+   */
+  void cuda_masked_scatter_copy_aligned(void *a, void *b, void *mask,
+                                int *n, int *m, cudaStream_t strm) {
+
+    const dim3 nthrds(1024, 1, 1);
+    const dim3 nblcks(((*m)+1024 - 1)/ 1024, 1, 1);
+
+    masked_scatter_copy_aligned_kernel<real><<<nblcks, nthrds, 0, strm>>>
       ((real *) a, (real*) b,(int*) mask, *n, *m);
     CUDA_CHECK(cudaGetLastError());
   }
@@ -234,6 +283,22 @@ extern "C" {
 
     cadd2_kernel<real><<<nblcks, nthrds, 0, strm>>>
       ((real *) a, (real *) b, *c, *n);
+    CUDA_CHECK(cudaGetLastError());
+
+  }
+
+  /**
+   * Fortran wrapper for cwrap
+   * Wrap values in a vector to interval [min_val, max_val)
+   */
+  void cuda_cwrap(void *a, real *min_val, real *max_val, int *n,
+                  cudaStream_t strm) {
+
+    const dim3 nthrds(1024, 1, 1);
+    const dim3 nblcks(((*n)+1024 - 1)/ 1024, 1, 1);
+
+    cwrap_kernel<real><<<nblcks, nthrds, 0, strm>>>
+      ((real *) a, *min_val, *max_val, *n);
     CUDA_CHECK(cudaGetLastError());
 
   }
