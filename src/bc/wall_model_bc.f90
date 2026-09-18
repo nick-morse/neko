@@ -113,6 +113,10 @@ contains
     end if
 
     if (.not. strong_) then
+       ! This runs inside the bc_list parallel region, so the update must be
+       ! executed by a single thread; the barrier implied by 'end single' is
+       ! what makes the tau field consistent before the Neumann bcs read it.
+       !$omp single
        ! Compute the wall stress using the wall model.
        call this%wall_model%compute( real(time%t, kind=rp), time%tstep)
 
@@ -123,6 +127,7 @@ contains
        ! boundary conditions.
        call this%set_stress(this%wall_model%tau_x, this%wall_model%tau_y, &
             this%wall_model%tau_z)
+       !$omp end single
     end if
 
     ! Either add the stress to the RHS or apply the non-penetration condition
@@ -219,22 +224,17 @@ contains
   end subroutine wall_model_bc_free
 
   !> Finalize by building mask arrays and init'ing the wall model.
-  subroutine wall_model_bc_finalize(this, only_facets)
+  subroutine wall_model_bc_finalize(this)
     class(wall_model_bc_t), target, intent(inout) :: this
-    logical, optional, intent(in) :: only_facets
 
-    if (present(only_facets)) then
-       if (.not. only_facets) then
-          call neko_error("For wall_model_bc_t, only_facets has to be true.")
-       end if
-    end if
+    call this%shear_stress_t%finalize()
+    call this%wall_model%finalize(this%facet_node_msk, this%facet)
 
-    call this%shear_stress_t%finalize(.true.)
     if (associated(this%user)) then
-       call this%wall_model%finalize(this%msk, this%facet, this%name, &
-            this%user)
+       call this%wall_model%finalize(this%facet_node_msk, this%facet, &
+            this%name, this%user)
     else
-       call this%wall_model%finalize(this%msk, this%facet, this%name)
+       call this%wall_model%finalize(this%facet_node_msk, this%facet, this%name)
     end if
   end subroutine wall_model_bc_finalize
 

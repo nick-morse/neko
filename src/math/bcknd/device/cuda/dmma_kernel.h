@@ -150,12 +150,18 @@ enum {
 #define NEKO_DMMA_NBLCKS(NELV, LX)                                            \
   dim3(((NELV) + NEKO_DMMA_PACK(LX) - 1) / NEKO_DMMA_PACK(LX), 1, 1)
 
-/* Forced candidate, used when NEKO_AUTOTUNE pins the DMMA variant */
-static int neko_dmma_env()
+/* Warps per block candidate pinned by NEKO_DMMA_NW, or -1 to leave it to the
+   sweep, see neko_eb_pin() in elem_block_tune.h */
+static int neko_dmma_pin()
 {
   const char *v = getenv("NEKO_DMMA_NW");
-  int c = (v != NULL) ? atoi(v) : 0;
+  int c;
 
+  if (v == NULL) {
+    return -1;
+  }
+
+  c = atoi(v);
   if (c < 0 || c >= NEKO_DMMA_CANDIDATES) {
     c = 0;
   }
@@ -173,7 +179,8 @@ static int neko_dmma_env()
       char lbl_[16];                                                          \
       sprintf(lbl_, "DMMA  %dw %de",                                          \
               NEKO_DMMA_NW(c), NEKO_DMMA_PACK(LX));                           \
-      sprintf(neko_log_buf, "%-13s: %9.2f us/call", lbl_, (T3)[c] * 10.0);    \
+      sprintf(neko_log_buf, "%-13s: %9.2f us/call", lbl_,                     \
+              NEKO_TUNE_US((T3)[c], iters));                                  \
       log_message(neko_log_buf);                                              \
     }                                                                         \
   } while (0)
@@ -317,6 +324,10 @@ static inline bool dmma_vector_lx_supported()
 struct dmma_idx {
   int c;                     /* offset into the padded cube */
   int g;                     /* offset into the global element arrays */
+  int l;                     /* offset within the element, i.e. g minus the
+                                element's base. Needed by the operators that
+                                also read an array shared by every element,
+                                such as opgrad's quadrature weights w3 */
   bool live;                 /* false only for a padded tail slot, PACK > 1 */
 };
 
@@ -347,6 +358,7 @@ struct dmma_pack {
 
     x.c = (qa * LX + i) + DMMA_SI * (qb * LX + j) + DMMA_SJ * (qc * LX + k);
     x.g = r + (eq < nelv ? eq : nelv - 1) * LX3;
+    x.l = r;
     x.live = (eq < nelv);
     return x;
   }
@@ -378,6 +390,7 @@ struct dmma_pack< LX, 1 > {
 
     x.c = i + DMMA_SI * j + DMMA_SJ * k;
     x.g = ebase + p;
+    x.l = p;
     x.live = true;
     return x;
   }
